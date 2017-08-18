@@ -15,14 +15,27 @@
 
 #include "../corewar.h"
 
-typedef struct	s_skrr
+typedef struct 		s_flags
 {
-	int 		j;
-	int 		i;
-	header_t 	*header;
-}				t_skrr;
+	int 			shift;
+	unsigned int	gt_magic;
+}					t_flag;
 
-void			usage_e(void);
-void			argc_e(int argc);
+typedef struct		s_skrr
+{
+	int 			fd;
+	int 			j;
+	unsigned int	i;
+	t_flag			flags;
+	header_t 		header;
+
+}					t_skrr;
+
+void				usage_e(void);
+void				chk_open(t_skrr *skrr, char **argv, int argc, int flag);
+void				init(t_skrr *skrr, int argc);
+void				just_read(t_skrr *skrr, char *argv);
+unsigned int 		get_magic(unsigned int m, int shift, int flag);
+void				get_name_comments(t_skrr *skrr);
 
 #endif
