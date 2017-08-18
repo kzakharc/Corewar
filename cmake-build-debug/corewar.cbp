@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug"/>
+				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug"/>
+				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug"/>
+				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="corewar">
-				<Option output="/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/corewar" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug"/>
+				<Option output="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/corewar" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,15 +53,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 corewar"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 corewar"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="corewar/fast">
-				<Option output="/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/corewar" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug"/>
+				<Option output="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/corewar" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -75,26 +75,32 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 corewar/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/git_lol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 corewar/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/git_lol/corewar.h">
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/corewar.h">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/git_lol/op.h">
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.h">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/git_lol/vp_virtual_machine/virtual_main.c">
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/virtualm.h">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/git_lol/vp_virtual_machine/virtualm.h">
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/vp_basic.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/git_lol/CMakeLists.txt">
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/vp_err_u.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/vp_virtual_main.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
