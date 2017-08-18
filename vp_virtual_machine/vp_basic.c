@@ -38,14 +38,47 @@ void		just_read(t_skrr *skrr, char *argv)
 
 void			get_name_comments(t_skrr *skrr)
 {
+	lseek(skrr->fd, 4, SEEK_SET);
 	read(skrr->fd, skrr->header.prog_name, 128);
-	ft_printf("name: %s\n", skrr->header.prog_name);
-	read(skrr->fd, &skrr->header.prog_size, 2);
-	ft_printf("prog_size: %u\n", skrr->header.prog_size);
-	lseek(skrr->fd, 6, SEEK_CUR);
+//	ft_printf("prog_name: %s\n", skrr->header.prog_name);
+	lseek(skrr->fd, 138, SEEK_SET);
+	prog_size(skrr);
+	lseek(skrr->fd, 140, SEEK_SET);
 	read(skrr->fd, skrr->header.comment, 2048);
-	ft_printf("comments: %s\n", skrr->header.comment);
+//	ft_printf("comments: %s\n", skrr->header.comment);
+}
 
+unsigned int	prog_size(t_skrr *skrr)
+{
+	char 			size[2];
+	unsigned int	s[2];
+
+	read(skrr->fd, size, 2);
+	skrr->i = 0;
+	skrr->flags.shift = 8;
+	while (skrr->i < 2)
+	{
+		s[skrr->i] = get_size(size[skrr->i], skrr->flags.shift, skrr->i);
+		ft_printf("size[%d]: %x\n", skrr->i, size[skrr->i]);
+		skrr->flags.shift -= 8;
+		skrr->i++;
+	}
+	skrr->header.prog_size = s[0] | s[1];
+	ft_printf("prog_size: %u\n", skrr->header.prog_size);
+	return (1);
+}
+
+unsigned  int	get_size(unsigned int s, int shift, int flag)
+{
+	unsigned int size;
+
+	if (flag == 0)
+		size = s << shift;
+	else if (flag == 1)
+		size = s << shift & 0x000000ff;
+	else
+		exit(0);
+	return (size);
 }
 
 unsigned int 	get_magic(unsigned int m, int shift, int flag)

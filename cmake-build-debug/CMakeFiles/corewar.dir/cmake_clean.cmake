@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/corewar.dir/vp_virtual_machine/virtual_main.c.o"
+  "CMakeFiles/corewar.dir/vp_virtual_machine/vp_virtual_main.c.o"
+  "CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o"
+  "CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o"
   "corewar.pdb"
   "corewar"
 )
