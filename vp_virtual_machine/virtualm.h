@@ -35,9 +35,8 @@ void				usage_e(void);
 void				chk_open(t_skrr *skrr, char **argv, int argc, int flag);
 void				init(t_skrr *skrr, int argc);
 void				just_read(t_skrr *skrr, char *argv);
-unsigned int 		get_magic(unsigned int m, int shift, int flag);
+unsigned int 		get_magic_size(unsigned int m, int shift, int flag);
 void				get_name_comments(t_skrr *skrr);
-unsigned  int		get_size(unsigned int s, int shift, int flag);
-unsigned int		prog_size(t_skrr *skrr);
+void				prog_size(t_skrr *skrr);
 
 #endif

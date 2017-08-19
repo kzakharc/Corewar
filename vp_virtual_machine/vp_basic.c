@@ -22,7 +22,7 @@ void		just_read(t_skrr *skrr, char *argv)
 	skrr->flags.shift = 24;
 	while (skrr->i < 4)
 	{
-		m[skrr->i] = get_magic(magic[skrr->i], skrr->flags.shift, skrr->i);
+		m[skrr->i] = get_magic_size(magic[skrr->i], skrr->flags.shift, 1);
 		skrr->flags.shift -= 8;
 		skrr->i++;
 	}
@@ -38,17 +38,20 @@ void		just_read(t_skrr *skrr, char *argv)
 
 void			get_name_comments(t_skrr *skrr)
 {
+	(skrr->j == 1) ? ft_printf("Introducing contestants...\n") : 0;
+	ft_printf("* Player %d, ", skrr->j);
 	lseek(skrr->fd, 4, SEEK_SET);
 	read(skrr->fd, skrr->header.prog_name, 128);
-//	ft_printf("prog_name: %s\n", skrr->header.prog_name);
+	ft_printf("Name:" GRN" \"%s\", "RESET, skrr->header.prog_name);
 	lseek(skrr->fd, 138, SEEK_SET);
 	prog_size(skrr);
+	ft_printf("weighing" GRN" %u "RESET "bytes, ", skrr->header.prog_size);
 	lseek(skrr->fd, 140, SEEK_SET);
 	read(skrr->fd, skrr->header.comment, 2048);
-//	ft_printf("comments: %s\n", skrr->header.comment);
+	ft_printf("comment:" GRN" \"%s\"\n"RESET, skrr->header.comment);
 }
 
-unsigned int	prog_size(t_skrr *skrr)
+void		prog_size(t_skrr *skrr)
 {
 	char 			size[2];
 	unsigned int	s[2];
@@ -58,42 +61,29 @@ unsigned int	prog_size(t_skrr *skrr)
 	skrr->flags.shift = 8;
 	while (skrr->i < 2)
 	{
-		s[skrr->i] = get_size(size[skrr->i], skrr->flags.shift, skrr->i);
-		ft_printf("size[%d]: %x\n", skrr->i, size[skrr->i]);
+		s[skrr->i] = get_magic_size(size[skrr->i], skrr->flags.shift, 0);
 		skrr->flags.shift -= 8;
 		skrr->i++;
 	}
 	skrr->header.prog_size = s[0] | s[1];
-	ft_printf("prog_size: %u\n", skrr->header.prog_size);
-	return (1);
 }
 
-unsigned  int	get_size(unsigned int s, int shift, int flag)
-{
-	unsigned int size;
-
-	if (flag == 0)
-		size = s << shift;
-	else if (flag == 1)
-		size = s << shift & 0x000000ff;
-	else
-		exit(0);
-	return (size);
-}
-
-unsigned int 	get_magic(unsigned int m, int shift, int flag)
+unsigned int 	get_magic_size(unsigned int m, int shift, int flag)
 {
 	unsigned int magic;
 
-	if (flag == 0)
-		magic = m << shift;
-	else if (flag == 1)
-		magic = m << shift & 0x00ffffff;
-	else if (flag == 2)
-		magic = m << shift & 0x0000ffff;
-	else if (flag == 3)
-		magic = m & 0x000000ff;
+	magic = 0;
+	if (flag)
+	{
+		(shift == 24) ? (magic = m << shift) : 0;
+		(shift == 16) ? (magic = m << shift & 0x00ffffff) : 0;
+		(shift == 8) ? (magic = m << shift & 0x0000ffff) : 0;
+		(shift == 0) ? (magic = m & 0x000000ff) : 0;
+	}
 	else
-		exit(0);
+	{
+		(shift == 8) ? (magic = m << shift) : 0;
+		(shift == 0) ? (magic = m << shift & 0x000000ff) : 0;
+	}
 	return (magic);
 }
