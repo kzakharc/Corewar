@@ -4,7 +4,7 @@ project(corewar)
 set(CMAKE_C_STANDARD 99)
 
 set(SOURCE_FILES vp_virtual_machine/vp_virtual_main.c vp_virtual_machine/vp_err_u.c
-        vp_virtual_machine/vp_basic.c
+        vp_virtual_machine/vp_basic.c  vp_virtual_machine/vp_commands.c
         vp_virtual_machine/virtualm.h op.h corewar.h)
 
 add_executable(corewar ${SOURCE_FILES})

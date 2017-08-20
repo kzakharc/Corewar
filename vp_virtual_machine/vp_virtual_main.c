@@ -24,6 +24,7 @@ int 	main(int argc, char **argv)
 		chk_open(&skrr, argv, argc, 1);
 		just_read(&skrr, argv[skrr.j]);
 	}
+	(skrr.n != 0) ? print_info(&skrr, argc) : 0;
 	close(skrr.fd);
 	return (1);
 }

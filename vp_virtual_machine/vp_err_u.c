@@ -16,6 +16,7 @@ void	init(t_skrr *skrr, int argc)
 {
 	skrr->fd = 0;
 	skrr->i = (unsigned int)argc;
+	skrr->n = 0;
 	skrr->j = 0;
 }
 
@@ -26,7 +27,7 @@ void	chk_open(t_skrr *skrr, char **argv, int argc, int flag)
 		skrr->fd = open(argv[skrr->j], O_RDONLY);
 		if (skrr->fd < 0)
 		{
-			ft_printf("Can't read source file:" RED" %s\n"RESET, argv[skrr->j]);
+			ft_printf("Can't read source file"RED" %s"RESET"\n", argv[skrr->j]);
 			exit (0);
 		}
 	}

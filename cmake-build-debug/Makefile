@@ -150,6 +150,33 @@ vp_virtual_machine/vp_basic.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.s
 .PHONY : vp_virtual_machine/vp_basic.c.s
 
+vp_virtual_machine/vp_commands.o: vp_virtual_machine/vp_commands.c.o
+
+.PHONY : vp_virtual_machine/vp_commands.o
+
+# target to build an object file
+vp_virtual_machine/vp_commands.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o
+.PHONY : vp_virtual_machine/vp_commands.c.o
+
+vp_virtual_machine/vp_commands.i: vp_virtual_machine/vp_commands.c.i
+
+.PHONY : vp_virtual_machine/vp_commands.i
+
+# target to preprocess a source file
+vp_virtual_machine/vp_commands.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.i
+.PHONY : vp_virtual_machine/vp_commands.c.i
+
+vp_virtual_machine/vp_commands.s: vp_virtual_machine/vp_commands.c.s
+
+.PHONY : vp_virtual_machine/vp_commands.s
+
+# target to generate assembly for a file
+vp_virtual_machine/vp_commands.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.s
+.PHONY : vp_virtual_machine/vp_commands.c.s
+
 vp_virtual_machine/vp_err_u.o: vp_virtual_machine/vp_err_u.c.o
 
 .PHONY : vp_virtual_machine/vp_err_u.o
@@ -216,6 +243,9 @@ help:
 	@echo "... vp_virtual_machine/vp_basic.o"
 	@echo "... vp_virtual_machine/vp_basic.i"
 	@echo "... vp_virtual_machine/vp_basic.s"
+	@echo "... vp_virtual_machine/vp_commands.o"
+	@echo "... vp_virtual_machine/vp_commands.i"
+	@echo "... vp_virtual_machine/vp_commands.s"
 	@echo "... vp_virtual_machine/vp_err_u.o"
 	@echo "... vp_virtual_machine/vp_err_u.i"
 	@echo "... vp_virtual_machine/vp_err_u.s"
