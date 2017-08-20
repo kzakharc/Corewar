@@ -88,6 +88,9 @@
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.h">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/op.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/virtualm.h">
 			<Option target="corewar"/>
 		</Unit>

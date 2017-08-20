@@ -48,6 +48,10 @@ string.h
 
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.h
 
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/op.c
+virtualm.h
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/virtualm.h
+
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/virtualm.h
 ../corewar.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/corewar.h

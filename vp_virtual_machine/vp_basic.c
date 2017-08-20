@@ -23,11 +23,11 @@ void		just_read(t_skrr *skrr, char *argv)
 		exit(0);
 	}
 	skrr->i = 0;
-	skrr->flags.shift = 24;
+	skrr->shift = 24;
 	while (skrr->i < 4)
 	{
-		m[skrr->i++] = get_magic_size(magic[skrr->i], skrr->flags.shift, 1);
-		skrr->flags.shift -= 8;
+		m[skrr->i++] = get_magic_size(magic[skrr->i], skrr->shift);
+		skrr->shift -= 8;
 	}
 	skrr->header[skrr->n].magic = m[0] | m[1] | m[2] | m[3];
 	if (skrr->header[skrr->n].magic == COREWAR_EXEC_MAGIC)
@@ -42,67 +42,53 @@ void		just_read(t_skrr *skrr, char *argv)
 
 void		get_name_comments(t_skrr *skrr, char *argv)
 {
-	if (lseek(skrr->fd, 4, SEEK_SET) < 0)
-		exit (0);
-	if (read(skrr->fd, skrr->header[skrr->n].prog_name, 128) < 0)
-		exit (0);
-	if (lseek(skrr->fd, 140, SEEK_SET) < 0)
-		exit (0);
-	if (read(skrr->fd, skrr->header[skrr->n].comment, 2048) < 0)
-		exit (0);
-	if (lseek(skrr->fd, 138, SEEK_SET) < 0)
-		exit (0);
+	(lseek(skrr->fd, 4, SEEK_SET) < 0) ? exit (0) : 0;
+	(read(skrr->fd, skrr->header[skrr->n].prog_name, PROG_NAME_LENGTH + 1) < 0) ? exit(0) : 0;
+	(lseek(skrr->fd, COMMENT_POS, SEEK_SET) < 0) ? exit (0) : 0;
+	(read(skrr->fd, skrr->header[skrr->n].comment, COMMENT_LENGTH + 1) < 0) ? exit(0) : 0;
+	(lseek(skrr->fd, SIZE_POS, SEEK_SET) < 0) ? exit (0) : 0;
 	prog_size(skrr, argv);
-	if (lseek(skrr->fd, 2180, SEEK_SET) < 0)
-		exit (0);
+	(lseek(skrr->fd, COMMENT_POS + COMMENT_LENGTH, SEEK_SET) < 0) ? exit(0) : 0;
 	prog_commands(skrr);
 
 }
 
 void		prog_size(t_skrr *skrr, char *argv)
 {
-	char 			size[2];
-	unsigned int	s[2];
+	char 			size[4];
+	unsigned int	s[4];
 
-	if (read(skrr->fd, size, 2) < 0)
+	if (read(skrr->fd, size, 4) < 0)
 	{
 		perror("Error");
 		exit(0);
 	}
 	skrr->i = 0;
-	skrr->flags.shift = 8;
-	while (skrr->i < 2)
+	skrr->shift = 24;
+	while (skrr->i < 4)
 	{
-		s[skrr->i++] = get_magic_size(size[skrr->i], skrr->flags.shift, 0);
-		skrr->flags.shift -= 8;
+		s[skrr->i++] = get_magic_size(size[skrr->i], skrr->shift);
+		skrr->shift -= 8;
 	}
-	skrr->header[skrr->n].prog_size = s[0] | s[1];
+	skrr->header[skrr->n].prog_size = s[0] | s[1] | s[2] | s[3];
 	if (skrr->header[skrr->n].prog_size > CHAMP_MAX_SIZE)
 	{
 		ft_printf("Error: File" RED" %s "RESET "has too large a code "
-						  "(%u bytes > %u bytes)\n",
+						  "(%u bytes vs %u bytes)\n",
 				  argv, skrr->header[skrr->n].prog_size, CHAMP_MAX_SIZE);
 		exit(0);
 	}
 }
 
-unsigned int 	get_magic_size(unsigned int m, int shift, int flag)
+unsigned int 	get_magic_size(unsigned int m, int shift)
 {
 	unsigned int magic;
 
 	magic = 0;
-	if (flag)
-	{
-		(shift == 24) ? (magic = m << shift) : 0;
-		(shift == 16) ? (magic = m << shift & 0x00ffffff) : 0;
-		(shift == 8) ? (magic = m << shift & 0x0000ffff) : 0;
-		(shift == 0) ? (magic = m & 0x000000ff) : 0;
-	}
-	else
-	{
-		(shift == 8) ? (magic = m << shift) : 0;
-		(shift == 0) ? (magic = m << shift & 0x000000ff) : 0;
-	}
+	(shift == 24) ? (magic = m << shift) : 0;
+	(shift == 16) ? (magic = m << shift & 0x00ffffff) : 0;
+	(shift == 8) ? (magic = m << shift & 0x0000ffff) : 0;
+	(shift == 0) ? (magic = m & 0x000000ff) : 0;
 	return (magic);
 }
 

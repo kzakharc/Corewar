@@ -13,12 +13,22 @@
 #ifndef VIRTUALM_H
 # define VIRTUALM_H
 
+# define COMMENT_POS	(PROG_NAME_LENGTH + 13 - ((PROG_NAME_LENGTH + 1) % 4))
+# define SIZE_POS		(PROG_NAME_LENGTH + 9 - ((PROG_NAME_LENGTH + 1) % 4))
+
 #include "../corewar.h"
 
-typedef struct 		s_flags
+typedef struct 		s_op
 {
-	int 			shift;
-}					t_flag;
+	char 			*name;
+	unsigned int 	numb_of_arg;
+	t_arg_type 		arg[3];
+	unsigned int	opcode;
+	unsigned int	cycles;
+	char 			*descr;
+	unsigned int 	codage;
+	unsigned int	wtf;
+}					t_op;
 
 typedef struct		s_skrr
 {
@@ -26,7 +36,7 @@ typedef struct		s_skrr
 	int 			j;
 	unsigned int	i;
 	int 			n;
-	t_flag			flags;
+	int 			shift;
 	header_t 		header[MAX_PLAYERS];
 
 }					t_skrr;
@@ -49,7 +59,7 @@ void				init(t_skrr *skrr, int argc);
 */
 
 void				just_read(t_skrr *skrr, char *argv);
-unsigned int 		get_magic_size(unsigned int m, int shift, int flag);
+unsigned int 		get_magic_size(unsigned int m, int shift);
 void				get_name_comments(t_skrr *skrr, char *argv);
 void				prog_size(t_skrr *skrr, char *argv);
 
