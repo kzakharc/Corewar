@@ -12,27 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec957292-37db-4ac8-8c23-6935e991d128" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vp_virtual_machine/vp_commands.c" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/._examples_assembler" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/._vp_virtual_machine" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vp_virtual_machine/._bigzork.cor" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vp_virtual_machine/._zork.cor" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vp_virtual_machine/.nfs.20051049.1913" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vp_virtual_machine/asm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vp_virtual_machine/test" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vp_virtual_machine/vp_basic.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vp_virtual_machine/vp_err_u.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vp_virtual_machine/vp_virtual_main.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vp_virtual_machine/zork.s" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/examples_assembler/helltrain.cor" afterPath="$PROJECT_DIR$/vp_virtual_machine/helltrain.cor" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_virtual_main.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_virtual_main.c.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/corewar" afterPath="$PROJECT_DIR$/cmake-build-debug/corewar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/corewar" afterPath="$PROJECT_DIR$/corewar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/C.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/C.includecache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/corewar.dir/DependInfo.cmake" />
@@ -45,13 +31,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/corewar.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/corewar.cbp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/corewar.h" afterPath="$PROJECT_DIR$/corewar.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libft/src/get_next_line/get_next_line.h" afterPath="$PROJECT_DIR$/libft/src/get_next_line/get_next_line.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vp_virtual_machine/helltrain.cor" afterPath="$PROJECT_DIR$/vp_virtual_machine/helltrain.cor" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vp_virtual_machine/virtualm.h" afterPath="$PROJECT_DIR$/vp_virtual_machine/virtualm.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vp_virtual_machine/vp_basic.c" afterPath="$PROJECT_DIR$/vp_virtual_machine/vp_basic.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vp_virtual_machine/vp_err_u.c" afterPath="$PROJECT_DIR$/vp_virtual_machine/vp_err_u.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vp_virtual_machine/vp_virtual_main.c" afterPath="$PROJECT_DIR$/vp_virtual_machine/vp_virtual_main.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vp_virtual_machine/zork.cor" afterPath="$PROJECT_DIR$/vp_virtual_machine/zork.cor" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vp_virtual_machine/vp_commands.c" afterPath="$PROJECT_DIR$/vp_virtual_machine/vp_commands.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,7 +56,7 @@
             <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="105">
-                  <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+                  <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
                   <folding />
                 </state>
               </provider>
@@ -83,7 +66,7 @@
             <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_virtual_main.c">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="390">
-                  <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+                  <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -92,14 +75,14 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.52992123">
+        <splitter split-orientation="horizontal" split-proportion="0.5979971">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="vp_err_u.c" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_err_u.c">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="390">
-                      <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+                    <state relative-caret-position="277">
+                      <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
                       <folding />
                     </state>
                   </provider>
@@ -108,8 +91,8 @@
               <file leaf-file-name="vp_basic.c" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_basic.c">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="525">
-                      <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+                    <state relative-caret-position="493">
+                      <caret line="50" column="30" lean-forward="true" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
                       <folding />
                     </state>
                   </provider>
@@ -118,8 +101,8 @@
               <file leaf-file-name="vp_commands.c" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_commands.c">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="300">
-                      <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+                    <state relative-caret-position="330">
+                      <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
                       <folding />
                     </state>
                   </provider>
@@ -129,21 +112,31 @@
           </split-first>
           <split-second>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="op.h" pinned="false" current-in-tab="true">
+              <file leaf-file-name="op.h" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/op.h">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="255">
-                      <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+                    <state relative-caret-position="819">
+                      <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="22" />
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="virtualm.h" pinned="false" current-in-tab="false">
+              <file leaf-file-name="virtualm.h" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/vp_virtual_machine/virtualm.h">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="225">
-                      <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+                      <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="34" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="op.c" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/vp_virtual_machine/op.c">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="405">
+                      <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
                       <folding />
                     </state>
                   </provider>
@@ -178,13 +171,14 @@
         <option value="$PROJECT_DIR$/examples_assembler/helltrain.s" />
         <option value="$PROJECT_DIR$/op.h" />
         <option value="$PROJECT_DIR$/libft/src/get_next_line/get_next_line.h" />
-        <option value="$PROJECT_DIR$/vp_virtual_machine/virtualm.h" />
+        <option value="$PROJECT_DIR$/corewar.h" />
+        <option value="$PROJECT_DIR$/vp_virtual_machine/op.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/vp_virtual_machine/vp_virtual_main.c" />
         <option value="$PROJECT_DIR$/vp_virtual_machine/vp_err_u.c" />
-        <option value="$PROJECT_DIR$/corewar.h" />
         <option value="$PROJECT_DIR$/vp_virtual_machine/vp_commands.c" />
         <option value="$PROJECT_DIR$/vp_virtual_machine/vp_basic.c" />
+        <option value="$PROJECT_DIR$/vp_virtual_machine/virtualm.h" />
       </list>
     </option>
   </component>
@@ -485,7 +479,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="corewar" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="./vp_virtual_machine/zork.cor" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="corewar" TARGET_NAME="corewar" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="corewar" RUN_TARGET_NAME="corewar">
+    <configuration default="false" name="corewar" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="./vp_virtual_machine/helltrain.cor ./vp_virtual_machine/zork.cor" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="corewar" TARGET_NAME="corewar" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="corewar" RUN_TARGET_NAME="corewar">
       <envs />
       <method />
     </configuration>
@@ -520,12 +514,12 @@
       <workItem from="1503143869887" duration="248000" />
       <workItem from="1503144596635" duration="5569000" />
       <workItem from="1503157613293" duration="6537000" />
-      <workItem from="1503209685031" duration="351000" />
+      <workItem from="1503209685031" duration="13193000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57801000" />
+    <option name="totallyTimeSpent" value="70643000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2880" height="1517" extended-state="6" />
@@ -533,17 +527,17 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0880902" sideWeight="0.49676824" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23929824" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2414035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27157894" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22105263" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26105264" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2931642" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23537703" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07399577" sideWeight="0.50323176" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23929824" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -589,23 +583,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/vp_virtual_machine/vp_commands.c</url>
-          <line>18</line>
-          <option name="timeStamp" value="23" />
+          <line>20</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/virtualm.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -830,6 +816,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="20" lean-forward="false" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -851,53 +838,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="35" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_virtual_main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_err_u.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_commands.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/op.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/virtualm.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -910,10 +858,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_virtual_main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/op.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/op.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="819">
+          <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_err_u.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_commands.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vp_virtual_machine/virtualm.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vp_virtual_machine/vp_basic.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+        <state relative-caret-position="493">
+          <caret line="50" column="30" lean-forward="true" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
           <folding />
         </state>
       </provider>

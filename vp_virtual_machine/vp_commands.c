@@ -14,10 +14,10 @@
 
 void	prog_commands(t_skrr *skrr)
 {
-	char *line;
+	char 			*line;
+	unsigned int 	cmd[1];
 
-	while (get_next_line(skrr->fd, &line) > 0)
-	{
-		ft_printf("line: %s\n", line);
-	}
+	line = NULL;
+	(get_next_line(skrr->fd, &line) < 0) ? exit(0) : 0;
+	cmd[0] = (unsigned int)line[0];
 }

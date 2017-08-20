@@ -123,6 +123,33 @@ corewar/fast:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/build
 .PHONY : corewar/fast
 
+vp_virtual_machine/op.o: vp_virtual_machine/op.c.o
+
+.PHONY : vp_virtual_machine/op.o
+
+# target to build an object file
+vp_virtual_machine/op.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o
+.PHONY : vp_virtual_machine/op.c.o
+
+vp_virtual_machine/op.i: vp_virtual_machine/op.c.i
+
+.PHONY : vp_virtual_machine/op.i
+
+# target to preprocess a source file
+vp_virtual_machine/op.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/vp_virtual_machine/op.c.i
+.PHONY : vp_virtual_machine/op.c.i
+
+vp_virtual_machine/op.s: vp_virtual_machine/op.c.s
+
+.PHONY : vp_virtual_machine/op.s
+
+# target to generate assembly for a file
+vp_virtual_machine/op.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/vp_virtual_machine/op.c.s
+.PHONY : vp_virtual_machine/op.c.s
+
 vp_virtual_machine/vp_basic.o: vp_virtual_machine/vp_basic.c.o
 
 .PHONY : vp_virtual_machine/vp_basic.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... corewar"
+	@echo "... vp_virtual_machine/op.o"
+	@echo "... vp_virtual_machine/op.i"
+	@echo "... vp_virtual_machine/op.s"
 	@echo "... vp_virtual_machine/vp_basic.o"
 	@echo "... vp_virtual_machine/vp_basic.i"
 	@echo "... vp_virtual_machine/vp_basic.s"
