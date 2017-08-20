@@ -9,6 +9,14 @@ CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o: ../op.h
 CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o: ../vp_virtual_machine/virtualm.h
 CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o: ../vp_virtual_machine/vp_basic.c
 
+CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o: ../corewar.h
+CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o: ../libft/src/ft_printf/ft_printf.h
+CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o: ../libft/src/get_next_line/get_next_line.h
+CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o: ../libft/src/libft/libft.h
+CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o: ../op.h
+CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o: ../vp_virtual_machine/virtualm.h
+CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o: ../vp_virtual_machine/vp_commands.c
+
 CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o: ../corewar.h
 CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o: ../libft/src/ft_printf/ft_printf.h
 CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o: ../libft/src/get_next_line/get_next_line.h

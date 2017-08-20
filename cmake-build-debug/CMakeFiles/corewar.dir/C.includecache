@@ -13,6 +13,10 @@ libft/src/get_next_line/get_next_line.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/libft/src/get_next_line/get_next_line.h
 libft/src/libft/libft.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/libft/src/libft/libft.h
+fcntl.h
+-
+stdio.h
+-
 op.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.h
 
@@ -28,8 +32,6 @@ stdarg.h
 
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/libft/src/get_next_line/get_next_line.h
 unistd.h
--
-fcntl.h
 -
 stdlib.h
 -
@@ -51,6 +53,10 @@ string.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/corewar.h
 
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/vp_basic.c
+virtualm.h
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/virtualm.h
+
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/vp_commands.c
 virtualm.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/virtualm.h
 
