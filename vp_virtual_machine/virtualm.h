@@ -15,6 +15,7 @@
 
 # define COMMENT_POS	(PROG_NAME_LENGTH + 13 - ((PROG_NAME_LENGTH + 1) % 4))
 # define SIZE_POS		(PROG_NAME_LENGTH + 9 - ((PROG_NAME_LENGTH + 1) % 4))
+# define COMMANDS_POS	(COMMENT_POS + COMMENT_LENGTH + 4)
 
 #include "../corewar.h"
 
@@ -25,7 +26,6 @@ typedef struct 		s_op
 	t_arg_type 		arg[3];
 	unsigned int	opcode;
 	unsigned int	cycles;
-	char 			*descr;
 	unsigned int 	codage;
 	unsigned int	wtf;
 }					t_op;
@@ -40,6 +40,8 @@ typedef struct		s_skrr
 	header_t 		header[MAX_PLAYERS];
 
 }					t_skrr;
+
+t_op				op_tab[17];
 
 /*
 **	usage and open checks functions
@@ -68,6 +70,7 @@ void				prog_size(t_skrr *skrr, char *argv);
 */
 
 void				prog_commands(t_skrr *skrr);
+int 				zjmp(t_skrr *skrr, int i);
 
 /*
 **	printing all players and their info

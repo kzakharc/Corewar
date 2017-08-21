@@ -42,13 +42,13 @@ void		just_read(t_skrr *skrr, char *argv)
 
 void		get_name_comments(t_skrr *skrr, char *argv)
 {
-	(lseek(skrr->fd, 4, SEEK_SET) < 0) ? exit (0) : 0;
+	(lseek(skrr->fd, sizeof(skrr->header->magic), SEEK_SET) < 0) ? exit (0) : 0;
 	(read(skrr->fd, skrr->header[skrr->n].prog_name, PROG_NAME_LENGTH + 1) < 0) ? exit(0) : 0;
 	(lseek(skrr->fd, COMMENT_POS, SEEK_SET) < 0) ? exit (0) : 0;
 	(read(skrr->fd, skrr->header[skrr->n].comment, COMMENT_LENGTH + 1) < 0) ? exit(0) : 0;
 	(lseek(skrr->fd, SIZE_POS, SEEK_SET) < 0) ? exit (0) : 0;
 	prog_size(skrr, argv);
-	(lseek(skrr->fd, COMMENT_POS + COMMENT_LENGTH, SEEK_SET) < 0) ? exit(0) : 0;
+	(lseek(skrr->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
 	prog_commands(skrr);
 
 }
