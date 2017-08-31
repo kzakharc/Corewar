@@ -82,6 +82,7 @@ static void			player_position(t_skrr *skrr, int argc);
 
 void				print_map(t_skrr *skrr);
 static void			init_map(t_skrr *skrr);
+void				unsafe_copy(t_skrr *skrr, char *src);
 
 /*
 **	printing all players and their info

@@ -18,7 +18,7 @@ int 	main(int argc, char **argv)
 
 	init(&skrr, argc);
 	(argc == 1) ? usage_e() : 0;
-	(argc > 5) ? chk_open(&skrr, argv, argc, 0) : 0;
+	(argc - 1 > MAX_ARGS_NUMBER) ? chk_open(&skrr, argv, argc, 0) : 0;
 	while (++skrr.j < argc)
 	{
 		chk_open(&skrr, argv, argc, 1);
