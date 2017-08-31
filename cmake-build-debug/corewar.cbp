@@ -85,10 +85,10 @@
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/corewar.h">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.h">
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.c">
 			<Option target="corewar"/>
 		</Unit>
-		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/op.c">
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.h">
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/virtualm.h">

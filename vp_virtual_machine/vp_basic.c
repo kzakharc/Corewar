@@ -12,7 +12,7 @@
 
 #include "virtualm.h"
 
-void		just_read(t_skrr *skrr, char *argv)
+void		just_read(t_skrr *skrr, char *argv, int argc)
 {
 	char 			magic[4];
 	unsigned int 	m[4];
@@ -31,7 +31,7 @@ void		just_read(t_skrr *skrr, char *argv)
 	}
 	skrr->header[skrr->n].magic = m[0] | m[1] | m[2] | m[3];
 	if (skrr->header[skrr->n].magic == COREWAR_EXEC_MAGIC)
-		get_name_comments(skrr, argv);
+		get_name_comments(skrr, argv, argc);
 	else
 	{
 		ft_printf("Error: File"RED" %s "RESET"has an invalid header\n", argv);
@@ -40,16 +40,16 @@ void		just_read(t_skrr *skrr, char *argv)
 	skrr->n++;
 }
 
-void		get_name_comments(t_skrr *skrr, char *argv)
+void		get_name_comments(t_skrr *skrr, char *argv, int argc)
 {
-	(lseek(skrr->fd, sizeof(skrr->header->magic), SEEK_SET) < 0) ? exit (0) : 0;
+	(lseek(skrr->fd, 4, SEEK_SET) < 0) ? exit (0) : 0;
 	(read(skrr->fd, skrr->header[skrr->n].prog_name, PROG_NAME_LENGTH + 1) < 0) ? exit(0) : 0;
 	(lseek(skrr->fd, COMMENT_POS, SEEK_SET) < 0) ? exit (0) : 0;
 	(read(skrr->fd, skrr->header[skrr->n].comment, COMMENT_LENGTH + 1) < 0) ? exit(0) : 0;
 	(lseek(skrr->fd, SIZE_POS, SEEK_SET) < 0) ? exit (0) : 0;
 	prog_size(skrr, argv);
 	(lseek(skrr->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
-	prog_commands(skrr);
+	prog_commands(skrr, argc);
 
 }
 
@@ -95,11 +95,11 @@ unsigned int 	get_magic_size(unsigned int m, int shift)
 void		print_info(t_skrr *skrr, int argc)
 {
 	skrr->i = 0;
-	skrr->j = 1;
+	skrr->n = 1;
 	(skrr->i == 0) ? ft_printf("Introducing contestants...\n") : 0;
-	while (skrr->j < argc)
+	while (skrr->n < argc)
 	{
-		ft_printf("* Player %d, ", skrr->j++);
+		ft_printf("* Player %d, ", skrr->n++);
 		ft_printf("Name:" GRN" \"%s\", "RESET, skrr->header[skrr->i].prog_name);
 		ft_printf("weighing" GRN" %u "RESET "bytes, ",
 				  skrr->header[skrr->i].prog_size);

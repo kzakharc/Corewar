@@ -37,6 +37,10 @@ typedef struct		s_skrr
 	unsigned int	i;
 	int 			n;
 	int 			shift;
+	int 			flag;
+	int 			player_pos;
+	int 			registry[REG_NUMBER];
+	char 			map[MEM_SIZE + 1];
 	header_t 		header[MAX_PLAYERS];
 
 }					t_skrr;
@@ -60,17 +64,24 @@ void				init(t_skrr *skrr, int argc);
 **	main functions, for get info about "name", "weighing", "comments" ..
 */
 
-void				just_read(t_skrr *skrr, char *argv);
+void				just_read(t_skrr *skrr, char *argv, int argc);
 unsigned int 		get_magic_size(unsigned int m, int shift);
-void				get_name_comments(t_skrr *skrr, char *argv);
+void				get_name_comments(t_skrr *skrr, char *argv, int argc);
 void				prog_size(t_skrr *skrr, char *argv);
 
 /*
 **	commands functions
 */
 
-void				prog_commands(t_skrr *skrr);
-int 				zjmp(t_skrr *skrr, int i);
+void				prog_commands(t_skrr *skrr, int argc);
+static void			player_position(t_skrr *skrr, int argc);
+
+/*
+**	manipulations with map
+*/
+
+void				print_map(t_skrr *skrr);
+static void			init_map(t_skrr *skrr);
 
 /*
 **	printing all players and their info

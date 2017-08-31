@@ -153,28 +153,28 @@ CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o.provides: CMakeFiles/c
 CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o.provides.build: CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o
 
 
-CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o: CMakeFiles/corewar.dir/flags.make
-CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o: ../vp_virtual_machine/op.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/op.c
+CMakeFiles/corewar.dir/op.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/op.c.o: ../op.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/corewar.dir/op.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/op.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.c
 
-CMakeFiles/corewar.dir/vp_virtual_machine/op.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/vp_virtual_machine/op.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/op.c > CMakeFiles/corewar.dir/vp_virtual_machine/op.c.i
+CMakeFiles/corewar.dir/op.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/op.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.c > CMakeFiles/corewar.dir/op.c.i
 
-CMakeFiles/corewar.dir/vp_virtual_machine/op.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/vp_virtual_machine/op.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/op.c -o CMakeFiles/corewar.dir/vp_virtual_machine/op.c.s
+CMakeFiles/corewar.dir/op.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/op.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.c -o CMakeFiles/corewar.dir/op.c.s
 
-CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o.requires:
+CMakeFiles/corewar.dir/op.c.o.requires:
 
-.PHONY : CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o.requires
+.PHONY : CMakeFiles/corewar.dir/op.c.o.requires
 
-CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o.provides: CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o.requires
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o.provides.build
-.PHONY : CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o.provides
+CMakeFiles/corewar.dir/op.c.o.provides: CMakeFiles/corewar.dir/op.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/op.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/op.c.o.provides
 
-CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o.provides.build: CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o
+CMakeFiles/corewar.dir/op.c.o.provides.build: CMakeFiles/corewar.dir/op.c.o
 
 
 # Object files for target corewar
@@ -183,7 +183,7 @@ corewar_OBJECTS = \
 "CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o" \
 "CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o" \
 "CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o" \
-"CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o"
+"CMakeFiles/corewar.dir/op.c.o"
 
 # External object files for target corewar
 corewar_EXTERNAL_OBJECTS =
@@ -192,7 +192,7 @@ corewar: CMakeFiles/corewar.dir/vp_virtual_machine/vp_virtual_main.c.o
 corewar: CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o
 corewar: CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o
 corewar: CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o
-corewar: CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o
+corewar: CMakeFiles/corewar.dir/op.c.o
 corewar: CMakeFiles/corewar.dir/build.make
 corewar: ../libft/libft.a
 corewar: CMakeFiles/corewar.dir/link.txt
@@ -208,7 +208,7 @@ CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/vp_virtual_machine/vp_vi
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o.requires
-CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/vp_virtual_machine/op.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/op.c.o.requires
 
 .PHONY : CMakeFiles/corewar.dir/requires
 

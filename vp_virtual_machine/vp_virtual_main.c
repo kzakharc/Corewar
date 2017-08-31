@@ -22,9 +22,10 @@ int 	main(int argc, char **argv)
 	while (++skrr.j < argc)
 	{
 		chk_open(&skrr, argv, argc, 1);
-		just_read(&skrr, argv[skrr.j]);
+		just_read(&skrr, argv[skrr.j], argc);
 	}
 	(skrr.n != 0) ? print_info(&skrr, argc) : 0;
+	print_map(&skrr);
 	close(skrr.fd);
-	return (1);
+	return (0);
 }

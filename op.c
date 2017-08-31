@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "vp_virtual_machine/virtualm.h"
 
 t_op    op_tab[17] =
 		{

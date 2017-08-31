@@ -18,6 +18,8 @@ void	init(t_skrr *skrr, int argc)
 	skrr->i = (unsigned int)argc;
 	skrr->n = 0;
 	skrr->j = 0;
+	skrr->player_pos = 0;
+	skrr->flag = -1;
 }
 
 void	chk_open(t_skrr *skrr, char **argv, int argc, int flag)
