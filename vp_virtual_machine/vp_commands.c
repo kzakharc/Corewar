@@ -16,12 +16,25 @@ void		prog_commands(t_skrr *skrr, int argc)
 {
 	char	*line;
 
-	line = NULL;
 	player_position(skrr, argc - 1);
 	(skrr->flag == -1) ? init_map(skrr) : 0;
-	if ((get_next_line(skrr->fd, &line) < 0))
+	line = ft_strnew(CHAMP_MAX_SIZE);
+	skrr->i = 0;
+	while (read(skrr->fd, &line[skrr->i], 1) != 0)
+		skrr->i++;
+	ft_printf("Player: %d\tposition: %d\n", skrr->j, skrr->player_pos);
+	unsafe_copy(skrr, line);
+}
+
+void	unsafe_copy(t_skrr *skrr, char *line)
+{
+	int pos;
+
+	pos = skrr->player_pos;
+	if (line == NULL)
 		exit (1);
-	ft_strcpy(&skrr->map[skrr->player_pos], line);
+	while (skrr->i-- > 0)
+		skrr->map[pos++] = *line++;
 }
 
 void	print_map(t_skrr *skrr)
@@ -41,13 +54,13 @@ void	print_map(t_skrr *skrr)
 
 static void	init_map(t_skrr *skrr)
 {
+	skrr->flag = 1;
 	skrr->i = 0;
-	while (skrr->i < 4096)
+	while (skrr->i < 4097)
 	{
 		skrr->map[skrr->i] = 0;
 		skrr->i++;
 	}
-	skrr->flag = 1;
 }
 
 static void	player_position(t_skrr *skrr, int argc)
