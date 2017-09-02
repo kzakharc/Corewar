@@ -14,7 +14,7 @@
 
 void		just_read(t_skrr *skrr, char *argv, int argc)
 {
-	char 			magic[4];
+	unsigned char 	magic[4];
 	unsigned int 	m[4];
 
 	if (read(skrr->fd, magic, 4) < 0)
@@ -55,7 +55,7 @@ void		get_name_comments(t_skrr *skrr, char *argv, int argc)
 
 void		prog_size(t_skrr *skrr, char *argv)
 {
-	char 			size[4];
+	unsigned char 	size[4];
 	unsigned int	s[4];
 
 	if (read(skrr->fd, size, 4) < 0)

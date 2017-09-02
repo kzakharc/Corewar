@@ -123,6 +123,438 @@ corewar/fast:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/build
 .PHONY : corewar/fast
 
+cor/instructions/vp_add.o: cor/instructions/vp_add.c.o
+
+.PHONY : cor/instructions/vp_add.o
+
+# target to build an object file
+cor/instructions/vp_add.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o
+.PHONY : cor/instructions/vp_add.c.o
+
+cor/instructions/vp_add.i: cor/instructions/vp_add.c.i
+
+.PHONY : cor/instructions/vp_add.i
+
+# target to preprocess a source file
+cor/instructions/vp_add.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_add.c.i
+.PHONY : cor/instructions/vp_add.c.i
+
+cor/instructions/vp_add.s: cor/instructions/vp_add.c.s
+
+.PHONY : cor/instructions/vp_add.s
+
+# target to generate assembly for a file
+cor/instructions/vp_add.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_add.c.s
+.PHONY : cor/instructions/vp_add.c.s
+
+cor/instructions/vp_aff.o: cor/instructions/vp_aff.c.o
+
+.PHONY : cor/instructions/vp_aff.o
+
+# target to build an object file
+cor/instructions/vp_aff.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o
+.PHONY : cor/instructions/vp_aff.c.o
+
+cor/instructions/vp_aff.i: cor/instructions/vp_aff.c.i
+
+.PHONY : cor/instructions/vp_aff.i
+
+# target to preprocess a source file
+cor/instructions/vp_aff.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.i
+.PHONY : cor/instructions/vp_aff.c.i
+
+cor/instructions/vp_aff.s: cor/instructions/vp_aff.c.s
+
+.PHONY : cor/instructions/vp_aff.s
+
+# target to generate assembly for a file
+cor/instructions/vp_aff.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.s
+.PHONY : cor/instructions/vp_aff.c.s
+
+cor/instructions/vp_and.o: cor/instructions/vp_and.c.o
+
+.PHONY : cor/instructions/vp_and.o
+
+# target to build an object file
+cor/instructions/vp_and.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o
+.PHONY : cor/instructions/vp_and.c.o
+
+cor/instructions/vp_and.i: cor/instructions/vp_and.c.i
+
+.PHONY : cor/instructions/vp_and.i
+
+# target to preprocess a source file
+cor/instructions/vp_and.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_and.c.i
+.PHONY : cor/instructions/vp_and.c.i
+
+cor/instructions/vp_and.s: cor/instructions/vp_and.c.s
+
+.PHONY : cor/instructions/vp_and.s
+
+# target to generate assembly for a file
+cor/instructions/vp_and.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_and.c.s
+.PHONY : cor/instructions/vp_and.c.s
+
+cor/instructions/vp_fork.o: cor/instructions/vp_fork.c.o
+
+.PHONY : cor/instructions/vp_fork.o
+
+# target to build an object file
+cor/instructions/vp_fork.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o
+.PHONY : cor/instructions/vp_fork.c.o
+
+cor/instructions/vp_fork.i: cor/instructions/vp_fork.c.i
+
+.PHONY : cor/instructions/vp_fork.i
+
+# target to preprocess a source file
+cor/instructions/vp_fork.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.i
+.PHONY : cor/instructions/vp_fork.c.i
+
+cor/instructions/vp_fork.s: cor/instructions/vp_fork.c.s
+
+.PHONY : cor/instructions/vp_fork.s
+
+# target to generate assembly for a file
+cor/instructions/vp_fork.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.s
+.PHONY : cor/instructions/vp_fork.c.s
+
+cor/instructions/vp_ld.o: cor/instructions/vp_ld.c.o
+
+.PHONY : cor/instructions/vp_ld.o
+
+# target to build an object file
+cor/instructions/vp_ld.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o
+.PHONY : cor/instructions/vp_ld.c.o
+
+cor/instructions/vp_ld.i: cor/instructions/vp_ld.c.i
+
+.PHONY : cor/instructions/vp_ld.i
+
+# target to preprocess a source file
+cor/instructions/vp_ld.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.i
+.PHONY : cor/instructions/vp_ld.c.i
+
+cor/instructions/vp_ld.s: cor/instructions/vp_ld.c.s
+
+.PHONY : cor/instructions/vp_ld.s
+
+# target to generate assembly for a file
+cor/instructions/vp_ld.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.s
+.PHONY : cor/instructions/vp_ld.c.s
+
+cor/instructions/vp_ldi.o: cor/instructions/vp_ldi.c.o
+
+.PHONY : cor/instructions/vp_ldi.o
+
+# target to build an object file
+cor/instructions/vp_ldi.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o
+.PHONY : cor/instructions/vp_ldi.c.o
+
+cor/instructions/vp_ldi.i: cor/instructions/vp_ldi.c.i
+
+.PHONY : cor/instructions/vp_ldi.i
+
+# target to preprocess a source file
+cor/instructions/vp_ldi.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.i
+.PHONY : cor/instructions/vp_ldi.c.i
+
+cor/instructions/vp_ldi.s: cor/instructions/vp_ldi.c.s
+
+.PHONY : cor/instructions/vp_ldi.s
+
+# target to generate assembly for a file
+cor/instructions/vp_ldi.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.s
+.PHONY : cor/instructions/vp_ldi.c.s
+
+cor/instructions/vp_lfork.o: cor/instructions/vp_lfork.c.o
+
+.PHONY : cor/instructions/vp_lfork.o
+
+# target to build an object file
+cor/instructions/vp_lfork.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o
+.PHONY : cor/instructions/vp_lfork.c.o
+
+cor/instructions/vp_lfork.i: cor/instructions/vp_lfork.c.i
+
+.PHONY : cor/instructions/vp_lfork.i
+
+# target to preprocess a source file
+cor/instructions/vp_lfork.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.i
+.PHONY : cor/instructions/vp_lfork.c.i
+
+cor/instructions/vp_lfork.s: cor/instructions/vp_lfork.c.s
+
+.PHONY : cor/instructions/vp_lfork.s
+
+# target to generate assembly for a file
+cor/instructions/vp_lfork.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.s
+.PHONY : cor/instructions/vp_lfork.c.s
+
+cor/instructions/vp_live.o: cor/instructions/vp_live.c.o
+
+.PHONY : cor/instructions/vp_live.o
+
+# target to build an object file
+cor/instructions/vp_live.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o
+.PHONY : cor/instructions/vp_live.c.o
+
+cor/instructions/vp_live.i: cor/instructions/vp_live.c.i
+
+.PHONY : cor/instructions/vp_live.i
+
+# target to preprocess a source file
+cor/instructions/vp_live.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_live.c.i
+.PHONY : cor/instructions/vp_live.c.i
+
+cor/instructions/vp_live.s: cor/instructions/vp_live.c.s
+
+.PHONY : cor/instructions/vp_live.s
+
+# target to generate assembly for a file
+cor/instructions/vp_live.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_live.c.s
+.PHONY : cor/instructions/vp_live.c.s
+
+cor/instructions/vp_lld.o: cor/instructions/vp_lld.c.o
+
+.PHONY : cor/instructions/vp_lld.o
+
+# target to build an object file
+cor/instructions/vp_lld.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o
+.PHONY : cor/instructions/vp_lld.c.o
+
+cor/instructions/vp_lld.i: cor/instructions/vp_lld.c.i
+
+.PHONY : cor/instructions/vp_lld.i
+
+# target to preprocess a source file
+cor/instructions/vp_lld.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.i
+.PHONY : cor/instructions/vp_lld.c.i
+
+cor/instructions/vp_lld.s: cor/instructions/vp_lld.c.s
+
+.PHONY : cor/instructions/vp_lld.s
+
+# target to generate assembly for a file
+cor/instructions/vp_lld.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.s
+.PHONY : cor/instructions/vp_lld.c.s
+
+cor/instructions/vp_lldi.o: cor/instructions/vp_lldi.c.o
+
+.PHONY : cor/instructions/vp_lldi.o
+
+# target to build an object file
+cor/instructions/vp_lldi.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o
+.PHONY : cor/instructions/vp_lldi.c.o
+
+cor/instructions/vp_lldi.i: cor/instructions/vp_lldi.c.i
+
+.PHONY : cor/instructions/vp_lldi.i
+
+# target to preprocess a source file
+cor/instructions/vp_lldi.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.i
+.PHONY : cor/instructions/vp_lldi.c.i
+
+cor/instructions/vp_lldi.s: cor/instructions/vp_lldi.c.s
+
+.PHONY : cor/instructions/vp_lldi.s
+
+# target to generate assembly for a file
+cor/instructions/vp_lldi.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.s
+.PHONY : cor/instructions/vp_lldi.c.s
+
+cor/instructions/vp_or.o: cor/instructions/vp_or.c.o
+
+.PHONY : cor/instructions/vp_or.o
+
+# target to build an object file
+cor/instructions/vp_or.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o
+.PHONY : cor/instructions/vp_or.c.o
+
+cor/instructions/vp_or.i: cor/instructions/vp_or.c.i
+
+.PHONY : cor/instructions/vp_or.i
+
+# target to preprocess a source file
+cor/instructions/vp_or.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_or.c.i
+.PHONY : cor/instructions/vp_or.c.i
+
+cor/instructions/vp_or.s: cor/instructions/vp_or.c.s
+
+.PHONY : cor/instructions/vp_or.s
+
+# target to generate assembly for a file
+cor/instructions/vp_or.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_or.c.s
+.PHONY : cor/instructions/vp_or.c.s
+
+cor/instructions/vp_st.o: cor/instructions/vp_st.c.o
+
+.PHONY : cor/instructions/vp_st.o
+
+# target to build an object file
+cor/instructions/vp_st.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o
+.PHONY : cor/instructions/vp_st.c.o
+
+cor/instructions/vp_st.i: cor/instructions/vp_st.c.i
+
+.PHONY : cor/instructions/vp_st.i
+
+# target to preprocess a source file
+cor/instructions/vp_st.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_st.c.i
+.PHONY : cor/instructions/vp_st.c.i
+
+cor/instructions/vp_st.s: cor/instructions/vp_st.c.s
+
+.PHONY : cor/instructions/vp_st.s
+
+# target to generate assembly for a file
+cor/instructions/vp_st.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_st.c.s
+.PHONY : cor/instructions/vp_st.c.s
+
+cor/instructions/vp_sti.o: cor/instructions/vp_sti.c.o
+
+.PHONY : cor/instructions/vp_sti.o
+
+# target to build an object file
+cor/instructions/vp_sti.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o
+.PHONY : cor/instructions/vp_sti.c.o
+
+cor/instructions/vp_sti.i: cor/instructions/vp_sti.c.i
+
+.PHONY : cor/instructions/vp_sti.i
+
+# target to preprocess a source file
+cor/instructions/vp_sti.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.i
+.PHONY : cor/instructions/vp_sti.c.i
+
+cor/instructions/vp_sti.s: cor/instructions/vp_sti.c.s
+
+.PHONY : cor/instructions/vp_sti.s
+
+# target to generate assembly for a file
+cor/instructions/vp_sti.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.s
+.PHONY : cor/instructions/vp_sti.c.s
+
+cor/instructions/vp_sub.o: cor/instructions/vp_sub.c.o
+
+.PHONY : cor/instructions/vp_sub.o
+
+# target to build an object file
+cor/instructions/vp_sub.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o
+.PHONY : cor/instructions/vp_sub.c.o
+
+cor/instructions/vp_sub.i: cor/instructions/vp_sub.c.i
+
+.PHONY : cor/instructions/vp_sub.i
+
+# target to preprocess a source file
+cor/instructions/vp_sub.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.i
+.PHONY : cor/instructions/vp_sub.c.i
+
+cor/instructions/vp_sub.s: cor/instructions/vp_sub.c.s
+
+.PHONY : cor/instructions/vp_sub.s
+
+# target to generate assembly for a file
+cor/instructions/vp_sub.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.s
+.PHONY : cor/instructions/vp_sub.c.s
+
+cor/instructions/vp_xor.o: cor/instructions/vp_xor.c.o
+
+.PHONY : cor/instructions/vp_xor.o
+
+# target to build an object file
+cor/instructions/vp_xor.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o
+.PHONY : cor/instructions/vp_xor.c.o
+
+cor/instructions/vp_xor.i: cor/instructions/vp_xor.c.i
+
+.PHONY : cor/instructions/vp_xor.i
+
+# target to preprocess a source file
+cor/instructions/vp_xor.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.i
+.PHONY : cor/instructions/vp_xor.c.i
+
+cor/instructions/vp_xor.s: cor/instructions/vp_xor.c.s
+
+.PHONY : cor/instructions/vp_xor.s
+
+# target to generate assembly for a file
+cor/instructions/vp_xor.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.s
+.PHONY : cor/instructions/vp_xor.c.s
+
+cor/instructions/vp_zjmp.o: cor/instructions/vp_zjmp.c.o
+
+.PHONY : cor/instructions/vp_zjmp.o
+
+# target to build an object file
+cor/instructions/vp_zjmp.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o
+.PHONY : cor/instructions/vp_zjmp.c.o
+
+cor/instructions/vp_zjmp.i: cor/instructions/vp_zjmp.c.i
+
+.PHONY : cor/instructions/vp_zjmp.i
+
+# target to preprocess a source file
+cor/instructions/vp_zjmp.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.i
+.PHONY : cor/instructions/vp_zjmp.c.i
+
+cor/instructions/vp_zjmp.s: cor/instructions/vp_zjmp.c.s
+
+.PHONY : cor/instructions/vp_zjmp.s
+
+# target to generate assembly for a file
+cor/instructions/vp_zjmp.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.s
+.PHONY : cor/instructions/vp_zjmp.c.s
+
 cor/virtual_machine/vp_basic.o: cor/virtual_machine/vp_basic.c.o
 
 .PHONY : cor/virtual_machine/vp_basic.o
@@ -294,6 +726,54 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... corewar"
+	@echo "... cor/instructions/vp_add.o"
+	@echo "... cor/instructions/vp_add.i"
+	@echo "... cor/instructions/vp_add.s"
+	@echo "... cor/instructions/vp_aff.o"
+	@echo "... cor/instructions/vp_aff.i"
+	@echo "... cor/instructions/vp_aff.s"
+	@echo "... cor/instructions/vp_and.o"
+	@echo "... cor/instructions/vp_and.i"
+	@echo "... cor/instructions/vp_and.s"
+	@echo "... cor/instructions/vp_fork.o"
+	@echo "... cor/instructions/vp_fork.i"
+	@echo "... cor/instructions/vp_fork.s"
+	@echo "... cor/instructions/vp_ld.o"
+	@echo "... cor/instructions/vp_ld.i"
+	@echo "... cor/instructions/vp_ld.s"
+	@echo "... cor/instructions/vp_ldi.o"
+	@echo "... cor/instructions/vp_ldi.i"
+	@echo "... cor/instructions/vp_ldi.s"
+	@echo "... cor/instructions/vp_lfork.o"
+	@echo "... cor/instructions/vp_lfork.i"
+	@echo "... cor/instructions/vp_lfork.s"
+	@echo "... cor/instructions/vp_live.o"
+	@echo "... cor/instructions/vp_live.i"
+	@echo "... cor/instructions/vp_live.s"
+	@echo "... cor/instructions/vp_lld.o"
+	@echo "... cor/instructions/vp_lld.i"
+	@echo "... cor/instructions/vp_lld.s"
+	@echo "... cor/instructions/vp_lldi.o"
+	@echo "... cor/instructions/vp_lldi.i"
+	@echo "... cor/instructions/vp_lldi.s"
+	@echo "... cor/instructions/vp_or.o"
+	@echo "... cor/instructions/vp_or.i"
+	@echo "... cor/instructions/vp_or.s"
+	@echo "... cor/instructions/vp_st.o"
+	@echo "... cor/instructions/vp_st.i"
+	@echo "... cor/instructions/vp_st.s"
+	@echo "... cor/instructions/vp_sti.o"
+	@echo "... cor/instructions/vp_sti.i"
+	@echo "... cor/instructions/vp_sti.s"
+	@echo "... cor/instructions/vp_sub.o"
+	@echo "... cor/instructions/vp_sub.i"
+	@echo "... cor/instructions/vp_sub.s"
+	@echo "... cor/instructions/vp_xor.o"
+	@echo "... cor/instructions/vp_xor.i"
+	@echo "... cor/instructions/vp_xor.s"
+	@echo "... cor/instructions/vp_zjmp.o"
+	@echo "... cor/instructions/vp_zjmp.i"
+	@echo "... cor/instructions/vp_zjmp.s"
 	@echo "... cor/virtual_machine/vp_basic.o"
 	@echo "... cor/virtual_machine/vp_basic.i"
 	@echo "... cor/virtual_machine/vp_basic.s"
