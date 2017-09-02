@@ -23,6 +23,7 @@ void	init(t_skrr *skrr, int argc)
 	skrr->flag = -1;
 	skrr->cycle_to_die = CYCLE_TO_DIE;
 	skrr->nbr_live = 0;
+	skrr->PC = NULL;
 //	skrr->max_checks = 0;
 }
 

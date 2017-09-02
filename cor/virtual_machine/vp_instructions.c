@@ -23,13 +23,36 @@ int 	entry_point(t_skrr *skrr)
 			skrr->cycle_to_die -= CYCLE_DELTA;
 		if (g_iter == skrr->cycle_to_die)
 			skrr->cycle_to_die -= CYCLE_DELTA;
+		skrr->cycle_to_die--;
+//		g_iter++;
 	}
 	return (1);
 }
 
 int		which_instr(t_skrr *skrr)
 {
+	skrr->op = -1;
 	if (skrr->PC == NULL)
 		return (0);
-	
+	while (++skrr->op < 15)
+		if (*skrr->PC == op_tab[skrr->op].opcode)
+		{
+			((skrr->op) == 0) ? live_instr(skrr) : 0;
+			((skrr->op) == 1) ? ld_instr(skrr) : 0;
+			((skrr->op) == 2) ? st_instr(skrr) : 0;
+			((skrr->op) == 3) ? add_instr(skrr) : 0;
+			((skrr->op) == 4) ? sub_instr(skrr) : 0;
+			((skrr->op) == 5) ? and_instr(skrr) : 0;
+			((skrr->op) == 6) ? or_instr(skrr) : 0;
+			((skrr->op) == 7) ? xor_instr(skrr) : 0;
+			((skrr->op) == 8) ? zjmp_instr(skrr) : 0;
+			((skrr->op) == 9) ? ldi_instr(skrr) : 0;
+			((skrr->op) == 10) ? sti_instr(skrr) : 0;
+			((skrr->op) == 11) ? fork_instr(skrr) : 0;
+			((skrr->op) == 12) ? lld_instr(skrr) : 0;
+			((skrr->op) == 13) ? lldi_instr(skrr) : 0;
+			((skrr->op) == 14) ? lfork_instr(skrr) : 0;
+			((skrr->op) == 15) ? aff_instr(skrr) : 0;
+		}
+	return (1);
 }

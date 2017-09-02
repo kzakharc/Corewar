@@ -1,15 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vp_virtual_main.c                                  :+:      :+:    :+:   */
+/*   vp_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 14:12:55 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/08/08 15:42:25 by vpoltave         ###   ########.fr       */
+/*   Created: 2017/09/02 18:39:44 by vpoltave          #+#    #+#             */
+/*   Updated: 2017/09/02 18:39:45 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../vp_virtual_machine/virtualm.h"
+#include "../virtual_machine/virtualm.h"
 
+int 	live_instr(t_skrr *skrr)
+{
+	ft_printf("live!\n");
 
+	skrr->nbr_live++;
+	return (1);
+}

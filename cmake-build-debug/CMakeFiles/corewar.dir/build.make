@@ -177,9 +177,393 @@ CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o.provides: CMakeFi
 CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o.provides.build: CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o
 
 
+CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o: ../cor/instructions/vp_live.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_live.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_live.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_live.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_live.c > CMakeFiles/corewar.dir/cor/instructions/vp_live.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_live.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_live.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_live.c -o CMakeFiles/corewar.dir/cor/instructions/vp_live.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o: ../cor/instructions/vp_add.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_add.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_add.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_add.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_add.c > CMakeFiles/corewar.dir/cor/instructions/vp_add.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_add.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_add.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_add.c -o CMakeFiles/corewar.dir/cor/instructions/vp_add.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o: ../cor/instructions/vp_aff.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_aff.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_aff.c > CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_aff.c -o CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o: ../cor/instructions/vp_and.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_and.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_and.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_and.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_and.c > CMakeFiles/corewar.dir/cor/instructions/vp_and.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_and.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_and.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_and.c -o CMakeFiles/corewar.dir/cor/instructions/vp_and.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o: ../cor/instructions/vp_fork.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_fork.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_fork.c > CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_fork.c -o CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o: ../cor/instructions/vp_ld.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_ld.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_ld.c > CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_ld.c -o CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o: ../cor/instructions/vp_ldi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_ldi.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_ldi.c > CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_ldi.c -o CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o: ../cor/instructions/vp_lfork.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_lfork.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_lfork.c > CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_lfork.c -o CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o: ../cor/instructions/vp_lld.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_lld.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_lld.c > CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_lld.c -o CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o: ../cor/instructions/vp_lldi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_lldi.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_lldi.c > CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_lldi.c -o CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o: ../cor/instructions/vp_or.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_or.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_or.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_or.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_or.c > CMakeFiles/corewar.dir/cor/instructions/vp_or.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_or.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_or.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_or.c -o CMakeFiles/corewar.dir/cor/instructions/vp_or.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o: ../cor/instructions/vp_st.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_st.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_st.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_st.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_st.c > CMakeFiles/corewar.dir/cor/instructions/vp_st.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_st.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_st.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_st.c -o CMakeFiles/corewar.dir/cor/instructions/vp_st.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o: ../cor/instructions/vp_sti.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_sti.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_sti.c > CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_sti.c -o CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o: ../cor/instructions/vp_sub.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_sub.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_sub.c > CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_sub.c -o CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o: ../cor/instructions/vp_xor.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_xor.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_xor.c > CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_xor.c -o CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o
+
+
+CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o: ../cor/instructions/vp_zjmp.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_zjmp.c
+
+CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_zjmp.c > CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.i
+
+CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_zjmp.c -o CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.s
+
+CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o.requires
+
+CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o.provides: CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o.provides
+
+CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o.provides.build: CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o
+
+
 CMakeFiles/corewar.dir/op.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/op.c.o: ../op.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/corewar.dir/op.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/corewar.dir/op.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/op.c.o   -c /nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.c
 
 CMakeFiles/corewar.dir/op.c.i: cmake_force
@@ -208,6 +592,22 @@ corewar_OBJECTS = \
 "CMakeFiles/corewar.dir/cor/virtual_machine/vp_basic.c.o" \
 "CMakeFiles/corewar.dir/cor/virtual_machine/vp_commands.c.o" \
 "CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o" \
+"CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o" \
 "CMakeFiles/corewar.dir/op.c.o"
 
 # External object files for target corewar
@@ -218,11 +618,27 @@ corewar: CMakeFiles/corewar.dir/cor/virtual_machine/vp_err_u.c.o
 corewar: CMakeFiles/corewar.dir/cor/virtual_machine/vp_basic.c.o
 corewar: CMakeFiles/corewar.dir/cor/virtual_machine/vp_commands.c.o
 corewar: CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o
+corewar: CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o
 corewar: CMakeFiles/corewar.dir/op.c.o
 corewar: CMakeFiles/corewar.dir/build.make
 corewar: ../libft/libft.a
 corewar: CMakeFiles/corewar.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable corewar"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Linking C executable corewar"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/corewar.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -235,6 +651,22 @@ CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/virtual_machine/vp_e
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/virtual_machine/vp_basic.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/virtual_machine/vp_commands.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_fork.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_ld.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_ldi.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_lfork.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_lld.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_lldi.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_or.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_st.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_sti.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/op.c.o.requires
 
 .PHONY : CMakeFiles/corewar.dir/requires

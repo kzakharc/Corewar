@@ -22,9 +22,9 @@ void		prog_commands(t_skrr *skrr, int argc)
 	skrr->i = 0;
 	while (read(skrr->fd, &line[skrr->i], 1) != 0)
 		skrr->i++;
-	ft_printf("Player: %d\tposition: %d\n", skrr->j, skrr->player_pos);
+//	ft_printf("Player: %d\tposition: %d\n", skrr->j, skrr->player_pos);
 	unsafe_copy(skrr, line);
-	entry_point(skrr);
+//	entry_point(skrr);
 }
 
 void	unsafe_copy(t_skrr *skrr, unsigned char *line)

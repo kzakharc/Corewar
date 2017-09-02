@@ -13,11 +13,19 @@
 #ifndef VIRTUALM_H
 # define VIRTUALM_H
 
+/*
+**	defines for lseeks, go -> [vp_basic.c]
+*/
+
 # define COMMENT_POS	(PROG_NAME_LENGTH + 13 - ((PROG_NAME_LENGTH + 1) % 4))
 # define SIZE_POS		(PROG_NAME_LENGTH + 9 - ((PROG_NAME_LENGTH + 1) % 4))
 # define COMMANDS_POS	(COMMENT_POS + COMMENT_LENGTH + 4)
 
 #include "../../corewar.h"
+
+/*
+**	struct for op_tab, which have inside all information about instructions
+*/
 
 typedef struct 		s_op
 {
@@ -30,17 +38,21 @@ typedef struct 		s_op
 	unsigned int	wtf;
 }					t_op;
 
+/*
+**	basic struct for additional info
+*/
+
 typedef struct		s_skrr
 {
 	int 			fd;
 	int 			j;
 	unsigned int	i;
 	int 			n;
+	int 			op;
 	int 			shift;
 	int 			flag;
 	unsigned int 	player_pos;
 	long		 	cycle_to_die;
-	int 			cycle_delta;
 	int 			nbr_live;
 //	int 			max_checks;
 //	int 			carry;
@@ -50,24 +62,28 @@ typedef struct		s_skrr
 	header_t 		header[MAX_PLAYERS];
 }					t_skrr;
 
+/*
+**	global variables, g_inter - global itearator, op_tab array with info about instructions.
+*/
+
 t_op				op_tab[17];
 unsigned long 		g_iter;
 
 /*
-**	usage and open checks functions
+**	usage and open checks functions.  go -> [vp_err_u.c]
 */
 
 void				usage_e(void);
 void				chk_open(t_skrr *skrr, char **argv, int argc, int flag);
 
 /*
-**	init function
+**	init function. go -> [vp_err_u.c]
 */
 
 void				init(t_skrr *skrr, int argc);
 
 /*
-**	main functions, for get info about "name", "weighing", "comments" ..
+**	main functions, for get info about "name", "weighing", "comments" .. go -> [vp_basic.c]
 */
 
 void				just_read(t_skrr *skrr, char *argv, int argc);
@@ -76,13 +92,35 @@ void				get_name_comments(t_skrr *skrr, char *argv, int argc);
 void				prog_size(t_skrr *skrr, char *argv);
 
 /*
-**	commands functions
+**	commands functions. Func for global while and stuff.
 */
 
 void				prog_commands(t_skrr *skrr, int argc);
 static void			player_position(t_skrr *skrr, int argc);
+void				unsafe_copy(t_skrr *skrr, unsigned char *src);
 int 				entry_point(t_skrr *skrr);
 int					which_instr(t_skrr *skrr);
+
+/*
+**	Instructions. live, st .. etc go -> [./instructions/[name of instructions].c] etc
+*/
+
+int 				live_instr(t_skrr *skrr);
+int 				ld_instr(t_skrr *skrr);
+int 				st_instr(t_skrr *skrr);
+int 				add_instr(t_skrr *skrr);
+int 				sub_instr(t_skrr *skrr);
+int 				and_instr(t_skrr *skrr);
+int 				or_instr(t_skrr *skrr);
+int 				xor_instr(t_skrr *skrr);
+int 				zjmp_instr(t_skrr *skrr);
+int 				ldi_instr(t_skrr *skrr);
+int 				sti_instr(t_skrr *skrr);
+int 				fork_instr(t_skrr *skrr);
+int 				lld_instr(t_skrr *skrr);
+int 				lldi_instr(t_skrr *skrr);
+int 				lfork_instr(t_skrr *skrr);
+int 				aff_instr(t_skrr *skrr);
 
 /*
 **	manipulations with map
@@ -90,10 +128,9 @@ int					which_instr(t_skrr *skrr);
 
 void				print_map(t_skrr *skrr);
 static void			init_map(t_skrr *skrr);
-void				unsafe_copy(t_skrr *skrr, unsigned char *src);
 
 /*
-**	printing all players and their info
+**	printing all players and their info.
 */
 
 void				print_info(t_skrr *skrr, int argc);
