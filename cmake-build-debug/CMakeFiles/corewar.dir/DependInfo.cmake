@@ -4,11 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_basic.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_basic.c.o"
+  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_commands.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_commands.c.o"
+  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_err_u.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_err_u.c.o"
+  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_instructions.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o"
+  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_virtual_main.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_virtual_main.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/op.c.o"
-  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/vp_basic.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_basic.c.o"
-  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/vp_commands.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_commands.c.o"
-  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/vp_err_u.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_err_u.c.o"
-  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/vp_virtual_machine/vp_virtual_main.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/vp_virtual_machine/vp_virtual_main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
