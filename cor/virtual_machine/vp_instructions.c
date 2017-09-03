@@ -18,14 +18,20 @@ int 	entry_point(t_skrr *skrr)
 	while ((skrr->cycle_to_die > 0))
 	{
 		if (!which_instr(skrr))
-			ft_printf("NULL address in PC!");
-		if (skrr->nbr_live == NBR_LIVE)
+			ft_printf("NULL address!");
+		if ((skrr->nbr_live == NBR_LIVE) && !(skrr->nbr_live = 0))
 			skrr->cycle_to_die -= CYCLE_DELTA;
-		if (g_iter == skrr->cycle_to_die)
+		if (g_CTD == skrr->cycle_to_die)
+		{
+//			ft_printf("CYCLE_TO_DIE : %4d\t\tCTD: %4d\n", skrr->cycle_to_die, g_CTD);
 			skrr->cycle_to_die -= CYCLE_DELTA;
-		skrr->cycle_to_die--;
-//		g_iter++;
+			g_CTD = 0;
+		}
+		g_iter++;
+		g_CTD++;
 	}
+//	ft_printf("CYCLE_TO_DIE : [%d]\tCTD : [%d]\tg_iter : [%d]\n",
+//			  skrr->cycle_to_die, g_CTD, g_iter);
 	return (1);
 }
 

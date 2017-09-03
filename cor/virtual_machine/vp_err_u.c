@@ -14,16 +14,22 @@
 
 void	init(t_skrr *skrr, int argc)
 {
+	int i;
+
+	i = 0;
 	skrr->fd = 0;
 	skrr->i = 0;
 	skrr->n = 0;
 	skrr->j = 0;
 	g_iter = 0;
+	g_CTD = 0;
 	skrr->player_pos = 0;
 	skrr->flag = -1;
 	skrr->cycle_to_die = CYCLE_TO_DIE;
 	skrr->nbr_live = 0;
 	skrr->PC = NULL;
+	while (++i < REG_NUMBER)
+		skrr->registry[i] = 0;
 //	skrr->max_checks = 0;
 }
 

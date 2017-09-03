@@ -52,7 +52,7 @@ typedef struct		s_skrr
 	int 			shift;
 	int 			flag;
 	unsigned int 	player_pos;
-	long		 	cycle_to_die;
+	int		 		cycle_to_die;
 	int 			nbr_live;
 //	int 			max_checks;
 //	int 			carry;
@@ -68,6 +68,7 @@ typedef struct		s_skrr
 
 t_op				op_tab[17];
 unsigned long 		g_iter;
+int 				g_CTD;
 
 /*
 **	usage and open checks functions.  go -> [vp_err_u.c]
@@ -121,6 +122,12 @@ int 				lld_instr(t_skrr *skrr);
 int 				lldi_instr(t_skrr *skrr);
 int 				lfork_instr(t_skrr *skrr);
 int 				aff_instr(t_skrr *skrr);
+
+/*
+**	additional func for instr
+*/
+
+unsigned int		 hex_to_bin(unsigned char c, int i);
 
 /*
 **	manipulations with map

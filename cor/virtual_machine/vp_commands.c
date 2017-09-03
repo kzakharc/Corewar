@@ -24,7 +24,9 @@ void		prog_commands(t_skrr *skrr, int argc)
 		skrr->i++;
 //	ft_printf("Player: %d\tposition: %d\n", skrr->j, skrr->player_pos);
 	unsafe_copy(skrr, line);
-//	entry_point(skrr);
+	skrr->registry[0] = (unsigned int)skrr->j * (-1);
+//	ft_printf("%x\n", skrr->registry[0]);
+	entry_point(skrr);
 }
 
 void	unsafe_copy(t_skrr *skrr, unsigned char *line)
