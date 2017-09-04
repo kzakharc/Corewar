@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/corewar.dir/cor/virtual_machine/vp_basic.c.o"
   "CMakeFiles/corewar.dir/cor/virtual_machine/vp_commands.c.o"
   "CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o"
+  "CMakeFiles/corewar.dir/cor/virtual_machine/new_chmp.c.o"
   "CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o"
   "CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o"
   "CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o"

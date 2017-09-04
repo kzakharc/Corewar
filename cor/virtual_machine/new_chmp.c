@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vp_live.c                                          :+:      :+:    :+:   */
+/*   vp_virtual_main.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/02 18:39:44 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/09/02 18:39:45 by vpoltave         ###   ########.fr       */
+/*   Created: 2017/08/08 14:12:55 by vpoltave          #+#    #+#             */
+/*   Updated: 2017/08/16 15:49:32 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../virtual_machine/virtualm.h"
+#include "virtualm.h"
 
-int 	live_instr(t_skrr *skrr)
+int 	push_chmp(t_chmp **head)
 {
-//	unsigned int k;
-//
-//	k = *skrr->PC;
-//
-//
-//	skrr->PC += (DIR_SIZE + 1);
-//	skrr->nbr_live++;
+	t_chmp *new_champ;
+
+	if (!(new_champ = malloc(sizeof(t_chmp))))
+		exit (0);
+	new_champ->next = *head;
+	*head = new_champ;
 	return (1);
 }

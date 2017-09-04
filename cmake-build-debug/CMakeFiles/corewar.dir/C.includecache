@@ -116,6 +116,10 @@ string.h
 ../virtual_machine/virtualm.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
 
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/new_chmp.c
+virtualm.h
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
+
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
 ../../corewar.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/corewar.h

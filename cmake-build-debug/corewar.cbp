@@ -130,6 +130,9 @@
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_zjmp.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/new_chmp.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h">
 			<Option target="corewar"/>
 		</Unit>

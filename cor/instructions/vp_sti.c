@@ -12,27 +12,55 @@
 
 #include "../virtual_machine/virtualm.h"
 
-int 	sti_instr(t_skrr *skrr)
+int 			sti_instr(t_skrr *skrr, t_chmp *chmp)
 {
-	unsigned int q[3];
+	unsigned int	q[3];
 
-	skrr->PC++;
-	if (skrr->PC == NULL)
+	chmp->PC++;
+	if (chmp->PC == NULL)
 		return (0);
+	skrr->i = 0;
+	chmp->offset = 0;
+	while (skrr->i < op_tab[10].numb_of_arg)
+		q[skrr->i++] = arg_types(skrr, chmp);
 	skrr->i = 0;
 	while (skrr->i < op_tab[10].numb_of_arg)
 	{
-		q[skrr->i] = 0;
-		if (hex_to_bin(*skrr->PC, skrr->i) == REG_CODE && (skrr->PC += 1))
-			q[skrr->i] = T_REG;
-		else if (hex_to_bin(*skrr->PC, skrr->i) == DIR_CODE && (skrr->PC += 2))
-			q[skrr->i] = T_DIR;
-		else if (hex_to_bin(*skrr->PC, skrr->i) == IND_CODE && (skrr->PC += IND_SIZE))
-			q[skrr->i] = T_IND;
-		else if ((hex_to_bin(*skrr->PC, skrr->i) == 0))
-			return (0);
+		instr(q[skrr->i], chmp->PC);
 		skrr->i++;
 	}
+	chmp->PC += (chmp->offset + 1);
+	return (1);
+}
+
+unsigned int			arg_types(t_skrr *skrr, t_chmp *chmp)
+{
+	if (hex_to_bin(*chmp->PC, skrr->i) == REG_CODE && (chmp->offset += 1))
+		return (T_REG);
+	else if (hex_to_bin(*chmp->PC, skrr->i) == DIR_CODE && (chmp->offset += 2))
+		return (T_DIR);
+	else if (hex_to_bin(*chmp->PC, skrr->i) == IND_CODE && (chmp->offset += IND_SIZE))
+		return (T_IND);
+	else if ((hex_to_bin(*chmp->PC, skrr->i) == 0))
+		return (0);
+}
+
+int 			instr(int q, unsigned char *c)
+{
+	if (q == T_REG)
+	{
+
+	}
+	else if (q == T_DIR)
+	{
+
+	}
+	else if (q == T_IND)
+	{
+
+	}
+	else
+		return (0);
 	return (1);
 }
 

@@ -129,6 +129,14 @@ CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o: ../libft/src/get_next_line/
 CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o: ../libft/src/libft/libft.h
 CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o: ../op.h
 
+CMakeFiles/corewar.dir/cor/virtual_machine/new_chmp.c.o: ../cor/virtual_machine/new_chmp.c
+CMakeFiles/corewar.dir/cor/virtual_machine/new_chmp.c.o: ../cor/virtual_machine/virtualm.h
+CMakeFiles/corewar.dir/cor/virtual_machine/new_chmp.c.o: ../corewar.h
+CMakeFiles/corewar.dir/cor/virtual_machine/new_chmp.c.o: ../libft/src/ft_printf/ft_printf.h
+CMakeFiles/corewar.dir/cor/virtual_machine/new_chmp.c.o: ../libft/src/get_next_line/get_next_line.h
+CMakeFiles/corewar.dir/cor/virtual_machine/new_chmp.c.o: ../libft/src/libft/libft.h
+CMakeFiles/corewar.dir/cor/virtual_machine/new_chmp.c.o: ../op.h
+
 CMakeFiles/corewar.dir/cor/virtual_machine/vp_basic.c.o: ../cor/virtual_machine/virtualm.h
 CMakeFiles/corewar.dir/cor/virtual_machine/vp_basic.c.o: ../cor/virtual_machine/vp_basic.c
 CMakeFiles/corewar.dir/cor/virtual_machine/vp_basic.c.o: ../corewar.h
