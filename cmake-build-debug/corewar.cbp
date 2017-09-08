@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/additional_func.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_add.c">
 			<Option target="corewar"/>
 		</Unit>
@@ -128,6 +131,9 @@
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_zjmp.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/new_chmp.c">
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h">

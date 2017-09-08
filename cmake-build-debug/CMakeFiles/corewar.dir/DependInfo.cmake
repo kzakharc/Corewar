@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/additional_func.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/instructions/additional_func.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_add.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_aff.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_and.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/instructions/vp_and.c.o"
@@ -20,6 +21,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_sub.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/instructions/vp_sub.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_xor.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/instructions/vp_xor.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_zjmp.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/instructions/vp_zjmp.c.o"
+  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/new_chmp.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/new_chmp.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_basic.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_basic.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_commands.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_commands.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_err_u.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_err_u.c.o"

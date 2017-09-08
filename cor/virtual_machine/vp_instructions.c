@@ -12,30 +12,34 @@
 
 #include "virtualm.h"
 
-int 	entry_point(t_skrr *skrr)
+int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
-	skrr->PC = &skrr->map[skrr->player_pos];
-	while ((skrr->cycle_to_die > 0))
+	chmp->PC = chmp->player_pos;
+	while ((chmp->cycle_to_die > 0))
 	{
-		if (!which_instr(skrr))
-			ft_printf("NULL address in PC!");
-		if (skrr->nbr_live == NBR_LIVE)
-			skrr->cycle_to_die -= CYCLE_DELTA;
-		if (g_iter == skrr->cycle_to_die)
-			skrr->cycle_to_die -= CYCLE_DELTA;
-		skrr->cycle_to_die--;
-//		g_iter++;
+		if (!which_instr(skrr, chmp))
+			ft_printf("NULL address!\n");
+		if ((chmp->nbr_live == NBR_LIVE) && !(chmp->nbr_live = 0))
+			chmp->cycle_to_die -= CYCLE_DELTA;
+		if (g_CTD == chmp->cycle_to_die)
+		{
+//			ft_printf("CYCLE_TO_DIE : %4d\t\tCTD: %4d\n", chmp->cycle_to_die, g_CTD);
+			chmp->cycle_to_die -= CYCLE_DELTA;
+			g_CTD = 0;
+		}
+		g_iter++;
+		g_CTD++;
 	}
+//	ft_printf("CYCLE_TO_DIE : [%d]\tCTD : [%d]\tg_iter : [%d]\n",
+//			  chmp->cycle_to_die, g_CTD, g_iter);
 	return (1);
 }
 
-int		which_instr(t_skrr *skrr)
+int		which_instr(t_skrr *skrr, t_chmp *chmp)
 {
 	skrr->op = -1;
-	if (skrr->PC == NULL)
-		return (0);
 	while (++skrr->op < 15)
-		if (*skrr->PC == op_tab[skrr->op].opcode)
+		if (skrr->map[chmp->PC] == g_tab[skrr->op].opcode)
 		{
 			((skrr->op) == 0) ? live_instr(skrr) : 0;
 			((skrr->op) == 1) ? ld_instr(skrr) : 0;
@@ -47,7 +51,7 @@ int		which_instr(t_skrr *skrr)
 			((skrr->op) == 7) ? xor_instr(skrr) : 0;
 			((skrr->op) == 8) ? zjmp_instr(skrr) : 0;
 			((skrr->op) == 9) ? ldi_instr(skrr) : 0;
-			((skrr->op) == 10) ? sti_instr(skrr) : 0;
+			((skrr->op) == 10) ? sti_instr(skrr, chmp) : 0;
 			((skrr->op) == 11) ? fork_instr(skrr) : 0;
 			((skrr->op) == 12) ? lld_instr(skrr) : 0;
 			((skrr->op) == 13) ? lldi_instr(skrr) : 0;
