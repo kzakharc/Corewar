@@ -7,6 +7,8 @@ set(SOURCE_FILES cor/virtual_machine/vp_virtual_main.c cor/virtual_machine/vp_er
         cor/virtual_machine/vp_basic.c cor/virtual_machine/vp_commands.c
         cor/virtual_machine/vp_instructions.c
         cor/virtual_machine/new_chmp.c
+
+        cor/instructions/additional_func.c
         cor/instructions/vp_live.c
         cor/instructions/vp_add.c
         cor/instructions/vp_aff.c

@@ -123,6 +123,33 @@ corewar/fast:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/build
 .PHONY : corewar/fast
 
+cor/instructions/additional_func.o: cor/instructions/additional_func.c.o
+
+.PHONY : cor/instructions/additional_func.o
+
+# target to build an object file
+cor/instructions/additional_func.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/additional_func.c.o
+.PHONY : cor/instructions/additional_func.c.o
+
+cor/instructions/additional_func.i: cor/instructions/additional_func.c.i
+
+.PHONY : cor/instructions/additional_func.i
+
+# target to preprocess a source file
+cor/instructions/additional_func.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/additional_func.c.i
+.PHONY : cor/instructions/additional_func.c.i
+
+cor/instructions/additional_func.s: cor/instructions/additional_func.c.s
+
+.PHONY : cor/instructions/additional_func.s
+
+# target to generate assembly for a file
+cor/instructions/additional_func.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/instructions/additional_func.c.s
+.PHONY : cor/instructions/additional_func.c.s
+
 cor/instructions/vp_add.o: cor/instructions/vp_add.c.o
 
 .PHONY : cor/instructions/vp_add.o
@@ -753,6 +780,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... corewar"
+	@echo "... cor/instructions/additional_func.o"
+	@echo "... cor/instructions/additional_func.i"
+	@echo "... cor/instructions/additional_func.s"
 	@echo "... cor/instructions/vp_add.o"
 	@echo "... cor/instructions/vp_add.i"
 	@echo "... cor/instructions/vp_add.s"

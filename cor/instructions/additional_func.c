@@ -10,34 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../virtual_machine/virtualm.h"
 
-int 	main(int argc, char **argv)
+/*
+**	for sti instr
+*/
+
+short	two_bytes(unsigned char *tmp)
 {
-	t_skrr	skrr;
+	short dst;
 
-	init(&skrr, argc);
-	modula();
-	(argc == 1) ? usage_e() : 0;
-	(argc > MAX_ARGS_NUMBER) ? chk_open(&skrr, argv, argc, 0) : 0;
-	while (++skrr.j < argc)
-	{
-		chk_open(&skrr, argv, argc, 1);
-		push_chmp(&skrr.chmp, &skrr);
-		just_read(&skrr, argv[skrr.j], argc, skrr.chmp);
-		skrr.n++;
-	}
-	(skrr.n) ? print_info(&skrr, argc, skrr.chmp) : 0;
-//	print_map(&skrr);
-	close(skrr.fd) < 0 ? exit(0) : 0;
-	return (0);
+	dst = *tmp;
+	dst = (short)((dst << 8) & 0xff00);
+	return (dst);
 }
 
-void	modula(void)
+int		reg_param(t_skrr *skrr, unsigned char *map)
 {
-	int i;
-
-	i = -1000;
-	i %= IDX_MOD;
- 	ft_printf("%d\n", i);
+	if ((*map > 16) || (*map == 0) || (*map < 0))
+		return (0);
+	return (skrr->chmp->registry[*map - 1]);
 }
+
+int		dir_param(t_skrr *skrr, unsigned char *map)
+{
+	int address;
+
+	address = two_bytes(map) | (*(map + 1));
+	skrr->chmp->tmp_PC += 1;
+	return (address);
+}
+
+int		ind_param(t_skrr *skrr, unsigned char *map)
+{
+	int address;
+
+	address = (two_bytes(map) | (*(map + 1))) % IDX_MOD;
+	skrr->chmp->tmp_PC += 1;
+	return (address);
+}
+
+/*
+**
+*/

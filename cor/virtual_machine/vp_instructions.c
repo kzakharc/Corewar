@@ -14,11 +14,11 @@
 
 int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
-	chmp->PC = &skrr->map[chmp->player_pos];
+	chmp->PC = chmp->player_pos;
 	while ((chmp->cycle_to_die > 0))
 	{
 		if (!which_instr(skrr, chmp))
-			ft_printf("NULL address!");
+			ft_printf("NULL address!\n");
 		if ((chmp->nbr_live == NBR_LIVE) && !(chmp->nbr_live = 0))
 			chmp->cycle_to_die -= CYCLE_DELTA;
 		if (g_CTD == chmp->cycle_to_die)
@@ -38,10 +38,8 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 int		which_instr(t_skrr *skrr, t_chmp *chmp)
 {
 	skrr->op = -1;
-	if (chmp->PC == NULL)
-		return (0);
 	while (++skrr->op < 15)
-		if (*chmp->PC == op_tab[skrr->op].opcode)
+		if (skrr->map[chmp->PC] == g_tab[skrr->op].opcode)
 		{
 			((skrr->op) == 0) ? live_instr(skrr) : 0;
 			((skrr->op) == 1) ? ld_instr(skrr) : 0;

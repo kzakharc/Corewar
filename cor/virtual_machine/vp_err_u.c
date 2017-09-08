@@ -21,43 +21,43 @@ void	init(t_skrr *skrr, int argc)
 	skrr->op = 0;
 	skrr->shift = 0;
 	skrr->flag = -1;
-	skrr->chmp = NULL;
+//	skrr->ncurses_mode = 0;
 	g_iter = 0;
 	g_CTD = 0;
-//	while (++i < REG_NUMBER)
-//		skrr->registry[i] = 0;
-//	skrr->max_checks = 0;
+	skrr->chmp = NULL;
 }
 
 //TODO can move 'exit (0)' to botton of the func and delete '{}'
 void	chk_open(t_skrr *skrr, char **argv, int argc, int flag)
 {
 	if (flag == 0)
-	{
-		ft_printf("Too many champions! (Max %d) You gave me: %d\n",
-				  MAX_PLAYERS, (argc - 1));
-		exit (0);
-	}
+		ft_printf("Too many champions! (Max %d)\n", MAX_PLAYERS);
 	else if (flag == 1)
 	{
+//		chck_for_usage(skrr, *argv);
 		skrr->fd = open(argv[skrr->j], O_RDONLY);
 		if (skrr->fd < 0)
 		{
-			ft_printf("Can't read source file"RED" %s"RESET"\n", argv[skrr->j]);
-			exit (1);
+			ft_printf("Can't read source file"RED" %s "RESET"\n", argv[skrr->j]);
+			close(skrr->fd) < 0 ? exit(0) : 0;
+			exit(flag);
 		}
 	}
 	else if (flag == 2)
-	{
-		ft_printf("Error: File"RED" %s "RESET"has an invalid header\n", argv);
-		exit (2);
-	}
+		ft_printf("Error: File"RED" %s "RESET"has an invalid header\n", *argv);
 	else if (flag == 3)
-	{
-		ft_printf("Error:"RED" %s "RESET"is a directory\n", argv);
-		exit(3);
-	}
+		ft_printf("Error:"RED" %s "RESET"is a directory\n", *argv);
+	(flag != 1) ? exit(flag) : 0;
 }
+
+//function for checking flags in usage. //TODO still need to get usage params
+
+//void	chck_for_usage(t_skrr *skrr, char *argv)
+//{
+//	if (!ft_strcmp("-n", argv))
+//		skrr->ncurses_mode = 1;
+//	ft_printf("%s\nnmode: %d\n", argv, skrr->ncurses_mode);
+//}
 
 void	usage_e(void)
 {

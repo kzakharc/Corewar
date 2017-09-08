@@ -35,7 +35,7 @@ typedef struct 		s_op
 	unsigned int	opcode;
 	unsigned int	cycles;
 	unsigned int 	codage;
-	unsigned int	wtf;
+	unsigned int	dir_size;
 }					t_op;
 
 /*
@@ -44,12 +44,14 @@ typedef struct 		s_op
 
 typedef struct		s_chmp
 {
+	int 			reg_n;
 	int 			offset;
 	unsigned int 	player_pos;
 	int		 		cycle_to_die;
 	int 			nbr_live;
 	int 			carry;
-	unsigned char	*PC;
+	int 			tmp_PC;
+	int 			PC;
 	unsigned int 	registry[REG_NUMBER];
 	header_t 		header;
 	struct s_chmp	*next;
@@ -68,6 +70,7 @@ typedef struct		s_skrr
 	int 			op;
 	int 			shift;
 	int 			flag;
+//	int 			ncurses_mode;
 	unsigned char 	map[MEM_SIZE];
 	t_chmp			*chmp;
 }					t_skrr;
@@ -77,7 +80,7 @@ typedef struct		s_skrr
 **	global variables, g_inter - global itearator, op_tab array with info about instructions.
 */
 
-t_op				op_tab[17];
+t_op				g_tab[17];
 unsigned long 		g_iter;
 int 				g_CTD;
 
@@ -88,6 +91,7 @@ int 				g_CTD;
 void				usage_e(void);
 void				chk_open(t_skrr *skrr, char **argv, int argc, int flag);
 void				chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp);
+//void				chck_for_usage(t_skrr *skrr, char *argv);
 
 /*
 **	init function. go -> [vp_err_u.c] for init all structure variables.
@@ -113,7 +117,13 @@ static void			player_position(t_skrr *skrr, int argc, t_chmp *chmp);
 void				unsafe_copy(t_skrr *skrr, unsigned char *src, t_chmp *chmp);
 int 				entry_point(t_skrr *skrr, t_chmp *chmp);
 int					which_instr(t_skrr *skrr, t_chmp *chmp);
-int 				push_chmp(t_chmp **head);
+
+/*
+**	Adding new champ and init his data. go -> [new_chmp.c].
+*/
+
+int 				push_chmp(t_chmp **head, t_skrr *skrr);
+void 				init_data(t_chmp *champ, t_skrr *skrr);
 
 /*
 **	Instructions. live, st .. etc go -> [./instructions/[name of instructions].c] etc ..
@@ -140,21 +150,29 @@ int 				aff_instr(t_skrr *skrr);
 **	additional func for instr.
 */
 
-unsigned int		hex_to_bin(unsigned char c, int i);
-int					instr(int q, unsigned char *c);
-unsigned int		arg_types(t_skrr *skrr, t_chmp *chmp);
+short				hex_to_bin(unsigned char c, int i);
+short				two_bytes(unsigned char *tmp);
+int					instr(unsigned char *q, t_chmp *chmp, t_skrr *skrr);
+unsigned char		arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
+int 				get_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, unsigned short i);
+
+int					reg_param(t_skrr *skrr, unsigned char *tmp);
+int					dir_param(t_skrr *skrr, unsigned char *tmp);
+int					ind_param(t_skrr *skrr,	unsigned char *tmp);
 
 /*
-**	manipulations with map.
+**	init map and print map
 */
 
-void				print_map(t_skrr *skrr);
 static void			init_map(t_skrr *skrr);
+void				print_map(t_skrr *skrr);
 
 /*
 **	printing all players and their info.
 */
 
 void				print_info(t_skrr *skrr, int argc, t_chmp *chmp);
+
+void	modula(void);
 
 #endif

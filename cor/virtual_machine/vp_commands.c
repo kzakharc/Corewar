@@ -24,8 +24,7 @@ void		prog_commands(t_skrr *skrr, int argc, char *argv, t_chmp *chmp)
 	while (read(skrr->fd, &line[skrr->i], 1))
 		skrr->i++;
 	unsafe_copy(skrr, line, chmp);
-	chmp->registry[0] = (unsigned int)skrr->j * (-1);
-//	ft_printf("%x\n", skrr->registry[0]);
+//	ft_printf("%x\n", chmp->registry[0]);
 	entry_point(skrr, chmp);
 }
 

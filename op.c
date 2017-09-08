@@ -12,7 +12,7 @@
 
 #include "./cor/virtual_machine/virtualm.h"
 
-t_op    op_tab[17] =
+t_op    g_tab[17] =
 		{
 				{"live", 1, {T_DIR}, 1, 10, 0, 0},
 				{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, 1, 0},
