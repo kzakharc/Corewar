@@ -151,14 +151,14 @@ int 				aff_instr(t_skrr *skrr);
 */
 
 short				hex_to_bin(unsigned char c, int i);
-short				two_bytes(unsigned char *tmp);
+short				two_bytes(unsigned char *map);
 int					instr(unsigned char *q, t_chmp *chmp, t_skrr *skrr);
 unsigned char		arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
 int 				get_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, unsigned short i);
 
-int					reg_param(t_skrr *skrr, unsigned char *tmp);
-int					dir_param(t_skrr *skrr, unsigned char *tmp);
-int					ind_param(t_skrr *skrr,	unsigned char *tmp);
+int					reg_param(t_skrr *skrr, unsigned char *map);
+int					dir_param(t_skrr *skrr, unsigned char *map);
+int					ind_param(t_skrr *skrr,	unsigned char *map);
 
 /*
 **	init map and print map

@@ -16,11 +16,11 @@
 **	for sti instr
 */
 
-short	two_bytes(unsigned char *tmp)
+short	two_bytes(unsigned char *map)
 {
 	short dst;
 
-	dst = *tmp;
+	dst = *map;
 	dst = (short)((dst << 8) & 0xff00);
 	return (dst);
 }
@@ -43,9 +43,21 @@ int		dir_param(t_skrr *skrr, unsigned char *map)
 
 int		ind_param(t_skrr *skrr, unsigned char *map)
 {
-	int address;
+	int 			address;
+	unsigned int	ind[4];
+	int 			i;
 
+	i = -1;
+	skrr->shift = 24;
 	address = (two_bytes(map) | (*(map + 1))) % IDX_MOD;
+	while (++i < 4)
+	{
+		address = (address + MEM_SIZE) % MEM_SIZE;
+		ind[i] = get_magic_size(skrr->map[address], skrr->shift);
+		skrr->shift -= 8;
+		address++;
+	}
+	address = ind[0] | ind[1] | ind[2] | ind[3];
 	skrr->chmp->tmp_PC += 1;
 	return (address);
 }

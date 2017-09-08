@@ -22,6 +22,11 @@ int 			sti_instr(t_skrr *skrr, t_chmp *chmp)
 		return (0);
 	(!(q = malloc(sizeof(unsigned int) * 3))) ? exit (0) : 0;
 	skrr->i = 0;
+	if (g_tab[10].numb_of_arg != 3)
+	{
+		ft_printf("You bastard, changed number of arguments in op.c\n");
+		exit (0);
+	}
 	while (skrr->i < g_tab[10].numb_of_arg)
 		q[skrr->i++] = arg_types(skrr, chmp, chmp->tmp_PC);
 	address = instr(q, chmp, skrr);

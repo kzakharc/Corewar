@@ -37,7 +37,7 @@ void	modula(void)
 {
 	int i;
 
-	i = -1000;
-	i %= IDX_MOD;
- 	ft_printf("%d\n", i);
+	i = -1;
+	i %= MEM_SIZE;
+// 	ft_printf("%d\n", i);
 }
