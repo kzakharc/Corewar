@@ -3,13 +3,16 @@ project(corewar)
 
 set(CMAKE_C_STANDARD 99)
 
-set(SOURCE_FILES cor/virtual_machine/vp_virtual_main.c cor/virtual_machine/vp_err_u.c
-        cor/virtual_machine/vp_basic.c cor/virtual_machine/vp_commands.c
+set(SOURCE_FILES cor/virtual_machine/vp_virtual_main.c
+        cor/virtual_machine/vp_err_u.c
+        cor/virtual_machine/vp_basic.c
+        cor/virtual_machine/vp_commands.c
         cor/virtual_machine/vp_instructions.c
         cor/virtual_machine/new_chmp.c
         cor/virtual_machine/additional_func.c
         cor/virtual_machine/vp_output_err.c
         cor/virtual_machine/reg_dir_ind.c
+        cor/virtual_machine/vp_load_from_into.c
 
         cor/instructions/vp_live.c
         cor/instructions/vp_add.c

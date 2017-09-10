@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vp_virtual_main.c                                  :+:      :+:    :+:   */
+/*   reg_dir_ind.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 14:12:55 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/08/08 15:42:25 by vpoltave         ###   ########.fr       */
+/*   Created: 2017/09/10 17:30:59 by vpoltave          #+#    #+#             */
+/*   Updated: 2017/09/10 17:31:00 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtualm.h"
 
-int		reg_param(t_skrr *skrr, unsigned char *map)
+int		reg_param(t_skrr *skrr, unsigned char *map, int flag)
 {
 	if ((*map > 16) || (*map == 0) || (*map < 0))
 		return (0);
-	return (skrr->chmp->registry[*map - 1]);
+	if (flag == 1)
+		return (skrr->chmp->registry[*(map - 1)]);
+	else if (flag == 2)
+		return (*map);
+	return (0);
 }
 
 int		dir_param(t_skrr *skrr, unsigned char *map, int dir_size)
@@ -31,7 +35,7 @@ int		dir_param(t_skrr *skrr, unsigned char *map, int dir_size)
 	}
 	else if (dir_size == 0)	// TODO for some instr dir size == 4 (in op.c if 0 = 4b, 1 = 2b) so need to make else if for 4 bytes T_DIR
 	{
-
+		address = four_bytes(map);
 	}
 	return (address);
 }

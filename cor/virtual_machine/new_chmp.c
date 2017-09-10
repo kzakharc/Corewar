@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vp_virtual_main.c                                  :+:      :+:    :+:   */
+/*   new_chmp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 14:12:55 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/08/16 15:49:32 by vpoltave         ###   ########.fr       */
+/*   Created: 2017/09/10 17:30:50 by vpoltave          #+#    #+#             */
+/*   Updated: 2017/09/10 17:30:51 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void 	init_data(t_chmp *champ, t_skrr *skrr)
 	while (++i < REG_NUMBER)
 		champ->registry[i] = 0;
 	champ->registry[0] = (unsigned int)skrr->j * (-1);
-	champ->reg_n = 0;
+	champ->reg_value = 0;
 	champ->offset = 0;
 	champ->player_pos = 0;
 	champ->cycle_to_die = CYCLE_TO_DIE;

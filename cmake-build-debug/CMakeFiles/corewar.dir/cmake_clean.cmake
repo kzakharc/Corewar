@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/corewar.dir/cor/virtual_machine/additional_func.c.o"
   "CMakeFiles/corewar.dir/cor/virtual_machine/vp_output_err.c.o"
   "CMakeFiles/corewar.dir/cor/virtual_machine/reg_dir_ind.c.o"
+  "CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o"
   "CMakeFiles/corewar.dir/cor/instructions/vp_live.c.o"
   "CMakeFiles/corewar.dir/cor/instructions/vp_add.c.o"
   "CMakeFiles/corewar.dir/cor/instructions/vp_aff.c.o"

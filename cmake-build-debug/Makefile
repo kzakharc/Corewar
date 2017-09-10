@@ -744,6 +744,33 @@ cor/virtual_machine/vp_instructions.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.s
 .PHONY : cor/virtual_machine/vp_instructions.c.s
 
+cor/virtual_machine/vp_load_from_into.o: cor/virtual_machine/vp_load_from_into.c.o
+
+.PHONY : cor/virtual_machine/vp_load_from_into.o
+
+# target to build an object file
+cor/virtual_machine/vp_load_from_into.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o
+.PHONY : cor/virtual_machine/vp_load_from_into.c.o
+
+cor/virtual_machine/vp_load_from_into.i: cor/virtual_machine/vp_load_from_into.c.i
+
+.PHONY : cor/virtual_machine/vp_load_from_into.i
+
+# target to preprocess a source file
+cor/virtual_machine/vp_load_from_into.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.i
+.PHONY : cor/virtual_machine/vp_load_from_into.c.i
+
+cor/virtual_machine/vp_load_from_into.s: cor/virtual_machine/vp_load_from_into.c.s
+
+.PHONY : cor/virtual_machine/vp_load_from_into.s
+
+# target to generate assembly for a file
+cor/virtual_machine/vp_load_from_into.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.s
+.PHONY : cor/virtual_machine/vp_load_from_into.c.s
+
 cor/virtual_machine/vp_output_err.o: cor/virtual_machine/vp_output_err.c.o
 
 .PHONY : cor/virtual_machine/vp_output_err.o
@@ -903,6 +930,9 @@ help:
 	@echo "... cor/virtual_machine/vp_instructions.o"
 	@echo "... cor/virtual_machine/vp_instructions.i"
 	@echo "... cor/virtual_machine/vp_instructions.s"
+	@echo "... cor/virtual_machine/vp_load_from_into.o"
+	@echo "... cor/virtual_machine/vp_load_from_into.i"
+	@echo "... cor/virtual_machine/vp_load_from_into.s"
 	@echo "... cor/virtual_machine/vp_output_err.o"
 	@echo "... cor/virtual_machine/vp_output_err.i"
 	@echo "... cor/virtual_machine/vp_output_err.s"

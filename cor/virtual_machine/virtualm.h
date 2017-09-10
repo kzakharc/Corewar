@@ -44,7 +44,7 @@ typedef struct 		s_op
 
 typedef struct		s_chmp
 {
-	unsigned int 	reg_n;
+	unsigned int 	reg_value;
 	int 			offset;
 	unsigned int 	player_pos;
 	int		 		cycle_to_die;
@@ -153,13 +153,14 @@ int 				aff_instr(t_skrr *skrr, t_chmp *chmp);
 unsigned char		hex_to_bin(unsigned char c, int i);
 unsigned char		two_bytes(unsigned char *map);
 unsigned char		four_bytes(unsigned char *map);
-short				from_reg(unsigned char *q, t_chmp *chmp, t_skrr *skrr);
+void				from_reg(unsigned char *q, t_chmp *chmp, t_skrr *skrr, short i);
+//void				to_reg(t_chmp *chmp, t_skrr *skrr, int reg, short i);
 unsigned char		arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
 int 				get_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i);
-void				load_into(int address, t_chmp *chmp, t_skrr *skrr);
+void				load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag);
 void				instr_err(int op);
 
-int					reg_param(t_skrr *skrr, unsigned char *map);
+int					reg_param(t_skrr *skrr, unsigned char *map, int flag);
 int					dir_param(t_skrr *skrr, unsigned char *map, int dir_size);
 int					ind_param(t_skrr *skrr,	unsigned char *map);
 

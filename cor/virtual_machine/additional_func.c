@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vp_virtual_main.c                                  :+:      :+:    :+:   */
+/*   additional_func.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 14:12:55 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/08/08 15:42:25 by vpoltave         ###   ########.fr       */
+/*   Created: 2017/09/10 17:30:37 by vpoltave          #+#    #+#             */
+/*   Updated: 2017/09/10 17:30:38 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,6 @@ unsigned char	four_bytes(unsigned char *map) // for dir_size = 4b, still not fin
 
 	dst = *map;
 	return (dst);
-}
-
-void	load_into(int address, t_chmp *chmp, t_skrr *skrr)
-{
-	int i;
-	int	shift;
-
-	i = -1;
-	shift = 24;
-	while (++i < 4)
-	{
-		address = (address + MEM_SIZE) % MEM_SIZE;
-		skrr->map[address++] = (unsigned char)(chmp->reg_n >> shift & 0x000000ff);
-		shift -= 8;
-	}
 }
 
 unsigned char	arg_types(t_skrr *skrr, t_chmp *chmp, int ctk)

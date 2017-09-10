@@ -3,7 +3,12 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
     <sourceRoots>
+      <file path="$PROJECT_DIR$/cor" />
+      <file path="$PROJECT_DIR$/cor/instructions" />
       <file path="$PROJECT_DIR$/cor/virtual_machine" />
     </sourceRoots>
+    <libraryRoots>
+      <file path="$PROJECT_DIR$/libft" />
+    </libraryRoots>
   </component>
 </project>
