@@ -1,5 +1,5 @@
 .name "privet"
 .comment "don't be a d*ck"
 
-    sti r1, 4, %5
-l:	live %2
+    ldi 5, %3, r1
+    sti r1, 2, %4

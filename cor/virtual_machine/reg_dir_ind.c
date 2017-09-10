@@ -10,20 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../virtual_machine/virtualm.h"
-
-/*
-**	for sti instr
-*/
-
-short	two_bytes(unsigned char *map)
-{
-	short dst;
-
-	dst = *map;
-	dst = (short)((dst << 8) & 0xff00);
-	return (dst);
-}
+#include "virtualm.h"
 
 int		reg_param(t_skrr *skrr, unsigned char *map)
 {
@@ -32,12 +19,20 @@ int		reg_param(t_skrr *skrr, unsigned char *map)
 	return (skrr->chmp->registry[*map - 1]);
 }
 
-int		dir_param(t_skrr *skrr, unsigned char *map)
+int		dir_param(t_skrr *skrr, unsigned char *map, int dir_size)
 {
 	int address;
 
-	address = two_bytes(map) | (*(map + 1));
-	skrr->chmp->tmp_PC += 1;
+	address = 0;
+	if (dir_size == 1)
+	{
+		address = two_bytes(map) | (*(map + 1));
+		skrr->chmp->tmp_PC += 1;
+	}
+	else if (dir_size == 0)	// TODO for some instr dir size == 4 (in op.c if 0 = 4b, 1 = 2b) so need to make else if for 4 bytes T_DIR
+	{
+
+	}
 	return (address);
 }
 
@@ -61,7 +56,3 @@ int		ind_param(t_skrr *skrr, unsigned char *map)
 	skrr->chmp->tmp_PC += 1;
 	return (address);
 }
-
-/*
-**
-*/

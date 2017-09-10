@@ -38,7 +38,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 int		which_instr(t_skrr *skrr, t_chmp *chmp)
 {
 	skrr->op = -1;
-	while (++skrr->op < 15)
+	while (++skrr->op < 16)
 		if (skrr->map[chmp->PC] == g_tab[skrr->op].opcode)
 		{
 			((skrr->op) == 0) ? live_instr(skrr) : 0;
@@ -50,13 +50,13 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp)
 			((skrr->op) == 6) ? or_instr(skrr) : 0;
 			((skrr->op) == 7) ? xor_instr(skrr) : 0;
 			((skrr->op) == 8) ? zjmp_instr(skrr) : 0;
-			((skrr->op) == 9) ? ldi_instr(skrr) : 0;
-			((skrr->op) == 10) ? sti_instr(skrr, chmp) : 0;
-			((skrr->op) == 11) ? fork_instr(skrr) : 0;
-			((skrr->op) == 12) ? lld_instr(skrr) : 0;
-			((skrr->op) == 13) ? lldi_instr(skrr) : 0;
-			((skrr->op) == 14) ? lfork_instr(skrr) : 0;
-			((skrr->op) == 15) ? aff_instr(skrr) : 0;
+			((skrr->op) == 9) ? ldi_instr(skrr, chmp, skrr->op) : 0;
+			((skrr->op) == 10) ? sti_instr(skrr, chmp, skrr->op) : 0;
+			((skrr->op) == 11) ? fork_instr(skrr, chmp, skrr->op) : 0;
+			((skrr->op) == 12) ? lld_instr(skrr, chmp, skrr->op) : 0;
+			((skrr->op) == 13) ? lldi_instr(skrr, chmp, skrr->op) : 0;
+			((skrr->op) == 14) ? lfork_instr(skrr, chmp, skrr->op) : 0;
+			((skrr->op) == 15) ? aff_instr(skrr, chmp) : 0;
 		}
 	return (1);
 }

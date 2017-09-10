@@ -17,7 +17,7 @@ int 	main(int argc, char **argv)
 	t_skrr	skrr;
 
 	init(&skrr, argc);
-	modula();
+//	modula();
 	(argc == 1) ? usage_e() : 0;
 	(argc > MAX_ARGS_NUMBER) ? chk_open(&skrr, argv, argc, 0) : 0;
 	while (++skrr.j < argc)

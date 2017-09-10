@@ -12,7 +12,12 @@
 
 #include "../virtual_machine/virtualm.h"
 
-int 	aff_instr(t_skrr *skrr)
+int 	aff_instr(t_skrr *skrr, t_chmp *chmp)
 {
+	unsigned char print_it;
+
+	chmp->tmp_PC = chmp->PC + 2;
+	print_it = (unsigned char)reg_param(skrr, &skrr->map[chmp->tmp_PC]);
+	ft_printf("%c", (print_it % 256));
 	return (1);
 }
