@@ -52,10 +52,6 @@ string.h
 
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/./op.h
 
-/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/additional_func.c
-../virtual_machine/virtualm.h
-/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
-
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/instructions/vp_add.c
 ../virtual_machine/virtualm.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
@@ -120,7 +116,15 @@ string.h
 ../virtual_machine/virtualm.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
 
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/additional_func.c
+virtualm.h
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
+
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/new_chmp.c
+virtualm.h
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
+
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/reg_dir_ind.c
 virtualm.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
 
@@ -141,6 +145,10 @@ virtualm.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
 
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_instructions.c
+virtualm.h
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
+
+/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_output_err.c
 virtualm.h
 /nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/virtualm.h
 

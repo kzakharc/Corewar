@@ -17,7 +17,7 @@ int 	main(int argc, char **argv)
 	t_skrr	skrr;
 
 	init(&skrr, argc);
-	modula();
+//	modula();
 	(argc == 1) ? usage_e() : 0;
 	(argc > MAX_ARGS_NUMBER) ? chk_open(&skrr, argv, argc, 0) : 0;
 	while (++skrr.j < argc)
@@ -37,7 +37,7 @@ void	modula(void)
 {
 	int i;
 
-	i = -1000;
-	i %= IDX_MOD;
- 	ft_printf("%d\n", i);
+	i = -1;
+	i %= MEM_SIZE;
+// 	ft_printf("%d\n", i);
 }
