@@ -26,10 +26,11 @@ int 			sti_instr(t_skrr *skrr, t_chmp *chmp, int op)
 		instr_err(op);
 	while (skrr->i < g_tab[op].numb_of_arg)
 		q[skrr->i++] = arg_types(skrr, chmp, chmp->tmp_PC);
-	from_reg(q, chmp, skrr, 0);
+	if (!from_reg(q, chmp, skrr, 0))
+		return (0);
 	address = get_address(q, skrr, chmp, 1);
 	load_into(address, chmp, skrr, 1);
 	chmp->PC += chmp->offset + 2;
-	ft_printf("STI (with pc and mod %d)\n", address);
+	ft_printf(" <- STI from reg (with pc and mod %d)\n", address);
 	return (1);
 }

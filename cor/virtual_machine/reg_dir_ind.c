@@ -14,28 +14,35 @@
 
 int		reg_param(t_skrr *skrr, unsigned char *map, int flag)
 {
+	(REG_SIZE != 1) ? sizes_err("REG_SIZE", 1) : 0;
 	if ((*map > 16) || (*map == 0) || (*map < 0))
+	{
+		skrr->err = 1;
 		return (0);
+	}
 	if (flag == 1)
-		return (skrr->chmp->registry[*(map - 1)]);
+		return (skrr->chmp->registry[*map - 1]);
 	else if (flag == 2)
-		return (*map);
+		return (*map - 1);
 	return (0);
 }
 
-int		dir_param(t_skrr *skrr, unsigned char *map, int dir_size)
+int		dir_param(t_skrr *skrr, unsigned char *map, short dir_size)
 {
 	int address;
 
 	address = 0;
 	if (dir_size == 1)
 	{
-		address = two_bytes(map) | (*(map + 1));
+		(DIR_SIZE != 2) ? sizes_err("DIR_SIZE", 2) : 0;
+		address = (short)two_four_bytes(map, 2);
 		skrr->chmp->tmp_PC += 1;
 	}
-	else if (dir_size == 0)	// TODO for some instr dir size == 4 (in op.c if 0 = 4b, 1 = 2b) so need to make else if for 4 bytes T_DIR
+	else if (dir_size == 0)
 	{
-		address = four_bytes(map);
+		(DIR_SIZE + 2 != 4) ? sizes_err("DIR_SIZE", 2) : 0;
+		address = two_four_bytes(map, 4);
+		skrr->chmp->tmp_PC += 3;
 	}
 	return (address);
 }
@@ -46,9 +53,10 @@ int		ind_param(t_skrr *skrr, unsigned char *map)
 	unsigned int	ind[4];
 	int 			i;
 
+	(IND_SIZE != 2) ? sizes_err("IND_SIZE", 3) : 0;
 	i = -1;
 	skrr->shift = 24;
-	address = (two_bytes(map) | (*(map + 1))) % IDX_MOD;
+	address = (short)two_four_bytes(map, 2) % IDX_MOD;
 	while (++i < 4)
 	{
 		address = (address + MEM_SIZE) % MEM_SIZE;

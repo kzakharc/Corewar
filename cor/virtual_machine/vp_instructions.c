@@ -18,7 +18,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 	while ((chmp->cycle_to_die > 0))
 	{
 		if (!which_instr(skrr, chmp))
-			ft_printf("NULL address!\n");
+			ft_printf("NULL address!\n");				//move PC probably +1
 		if ((chmp->nbr_live == NBR_LIVE) && !(chmp->nbr_live = 0))
 			chmp->cycle_to_die -= CYCLE_DELTA;
 		if (g_CTD == chmp->cycle_to_die)
@@ -42,8 +42,8 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp)
 		if (skrr->map[chmp->PC] == g_tab[skrr->op].opcode)
 		{
 			((skrr->op) == 0) ? live_instr(skrr) : 0;
-			((skrr->op) == 1) ? ld_instr(skrr) : 0;
-			((skrr->op) == 2) ? st_instr(skrr) : 0;
+			((skrr->op) == 1) ? ld_instr(skrr, chmp, skrr->op) : 0;
+			((skrr->op) == 2) ? st_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 3) ? add_instr(skrr) : 0;
 			((skrr->op) == 4) ? sub_instr(skrr) : 0;
 			((skrr->op) == 5) ? and_instr(skrr) : 0;

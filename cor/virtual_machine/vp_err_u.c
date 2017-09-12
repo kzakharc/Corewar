@@ -24,6 +24,7 @@ void	init(t_skrr *skrr, int argc)
 //	skrr->ncurses_mode = 0;
 	g_iter = 0;
 	g_CTD = 0;
+	skrr->err = 0;
 	skrr->chmp = NULL;
 }
 

@@ -14,9 +14,21 @@
 
 void	instr_err(int op)
 {
-	if (op == 10)
-		ft_printf("You changed number of args in %s :(\n", g_tab[op].name);
+	if (op == 0)
+		ft_printf(RED"You changed number of args in %s :(\n", g_tab[op].name);
+	else if (op == 2)
+		ft_printf(RED"You changed number of args in %s :(\n", g_tab[op].name);
+	else if (op == 10)
+		ft_printf(RED"You changed number of args in %s :(\n", g_tab[op].name);
 	else if (op == 11)
-		ft_printf("You changed number of args in %s :(\n", g_tab[op].name);
+		ft_printf(RED"You changed number of args in %s :(\n", g_tab[op].name);
 	exit (op);
+}
+
+void	sizes_err(char *name, int flag)
+{
+	(flag == 1) ? ft_printf("%s != 1\n", name) : 0;
+	(flag == 2) ? ft_printf("%s != 2 or 4\n", name) : 0;
+	(flag == 3) ? ft_printf("%s != 2\n", name) : 0;
+	exit (flag);
 }
