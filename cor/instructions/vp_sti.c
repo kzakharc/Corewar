@@ -17,7 +17,7 @@ int 			sti_instr(t_skrr *skrr, t_chmp *chmp, int op)
 	unsigned char	*q;
 	int 			address;
 
-	chmp->tmp_PC = chmp->PC + 1;
+	chmp->tmp_PC = chmp->process->PC + 1;
 	if (&skrr->map[chmp->tmp_PC] == NULL)
 		return (0);
 	(!(q = malloc(sizeof(unsigned int) * 3))) ? exit (0) : 0;
@@ -30,7 +30,7 @@ int 			sti_instr(t_skrr *skrr, t_chmp *chmp, int op)
 		return (0);
 	address = get_address(q, skrr, 0, 1);
 	load_into(address, chmp, skrr, 1);
-	chmp->PC += chmp->offset + 2;
+	chmp->process->PC += chmp->offset + 2;
 	ft_printf(" <- STI from reg (with pc and mod %d)\n", address);
 	return (1);
 }

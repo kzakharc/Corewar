@@ -14,7 +14,7 @@
 
 int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
-	chmp->PC = chmp->player_pos;
+	chmp->process->PC = chmp->player_pos;
 	while ((chmp->cycle_to_die > 0))
 	{
 		if (!which_instr(skrr, chmp))
@@ -39,7 +39,7 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp)
 {
 	skrr->op = -1;
 	while (++skrr->op < 16)
-		if (skrr->map[chmp->PC] == g_tab[skrr->op].opcode)
+		if (skrr->map[chmp->process->PC] == g_tab[skrr->op].opcode)
 		{
 			((skrr->op) == 0) ? live_instr(skrr) : 0;
 			((skrr->op) == 1) ? ld_instr(skrr, chmp, skrr->op) : 0;

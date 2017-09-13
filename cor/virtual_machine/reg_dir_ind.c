@@ -22,7 +22,7 @@ int		reg_param(t_skrr *skrr, unsigned char *map, int flag)
 	if (((*map > 16) || (*map == 0) || (*map < 0)) && (skrr->err = 1))
 		return (0);
 	if (flag == 1)
-		return (skrr->chmp->registry[*map - 1]);
+		return (skrr->chmp->process->registry[*map - 1]);
 	else if (flag == 2)
 		return (*map - 1);
 	return (0);

@@ -42,6 +42,14 @@ typedef struct 		s_op
 **	linked lists for players.
 */
 
+typedef struct		s_proc
+{
+	int 			PC;
+	unsigned int 	registry[REG_NUMBER];
+	int 			carry;
+	struct s_proc	*next;
+}					t_proc;
+
 typedef struct		s_chmp
 {
 	unsigned int 	reg_value;
@@ -50,11 +58,9 @@ typedef struct		s_chmp
 	int 			max_checks;
 	int		 		cycle_to_die;
 	int 			nbr_live;
-	int 			carry;
 	int 			tmp_PC;
-	int 			PC;
-	unsigned int 	registry[REG_NUMBER];
 	header_t 		header;
+	t_proc			*process;
 	struct s_chmp	*next;
 }					t_chmp;
 
@@ -125,7 +131,8 @@ int					which_instr(t_skrr *skrr, t_chmp *chmp);
 */
 
 int 				push_chmp(t_chmp **head, t_skrr *skrr);
-void 				init_data(t_chmp *champ, t_skrr *skrr);
+void 				init_data(t_chmp *champ);
+int 				push_proc(t_proc **process, t_skrr *skrr);
 
 /*
 **	Instructions. live, st .. etc go -> [./instructions/[name of instructions].c] etc ..
@@ -159,7 +166,6 @@ unsigned char		arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
 int 				get_address(unsigned char *q, t_skrr *skrr, int l, short i);
 int 				simple_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i);
 void				load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag);
-//void				load_to_reg(int address, t_chmp *chmp, t_skrr *skrr, int flag);
 void				instr_err(int op);
 void				sizes_err(char *name, int flag);
 

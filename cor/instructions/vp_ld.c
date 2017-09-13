@@ -19,7 +19,7 @@ int 	ld_instr(t_skrr *skrr, t_chmp *chmp, int op)
 	int 			reg;
 
 	address = 0;
-	chmp->tmp_PC = chmp->PC + 1;
+	chmp->tmp_PC = chmp->process->PC + 1;
 	if (&skrr->map[chmp->tmp_PC] == NULL)
 		return (0);
 	(!(q = malloc(sizeof(unsigned int) * 3))) ? exit(0) : 0;
@@ -34,9 +34,9 @@ int 	ld_instr(t_skrr *skrr, t_chmp *chmp, int op)
 	if (q[1] == T_REG && (chmp->tmp_PC += 1))
 	{
 		reg = reg_param(skrr, &skrr->map[skrr->chmp->tmp_PC], 2);
-		chmp->registry[reg] = (unsigned int)address;
+		chmp->process->registry[reg] = (unsigned int)address;
 	}
-	chmp->carry = 1; 							// TODO don't know how its works
-	chmp->PC += chmp->offset + 2;
+	chmp->process->carry = 1; 							// TODO don't know how its works
+	chmp->process->PC += chmp->offset + 2;
 	return (1);
 }

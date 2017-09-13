@@ -16,7 +16,7 @@ int 	aff_instr(t_skrr *skrr, t_chmp *chmp)
 {
 	unsigned char print_it;
 
-	chmp->tmp_PC = chmp->PC + 2;
+	chmp->tmp_PC = chmp->process->PC + 2;
 	print_it = (unsigned char)reg_param(skrr, &skrr->map[chmp->tmp_PC], 1);
 	ft_printf("%c", (print_it % 256));
 	return (1);

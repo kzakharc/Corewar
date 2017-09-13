@@ -17,7 +17,7 @@ int 	ldi_instr(t_skrr *skrr, t_chmp *chmp, int op)
 	unsigned char	*q;
 	int 			address;
 
-	chmp->tmp_PC = chmp->PC + 1;
+	chmp->tmp_PC = chmp->process->PC + 1;
 	if (&skrr->map[chmp->tmp_PC] == NULL)
 		return (0);
 	(!(q = malloc(sizeof(unsigned int) * 3))) ? exit (0) : 0;
@@ -27,6 +27,6 @@ int 	ldi_instr(t_skrr *skrr, t_chmp *chmp, int op)
 		q[skrr->i++] = arg_types(skrr, chmp, chmp->tmp_PC);
 	address = get_address(q, skrr, 0, 4);
 	load_into(address, chmp, skrr, 2);
-	chmp->PC += chmp->offset + 2;
+	chmp->process->PC += chmp->offset + 2;
 	return (1);
 }

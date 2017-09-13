@@ -23,12 +23,12 @@ void	load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag)
 	shift = 24;
 	if (flag == 1)
 	{
-		ft_printf("value to address: [%d] from reg: ", address);
+//		ft_printf("value to address: [%d] from reg: ", address);
 		while (++i < 4)
 		{
 			address = (address + MEM_SIZE) % MEM_SIZE;
 			skrr->map[address++] = (unsigned char)(chmp->reg_value >> shift & 0x000000ff);
-			ft_printf("%x", skrr->map[address - 1]);
+//			ft_printf("%x", skrr->map[address - 1]);
 			shift -= 8;
 		}
 	}
@@ -42,8 +42,8 @@ void	load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag)
 		}
 		chmp->tmp_PC += 1;
 		reg = reg_param(skrr, &skrr->map[skrr->chmp->tmp_PC], 2);
-		chmp->registry[reg] = value[0] | value[1] | value[2] | value[3];
-		ft_printf("value to reg is loaded: [%.8x]", chmp->registry[reg]);
+		chmp->process->registry[reg] = value[0] | value[1] | value[2] | value[3];
+//		ft_printf("value to reg is loaded: [%.8x]", chmp->registry[reg]);
 	}
 }
 
@@ -80,7 +80,7 @@ int 	get_address(unsigned char *q, t_skrr *skrr, int l, short i)
 		adr += dir_param(skrr, &skrr->map[skrr->chmp->tmp_PC], g_tab[10].dir_size);
 	else if (q[i] == T_IND && (skrr->chmp->tmp_PC += 1))
 		adr += ind_param(skrr, &skrr->map[skrr->chmp->tmp_PC], l, 4);
-	adr = (skrr->chmp->PC + (adr % IDX_MOD));
+	adr = (skrr->chmp->process->PC + (adr % IDX_MOD));
 	return (adr);
 }
 
@@ -93,7 +93,7 @@ int 	simple_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i)
 	{
 		(IND_SIZE != 2) ? sizes_err("IND_SIZE", 3) : 0;
 		adr = (short)two_four_bytes(&skrr->map[chmp->tmp_PC], 2);
-		adr = (chmp->PC + (adr % IDX_MOD));
+		adr = (chmp->process->PC + (adr % IDX_MOD));
 	}
 	else if ((q[i] == T_REG) && (chmp->tmp_PC += 1))
 		adr = reg_param(skrr, &skrr->map[skrr->chmp->tmp_PC], 2);
