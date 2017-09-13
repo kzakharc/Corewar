@@ -164,7 +164,8 @@ void				sizes_err(char *name, int flag);
 
 int					reg_param(t_skrr *skrr, unsigned char *map, int flag);
 int					dir_param(t_skrr *skrr, unsigned char *map, short dir_size);
-int					ind_param(t_skrr *skrr,	unsigned char *map);
+int					ind_param(t_skrr *skrr,	unsigned char *map, int l);
+int 				long_ind(t_skrr *skrr, unsigned char *map);
 
 /*
 **	init map and print map

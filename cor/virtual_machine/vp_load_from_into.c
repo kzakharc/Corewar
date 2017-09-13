@@ -47,20 +47,15 @@ void	load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag)
 	}
 }
 
-//void	load_to_reg(int address, t_chmp *chmp, t_skrr *skrr, int flag)
-//{
-//
-//}
-
 int 	from_reg(unsigned char *q, t_chmp *chmp, t_skrr *skrr, short i)
 {
-	chmp->reg_value = 0; 															// maybe can delete this. already init this variable in [new_chmp.c].
+	chmp->reg_value = 0; 					// maybe can delete this. already init this variable in [new_chmp.c].
 	if (q[i] == T_REG && (chmp->tmp_PC += 1))
 		chmp->reg_value = (unsigned int)reg_param(skrr, &skrr->map[skrr->chmp->tmp_PC], 1);
 	else if (q[i] == T_DIR && (chmp->tmp_PC += 1))
 		chmp->reg_value = (unsigned int)dir_param(skrr, &skrr->map[skrr->chmp->tmp_PC], g_tab[10].dir_size);
 	else if (q[i] == T_IND && (chmp->tmp_PC += 1))
-		chmp->reg_value =  (unsigned int)ind_param(skrr, &skrr->map[skrr->chmp->tmp_PC]);
+		chmp->reg_value =  (unsigned int)ind_param(skrr, &skrr->map[skrr->chmp->tmp_PC], 4);
 	if (skrr->err == 1)
 		return (0);
 	return (1);
@@ -77,14 +72,14 @@ int 	get_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i)
 	else if (q[i] == T_DIR && (chmp->tmp_PC += 1))
 		adr = dir_param(skrr, &skrr->map[chmp->tmp_PC], g_tab[10].dir_size);
 	else if (q[i] == T_IND && (chmp->tmp_PC += 1))
-		adr = ind_param(skrr, &skrr->map[chmp->tmp_PC]);
+		adr = ind_param(skrr, &skrr->map[chmp->tmp_PC], 4);
 	i++;
 	if (q[i] == T_REG && (chmp->tmp_PC += 1))
 		adr += reg_param(skrr, &skrr->map[chmp->tmp_PC], 1);
 	else if (q[i] == T_DIR && (chmp->tmp_PC += 1))
 		adr += dir_param(skrr, &skrr->map[chmp->tmp_PC], g_tab[10].dir_size);
 	else if (q[i] == T_IND && (chmp->tmp_PC += 1))
-		adr += ind_param(skrr, &skrr->map[chmp->tmp_PC]);
+		adr += ind_param(skrr, &skrr->map[chmp->tmp_PC], 4);
 	adr = (chmp->PC + (adr % IDX_MOD));
 	return (adr);
 }

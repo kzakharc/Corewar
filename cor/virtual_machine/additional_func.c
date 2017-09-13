@@ -13,7 +13,7 @@
 #include "virtualm.h"
 
 /*
-**	for sti instr
+**	size = 2 -> get value from 2 bytes number, 4 -> from 4 bytes
 */
 
 unsigned int	two_four_bytes(unsigned char *map, int size)

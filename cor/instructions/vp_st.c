@@ -22,8 +22,7 @@ int 	st_instr(t_skrr *skrr, t_chmp *chmp, int op)
 		return (0);
 	(!(q = malloc(sizeof(unsigned int) * 3))) ? exit (0) : 0;
 	skrr->i = 0;
-	if (g_tab[op].numb_of_arg != 2)
-		instr_err(op);
+	(g_tab[op].numb_of_arg != 2) ? instr_err(op) : 0;
 	while (skrr->i < 3)
 		q[skrr->i++] = arg_types(skrr, chmp, chmp->tmp_PC);
 	if (!from_reg(q, chmp, skrr, 0) && !(skrr->err = 0))
@@ -32,6 +31,5 @@ int 	st_instr(t_skrr *skrr, t_chmp *chmp, int op)
 	(q[1] == T_IND) ? load_into(address, chmp, skrr, 1) : 0;
 	(q[1] == T_REG) ? (chmp->registry[address] = chmp->reg_value) : 0;
 	chmp->PC += chmp->offset + 2;
-	ft_printf(" <- ST from reg (with pc and mod %d)\n", address);
 	return (1);
 }

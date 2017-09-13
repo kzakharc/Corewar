@@ -32,3 +32,4 @@ void	sizes_err(char *name, int flag)
 	(flag == 3) ? ft_printf("%s != 2\n", name) : 0;
 	exit (flag);
 }
+
