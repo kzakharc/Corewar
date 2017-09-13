@@ -154,6 +154,9 @@
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_instructions.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_load_from_into.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_output_err.c">
 			<Option target="corewar"/>
 		</Unit>

@@ -17,7 +17,7 @@
 
 #define IND_SIZE				2
 #define REG_SIZE				1 // was 4
-#define DIR_SIZE				IND_SIZE // was REG_SIZE
+#define DIR_SIZE				2 // was REG_SIZE
 
 
 # define REG_CODE				1

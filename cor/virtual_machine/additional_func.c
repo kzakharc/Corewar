@@ -1,55 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vp_virtual_main.c                                  :+:      :+:    :+:   */
+/*   additional_func.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 14:12:55 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/08/08 15:42:25 by vpoltave         ###   ########.fr       */
+/*   Created: 2017/09/10 17:30:37 by vpoltave          #+#    #+#             */
+/*   Updated: 2017/09/10 17:30:38 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtualm.h"
 
 /*
-**	for sti instr
+**	size = 2 -> get value from 2 bytes number, 4 -> from 4 bytes
 */
 
-unsigned char	two_bytes(unsigned char *map)
+unsigned int	two_four_bytes(unsigned char *map, int size)
 {
-	unsigned char dst;
+	unsigned int	f[4];
+	unsigned int	dst;
+	int				i;
 
-	dst = *map;
-	dst = (unsigned char)((dst << 8) & 0xff00);
-	return (dst);
-}
-
-unsigned char	four_bytes(unsigned char *map) // for dir_size = 4b, still not finished
-{
-	unsigned char dst;
-
-	dst = *map;
-	return (dst);
-}
-
-void	load_into(int address, t_chmp *chmp, t_skrr *skrr)
-{
-	int i;
-	int	shift;
-
+	dst = 0;
 	i = -1;
-	shift = 24;
 	while (++i < 4)
-	{
-		address = (address + MEM_SIZE) % MEM_SIZE;
-		skrr->map[address++] = (unsigned char)(chmp->reg_n >> shift & 0x000000ff);
-		shift -= 8;
-	}
+		f[i] = *map++;
+	if (size == 2)
+		dst = (f[0] << 8) | f[1];
+	else if (size == 4)
+		dst = ((f[0] << 24) | (f[1] << 16) | (f[2] << 8) | f[3]);
+	return (dst);
 }
 
 unsigned char	arg_types(t_skrr *skrr, t_chmp *chmp, int ctk)
 {
+//	chmp->offset = 0;
 	if (hex_to_bin(skrr->map[ctk], skrr->i) == REG_CODE && (chmp->offset += REG_SIZE))
 		return (T_REG);
 	else if (hex_to_bin(skrr->map[ctk], skrr->i) == DIR_CODE && (chmp->offset += DIR_SIZE))

@@ -185,6 +185,14 @@ CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o: ../libft/src/get
 CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o: ../libft/src/libft/libft.h
 CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o: ../op.h
 
+CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o: ../cor/virtual_machine/virtualm.h
+CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o: ../cor/virtual_machine/vp_load_from_into.c
+CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o: ../corewar.h
+CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o: ../libft/src/ft_printf/ft_printf.h
+CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o: ../libft/src/get_next_line/get_next_line.h
+CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o: ../libft/src/libft/libft.h
+CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o: ../op.h
+
 CMakeFiles/corewar.dir/cor/virtual_machine/vp_output_err.c.o: ../cor/virtual_machine/virtualm.h
 CMakeFiles/corewar.dir/cor/virtual_machine/vp_output_err.c.o: ../cor/virtual_machine/vp_output_err.c
 CMakeFiles/corewar.dir/cor/virtual_machine/vp_output_err.c.o: ../corewar.h

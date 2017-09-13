@@ -30,12 +30,12 @@
 typedef struct 		s_op
 {
 	char 			*name;
-	unsigned int 	numb_of_arg;
+	short		 	numb_of_arg;
 	t_arg_type 		arg[3];
-	unsigned int	opcode;
-	unsigned int	cycles;
-	unsigned int 	codage;
-	int				dir_size;
+	short			opcode;
+	short			cycles;
+	short		 	codage;
+	short			dir_size;
 }					t_op;
 
 /*
@@ -44,7 +44,7 @@ typedef struct 		s_op
 
 typedef struct		s_chmp
 {
-	unsigned int 	reg_n;
+	unsigned int 	reg_value;
 	int 			offset;
 	unsigned int 	player_pos;
 	int		 		cycle_to_die;
@@ -70,6 +70,7 @@ typedef struct		s_skrr
 	int 			op;
 	int 			shift;
 	int 			flag;
+	int 			err;
 //	int 			ncurses_mode;
 	unsigned char 	map[MEM_SIZE];
 	t_chmp			*chmp;
@@ -130,8 +131,8 @@ void 				init_data(t_chmp *champ, t_skrr *skrr);
 */
 
 int 				live_instr(t_skrr *skrr);
-int 				ld_instr(t_skrr *skrr);
-int 				st_instr(t_skrr *skrr);
+int 				ld_instr(t_skrr *skrr, t_chmp *chmp, int op);
+int 				st_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				add_instr(t_skrr *skrr);
 int 				sub_instr(t_skrr *skrr);
 int 				and_instr(t_skrr *skrr);
@@ -151,17 +152,20 @@ int 				aff_instr(t_skrr *skrr, t_chmp *chmp);
 */
 
 unsigned char		hex_to_bin(unsigned char c, int i);
-unsigned char		two_bytes(unsigned char *map);
-unsigned char		four_bytes(unsigned char *map);
-short				from_reg(unsigned char *q, t_chmp *chmp, t_skrr *skrr);
+unsigned int		two_four_bytes(unsigned char *map, int dir_size);
+int					from_reg(unsigned char *q, t_chmp *chmp, t_skrr *skrr, short i);
 unsigned char		arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
 int 				get_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i);
-void				load_into(int address, t_chmp *chmp, t_skrr *skrr);
+int 				simple_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i);
+void				load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag);
+//void				load_to_reg(int address, t_chmp *chmp, t_skrr *skrr, int flag);
 void				instr_err(int op);
+void				sizes_err(char *name, int flag);
 
-int					reg_param(t_skrr *skrr, unsigned char *map);
-int					dir_param(t_skrr *skrr, unsigned char *map, int dir_size);
-int					ind_param(t_skrr *skrr,	unsigned char *map);
+int					reg_param(t_skrr *skrr, unsigned char *map, int flag);
+int					dir_param(t_skrr *skrr, unsigned char *map, short dir_size);
+int					ind_param(t_skrr *skrr,	unsigned char *map, int l);
+int 				long_ind(t_skrr *skrr, unsigned char *map);
 
 /*
 **	init map and print map

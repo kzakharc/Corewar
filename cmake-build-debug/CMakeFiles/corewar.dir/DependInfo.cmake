@@ -27,6 +27,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_commands.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_commands.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_err_u.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_err_u.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_instructions.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_instructions.c.o"
+  "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_load_from_into.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_load_from_into.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_output_err.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_output_err.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cor/virtual_machine/vp_virtual_main.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/cor/virtual_machine/vp_virtual_main.c.o"
   "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/op.c" "/nfs/2016/v/vpoltave/CLionProjects/repocorewar/cmake-build-debug/CMakeFiles/corewar.dir/op.c.o"
