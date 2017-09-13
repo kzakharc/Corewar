@@ -35,6 +35,7 @@ void 	init_data(t_chmp *champ, t_skrr *skrr)
 	champ->reg_value = 0;
 	champ->offset = 0;
 	champ->player_pos = 0;
+	champ->max_checks = 0;
 	champ->cycle_to_die = CYCLE_TO_DIE;
 	champ->nbr_live = 0;
 	champ->carry = 0;

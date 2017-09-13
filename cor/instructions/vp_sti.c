@@ -28,7 +28,7 @@ int 			sti_instr(t_skrr *skrr, t_chmp *chmp, int op)
 		q[skrr->i++] = arg_types(skrr, chmp, chmp->tmp_PC);
 	if (!from_reg(q, chmp, skrr, 0))
 		return (0);
-	address = get_address(q, skrr, chmp, 1);
+	address = get_address(q, skrr, 0, 1);
 	load_into(address, chmp, skrr, 1);
 	chmp->PC += chmp->offset + 2;
 	ft_printf(" <- STI from reg (with pc and mod %d)\n", address);

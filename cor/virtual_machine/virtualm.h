@@ -47,6 +47,7 @@ typedef struct		s_chmp
 	unsigned int 	reg_value;
 	int 			offset;
 	unsigned int 	player_pos;
+	int 			max_checks;
 	int		 		cycle_to_die;
 	int 			nbr_live;
 	int 			carry;
@@ -155,7 +156,7 @@ unsigned char		hex_to_bin(unsigned char c, int i);
 unsigned int		two_four_bytes(unsigned char *map, int dir_size);
 int					from_reg(unsigned char *q, t_chmp *chmp, t_skrr *skrr, short i);
 unsigned char		arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
-int 				get_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i);
+int 				get_address(unsigned char *q, t_skrr *skrr, int l, short i);
 int 				simple_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i);
 void				load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag);
 //void				load_to_reg(int address, t_chmp *chmp, t_skrr *skrr, int flag);
@@ -164,8 +165,7 @@ void				sizes_err(char *name, int flag);
 
 int					reg_param(t_skrr *skrr, unsigned char *map, int flag);
 int					dir_param(t_skrr *skrr, unsigned char *map, short dir_size);
-int					ind_param(t_skrr *skrr,	unsigned char *map, int l);
-int 				long_ind(t_skrr *skrr, unsigned char *map);
+int					ind_param(t_skrr *skrr,	unsigned char *map, int l, int bytes);
 
 /*
 **	init map and print map

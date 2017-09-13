@@ -54,29 +54,29 @@ int		dir_param(t_skrr *skrr, unsigned char *map, short dir_size)
 }
 
 /*
-**	int l, if l = 2 -> for long function, means without %IDX_MOD
+**	int l, if l = 1 -> for long function, means without %IDX_MOD
 */
 
-int		ind_param(t_skrr *skrr, unsigned char *map, int l)
+int		ind_param(t_skrr *skrr, unsigned char *map, int l, int bytes)
 {
 	int 			address;
-	unsigned int	ind[l];
+	unsigned int	ind[bytes];
 	int 			i;
 
 	(IND_SIZE != 2) ? sizes_err("IND_SIZE", 3) : 0;
 	i = -1;
 	address = 0;
-	skrr->shift = (l == 4) ? 24 : 8;
-	(l == 4) ? address = (short)two_four_bytes(map, 2) % IDX_MOD : 0;
-	(l == 2) ? address = (short)two_four_bytes(map, 2) : 0;
-	while (++i < l)
+	skrr->shift = (bytes == 4) ? 24 : 8;
+	(l == 0) ? address = (short)two_four_bytes(map, 2) % IDX_MOD : 0;
+	(l == 1) ? address = (short)two_four_bytes(map, 2) : 0;
+	while (++i < bytes)
 	{
 		address = (address + MEM_SIZE) % MEM_SIZE;
 		ind[i] = get_magic_size(skrr->map[address], skrr->shift);
 		skrr->shift -= 8;
 		address++;
 	}
-	address = (l == 4) ? (ind[0] | ind[1] | ind[2] | ind[3]) : (ind[0] | ind[1]);
+	address = (bytes == 4) ? (ind[0] | ind[1] | ind[2] | ind[3]) : (ind[0] | ind[1]);
 	skrr->chmp->tmp_PC += 1;
 	return (address);
 }
