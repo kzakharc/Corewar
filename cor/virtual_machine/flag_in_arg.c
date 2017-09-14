@@ -26,9 +26,21 @@ void			how_many_players(t_skrr *skrr, char *av, int *cnt, int ac)
 	}
 }
 
-int 			find_new_nbr(char **nbr)
+int 			find_new_nbr(char **nbr, int *cnt, int nbr_player)
 {
+	int i;
 
+	i = 0;
+	while (++i <= 4)
+	{
+		ft_strchr(*nbr, nbr_player + 48) ? chk_open(0, 0, 0, 6) : 0;
+		if (!ft_strchr(*nbr, i + 48))
+		{
+			*(*nbr + (*cnt)) = (char)(i + 48);
+			break ;
+		}
+	}
+	return (i);
 }
 
 unsigned int 	zero_reg(t_skrr *skrr)
@@ -36,12 +48,11 @@ unsigned int 	zero_reg(t_skrr *skrr)
 	static char	*nbr;
 	static int 	cnt;
 	int			cnt_player;
-	int 		i;
 
 	nbr == NULL ? nbr = ft_strdup("0000") : 0;
 	if (ft_strchr(nbr, skrr->nbr_player + 48))
 	{
-		cnt_player = find_new_nbr(&nbr);
+		cnt_player = find_new_nbr(&nbr, &cnt, skrr->nbr_player);
 		cnt++;
 		/*
 		 * вивід гравця

@@ -54,6 +54,8 @@ void	chk_open(t_skrr *skrr, char **argv, int argc, int flag)
 		ft_printf("Please enter a player number from 1 to %i\n", skrr->max_player);
 	else if (flag == 5)
 		ft_printf("You type many flags "GRN"\"n\""RESET"\n");
+	else if (flag == 6)
+		ft_printf("You input the same player number\n");
 	(flag != 1) ? exit(flag) : 0;
 }
 
