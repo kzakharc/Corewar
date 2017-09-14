@@ -21,6 +21,9 @@ void	init(t_skrr *skrr)
 	skrr->op = 0;
 	skrr->shift = 0;
 	skrr->flag = -1;
+	skrr->flag_n = NULL;
+	skrr->flag_v = 0;
+	skrr->flag_dump = 0;
 	skrr->nbr_player = 0;
 	skrr->max_player = 0;
 //	skrr->ncurses_mode = 0;
@@ -31,14 +34,14 @@ void	init(t_skrr *skrr)
 }
 
 //TODO can move 'exit (0)' to botton of the func and delete '{}'
-void	chk_open(t_skrr *skrr, char **argv, int argc, int flag)
+void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 {
 	if (flag == 0)
 		ft_printf("Too many champions! (Max %d)\n", MAX_PLAYERS);
 	else if (flag == 1)
 	{
 //		chck_for_usage(skrr, *argv);
-		skrr->fd = open(argv[skrr->j], O_RDONLY);
+		skrr->fd = open(argv[i], O_RDONLY);
 		if (skrr->fd < 0)
 		{
 			ft_printf("Can't read source file"RED" %s "RESET"\n", argv[skrr->j]);

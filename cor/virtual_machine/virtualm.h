@@ -77,6 +77,9 @@ typedef struct		s_skrr
 	int 			op;
 	int 			shift;
 	int 			flag;
+	int 			*flag_n;
+	int 			flag_v;
+	int 			flag_dump;
 	int 			nbr_player;
 	int 			max_player;
 	int 			err;
@@ -192,7 +195,7 @@ void				print_info(t_skrr *skrr, int argc, t_chmp *chmp);
 ** function for flags
 */
 
-void				how_many_players(t_skrr *skrr, char *av, int *cnt, int ac);
+void				parsing_arg(t_skrr *skrr, char **av, int ac);
 void				flag_n(char *nbr_player, t_skrr *skrr);
 unsigned int		zero_reg(t_skrr *skrr);
 

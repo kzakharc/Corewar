@@ -12,17 +12,47 @@
 
 #include "virtualm.h"
 
-void			how_many_players(t_skrr *skrr, char *av, int *cnt, int ac)
+void			maybe_flag(char **av, int *i, t_skrr *skrr)
 {
-	static int	nbr;
-	int 		fd;
+	static int	cnt_n;
 
-	fd = open(av, O_RDONLY);
-	fd > 0 ? nbr++ : 0;
-	if (*cnt == ac - 1)
+	skrr->flag_n == NULL ? skrr->flag_n = ft_memalloc(4) : 0;
+	if (!ft_strcmp(av[*i], "-n"))
 	{
-		skrr->max_player = nbr;
-		(nbr > MAX_ARGS_NUMBER) ? chk_open(skrr, &av, ac, 0) : 0;
+		skrr->flag_n[cnt_n] = ft_atoi(av[*i + 1]);
+		cnt_n++;
+		skrr->flag_n[cnt_n] != 0 ? (*i) += 2 : (*i)++;
+		return ;
+	}
+	else if (!ft_strcmp(av[*i], "-v"))
+	{
+		skrr->flag_v = 1;
+		(*i)++;
+		return ;
+	}
+	else if (!ft_strcmp(av[*i], "-dump"))
+	{
+		skrr->flag_dump = ft_atoi(av[*(i + 1)]);
+		(*i)++;
+		return ;
+	}
+}
+
+void 			find_player(char **av, int *i, t_skrr *skrr)
+{
+	chk_open(skrr, av, *i, 1);
+	push_chmp(&skrr.chmp, &skrr);
+}
+
+void			parsing_arg(t_skrr *skrr, char **av, int ac)
+{
+	int i;
+
+	i = 1;
+	while (i < ac)
+	{
+		maybe_flag(av, &i, skrr);
+		find_player(av, &i, skrr);
 	}
 }
 
