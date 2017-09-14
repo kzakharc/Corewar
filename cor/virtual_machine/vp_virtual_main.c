@@ -15,29 +15,22 @@
 int 	main(int argc, char **argv)
 {
 	t_skrr	skrr;
+	int 	cnt;
 
-	init(&skrr, argc);
-//	modula();
+	cnt = 0;
+	init(&skrr);
 	(argc == 1) ? usage_e() : 0;
-	(argc > MAX_ARGS_NUMBER) ? chk_open(&skrr, argv, argc, 0) : 0;
+	while (++cnt < argc)
+		how_many_players(&skrr, argv[cnt], &cnt, argc);
 	while (++skrr.j < argc)
 	{
+		!ft_strcmp(argv[skrr.j], "-n") ? flag_n(argv[skrr.j + 1], &skrr) : 0;
 		chk_open(&skrr, argv, argc, 1);
 		push_chmp(&skrr.chmp, &skrr);
 		just_read(&skrr, argv[skrr.j], argc, skrr.chmp);
 		skrr.n++;
 	}
 	(skrr.n) ? print_info(&skrr, argc, skrr.chmp) : 0;
-//	print_map(&skrr);
 	close(skrr.fd) < 0 ? exit(0) : 0;
 	return (0);
-}
-
-void	modula(void)
-{
-	int i;
-
-	i = -1;
-	i %= MEM_SIZE;
-// 	ft_printf("%d\n", i);
 }

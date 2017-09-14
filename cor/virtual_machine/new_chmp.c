@@ -46,7 +46,7 @@ int 	push_proc(t_proc **process, t_skrr *skrr)
 		exit (0);
 	while (++i < REG_NUMBER)
 		new_process->registry[i] = 0;
-	new_process->registry[0] = (unsigned int)skrr->j * (-1);
+	new_process->registry[0] = zero_reg(skrr);
 	new_process->carry = 0;
 	new_process->PC = 0;
 	new_process->next = *process;

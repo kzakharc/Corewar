@@ -77,6 +77,8 @@ typedef struct		s_skrr
 	int 			op;
 	int 			shift;
 	int 			flag;
+	int 			nbr_player;
+	int 			max_player;
 	int 			err;
 //	int 			ncurses_mode;
 	unsigned char 	map[MEM_SIZE];
@@ -105,7 +107,7 @@ void				chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp);
 **	init function. go -> [vp_err_u.c] for init all structure variables.
 */
 
-void				init(t_skrr *skrr, int argc);
+void				init(t_skrr *skrr);
 
 /*
 **	main functions, for get info about "name", "weighing", "comments" .. go -> [vp_basic.c].
@@ -186,6 +188,13 @@ void				print_map(t_skrr *skrr);
 
 void				print_info(t_skrr *skrr, int argc, t_chmp *chmp);
 
-void	modula(void);
+/*
+** function for flags
+*/
+
+void				how_many_players(t_skrr *skrr, char *av, int *cnt, int ac);
+void				flag_n(char *nbr_player, t_skrr *skrr);
+unsigned int		zero_reg(t_skrr *skrr);
+
 
 #endif

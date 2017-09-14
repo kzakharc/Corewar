@@ -12,7 +12,7 @@
 
 #include "virtualm.h"
 
-void	init(t_skrr *skrr, int argc)
+void	init(t_skrr *skrr)
 {
 	skrr->fd = 0;
 	skrr->i = 0;
@@ -21,6 +21,8 @@ void	init(t_skrr *skrr, int argc)
 	skrr->op = 0;
 	skrr->shift = 0;
 	skrr->flag = -1;
+	skrr->nbr_player = 0;
+	skrr->max_player = 0;
 //	skrr->ncurses_mode = 0;
 	g_iter = 0;
 	g_CTD = 0;
@@ -48,6 +50,10 @@ void	chk_open(t_skrr *skrr, char **argv, int argc, int flag)
 		ft_printf("Error: File"RED" %s "RESET"has an invalid header\n", *argv);
 	else if (flag == 3)
 		ft_printf("Error:"RED" %s "RESET"is a directory\n", *argv);
+	else if (flag == 4)
+		ft_printf("Please enter a player number from 1 to %i\n", skrr->max_player);
+	else if (flag == 5)
+		ft_printf("You type many flags "GRN"\"n\""RESET"\n");
 	(flag != 1) ? exit(flag) : 0;
 }
 
