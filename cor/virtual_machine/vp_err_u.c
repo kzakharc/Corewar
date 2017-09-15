@@ -20,8 +20,8 @@ void	init(t_skrr *skrr)
 	skrr->n = 0;
 	skrr->op = 0;
 	skrr->shift = 0;
-	skrr->flag = -1;
 	skrr->flag_n = NULL;
+	skrr->cnt_n = 0;
 	skrr->flag_v = 0;
 	skrr->flag_dump = 0;
 	skrr->nbr_player = 0;
@@ -102,7 +102,7 @@ void	usage_e(void)
 void	chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp)
 {
 	skrr->i = 0;
-	while (read(skrr->fd, &line, 1))
+	while (read(chmp->fd, &line, 1))
 		skrr->i++;
 	if (chmp->header.prog_size != skrr->i)
 	{

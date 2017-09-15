@@ -19,7 +19,7 @@ void	*ft_memalloc(size_t size)
 	size_t			n;
 
 	n = size;
-	tmp = (void *)malloc(size * sizeof(tmp));
+	tmp = malloc(size * sizeof(tmp));
 	if (tmp == NULL)
 		return (NULL);
 	while (size-- != 0)

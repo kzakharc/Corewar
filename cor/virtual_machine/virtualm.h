@@ -52,6 +52,9 @@ typedef struct		s_proc
 
 typedef struct		s_chmp
 {
+	int 			nbr_arg;
+	int 			fd;
+	int 			ac;
 	unsigned int 	reg_value;
 	int 			offset;
 	unsigned int 	player_pos;
@@ -76,8 +79,8 @@ typedef struct		s_skrr
 	int 			n;
 	int 			op;
 	int 			shift;
-	int 			flag;
 	int 			*flag_n;
+	int 			cnt_n;
 	int 			flag_v;
 	int 			flag_dump;
 	int 			nbr_player;
@@ -125,8 +128,8 @@ void				prog_size(t_skrr *skrr, char *argv, int argc, t_chmp *chmp);
 **	commands functions. Func for global while and stuff.
 */
 
-void				prog_commands(t_skrr *skrr, int argc, char *argv, t_chmp *chmp);
-static void			player_position(t_skrr *skrr, int argc, t_chmp *chmp);
+void				prog_commands(t_skrr *skrr, char **av, t_chmp *chmp);
+static void			player_position(int nbr, t_skrr *skrr, t_chmp *chmp);
 void				unsafe_copy(t_skrr *skrr, unsigned char *src, t_chmp *chmp);
 int 				entry_point(t_skrr *skrr, t_chmp *chmp);
 int					which_instr(t_skrr *skrr, t_chmp *chmp);
@@ -196,8 +199,8 @@ void				print_info(t_skrr *skrr, int argc, t_chmp *chmp);
 */
 
 void				parsing_arg(t_skrr *skrr, char **av, int ac);
-void				flag_n(char *nbr_player, t_skrr *skrr);
-unsigned int		zero_reg(t_skrr *skrr);
+void				flag_n(t_chmp *chmp, t_skrr *skrr);
+unsigned int 		zero_reg(t_skrr *skrr);
 
 
 #endif

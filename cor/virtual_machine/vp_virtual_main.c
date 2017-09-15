@@ -19,14 +19,8 @@ int 	main(int argc, char **argv)
 	init(&skrr);
 	(argc == 1) ? usage_e() : 0;
 	parsing_arg(&skrr, argv, argc);
-	while (++skrr.j < argc)
-	{
-	//	chk_open(&skrr, argv, argc, 1);
-	//	push_chmp(&skrr.chmp, &skrr);
-		just_read(&skrr, argv[skrr.j], argc, skrr.chmp);
-		skrr.n++;
-	}
-	(skrr.n) ? print_info(&skrr, argc, skrr.chmp) : 0;
+	entry_point(&skrr, skrr.chmp);
+	print_info(&skrr, argc, skrr.chmp);
 	close(skrr.fd) < 0 ? exit(0) : 0;
 	return (0);
 }

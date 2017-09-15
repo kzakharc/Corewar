@@ -14,14 +14,12 @@
 
 void			maybe_flag(char **av, int *i, t_skrr *skrr)
 {
-	static int	cnt_n;
-
-	skrr->flag_n == NULL ? skrr->flag_n = ft_memalloc(4) : 0;
+	skrr->flag_n == NULL ? skrr->flag_n = ft_memalloc(33) : 0;
 	if (!ft_strcmp(av[*i], "-n"))
 	{
-		skrr->flag_n[cnt_n] = ft_atoi(av[*i + 1]);
-		cnt_n++;
-		skrr->flag_n[cnt_n] != 0 ? (*i) += 2 : (*i)++;
+		skrr->flag_n[skrr->cnt_n] = ft_atoi(av[*i + 1]);
+		skrr->flag_n[skrr->cnt_n] != 0 ? (*i) += 2 : (*i)++;
+		skrr->cnt_n++;
 		return ;
 	}
 	else if (!ft_strcmp(av[*i], "-v"))
@@ -41,7 +39,11 @@ void			maybe_flag(char **av, int *i, t_skrr *skrr)
 void 			find_player(char **av, int *i, t_skrr *skrr)
 {
 	chk_open(skrr, av, *i, 1);
-	push_chmp(&skrr.chmp, &skrr);
+	push_chmp(&skrr->chmp, skrr);
+	just_read(skrr, av[*i], *i, skrr->chmp);
+	skrr->max_player++;
+	skrr->chmp->ac = *i;
+	(*i)++;
 }
 
 void			parsing_arg(t_skrr *skrr, char **av, int ac)
@@ -52,65 +54,52 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 	while (i < ac)
 	{
 		maybe_flag(av, &i, skrr);
-		find_player(av, &i, skrr);
-	}
-}
-
-int 			find_new_nbr(char **nbr, int *cnt, int nbr_player)
-{
-	int i;
-
-	i = 0;
-	while (++i <= 4)
-	{
-		ft_strchr(*nbr, nbr_player + 48) ? chk_open(0, 0, 0, 6) : 0;
-		if (!ft_strchr(*nbr, i + 48))
-		{
-			*(*nbr + (*cnt)) = (char)(i + 48);
+		if (i != ac)
+			find_player(av, &i, skrr);
+		else
 			break ;
-		}
 	}
-	return (i);
+	flag_n(skrr->chmp, skrr);
+	prog_commands(skrr, av, skrr->chmp);
 }
 
 unsigned int 	zero_reg(t_skrr *skrr)
 {
-	static char	*nbr;
-	static int 	cnt;
-	int			cnt_player;
+	static int	nbr;
+	static int	tmp;
+	int			c;
 
-	nbr == NULL ? nbr = ft_strdup("0000") : 0;
-	if (ft_strchr(nbr, skrr->nbr_player + 48))
+	c = -1;
+	while (++c < skrr->cnt_n)
 	{
-		cnt_player = find_new_nbr(&nbr, &cnt, skrr->nbr_player);
-		cnt++;
-		/*
-		 * вивід гравця
-		 */
-		ft_printf("%s\n", nbr);
-		return ((unsigned int) cnt_player * (-1));
+		if (skrr->flag_n[c] == tmp)
+			tmp++;
+	}
+	if (skrr->flag_n[nbr] == 0)
+	{
+		skrr->flag_n[nbr] = tmp;
+		nbr++;
+		return (unsigned int)(tmp * -1);
 	}
 	else
-	{
-		nbr[cnt] = (char)(skrr->nbr_player + 48);
-		cnt++;
-		/*
-		 * вивід гравця
-		 */
-		ft_printf("%s\n", nbr);
-		return ((unsigned int) skrr->nbr_player * (-1));
-	}
+		return (unsigned int)(skrr->flag_n[nbr] * -1);
 }
 
-void			flag_n(char *nbr_player, t_skrr *skrr)
+void			flag_n(t_chmp *chmp, t_skrr *skrr)
 {
-	int			nbr;
-	static int	cnt_n;
+	int	i;
+	t_chmp *tmp;
 
-	cnt_n++;
-	cnt_n > skrr->max_player || nbr_player == NULL ? chk_open(skrr, 0, 0, 5) : 0;
-	nbr = (int)ft_atoi(nbr_player);
-	nbr < 0 || nbr > skrr->max_player ? chk_open(skrr, 0, 0, 4) : 0;
-	(nbr > 0 && nbr <= skrr->max_player) ? skrr->nbr_player = nbr : 0;
-	skrr->j = nbr == 0 ? skrr->j + 1 : skrr->j + 2;
+	i = 0;
+	tmp = chmp;
+	skrr->cnt_n > skrr->max_player ? chk_open(skrr, 0, 0, 5) : 0;
+	while (i < skrr->cnt_n)
+	{
+		skrr->flag_n[i] < 0 || skrr->flag_n[i] > skrr->max_player ? chk_open(skrr, 0, 0, 4) : 0;
+		while (tmp->nbr_arg != i)
+			tmp = tmp->next;
+		tmp->process->registry[0] = zero_reg(skrr);
+		i++;
+		tmp = chmp;
+	}
 }

@@ -41,7 +41,7 @@ void		get_name_comments(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 	(lseek(skrr->fd, SIZE_POS, SEEK_SET) < 0) ? exit (0) : 0;
 	prog_size(skrr, argv, argc, chmp);
 	(lseek(skrr->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
-	prog_commands(skrr, argc, argv, chmp);
+	//prog_commands(skrr, argc, argv, chmp);
 
 }
 
