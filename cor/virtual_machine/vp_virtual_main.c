@@ -17,9 +17,8 @@ int 	main(int argc, char **argv)
 	t_skrr	skrr;
 
 	init(&skrr, argc);
-//	modula();
 	(argc == 1) ? usage_e() : 0;
-	(argc > MAX_ARGS_NUMBER) ? chk_open(&skrr, argv, argc, 0) : 0;
+	(argc > MAX_ARGS_NUMBER + 1) ? chk_open(&skrr, argv, argc, 0) : 0;
 	while (++skrr.j < argc)
 	{
 		chk_open(&skrr, argv, argc, 1);
@@ -27,17 +26,9 @@ int 	main(int argc, char **argv)
 		just_read(&skrr, argv[skrr.j], argc, skrr.chmp);
 		skrr.n++;
 	}
+	entry_point(&skrr, skrr.chmp);
 	(skrr.n) ? print_info(&skrr, argc, skrr.chmp) : 0;
-//	print_map(&skrr);
+	print_map(&skrr);
 	close(skrr.fd) < 0 ? exit(0) : 0;
 	return (0);
-}
-
-void	modula(void)
-{
-	int i;
-
-	i = -1;
-	i %= MEM_SIZE;
-// 	ft_printf("%d\n", i);
 }

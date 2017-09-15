@@ -14,34 +14,51 @@
 
 int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
-	chmp->process->PC = chmp->player_pos;
-	while ((chmp->cycle_to_die > 0))
+	while ((skrr->cycle_to_die > 0) || !(skrr->max_checks))
 	{
-		if (!which_instr(skrr, chmp))
-			ft_printf("NULL address!\n");				//move PC probably +1
-		if ((chmp->nbr_live == NBR_LIVE) && !(chmp->nbr_live = 0))
-			chmp->cycle_to_die -= CYCLE_DELTA;
-		if (g_CTD == chmp->cycle_to_die)
+		change_player(skrr, chmp);
+		if ( (g_ctd == skrr->cycle_to_die) && (skrr->nbr_live >= NBR_LIVE))
 		{
-//			ft_printf("CYCLE_TO_DIE : %4d\t\tCTD: %4d\n", chmp->cycle_to_die, g_CTD);
-			chmp->cycle_to_die -= CYCLE_DELTA;
-			g_CTD = 0;
+			skrr->cycle_to_die -= CYCLE_DELTA;
+			skrr->nbr_live = 0;
+			g_ctd = 0;
 		}
-		g_iter++;
-		g_CTD++;
+		else if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live))
+		{
+//			skrr->nbr_live = 0;
+			skrr->max_checks--;
+			g_ctd = 0;
+		}
+		else if ((g_ctd == skrr->cycle_to_die) && !(skrr->nbr_live))
+		{
+			skrr->process->alive = 0;
+			//Process has won! and finish program
+		}
+		g_cycles++;
+		g_ctd++;
 	}
-//	ft_printf("CYCLE_TO_DIE : [%d]\tCTD : [%d]\tg_iter : [%d]\n",
-//			  chmp->cycle_to_die, g_CTD, g_iter);
+	return (1);
+}
+
+int 	change_player(t_skrr *skrr, t_chmp *chmp)
+{
+
+
 	return (1);
 }
 
 int		which_instr(t_skrr *skrr, t_chmp *chmp)
 {
+	int current_cycle;
+
 	skrr->op = -1;
+	current_cycle = g_ctd;
 	while (++skrr->op < 16)
-		if (skrr->map[chmp->process->PC] == g_tab[skrr->op].opcode)
+		if (skrr->map[skrr->process->pc] == g_tab[skrr->op].opcode)
 		{
-			((skrr->op) == 0) ? live_instr(skrr) : 0;
+			while (g_ctd + current_cycle != g_tab[skrr->op].cycles + g_ctd)
+				current_cycle++;
+			((skrr->op) == 0) ? live_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 1) ? ld_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 2) ? st_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 3) ? add_instr(skrr) : 0;
@@ -49,7 +66,7 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp)
 			((skrr->op) == 5) ? and_instr(skrr) : 0;
 			((skrr->op) == 6) ? or_instr(skrr) : 0;
 			((skrr->op) == 7) ? xor_instr(skrr) : 0;
-			((skrr->op) == 8) ? zjmp_instr(skrr) : 0;
+			((skrr->op) == 8) ? zjmp_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 9) ? ldi_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 10) ? sti_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 11) ? fork_instr(skrr, chmp, skrr->op) : 0;
@@ -57,6 +74,7 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp)
 			((skrr->op) == 13) ? lldi_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 14) ? lfork_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 15) ? aff_instr(skrr, chmp) : 0;
+			return (current_cycle);
 		}
 	return (1);
 }
