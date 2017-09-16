@@ -59,10 +59,10 @@ typedef struct		s_proc
 
 typedef struct		s_chmp
 {
+	int 			id;
 	int 			nbr_arg;
 	int 			fd;
 	int 			ac;
-	int 			id;
 	unsigned int 	reg_value;
 	int 			offset;
 	unsigned int 	player_pos;
@@ -147,7 +147,7 @@ int 				change_player(t_skrr *skrr, t_chmp *chmp);
 */
 
 int 				push_chmp(t_chmp **head, t_skrr *skrr);
-void 				init_data(t_chmp *champ, int player_num);
+void 				init_data(t_chmp *champ);
 int 				push_process(t_proc **process, t_skrr *skrr, int player_num);
 
 /*

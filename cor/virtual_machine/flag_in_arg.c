@@ -44,6 +44,7 @@ void 			find_player(char **av, int *i, t_skrr *skrr)
 	skrr->max_player++;
 	skrr->chmp->ac = *i;
 	(*i)++;
+//	skrr->chmp->id++;
 }
 
 void			parsing_arg(t_skrr *skrr, char **av, int ac)
@@ -102,7 +103,7 @@ void			flag_n(t_chmp *chmp, t_skrr *skrr)
 		skrr->flag_n[i] < 0 || skrr->flag_n[i] > skrr->max_player ? chk_open(skrr, 0, 0, 4) : 0;
 		while (tmp->nbr_arg != i)
 			tmp = tmp->next;
-		tmp->process->registry[0] = zero_reg(skrr);
+		skrr->process->registry[0] = zero_reg(skrr);
 		i++;
 		tmp = chmp;
 	}
