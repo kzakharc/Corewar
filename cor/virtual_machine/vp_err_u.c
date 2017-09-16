@@ -27,10 +27,14 @@ void	init(t_skrr *skrr)
 	skrr->nbr_player = 0;
 	skrr->max_player = 0;
 //	skrr->ncurses_mode = 0;
-	g_iter = 0;
-	g_CTD = 0;
-	skrr->err = 0;
+	skrr->max_checks = MAX_CHECKS;
+	skrr->cycle_to_die = CYCLE_TO_DIE;
+	skrr->nbr_live = 0;
+	g_cycles = 0;
+	g_ctd = 0;
+	g_err = 0;
 	skrr->chmp = NULL;
+	skrr->process = NULL;
 }
 
 //TODO can move 'exit (0)' to botton of the func and delete '{}'

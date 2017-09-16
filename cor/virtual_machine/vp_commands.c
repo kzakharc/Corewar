@@ -21,7 +21,7 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 	init_map(skrr);
 	while (tmp)
 	{
-		player_position(tmp->process->registry[0],skrr, tmp);
+		player_position(skrr->process->registry[0],skrr, tmp);
 		line = (unsigned char*)ft_strnew(tmp->header.prog_size);
 		chk_size(skrr, av[tmp->ac], line, tmp);
 		skrr->i = 0;
