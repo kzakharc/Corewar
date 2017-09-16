@@ -16,12 +16,14 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 {
 	unsigned char *line;
 	t_chmp	*tmp;
+	t_proc	*proc_tmp;
 
 	tmp = chmp;
+	proc_tmp = skrr->process;
 	init_map(skrr);
 	while (tmp)
 	{
-		player_position(skrr->process->registry[0],skrr, tmp);
+		player_position(proc_tmp->registry[0],skrr, tmp);
 		line = (unsigned char*)ft_strnew(tmp->header.prog_size);
 		chk_size(skrr, av[tmp->ac], line, tmp);
 		skrr->i = 0;
@@ -29,8 +31,9 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 			skrr->i++;
 		unsafe_copy(skrr, line, tmp);
 		tmp = tmp->next;
+		proc_tmp = proc_tmp->next;
 	}
-	//print_map(skrr);
+	print_map(skrr);
 }
 
 void	unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)

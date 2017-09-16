@@ -208,7 +208,7 @@ void				print_info(t_skrr *skrr, int argc, t_chmp *chmp);
 */
 
 void				parsing_arg(t_skrr *skrr, char **av, int ac);
-void				flag_n(t_chmp *chmp, t_skrr *skrr);
+void				flag_n(t_skrr *skrr);
 unsigned int 		zero_reg(t_skrr *skrr);
 
 
