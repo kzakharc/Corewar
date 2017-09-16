@@ -29,7 +29,7 @@ void 	init_data(t_chmp *champ, int player_num)
 {
 	champ->reg_value = 0;
 	champ->offset = 0;
-	champ->id = player_num;
+	champ->id = player_num * (-1);
 	champ->player_pos = 0;
 }
 
@@ -44,7 +44,7 @@ int 	push_process(t_proc **process, t_skrr *skrr, int player_num)
 	while (++i < REG_NUMBER)
 		new_process->registry[i] = 0;
 	new_process->registry[0] = (unsigned int)skrr->j * (-1);
-	new_process->id = player_num;
+	new_process->id = player_num * (-1);
 	new_process->carry = 0;
 	new_process->pc = 0;
 	new_process->alive = 1;
