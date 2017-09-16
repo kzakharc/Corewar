@@ -30,7 +30,7 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 		unsafe_copy(skrr, line, tmp);
 		tmp = tmp->next;
 	}
-	print_map(skrr);
+	//print_map(skrr);
 }
 
 void	unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
@@ -50,7 +50,7 @@ void	print_map(t_skrr *skrr)
 	ft_printf("\n");
 	while (skrr->i < MEM_SIZE)
 	{
-		if ((skrr->i) % 1365 == 0)
+		if ((skrr->i) % (MEM_SIZE / skrr->max_player) == 0)
 			ft_printf(RED"%.2x "RESET, skrr->map[skrr->i]);
 		else
 			ft_printf("%hh.2x ", skrr->map[skrr->i]);

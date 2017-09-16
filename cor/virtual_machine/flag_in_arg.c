@@ -12,12 +12,12 @@
 
 #include "virtualm.h"
 
-void			maybe_flag(char **av, int *i, t_skrr *skrr)
+void			maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 {
-	skrr->flag_n == NULL ? skrr->flag_n = ft_memalloc(33) : 0;
+	skrr->flag_n == NULL ? skrr->flag_n = ft_intmalloc(4) : 0;
 	if (!ft_strcmp(av[*i], "-n"))
 	{
-		skrr->flag_n[skrr->cnt_n] = ft_atoi(av[*i + 1]);
+		*i + 1 < ac ? skrr->flag_n[skrr->cnt_n] = ft_atoi(av[*i + 1]) : 0;
 		skrr->flag_n[skrr->cnt_n] != 0 ? (*i) += 2 : (*i)++;
 		skrr->cnt_n++;
 		return ;
@@ -53,7 +53,7 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 	i = 1;
 	while (i < ac)
 	{
-		maybe_flag(av, &i, skrr);
+		maybe_flag(av, &i, skrr, ac);
 		if (i != ac)
 			find_player(av, &i, skrr);
 		else
@@ -70,7 +70,7 @@ unsigned int 	zero_reg(t_skrr *skrr)
 	int			c;
 
 	c = -1;
-	while (++c < skrr->cnt_n)
+	while (++c < skrr->max_player)
 	{
 		if (skrr->flag_n[c] == tmp)
 			tmp++;
@@ -82,18 +82,22 @@ unsigned int 	zero_reg(t_skrr *skrr)
 		return (unsigned int)(tmp * -1);
 	}
 	else
-		return (unsigned int)(skrr->flag_n[nbr] * -1);
+	{
+		c = nbr;
+		nbr++;
+		return (unsigned int) (skrr->flag_n[c] * -1);
+	}
 }
 
 void			flag_n(t_chmp *chmp, t_skrr *skrr)
 {
-	int	i;
-	t_chmp *tmp;
+	int		i;
+	t_chmp	*tmp;
 
 	i = 0;
 	tmp = chmp;
 	skrr->cnt_n > skrr->max_player ? chk_open(skrr, 0, 0, 5) : 0;
-	while (i < skrr->cnt_n)
+	while (i < skrr->max_player)
 	{
 		skrr->flag_n[i] < 0 || skrr->flag_n[i] > skrr->max_player ? chk_open(skrr, 0, 0, 4) : 0;
 		while (tmp->nbr_arg != i)
@@ -102,4 +106,7 @@ void			flag_n(t_chmp *chmp, t_skrr *skrr)
 		i++;
 		tmp = chmp;
 	}
+	i = -1;
+	while (++i < skrr->max_player)
+		ft_intc(skrr->flag_n, skrr->flag_n[i], skrr->max_player) > 1 ? chk_open(skrr, 0, 0, 6) : 0;
 }

@@ -44,7 +44,7 @@ void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 		skrr->fd = open(argv[i], O_RDONLY);
 		if (skrr->fd < 0)
 		{
-			ft_printf("Can't read source file"RED" %s "RESET"\n", argv[skrr->j]);
+			ft_printf("Can't read source file"RED" %s "RESET"\n", argv[i]);
 			close(skrr->fd) < 0 ? exit(0) : 0;
 			exit(flag);
 		}
@@ -54,11 +54,11 @@ void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 	else if (flag == 3)
 		ft_printf("Error:"RED" %s "RESET"is a directory\n", *argv);
 	else if (flag == 4)
-		ft_printf("Please enter a player number from 1 to %i\n", skrr->max_player);
+		ft_printf(""RED"Error:"RESET" Please enter a player number from 1 to %i\n", skrr->max_player);
 	else if (flag == 5)
-		ft_printf("You type many flags "GRN"\"n\""RESET"\n");
+		ft_printf(""RED"Error:"RESET" You type many flags "GRN"\"-n\""RESET"\n");
 	else if (flag == 6)
-		ft_printf("You input the same player number\n");
+		ft_printf(""RED"Error:"RESET" You input the same player number\n");
 	(flag != 1) ? exit(flag) : 0;
 }
 
@@ -110,5 +110,5 @@ void	chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp)
 						  "from what its header says\n", argv);
 		exit (0);
 	}
-	(lseek(skrr->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
+	(lseek(chmp->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
 }

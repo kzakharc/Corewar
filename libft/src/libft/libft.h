@@ -85,5 +85,8 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 size_t				ft_cntwords(char const *s, char c);
 size_t				ft_cntdigits(int n);
+void				ft_putint_mass(int *mass, int length);
+int					*ft_intmalloc(size_t size);
+int					ft_intc(int *mass, int c, int length);
 
 #endif
