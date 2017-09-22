@@ -30,7 +30,6 @@ void 	init_data(t_chmp *champ)
 {
 	static int	tmp;
 
-	champ->nbr_arg = tmp;
 	champ->reg_value = 0;
 	champ->offset = 0;
 	champ->id = tmp * (-1);

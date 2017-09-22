@@ -60,7 +60,6 @@ typedef struct		s_proc
 typedef struct		s_chmp
 {
 	int 			id;
-	int 			nbr_arg;
 	int 			fd;
 	int 			ac;
 	unsigned int 	reg_value;

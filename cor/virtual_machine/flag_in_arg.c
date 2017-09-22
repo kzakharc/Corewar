@@ -19,7 +19,6 @@ void			maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 	{
 		*i + 1 < ac ? skrr->flag_n[skrr->cnt_n] = ft_atoi(av[*i + 1]) : 0;
 		skrr->flag_n[skrr->cnt_n] != 0 ? (*i) += 2 : (*i)++;
-		skrr->cnt_n++;
 		return ;
 	}
 	else if (!ft_strcmp(av[*i], "-v"))
@@ -42,6 +41,7 @@ void 			find_player(char **av, int *i, t_skrr *skrr)
 	push_chmp(&skrr->chmp, skrr);
 	just_read(skrr, av[*i], *i, skrr->chmp);
 	skrr->max_player++;
+	skrr->cnt_n++;
 	skrr->chmp->ac = *i;
 	(*i)++;
 }
@@ -79,7 +79,9 @@ unsigned int 	zero_reg(t_skrr *skrr)
 	{
 		skrr->flag_n[nbr] = tmp;
 		nbr++;
-		return (unsigned int)(tmp * -1);
+		c = tmp;
+		tmp++;
+		return (unsigned int)(c * -1);
 	}
 	else
 	{
