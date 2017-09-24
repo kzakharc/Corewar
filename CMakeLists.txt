@@ -32,7 +32,7 @@ set(SOURCE_FILES cor/virtual_machine/vp_virtual_main.c
         cor/instructions/vp_zjmp.c
 
         op.c
-        cor/virtual_machine/virtualm.h op.h corewar.h)
+        cor/virtual_machine/virtualm.h op.h corewar.h cor/visualisation/ds_visualize.c)
 
 file(GLOB LIBFT "libft/src/libft/*.c")
 
