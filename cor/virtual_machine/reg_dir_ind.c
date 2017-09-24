@@ -19,10 +19,10 @@
 int		reg_param(t_skrr *skrr, unsigned char *map, int flag)
 {
 	(REG_SIZE != 1) ? sizes_err("REG_SIZE", 1) : 0;
-	if (((*map > 16) || (*map == 0) || (*map < 0)) && (skrr->err = 1))
+	if (((*map > 16) || (*map <= 0)) && (g_err = 1))
 		return (0);
 	if (flag == 1)
-		return (skrr->chmp->process->registry[*map - 1]);
+		return (skrr->process->registry[*map - 1]);
 	else if (flag == 2)
 		return (*map - 1);
 	return (0);
@@ -42,13 +42,13 @@ int		dir_param(t_skrr *skrr, unsigned char *map, short dir_size)
 	{
 		(DIR_SIZE != 2) ? sizes_err("DIR_SIZE", 2) : 0;
 		address = (short)two_four_bytes(map, 2);
-		skrr->chmp->tmp_PC += 1;
+		skrr->process->tmp_pc += 1;
 	}
 	else if (dir_size == 0)
 	{
 		(DIR_SIZE + 2 != 4) ? sizes_err("DIR_SIZE", 2) : 0;
 		address = two_four_bytes(map, 4);
-		skrr->chmp->tmp_PC += 3;
+		skrr->process->tmp_pc += 3;
 	}
 	return (address);
 }
@@ -77,6 +77,6 @@ int		ind_param(t_skrr *skrr, unsigned char *map, int l, int bytes)
 		address++;
 	}
 	address = (bytes == 4) ? (ind[0] | ind[1] | ind[2] | ind[3]) : (ind[0] | ind[1]);
-	skrr->chmp->tmp_PC += 1;
+	skrr->process->tmp_pc += 1;
 	return (address);
 }

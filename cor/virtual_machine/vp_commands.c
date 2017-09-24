@@ -12,20 +12,28 @@
 
 #include "virtualm.h"
 
-void		prog_commands(t_skrr *skrr, int argc, char *argv, t_chmp *chmp)
+void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 {
 	unsigned char *line;
+	t_chmp	*tmp;
+	t_proc	*proc_tmp;
 
-	player_position(skrr, argc - 1, chmp);
-	(skrr->flag == -1) ? init_map(skrr) : 0;
-	line = (unsigned char*)ft_strnew(chmp[skrr->n].header.prog_size);
-	chk_size(skrr, argv, line, chmp);
-	skrr->i = 0;
-	while (read(skrr->fd, &line[skrr->i], 1))
-		skrr->i++;
-	unsafe_copy(skrr, line, chmp);
-//	ft_printf("%x\n", chmp->registry[0]);
-	entry_point(skrr, chmp);
+	tmp = chmp;
+	proc_tmp = skrr->process;
+	init_map(skrr);
+	while (tmp)
+	{
+		player_position(proc_tmp->registry[0],skrr, tmp);
+		line = (unsigned char*)ft_strnew(tmp->header.prog_size);
+		chk_size(skrr, av[tmp->ac], line, tmp);
+		skrr->i = 0;
+		while (read(tmp->fd, &line[skrr->i], 1))
+			skrr->i++;
+		unsafe_copy(skrr, line, tmp);
+		tmp = tmp->next;
+		proc_tmp = proc_tmp->next;
+	}
+	print_map(skrr);
 }
 
 void	unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
@@ -45,7 +53,7 @@ void	print_map(t_skrr *skrr)
 	ft_printf("\n");
 	while (skrr->i < MEM_SIZE)
 	{
-		if ((skrr->i) % 1365 == 0)
+		if ((skrr->i) % (MEM_SIZE / skrr->max_player) == 0)
 			ft_printf(RED"%.2x "RESET, skrr->map[skrr->i]);
 		else
 			ft_printf("%hh.2x ", skrr->map[skrr->i]);
@@ -56,20 +64,15 @@ void	print_map(t_skrr *skrr)
 
 static void	init_map(t_skrr *skrr)
 {
-	skrr->flag = 1;
 	skrr->i = 0;
 	while (skrr->i < MEM_SIZE)
 		skrr->map[skrr->i++] = 0;
 }
 
-static void	player_position(t_skrr *skrr, int argc, t_chmp *chmp)
+static void	player_position(int nbr, t_skrr *skrr, t_chmp *chmp)
 {
 	unsigned int tmp;
 
-	tmp = 0;
-	(skrr->j == 1) ? chmp->player_pos = 0 : 0;
-	(skrr->j != 1) ? tmp = (unsigned int)(MEM_SIZE / argc) : 0;
-	(skrr->j == 2) ? chmp->player_pos += tmp : 0;
-	(skrr->j == 3) ? chmp->player_pos = tmp * 2 : 0;
-	(skrr->j == 4) ? chmp->player_pos = tmp * 3 : 0;
+	tmp = (unsigned int)(MEM_SIZE / skrr->max_player);
+	chmp->player_pos = nbr == -1 ? 0 : tmp * (-1 * nbr - 1);
 }

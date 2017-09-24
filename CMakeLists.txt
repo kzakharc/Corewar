@@ -34,6 +34,10 @@ set(SOURCE_FILES cor/virtual_machine/vp_virtual_main.c
         op.c
         cor/virtual_machine/virtualm.h op.h corewar.h)
 
-add_executable(corewar ${SOURCE_FILES})
+file(GLOB LIBFT "libft/src/libft/*.c")
+
+file(GLOB VM "cor/virtual_machine/*.c" "cor/instructions/*.c")
+
+add_executable(corewar ${SOURCE_FILES} ${LIBFT} ${VM})
 
 target_link_libraries(corewar ${CMAKE_SOURCE_DIR}/libft/libft.a)

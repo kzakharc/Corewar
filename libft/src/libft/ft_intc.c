@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_intc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yzakharc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/28 18:33:11 by vpoltave          #+#    #+#             */
-/*   Updated: 2016/12/03 13:06:14 by vpoltave         ###   ########.fr       */
+/*   Created: 2017/09/16 13:38:25 by yzakharc          #+#    #+#             */
+/*   Updated: 2017/09/16 13:38:26 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	*ft_memalloc(size_t size)
+int 	ft_intc(int *mass, int c, int length)
 {
-	unsigned char	*tmp;
-	size_t			n;
+	int	tmp;
+	int	cnt;
 
-	n = size;
-	tmp = malloc(size * sizeof(tmp));
-	if (tmp == NULL)
-		return (NULL);
-	while (size-- != 0)
-		*tmp++ = 0;
-	return (tmp - n);
+	tmp = -1;
+	cnt = 0;
+	while (++tmp < length)
+		if (mass[tmp] == c)
+			cnt++;
+	return (cnt);
 }

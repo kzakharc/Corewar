@@ -12,7 +12,7 @@
 
 #include "../virtual_machine/virtualm.h"
 
-int 	live_instr(t_skrr *skrr)
+int 	live_instr(t_skrr *skrr, t_chmp *chmp, int op)
 {
 
 	return (1);

@@ -12,34 +12,43 @@
 
 #include "virtualm.h"
 
-void	init(t_skrr *skrr, int argc)
+void	init(t_skrr *skrr)
 {
+//	skrr->id = 0;
 	skrr->fd = 0;
 	skrr->i = 0;
 	skrr->j = 0;
 	skrr->n = 0;
 	skrr->op = 0;
 	skrr->shift = 0;
-	skrr->flag = -1;
-//	skrr->ncurses_mode = 0;
-	g_iter = 0;
-	g_CTD = 0;
-	skrr->err = 0;
+	skrr->flag_n = NULL;
+	skrr->cnt_n = 0;
+	skrr->flag_v = 0;
+	skrr->flag_dump = 0;
+	skrr->nbr_player = 0;
+	skrr->max_player = 0;
+	skrr->max_checks = MAX_CHECKS;
+	skrr->cycle_to_die = CYCLE_TO_DIE;
+	skrr->nbr_live = 0;
+	g_cycles = 0;
+	g_ctd = 0;
+	g_err = 0;
 	skrr->chmp = NULL;
+	skrr->process = NULL;
 }
 
 //TODO can move 'exit (0)' to botton of the func and delete '{}'
-void	chk_open(t_skrr *skrr, char **argv, int argc, int flag)
+void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 {
 	if (flag == 0)
 		ft_printf("Too many champions! (Max %d)\n", MAX_PLAYERS);
 	else if (flag == 1)
 	{
 //		chck_for_usage(skrr, *argv);
-		skrr->fd = open(argv[skrr->j], O_RDONLY);
+		skrr->fd = open(argv[i], O_RDONLY);
 		if (skrr->fd < 0)
 		{
-			ft_printf("Can't read source file"RED" %s "RESET"\n", argv[skrr->j]);
+			ft_printf("Can't read source file"RED" %s "RESET"\n", argv[i]);
 			close(skrr->fd) < 0 ? exit(0) : 0;
 			exit(flag);
 		}
@@ -48,6 +57,12 @@ void	chk_open(t_skrr *skrr, char **argv, int argc, int flag)
 		ft_printf("Error: File"RED" %s "RESET"has an invalid header\n", *argv);
 	else if (flag == 3)
 		ft_printf("Error:"RED" %s "RESET"is a directory\n", *argv);
+	else if (flag == 4)
+		ft_printf(""RED"Error:"RESET" Please enter a player number from 1 to %i\n", skrr->max_player);
+	else if (flag == 5)
+		ft_printf(""RED"Error:"RESET" You type many flags "GRN"\"-n\""RESET"\n");
+	else if (flag == 6)
+		ft_printf(""RED"Error:"RESET" You input the same player number\n");
 	(flag != 1) ? exit(flag) : 0;
 }
 
@@ -91,7 +106,7 @@ void	usage_e(void)
 void	chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp)
 {
 	skrr->i = 0;
-	while (read(skrr->fd, &line, 1))
+	while (read(chmp->fd, &line, 1))
 		skrr->i++;
 	if (chmp->header.prog_size != skrr->i)
 	{
@@ -99,5 +114,5 @@ void	chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp)
 						  "from what its header says\n", argv);
 		exit (0);
 	}
-	(lseek(skrr->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
+	(lseek(chmp->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
 }

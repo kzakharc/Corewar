@@ -45,7 +45,7 @@ char				*ft_strnstr(const char *big, const char *little, \
 								size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-long int			ft_atoi(const char *str);
+int					ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -85,5 +85,8 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 size_t				ft_cntwords(char const *s, char c);
 size_t				ft_cntdigits(int n);
+void				ft_putint_mass(int *mass, int length);
+int					*ft_intmalloc(size_t size);
+int					ft_intc(int *mass, int c, int length);
 
 #endif

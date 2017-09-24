@@ -39,28 +39,33 @@ typedef struct 		s_op
 }					t_op;
 
 /*
-**	linked lists for players.
+**	linked lists for process.
 */
 
 typedef struct		s_proc
 {
-	int 			PC;
+	int 			id;
+	int 			pc;
+	int 			tmp_pc;
 	unsigned int 	registry[REG_NUMBER];
 	int 			carry;
+	int 			alive;
 	struct s_proc	*next;
 }					t_proc;
 
+/*
+**	linked lists for champs.
+*/
+
 typedef struct		s_chmp
 {
+	int 			id;
+	int 			fd;
+	int 			ac;
 	unsigned int 	reg_value;
 	int 			offset;
 	unsigned int 	player_pos;
-	int 			max_checks;
-	int		 		cycle_to_die;
-	int 			nbr_live;
-	int 			tmp_PC;
 	header_t 		header;
-	t_proc			*process;
 	struct s_chmp	*next;
 }					t_chmp;
 
@@ -77,10 +82,18 @@ typedef struct		s_skrr
 	int 			op;
 	int 			shift;
 	int 			flag;
-	int 			err;
-//	int 			ncurses_mode;
+	int 			max_checks;
+	int 			nbr_live;
+	int		 		cycle_to_die;
+	int 			*flag_n;
+	int 			cnt_n;
+	int 			flag_v;
+	int 			flag_dump;
+	int 			nbr_player;
+	int 			max_player;
 	unsigned char 	map[MEM_SIZE];
 	t_chmp			*chmp;
+	t_proc			*process;
 }					t_skrr;
 
 
@@ -89,8 +102,9 @@ typedef struct		s_skrr
 */
 
 t_op				g_tab[17];
-unsigned long 		g_iter;
-int 				g_CTD;
+unsigned long 		g_cycles;
+int 				g_ctd;
+int 				g_err;
 
 /*
 **	usage and open checks functions.  go -> [vp_err_u.c]
@@ -105,7 +119,7 @@ void				chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp);
 **	init function. go -> [vp_err_u.c] for init all structure variables.
 */
 
-void				init(t_skrr *skrr, int argc);
+void				init(t_skrr *skrr);
 
 /*
 **	main functions, for get info about "name", "weighing", "comments" .. go -> [vp_basic.c].
@@ -120,11 +134,12 @@ void				prog_size(t_skrr *skrr, char *argv, int argc, t_chmp *chmp);
 **	commands functions. Func for global while and stuff.
 */
 
-void				prog_commands(t_skrr *skrr, int argc, char *argv, t_chmp *chmp);
-static void			player_position(t_skrr *skrr, int argc, t_chmp *chmp);
+void				prog_commands(t_skrr *skrr, char **av, t_chmp *chmp);
+static void			player_position(int nbr, t_skrr *skrr, t_chmp *chmp);
 void				unsafe_copy(t_skrr *skrr, unsigned char *src, t_chmp *chmp);
 int 				entry_point(t_skrr *skrr, t_chmp *chmp);
 int					which_instr(t_skrr *skrr, t_chmp *chmp);
+int 				change_player(t_skrr *skrr, t_chmp *chmp);
 
 /*
 **	Adding new champ and init his data. go -> [new_chmp.c].
@@ -132,13 +147,13 @@ int					which_instr(t_skrr *skrr, t_chmp *chmp);
 
 int 				push_chmp(t_chmp **head, t_skrr *skrr);
 void 				init_data(t_chmp *champ);
-int 				push_proc(t_proc **process, t_skrr *skrr);
+int 				push_process(t_proc **process, t_skrr *skrr, int player_num);
 
 /*
 **	Instructions. live, st .. etc go -> [./instructions/[name of instructions].c] etc ..
 */
 
-int 				live_instr(t_skrr *skrr);
+int 				live_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				ld_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				st_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				add_instr(t_skrr *skrr);
@@ -146,7 +161,7 @@ int 				sub_instr(t_skrr *skrr);
 int 				and_instr(t_skrr *skrr);
 int 				or_instr(t_skrr *skrr);
 int 				xor_instr(t_skrr *skrr);
-int 				zjmp_instr(t_skrr *skrr);
+int 				zjmp_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				ldi_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				sti_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				fork_instr(t_skrr *skrr, t_chmp *chmp, int op);
@@ -168,6 +183,7 @@ int 				simple_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i);
 void				load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag);
 void				instr_err(int op);
 void				sizes_err(char *name, int flag);
+int					same_start(unsigned char *q, t_skrr *skrr, int op, int num_arg);
 
 int					reg_param(t_skrr *skrr, unsigned char *map, int flag);
 int					dir_param(t_skrr *skrr, unsigned char *map, short dir_size);
@@ -186,6 +202,13 @@ void				print_map(t_skrr *skrr);
 
 void				print_info(t_skrr *skrr, int argc, t_chmp *chmp);
 
-void	modula(void);
+/*
+** function for flags
+*/
+
+void				parsing_arg(t_skrr *skrr, char **av, int ac);
+void				flag_n(t_skrr *skrr);
+unsigned int 		zero_reg(t_skrr *skrr);
+
 
 #endif
