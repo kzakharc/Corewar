@@ -158,7 +158,7 @@ int 				push_process(t_proc **process, t_skrr *skrr, int player_num);
 int 				live_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				ld_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				st_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				add_instr(t_skrr *skrr);
+int 				add_instr(t_proc *process);
 int 				sub_instr(t_skrr *skrr);
 int 				and_instr(t_skrr *skrr);
 int 				or_instr(t_skrr *skrr);

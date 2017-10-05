@@ -12,7 +12,9 @@
 
 #include "../virtual_machine/virtualm.h"
 
-int 	add_instr(t_skrr *skrr)
+int 	add_instr(t_proc *process)
 {
-	return (1);
+	/*process->
+
+	return (1);*/
 }
