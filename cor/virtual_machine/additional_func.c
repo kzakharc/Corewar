@@ -35,6 +35,7 @@ unsigned int	two_four_bytes(unsigned char *map, int size)
 
 unsigned char	arg_types(t_skrr *skrr, t_chmp *chmp, int ctk)
 {
+
 						//	chmp->offset = current PC;
 	if (hex_to_bin(skrr->map[ctk], skrr->i) == REG_CODE && (chmp->offset += REG_SIZE))
 		return (T_REG);
