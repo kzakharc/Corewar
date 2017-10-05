@@ -50,6 +50,7 @@ typedef struct		s_proc
 	unsigned int 	registry[REG_NUMBER];
 	int 			carry;
 	int 			alive;
+	long			current_cycles;
 	struct s_proc	*next;
 }					t_proc;
 
@@ -81,7 +82,6 @@ typedef struct		s_skrr
 	int 			n;
 	int 			op;
 	int 			shift;
-	int 			flag;
 	int 			max_checks;
 	int 			nbr_live;
 	int		 		cycle_to_die;
@@ -91,6 +91,7 @@ typedef struct		s_skrr
 	int 			flag_dump;
 	int 			nbr_player;
 	int 			max_player;
+	int 			current_cycle;
 	unsigned char 	map[MEM_SIZE];
 	t_chmp			*chmp;
 	t_proc			*process;
@@ -138,8 +139,9 @@ void				prog_commands(t_skrr *skrr, char **av, t_chmp *chmp);
 static void			player_position(int nbr, t_skrr *skrr, t_chmp *chmp);
 void				unsafe_copy(t_skrr *skrr, unsigned char *src, t_chmp *chmp);
 int 				entry_point(t_skrr *skrr, t_chmp *chmp);
-int					which_instr(t_skrr *skrr, t_chmp *chmp);
-int 				change_player(t_skrr *skrr, t_chmp *chmp);
+int					which_instr(t_skrr *skrr, t_chmp *chmp, t_proc *process);
+int 				change_process(t_skrr *skrr, t_chmp *chmp, t_proc *process);
+int 				process_first_positions(t_chmp *chmp, t_proc *process);
 
 /*
 **	Adding new champ and init his data. go -> [new_chmp.c].

@@ -33,7 +33,6 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 		tmp = tmp->next;
 		proc_tmp = proc_tmp->next;
 	}
-	print_map(skrr);
 }
 
 void	unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)

@@ -51,6 +51,7 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	new_process->carry = 0;
 	new_process->pc = 0;
 	new_process->alive = 1;
+	new_process->current_cycles = 0;
 	new_process->next = *process;
 	*process = new_process;
 	return (1);
