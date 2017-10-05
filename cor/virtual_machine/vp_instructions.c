@@ -81,8 +81,8 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc *process)
 			((skrr->op) == 0) ? live_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 1) ? ld_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 2) ? st_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 3) ? add_instr(skrr) : 0;
-			((skrr->op) == 4) ? sub_instr(skrr) : 0;
+			((skrr->op) == 3) ? add_instr(skrr, chmp, skrr->op) : 0;
+			((skrr->op) == 4) ? sub_instr(skrr, chmp, skrr->op) : 0;
 			((skrr->op) == 5) ? and_instr(skrr) : 0;
 			((skrr->op) == 6) ? or_instr(skrr) : 0;
 			((skrr->op) == 7) ? xor_instr(skrr) : 0;

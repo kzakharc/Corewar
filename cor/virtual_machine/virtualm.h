@@ -158,8 +158,8 @@ int 				push_process(t_proc **process, t_skrr *skrr, int player_num);
 int 				live_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				ld_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				st_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				add_instr(t_skrr *skrr);
-int 				sub_instr(t_skrr *skrr);
+int 				add_instr(t_skrr *skrr, t_chmp *chmp, int op);
+int 				sub_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				and_instr(t_skrr *skrr);
 int 				or_instr(t_skrr *skrr);
 int 				xor_instr(t_skrr *skrr);
@@ -186,6 +186,7 @@ void				load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag);
 void				instr_err(int op);
 void				sizes_err(char *name, int flag);
 int					same_start(unsigned char *q, t_skrr *skrr, int op, int num_arg);
+int					determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key);
 
 int					reg_param(t_skrr *skrr, unsigned char *map, int flag);
 int					dir_param(t_skrr *skrr, unsigned char *map, short dir_size);
