@@ -155,22 +155,22 @@ int 				push_process(t_proc **process, t_skrr *skrr, int player_num);
 **	Instructions. live, st .. etc go -> [./instructions/[name of instructions].c] etc ..
 */
 
-int 				live_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				ld_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				st_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				add_instr(t_proc *process);
+int 				live_instr(t_skrr *skrr, t_proc *process);
+int 				ld_instr(t_skrr *skrr, t_proc *process);
+int 				st_instr(t_skrr *skrr, t_proc *process);
+int 				add_instr(t_skrr *skrr);
 int 				sub_instr(t_skrr *skrr);
 int 				and_instr(t_skrr *skrr);
 int 				or_instr(t_skrr *skrr);
 int 				xor_instr(t_skrr *skrr);
-int 				zjmp_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				ldi_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				sti_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				fork_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				lld_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				lldi_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				lfork_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				aff_instr(t_skrr *skrr, t_chmp *chmp);
+int 				zjmp_instr(t_skrr *skrr, t_proc *process);
+int 				ldi_instr(t_skrr *skrr, t_proc *process);
+int 				sti_instr(t_skrr *skrr, t_proc *process);
+int 				fork_instr(t_skrr *skrr, t_proc *process);
+int 				lld_instr(t_skrr *skrr, t_proc *process);
+int 				lldi_instr(t_skrr *skrr, t_proc *process);
+int 				lfork_instr(t_skrr *skrr, t_proc *process);
+int 				aff_instr(t_skrr *skrr, t_proc *process);
 
 /*
 **	additional func for instr.
@@ -178,18 +178,18 @@ int 				aff_instr(t_skrr *skrr, t_chmp *chmp);
 
 unsigned char		hex_to_bin(unsigned char c, int i);
 unsigned int		two_four_bytes(unsigned char *map, int dir_size);
-int					from_reg(unsigned char *q, t_chmp *chmp, t_skrr *skrr, short i);
+int					from_reg(unsigned char *q, t_proc *process, t_skrr *skrr, short i);
 unsigned char		arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
-int 				get_address(unsigned char *q, t_skrr *skrr, int l, short i);
-int 				simple_address(unsigned char *q, t_skrr *skrr, t_chmp *chmp, short i);
-void				load_into(int address, t_chmp *chmp, t_skrr *skrr, int flag);
+int 				get_address(unsigned char *q, t_skrr *skrr, t_proc *process, int l, short i);
+int 				simple_address(unsigned char *q, t_skrr *skrr, t_proc *process, short i);
+void				load_into(int address, t_proc *process, t_skrr *skrr, int flag);
 void				instr_err(int op);
 void				sizes_err(char *name, int flag);
-int					same_start(unsigned char *q, t_skrr *skrr, int op, int num_arg);
+int					same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg);
 
-int					reg_param(t_skrr *skrr, unsigned char *map, int flag);
-int					dir_param(t_skrr *skrr, unsigned char *map, short dir_size);
-int					ind_param(t_skrr *skrr,	unsigned char *map, int l, int bytes);
+int					reg_param(t_skrr *skrr, t_proc *process, int flag);
+int					dir_param(t_skrr *skrr, t_proc *process, short dir_size);
+int					ind_param(t_skrr *skrr,	t_proc *process, int l, int bytes);
 
 /*
 **	init map and print map
