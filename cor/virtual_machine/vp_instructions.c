@@ -52,7 +52,7 @@ int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc *process)
 	while (proc_tmp)
 	{
 		proc_tmp->current_cycles = (long)g_cycles;
-		(proc_tmp->alive) ? which_instr(skrr, chmp, proc_tmp) : 0;
+		(proc_tmp->alive) ? which_instr(skrr, chmp_tmp, proc_tmp) : 0;
 		proc_tmp = proc_tmp->next;
 	}
 	return (1);
@@ -78,22 +78,22 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc *process)
 		if (skrr->map[process->pc] == g_tab[skrr->op].opcode)
 		{
 			chmp->offset = 0;
-			((skrr->op) == 0) ? live_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 1) ? ld_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 2) ? st_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 3) ? add_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 4) ? sub_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 5) ? and_instr(skrr, chmp, skrr->op) : 0;
+			((skrr->op) == 0) ? live_instr(skrr, process) : 0;
+			((skrr->op) == 1) ? ld_instr(skrr, process) : 0;
+			((skrr->op) == 2) ? st_instr(skrr, process) : 0;
+			((skrr->op) == 3) ? add_instr(skrr) : 0;
+			((skrr->op) == 4) ? sub_instr(skrr) : 0;
+			((skrr->op) == 5) ? and_instr(skrr) : 0;
 			((skrr->op) == 6) ? or_instr(skrr) : 0;
 			((skrr->op) == 7) ? xor_instr(skrr) : 0;
-			((skrr->op) == 8) ? zjmp_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 9) ? ldi_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 10) ? sti_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 11) ? fork_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 12) ? lld_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 13) ? lldi_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 14) ? lfork_instr(skrr, chmp, skrr->op) : 0;
-			((skrr->op) == 15) ? aff_instr(skrr, chmp) : 0;
+			((skrr->op) == 8) ? zjmp_instr(skrr, process) : 0;
+			((skrr->op) == 9) ? ldi_instr(skrr, process) : 0;
+			((skrr->op) == 10) ? sti_instr(skrr, process) : 0;
+			((skrr->op) == 11) ? fork_instr(skrr, process) : 0;
+			((skrr->op) == 12) ? lld_instr(skrr, process) : 0;
+			((skrr->op) == 13) ? lldi_instr(skrr, process) : 0;
+			((skrr->op) == 14) ? lfork_instr(skrr, process) : 0;
+			((skrr->op) == 15) ? aff_instr(skrr, process) : 0;
 			return (1);
 		}
 	return (0);
