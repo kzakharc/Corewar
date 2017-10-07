@@ -160,7 +160,7 @@ int 				ld_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				st_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				add_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				sub_instr(t_skrr *skrr, t_chmp *chmp, int op);
-int 				and_instr(t_skrr *skrr);
+int 				and_instr(t_skrr *skrr, t_chmp *chmp, int op);
 int 				or_instr(t_skrr *skrr);
 int 				xor_instr(t_skrr *skrr);
 int 				zjmp_instr(t_skrr *skrr, t_chmp *chmp, int op);
