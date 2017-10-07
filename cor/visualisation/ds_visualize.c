@@ -4,7 +4,7 @@
 
 #include "../../corewar.h"
 
-void printmargins(WINDOW *code, WINDOW *menu, int width, int height)
+void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 {
 	int i;
 
@@ -31,7 +31,36 @@ void printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 		mvwaddch(menu, 0, i, ' ' | A_REVERSE);
 		mvwaddch(menu, height - 1, i++, ' ' | A_REVERSE);
 	}
-	attroff(1);
+	wattroff(code, COLOR_PAIR(1));
+	wattroff(menu, COLOR_PAIR(1));
+}
+
+void	menutext(WINDOW *menu)
+{
+	init_pair(2, COLOR_WHITE, COLOR_BLACK);
+	init_pair(3, COLOR_BLACK, COLOR_BLACK);
+	wattron(menu, COLOR_PAIR(2));
+	wattron(menu, A_BOLD);
+	mvwaddstr(menu, 2, 2, "** RUNNING **");
+	mvwaddstr(menu, 4, 2, "Cycles/second limit :");
+	mvwaddstr(menu, 7, 2, "Cycle :");
+	mvwaddstr(menu, 9, 2, "Processes :");
+	mvwaddstr(menu, 9, 2, "Player -n :");
+	mvwaddstr(menu, 10, 4, "Last live :");
+	mvwaddstr(menu, 11, 4, "Lives in current period :");
+	mvwaddstr(menu, 13, 2, "Live breakdown for current period :");
+	wattron(menu, COLOR_PAIR(3));
+	mvwaddstr(menu, 14, 2, "[--------------------------------------------------]");
+	wattron(menu, COLOR_PAIR(2));
+	mvwaddstr(menu, 16, 2, "Live breakdown for last period :");
+	wattron(menu, COLOR_PAIR(3));
+	mvwaddstr(menu, 17, 2, "[--------------------------------------------------]");
+	wattron(menu, COLOR_PAIR(2));
+	mvwaddstr(menu, 19, 2, "CYCLE_TO_DIE :");
+	mvwaddstr(menu, 21, 2, "CYCLE_DELTA :");
+	mvwaddstr(menu, 23, 2, "NBR_LIVE :");
+	mvwaddstr(menu, 25, 2, "MAX_CHECKS :");
+
 }
 
 int main()
@@ -47,6 +76,7 @@ int main()
 //	box(code, 0, 0);
 //	box(menu, 0, 0);
 	printmargins(code, menu, width, height);
+	menutext(menu);
 	wrefresh(code);
 	wrefresh(menu);
 	wgetch(code);
