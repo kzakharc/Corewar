@@ -60,7 +60,30 @@ void	menutext(WINDOW *menu)
 	mvwaddstr(menu, 21, 2, "CYCLE_DELTA :");
 	mvwaddstr(menu, 23, 2, "NBR_LIVE :");
 	mvwaddstr(menu, 25, 2, "MAX_CHECKS :");
+}
 
+void	printmem(WINDOW *code, t_skrr *skrr)
+{
+	int x;
+	int y;
+	int i;
+
+	x = 3;
+	y = 2;
+	skrr->i = 0;
+	i = 0;
+	while (skrr->i < MEM_SIZE)
+	{
+		while (i < 64)
+		{
+			mvwprintw(code, y, x, "%hh.2x ", skrr->map[skrr->i++]);
+			x = x + 4;
+			i++;
+		}
+		y++;
+		x = 3;
+		i = 0;
+	}
 }
 
 void	visualize(t_skrr *skrr, t_chmp *chmp)
@@ -73,10 +96,9 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	WINDOW *menu;
 	code = newwin(height, width - 60, 0, 0);
 	menu = newwin(height, 60, 0, width - 60);
-//	box(code, 0, 0);
-//	box(menu, 0, 0);
 	printmargins(code, menu, width, height);
 	menutext(menu);
+	printmem(code, skrr);
 	wrefresh(code);
 	wrefresh(menu);
 	wgetch(code);
