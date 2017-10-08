@@ -16,6 +16,8 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
 	while ((skrr->cycle_to_die > 0) || !(skrr->max_checks))
 	{
+		if (skrr->flag_v == 1)
+			visualize(skrr, chmp);
 		change_player(skrr, chmp);
 		if ( (g_ctd == skrr->cycle_to_die) && (skrr->nbr_live >= NBR_LIVE))
 		{

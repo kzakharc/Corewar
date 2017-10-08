@@ -2,7 +2,7 @@
 // Created by Dmytrii Spyrydonov on 9/24/17.
 //
 
-#include "../../corewar.h"
+#include "../virtual_machine/virtualm.h"
 
 void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 {
@@ -63,7 +63,7 @@ void	menutext(WINDOW *menu)
 
 }
 
-int main()
+void	visualize(t_skrr *skrr, t_chmp *chmp)
 {
 	initscr();
 	int	startx, starty, width, height;
@@ -81,5 +81,4 @@ int main()
 	wrefresh(menu);
 	wgetch(code);
 	endwin();
-	return (0);
 }
