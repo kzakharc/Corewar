@@ -16,17 +16,17 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 	while (i < height)
 	{
 		mvwaddch(code, i, 0, ' ' | A_REVERSE);
-		mvwaddch(code, i, width - 61, ' ' | A_REVERSE);
-		mvwaddch(menu, i++, 59, ' ' | A_REVERSE);
+		mvwaddch(code, i, width - 71, ' ' | A_REVERSE);
+		mvwaddch(menu, i++, 69, ' ' | A_REVERSE);
 	}
 	i = 0;
-	while (i < width - 61)
+	while (i < width - 71)
 	{
 		mvwaddch(code, 0, i, ' ' | A_REVERSE);
 		mvwaddch(code, height - 1, i++, ' ' | A_REVERSE);
 	}
 	i = 0;
-	while (i < 61)
+	while (i < 71)
 	{
 		mvwaddch(menu, 0, i, ' ' | A_REVERSE);
 		mvwaddch(menu, height - 1, i++, ' ' | A_REVERSE);
@@ -35,7 +35,7 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 	wattroff(menu, COLOR_PAIR(1));
 }
 
-void	menutext(WINDOW *menu)
+void	menufields(WINDOW *menu)
 {
 	init_pair(2, COLOR_WHITE, COLOR_BLACK);
 	init_pair(3, COLOR_BLACK, COLOR_BLACK);
@@ -62,14 +62,19 @@ void	menutext(WINDOW *menu)
 	mvwaddstr(menu, 25, 2, "MAX_CHECKS :");
 }
 
+void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
+{
+	mvwprintw(menu, 7, 10, "%d", g_cycles);
+}
+
 void	printmem(WINDOW *code, t_skrr *skrr)
 {
-	int x;
 	int y;
+	int x;
 	int i;
 
-	x = 3;
-	y = 2;
+	x = 2;
+	y = 3;
 	skrr->i = 0;
 	i = 0;
 	while (skrr->i < MEM_SIZE)
@@ -81,26 +86,33 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 			i++;
 		}
 		y++;
-		x = 3;
+		x = 2;
 		i = 0;
 	}
 }
 
 void	visualize(t_skrr *skrr, t_chmp *chmp)
 {
+
 	initscr();
-	int	startx, starty, width, height;
+	int	width, height;
 	getmaxyx(stdscr, height, width);
 	start_color();
 	WINDOW *code;
 	WINDOW *menu;
-	code = newwin(height, width - 60, 0, 0);
-	menu = newwin(height, 60, 0, width - 60);
-	printmargins(code, menu, width, height);
-	menutext(menu);
+	if (g_cycles == 0)
+	{
+		code = newwin(height, width - 70, 0, 0);
+		menu = newwin(height, 70, 0, width - 70);
+		printmargins(code, menu, width, height);
+		menufields(menu);
+		wrefresh(menu);
+		wrefresh(code);
+	}
+	printdata(menu, skrr, chmp);
 	printmem(code, skrr);
 	wrefresh(code);
 	wrefresh(menu);
-	wgetch(code);
-	endwin();
+	usleep(100);
+	//TODO add endwin() function
 }
