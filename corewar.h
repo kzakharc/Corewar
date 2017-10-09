@@ -19,6 +19,7 @@
 # include "libft/src/get_next_line/get_next_line.h"
 # include "libft/src/libft/libft.h"
 # include "op.h"
+# include <ncurses.h>
 
 
 #endif

@@ -22,6 +22,7 @@
 # define COMMANDS_POS	(COMMENT_POS + COMMENT_LENGTH + 4)
 
 #include "../../corewar.h"
+#include <curses.h>
 
 /*
 **	struct for op_tab, which have inside all information about instructions.
@@ -202,7 +203,7 @@ int					ind_param(t_skrr *skrr,	t_proc *process, int l, int bytes);
 
 static void			init_map(t_skrr *skrr);
 //void				print_map(t_skrr *skrr);
-
+void				visualize(t_skrr *skrr, t_chmp *chmp);
 /*
 **	printing all players and their info.
 */

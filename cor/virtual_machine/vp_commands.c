@@ -33,6 +33,7 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 		tmp = tmp->next;
 		proc_tmp = proc_tmp->next;
 	}
+//	print_map(skrr);
 }
 
 void	unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
@@ -46,20 +47,20 @@ void	unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
 		skrr->map[pos++] = *line++;
 }
 
-void	print_map(t_skrr *skrr)
-{
-	skrr->i = 0;
-	ft_printf("\n");
-	while (skrr->i < MEM_SIZE)
-	{
-		if ((skrr->i) % (MEM_SIZE / skrr->max_player) == 0)
-			ft_printf(RED"%.2x "RESET, skrr->map[skrr->i]);
-		else
-			ft_printf("%hh.2x ", skrr->map[skrr->i]);
-		((skrr->i + 1) % 64 == 0) ? ft_printf("\n") : 0;
-		skrr->i++;
-	}
-}
+//void	print_map(t_skrr *skrr)
+//{
+//	skrr->i = 0;
+//	ft_printf("\n");
+//	while (skrr->i < MEM_SIZE)
+//	{
+//		if ((skrr->i) % (MEM_SIZE / skrr->max_player) == 0)
+//			ft_printf(RED"%.2x "RESET, skrr->map[skrr->i]);
+//		else
+//			ft_printf("%hh.2x ", skrr->map[skrr->i]);
+//		((skrr->i + 1) % 64 == 0) ? ft_printf("\n") : 0;
+//		skrr->i++;
+//	}
+//}
 
 static void	init_map(t_skrr *skrr)
 {
