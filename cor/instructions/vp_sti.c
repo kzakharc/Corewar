@@ -23,13 +23,18 @@ int 			sti_instr(t_skrr *skrr, t_proc *process)
 		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
 			exit(0);
 		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
-			return (0);
+		{
+			process->pc += 2;
+			return (1);
+		}
 		if ((!from_reg(q, process, skrr, 0) && (g_err) && !(g_err = 0)))
-			return (0);
+		{
+			process->pc += skrr->chmp->offset + 2;
+			return (1);
+		}
 		address = get_address(q, skrr, process, 0, 1);
 		load_into(address, process, skrr, 1);
 		process->pc += skrr->chmp->offset + 2;
-		ft_printf("sti\tcurrent_cycles: %d\npc: %d\n", process->current_cycles, process->pc);
 	}
 	return (1);
 }

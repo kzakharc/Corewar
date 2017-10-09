@@ -14,7 +14,6 @@
 
 void	init(t_skrr *skrr)
 {
-//	skrr->id = 0;
 	skrr->fd = 0;
 	skrr->i = 0;
 	skrr->j = 0;
@@ -29,6 +28,7 @@ void	init(t_skrr *skrr)
 	skrr->max_player = 0;
 	skrr->max_checks = MAX_CHECKS;
 	skrr->cycle_to_die = CYCLE_TO_DIE;
+	skrr->process_count = 0;
 	skrr->nbr_live = 0;
 	g_cycles = 0;
 	g_ctd = 0;
