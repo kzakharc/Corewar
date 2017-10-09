@@ -87,6 +87,7 @@ typedef struct		s_skrr
 	int 			max_checks;
 	int 			nbr_live;
 	int		 		cycle_to_die;
+	int 			process_count;
 	int 			*flag_n;
 	int 			cnt_n;
 	int 			flag_v;
@@ -104,10 +105,10 @@ typedef struct		s_skrr
 **	global variables, g_inter - global itearator, op_tab array with info about instructions.
 */
 
-t_op				g_tab[17];
-unsigned long 		g_cycles;
-int 				g_ctd;
-int 				g_err;
+extern t_op				g_tab[17];
+extern unsigned long 	g_cycles;
+int 					g_ctd;
+int 					g_err;
 
 /*
 **	usage and open checks functions.  go -> [vp_err_u.c]
@@ -151,7 +152,7 @@ int 				process_first_positions(t_chmp *chmp, t_proc *process);
 
 int 				push_chmp(t_chmp **head, t_skrr *skrr);
 void 				init_data(t_chmp *champ);
-int 				push_process(t_proc **process, t_skrr *skrr, int player_num);
+int 				push_process(t_proc **process, t_skrr *skrr, int id);
 
 /*
 **	Instructions. live, st .. etc go -> [./instructions/[name of instructions].c] etc ..
@@ -189,6 +190,7 @@ void				instr_err(int op);
 void				sizes_err(char *name, int flag);
 int					same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg);
 int					determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_proc *process);
+int 				inheritance_proc(t_proc **process, int pc);
 
 int					reg_param(t_skrr *skrr, t_proc *process, int flag);
 int					dir_param(t_skrr *skrr, t_proc *process, short dir_size);
@@ -199,7 +201,7 @@ int					ind_param(t_skrr *skrr,	t_proc *process, int l, int bytes);
 */
 
 static void			init_map(t_skrr *skrr);
-void				print_map(t_skrr *skrr);
+//void				print_map(t_skrr *skrr);
 
 /*
 **	printing all players and their info.

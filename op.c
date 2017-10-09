@@ -32,3 +32,5 @@ t_op    g_tab[17] =
 				{"aff", 1, {T_REG}, 16, 2, 1, 0},
 				{0, 0, {0}, 0, 0, 0, 0}
 		};
+
+unsigned long 	g_cycles;

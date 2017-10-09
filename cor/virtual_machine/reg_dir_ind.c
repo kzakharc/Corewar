@@ -42,13 +42,13 @@ int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 	{
 		(DIR_SIZE != 2) ? sizes_err("DIR_SIZE", 2) : 0;
 		address = (short)two_four_bytes(&skrr->map[process->tmp_pc], 2);
-		process->tmp_pc += 1;
+		process->tmp_pc += DIR_SIZE - 1;
 	}
 	else if (dir_size == 0)
 	{
 		(DIR_SIZE + 2 != 4) ? sizes_err("DIR_SIZE", 2) : 0;
 		address = two_four_bytes(&skrr->map[process->tmp_pc], 4);
-		process->tmp_pc += 3;
+		process->tmp_pc += DIR_SIZE - 1;
 	}
 	return (address);
 }
@@ -67,8 +67,8 @@ int		ind_param(t_skrr *skrr, t_proc *process, int l, int bytes)
 	i = -1;
 	address = 0;
 	skrr->shift = (bytes == 4) ? 24 : 8;
-	(l == 0) ? address = (short)two_four_bytes(skrr->map, 2) % IDX_MOD : 0;
-	(l == 1) ? address = (short)two_four_bytes(skrr->map, 2) : 0;
+	(l == 0) ? address = (short)two_four_bytes(&skrr->map[process->tmp_pc], 2) % IDX_MOD : 0;
+	(l == 1) ? address = (short)two_four_bytes(&skrr->map[process->tmp_pc], 2) : 0;
 	while (++i < bytes)
 	{
 		address = (address + MEM_SIZE) % MEM_SIZE;
