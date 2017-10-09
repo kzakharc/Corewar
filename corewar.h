@@ -13,11 +13,11 @@
 #ifndef COREWAR_COREWAR_H
 # define COREWAR_COREWAR_H
 
+# include <fcntl.h>
+# include <stdio.h>
 # include "libft/src/ft_printf/ft_printf.h"
 # include "libft/src/get_next_line/get_next_line.h"
 # include "libft/src/libft/libft.h"
-# include <fcntl.h>
-# include <stdio.h>
 # include "op.h"
 
 

@@ -42,9 +42,9 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	t_proc 	*new_process;
 	int 	i;
 
-	i = -1;
 	if (!(new_process = malloc(sizeof(t_proc))))
 		exit (0);
+	i = -1;
 	while (++i < REG_NUMBER)
 		new_process->registry[i] = 0;
 	new_process->id = id;
@@ -52,6 +52,27 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	new_process->pc = 0;
 	new_process->alive = 1;
 	new_process->current_cycles = 0;
+	skrr->process_count++;
+	new_process->next = *process;
+	*process = new_process;
+	return (1);
+}
+
+int 	inheritance_proc(t_proc **process, int pc)
+{
+	t_proc 	*new_process;
+	int 	i;
+
+	if (!(new_process = malloc(sizeof(t_proc))))
+		exit (0);
+	i = -1;
+	while (++i < REG_NUMBER)
+		new_process->registry[i] = (*process)->registry[i];
+	new_process->id = (*process)->id;
+	new_process->pc = pc;
+	new_process->tmp_pc = pc;
+	new_process->alive = (*process)->alive;
+	new_process->current_cycles = (*process)->current_cycles;
 	new_process->next = *process;
 	*process = new_process;
 	return (1);
