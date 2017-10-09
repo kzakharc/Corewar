@@ -77,6 +77,8 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 	y = 3;
 	skrr->i = 0;
 	i = 0;
+	wattron(code, COLOR_PAIR(3));
+	wattron(code, A_BOLD);
 	while (skrr->i < MEM_SIZE)
 	{
 		while (i < 64)
@@ -100,19 +102,15 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	start_color();
 	WINDOW *code;
 	WINDOW *menu;
-	if (g_cycles == 0)
-	{
-		code = newwin(height, width - 70, 0, 0);
-		menu = newwin(height, 70, 0, width - 70);
-		printmargins(code, menu, width, height);
-		menufields(menu);
-		wrefresh(menu);
-		wrefresh(code);
-	}
+	code = newwin(height, width - 70, 0, 0);
+	menu = newwin(height, 70, 0, width - 70);
+	printmargins(code, menu, width, height);
+	menufields(menu);
+	wrefresh(menu);
+	wrefresh(code);
 	printdata(menu, skrr, chmp);
 	printmem(code, skrr);
 	wrefresh(code);
 	wrefresh(menu);
-	usleep(100);
-	//TODO add endwin() function
+	getch();
 }
