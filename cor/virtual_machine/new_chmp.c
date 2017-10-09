@@ -34,6 +34,8 @@ void 	init_data(t_chmp *champ)
 	champ->offset = 0;
 	champ->id = tmp * (-1);
 	champ->player_pos = 0;
+	champ->live = 0;
+	champ->cycles = 0;
 	tmp++;
 }
 

@@ -12,20 +12,24 @@
 
 #include "../virtual_machine/virtualm.h"
 
-int 	add_instr(t_skrr *skrr, t_chmp *chmp, int op)
+int 	add_instr(t_skrr *skrr, t_proc *process)
 {
 	unsigned char	*q;
 	int 			address;
 	int 			reg;
 
-	if (!(q = malloc(sizeof(unsigned char) * g_tab[op].numb_of_arg)))
-		exit(0);
-	if (!(same_start(q, skrr, op, g_tab[op].numb_of_arg)))
-		return (0);
-	address = determination_of_action(q, skrr, 0, 1);
-	skrr->process->tmp_pc += 1;
-	reg = reg_param(skrr, &skrr->map[skrr->process->tmp_pc], 2);
-	skrr->process->registry[reg] = (unsigned int)address;
-	skrr->process->carry = 1;
+	if ((process->current_cycles != 0) &&
+		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
+	{
+		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
+			exit(0);
+		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
+			return (0);
+		address = determination_of_action(q, skrr, 0, 1, process);
+		process->tmp_pc += 1;
+		reg = reg_param(skrr, process, 2);
+		process->registry[reg] = (unsigned int) address;
+		address == 0 ? process->carry = 1 : 0;
+	}
 	return (1);
 }

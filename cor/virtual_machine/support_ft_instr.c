@@ -12,48 +12,94 @@
 
 #include "../virtual_machine/virtualm.h"
 
-int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l)
+int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
 {
 	int adr;
 
 	adr = 0;
-	if (q[i] == T_REG && (skrr->process->tmp_pc += 1))
-		adr = reg_param(skrr, &skrr->map[skrr->process->tmp_pc], 1);
-	else if (q[i] == T_DIR && (skrr->process->tmp_pc += 1))
-		adr = dir_param(skrr, &skrr->map[skrr->process->tmp_pc], g_tab[6].dir_size);
-	else if (q[i] == T_IND && (skrr->process->tmp_pc += 1))
-		adr = ind_param(skrr, &skrr->map[skrr->process->tmp_pc], l, 4);
+	if (q[i] == T_REG && (process->tmp_pc += 1))
+		adr = reg_param(skrr, process, 1);
+	else if (q[i] == T_DIR && (process->tmp_pc += 1))
+		adr = dir_param(skrr, process, g_tab[6].dir_size);
+	else if (q[i] == T_IND && (process->tmp_pc += 1))
+		adr = ind_param(skrr, process, l, 4);
 	i++;
-	if (q[i] == T_REG && (skrr->process->tmp_pc += 1))
-		adr &= reg_param(skrr, &skrr->map[skrr->process->tmp_pc], 1);
-	else if (q[i] == T_DIR && (skrr->process->tmp_pc += 1))
-		adr &= dir_param(skrr, &skrr->map[skrr->process->tmp_pc], g_tab[6].dir_size);
-	else if (q[i] == T_IND && (skrr->process->tmp_pc += 1))
-		adr &= ind_param(skrr, &skrr->map[skrr->process->tmp_pc], l, 4);
+	if (q[i] == T_REG && (process->tmp_pc += 1))
+		adr &= reg_param(skrr, process, 1);
+	else if (q[i] == T_DIR && (process->tmp_pc += 1))
+		adr &= dir_param(skrr, process, g_tab[6].dir_size);
+	else if (q[i] == T_IND && (process->tmp_pc += 1))
+		adr &= ind_param(skrr, process, l, 4);
 	return (adr);
 }
 
-int 	determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key)
+int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
+{
+	int adr;
+
+	adr = 0;
+	if (q[i] == T_REG && (process->tmp_pc += 1))
+		adr = reg_param(skrr, process, 1);
+	else if (q[i] == T_DIR && (process->tmp_pc += 1))
+		adr = dir_param(skrr, process, g_tab[6].dir_size);
+	else if (q[i] == T_IND && (process->tmp_pc += 1))
+		adr = ind_param(skrr, process, l, 4);
+	i++;
+	if (q[i] == T_REG && (process->tmp_pc += 1))
+		adr |= reg_param(skrr, process, 1);
+	else if (q[i] == T_DIR && (process->tmp_pc += 1))
+		adr |= dir_param(skrr, process, g_tab[6].dir_size);
+	else if (q[i] == T_IND && (process->tmp_pc += 1))
+		adr |= ind_param(skrr, process, l, 4);
+	return (adr);
+}
+
+int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
+{
+	int adr;
+
+	adr = 0;
+	if (q[i] == T_REG && (process->tmp_pc += 1))
+		adr = reg_param(skrr, process, 1);
+	else if (q[i] == T_DIR && (process->tmp_pc += 1))
+		adr = dir_param(skrr, process, g_tab[6].dir_size);
+	else if (q[i] == T_IND && (process->tmp_pc += 1))
+		adr = ind_param(skrr, process, l, 4);
+	i++;
+	if (q[i] == T_REG && (process->tmp_pc += 1))
+		adr ^= reg_param(skrr, process, 1);
+	else if (q[i] == T_DIR && (process->tmp_pc += 1))
+		adr ^= dir_param(skrr, process, g_tab[6].dir_size);
+	else if (q[i] == T_IND && (process->tmp_pc += 1))
+		adr ^= ind_param(skrr, process, l, 4);
+	return (adr);
+}
+
+int 	determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_proc *process)
 {
 	int		result;
 	short	i;
 
 	result = 0;
 	i = 0;
-	if (key == 1 && (skrr->process->tmp_pc += 1))
+	if (key == 1 && (process->tmp_pc += 1))
 	{
-		result = reg_param(skrr, &skrr->map[skrr->process->tmp_pc], 1);
-		skrr->process->tmp_pc += 1;
-		result += reg_param(skrr, &skrr->map[skrr->process->tmp_pc], 1);
+		result = reg_param(skrr, process, 1);
+		process->tmp_pc += 1;
+		result += reg_param(skrr, process, 1);
 	}
-	else if (key == 2 && (skrr->process->tmp_pc += 1))
+	else if (key == 2 && (process->tmp_pc += 1))
 	{
-		result = reg_param(skrr, &skrr->map[skrr->process->tmp_pc], 1);
-		skrr->process->tmp_pc += 1;
-		result -= reg_param(skrr, &skrr->map[skrr->process->tmp_pc], 1);
+		result = reg_param(skrr, process, 1);
+		process->tmp_pc += 1;
+		result -= reg_param(skrr, process, 1);
 	}
-	else if (key == 3 && (skrr->process->tmp_pc += 1))
-		result = supp_to_and(q, skrr, i, l);
-	(l == 0) ? result = (skrr->process->pc + (result % IDX_MOD)) : 0;
+	else if (key == 3)
+		result = supp_to_and(q, skrr, i, l, process);
+	else if (key == 4)
+		result = supp_to_or(q, skrr, i, l, process);
+	else if (key == 5)
+		result = supp_to_xor(q, skrr, i, l, process);
+	(l == 0) ? result = (process->pc + (result % IDX_MOD)) : 0;
 	return (result);
 }
