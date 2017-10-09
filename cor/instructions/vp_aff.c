@@ -12,12 +12,12 @@
 
 #include "../virtual_machine/virtualm.h"
 
-int 	aff_instr(t_skrr *skrr, t_chmp *chmp)
+int 	aff_instr(t_skrr *skrr, t_proc *process)
 {
 	unsigned char print_it;
 
 	skrr->process->tmp_pc = skrr->process->pc + 2;
-	print_it = (unsigned char)reg_param(skrr, &skrr->map[skrr->process->tmp_pc], 1);
+	print_it = (unsigned char)reg_param(skrr, process, 1);
 	ft_printf("%c", (print_it % 256));
 	return (1);
 }
