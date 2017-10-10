@@ -34,3 +34,5 @@ t_op    g_tab[17] =
 		};
 
 unsigned long 	g_cycles;
+int 			g_ctd;
+int 			g_err;

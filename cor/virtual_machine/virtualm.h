@@ -107,8 +107,8 @@ typedef struct		s_skrr
 
 extern t_op				g_tab[17];
 extern unsigned long 	g_cycles;
-int 					g_ctd;
-int 					g_err;
+extern int 					g_ctd;
+extern int 					g_err;
 
 /*
 **	usage and open checks functions.  go -> [vp_err_u.c]
@@ -202,7 +202,7 @@ int					ind_param(t_skrr *skrr,	t_proc *process, int l, int bytes);
 */
 
 static void			init_map(t_skrr *skrr);
-//void				print_map(t_skrr *skrr);
+
 /*
 **	printing all players and their info.
 */

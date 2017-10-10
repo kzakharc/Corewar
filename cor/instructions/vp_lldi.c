@@ -27,6 +27,9 @@ int 	lldi_instr(t_skrr *skrr,t_proc *process)
 		address = get_address(q, skrr, process, 1, 0);
 		load_into(address, process, skrr, 2);
 		process->pc += skrr->chmp->offset + 2;
+		ft_printf("Hello from lldi!\n");
+		ft_printf("lldi\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+				  process->pc);
 	}
 	return (1);
 }

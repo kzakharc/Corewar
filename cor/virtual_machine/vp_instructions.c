@@ -33,6 +33,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		else if ((g_ctd == skrr->cycle_to_die) && !(skrr->nbr_live))
 		{
 			skrr->process->alive = 0;
+			ft_printf("I killed all!\n");
 			exit (1);
 			//Process has won! and finish program
 		}

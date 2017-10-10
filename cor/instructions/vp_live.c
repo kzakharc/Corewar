@@ -47,7 +47,7 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 	{
 		if (g_tab[skrr->op].arg[0] != T_DIR)
 		{
-			ft_printf(RED"Error: %s args changed!"RESET, g_tab[skrr->op].name);
+			ft_printf(MAG"Warning:"RESET " %s args changed!", g_tab[skrr->op].name);
 			exit(1);
 		}
 		process->tmp_pc += 1;
@@ -58,7 +58,14 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 			skrr->chmp->offset = DIR_SIZE + 2;
 		else if (g_tab[skrr->op].dir_size == 1)
 			skrr->chmp->offset = DIR_SIZE;
+		else
+		{
+			ft_printf(MAG"Warning:"RESET " You change T_DIR size!");
+			exit (1);
+		}
 		process->pc += skrr->chmp->offset + 1;
+		ft_printf("live\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+				  process->pc);
 	}
 	return (1);
 }
