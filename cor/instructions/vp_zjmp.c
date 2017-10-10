@@ -28,6 +28,8 @@ int 	zjmp_instr(t_skrr *skrr, t_proc *process)
 		address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 		address = (process->pc + (address % IDX_MOD));
 		process->pc = address % MEM_SIZE;
+		ft_printf("zjmp\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+				  process->pc);
 	}
 	else if (!(process->carry) && ((process->current_cycles != 0) &&
 			(process->current_cycles) % (g_tab[skrr->op].cycles) == 0))

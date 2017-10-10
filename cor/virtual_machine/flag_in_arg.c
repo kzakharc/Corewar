@@ -39,6 +39,9 @@ void 			find_player(char **av, int *i, t_skrr *skrr)
 {
 	chk_open(skrr, av, *i, 1);
 	push_chmp(&skrr->chmp, skrr);
+	(REG_SIZE != 1) ? sizes_err("REG_SIZE", 1) : 0;
+	(DIR_SIZE != 2) ? sizes_err("DIR_SIZE", 2) : 0;
+	(IND_SIZE != 2) ? sizes_err("IND_SIZE", 3) : 0;
 	just_read(skrr, av[*i], *i, skrr->chmp);
 	skrr->max_player++;
 	skrr->cnt_n++;

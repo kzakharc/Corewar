@@ -44,7 +44,6 @@ void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 		ft_printf("Too many champions! (Max %d)\n", MAX_PLAYERS);
 	else if (flag == 1)
 	{
-//		chck_for_usage(skrr, *argv);
 		skrr->fd = open(argv[i], O_RDONLY);
 		if (skrr->fd < 0)
 		{
@@ -65,15 +64,6 @@ void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 		ft_printf(""RED"Error:"RESET" You typed wrong player number\n");
 	(flag != 1) ? exit(flag) : 0;
 }
-
-//function for checking flags in usage. //TODO still need to get usage params
-
-//void	chck_for_usage(t_skrr *skrr, char *argv)
-//{
-//	if (!ft_strcmp("-n", argv))
-//		skrr->ncurses_mode = 1;
-//	ft_printf("%s\nnmode: %d\n", argv, skrr->ncurses_mode);
-//}
 
 void	usage_e(void)
 {

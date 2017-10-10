@@ -14,7 +14,7 @@
 
 void	instr_err(int op)
 {
-	ft_printf(RED"You changed number of args in"RESET);
+	ft_printf(MAG"Warning:"RESET " You changed number of args in");
 	(op == 0) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
 	(op == 1) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
 	(op == 2) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
@@ -36,9 +36,9 @@ void	instr_err(int op)
 
 void	sizes_err(char *name, int flag)
 {
-	(flag == 1) ? ft_printf("%s != 1\n", name) : 0;
-	(flag == 2) ? ft_printf("%s != 2 or 4\n", name) : 0;
-	(flag == 3) ? ft_printf("%s != 2\n", name) : 0;
+	(flag == 1) ? ft_printf(MAG"Warning:"RESET " %s != 1\n", name) : 0;
+	(flag == 2) ? ft_printf(MAG"Warning:"RESET " %s != 2 or 4\n", name) : 0;
+	(flag == 3) ? ft_printf(MAG"Warning:"RESET " %s != 2\n", name) : 0;
 	exit (flag);
 }
 
