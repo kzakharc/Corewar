@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_COREWAR_H
-# define COREWAR_COREWAR_H
+#ifndef COREWAR_H
+# define COREWAR_H
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -19,7 +19,8 @@
 # include "libft/src/get_next_line/get_next_line.h"
 # include "libft/src/libft/libft.h"
 # include "op.h"
-# include <ncurses.h>
-
+# include "cor/virtual_machine/virtualm.h"
+# include "cor/visualisation/visualize.h"
+# include <curses.h>
 
 #endif

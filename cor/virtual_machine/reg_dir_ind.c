@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../../corewar.h"
 
 /*
 **	flag = 1 -> get value from registry, 2 -> just get number of registry

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../../corewar.h"
 
 int 	main(int argc, char **argv)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../../corewar.h"
 
 /*
 **	size = 2 -> get value from 2 bytes number, 4 -> from 4 bytes

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../../corewar.h"
 
 void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 {

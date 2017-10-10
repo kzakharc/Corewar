@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./cor/virtual_machine/virtualm.h"
+#include "corewar.h"
 
 t_op    g_tab[17] =
 		{

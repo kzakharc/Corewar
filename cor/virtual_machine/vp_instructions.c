@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../../corewar.h"
 
 int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {

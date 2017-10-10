@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../../corewar.h"
 
 /*
 **	flag = 1 -> , 2 -> for load on the map from reg 4 bytes value

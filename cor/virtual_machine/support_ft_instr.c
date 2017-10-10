@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../virtual_machine/virtualm.h"
+#include "../../corewar.h"
 
 int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
 {

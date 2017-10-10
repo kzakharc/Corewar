@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../../corewar.h"
 
 void			maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 {

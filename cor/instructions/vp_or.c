@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../virtual_machine/virtualm.h"
+#include "../../corewar.h"
 
 int 	or_instr(t_skrr *skrr, t_proc *process)
 {

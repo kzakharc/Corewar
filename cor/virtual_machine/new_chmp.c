@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../../corewar.h"
 
 int 	push_chmp(t_chmp **head, t_skrr *skrr)
 {

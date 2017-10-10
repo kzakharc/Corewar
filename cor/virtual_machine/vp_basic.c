@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtualm.h"
+#include "../../corewar.h"
 
 void		just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 {

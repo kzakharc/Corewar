@@ -2,7 +2,7 @@
 // Created by Dmytrii Spyrydonov on 9/24/17.
 //
 
-#include "../virtual_machine/virtualm.h"
+#include "../../corewar.h"
 
 void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 {
