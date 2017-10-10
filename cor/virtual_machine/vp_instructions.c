@@ -17,7 +17,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 	while ((skrr->cycle_to_die > 0) || !(skrr->max_checks))
 	{
 		change_process(skrr, chmp, skrr->process);
-//		skrr->flag_v ? visualize(skrr, chmp) : 0;
+		skrr->flag_v ? visualize(skrr, chmp) : 0;
 		if ( (g_ctd == skrr->cycle_to_die) && (skrr->nbr_live >= NBR_LIVE))
 		{
 			skrr->cycle_to_die -= CYCLE_DELTA;
@@ -33,6 +33,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		else if ((g_ctd == skrr->cycle_to_die) && !(skrr->nbr_live))
 		{
 			skrr->process->alive = 0;
+			endwin();
 			exit (1);
 			//Process has won! and finish program
 		}

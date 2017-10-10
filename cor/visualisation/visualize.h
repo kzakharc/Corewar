@@ -8,5 +8,6 @@
 # include "../../corewar.h"
 
 void	visualize(t_skrr *skrr, t_chmp *chmp);
+void	visualize_init(t_skrr *skrr);
 
 #endif

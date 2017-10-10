@@ -93,10 +93,10 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 	}
 }
 
-void	visualize(t_skrr *skrr, t_chmp *chmp)
+void	visualize_init(t_skrr *skrr)
 {
-
 	initscr();
+	cbreak();
 	int	width, height;
 	getmaxyx(stdscr, height, width);
 	start_color();
@@ -108,9 +108,16 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	menufields(menu);
 	wrefresh(menu);
 	wrefresh(code);
-	printdata(menu, skrr, chmp);
-	printmem(code, skrr);
-	wrefresh(code);
-	wrefresh(menu);
-	getch();
+	skrr->vis->code = code;
+	skrr->vis->menu = menu;
+
+}
+
+void	visualize(t_skrr *skrr, t_chmp *chmp)
+{
+	printdata(skrr->vis->menu, skrr, chmp);
+	printmem(skrr->vis->code, skrr);
+	wrefresh(skrr->vis->code);
+	wrefresh(skrr->vis->menu);
+	usleep(10000);
 }

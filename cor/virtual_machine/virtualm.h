@@ -21,11 +21,18 @@
 # define SIZE_POS		(PROG_NAME_LENGTH + 9 - ((PROG_NAME_LENGTH + 1) % 4))
 # define COMMANDS_POS	(COMMENT_POS + COMMENT_LENGTH + 4)
 
+#include <curses.h>
 #include "../../corewar.h"
 
 /*
 **	struct for op_tab, which have inside all information about instructions.
 */
+
+typedef struct 		s_vis
+{
+	WINDOW			*code;
+	WINDOW			*menu;
+}					t_vis;
 
 typedef struct 		s_op
 {
@@ -98,6 +105,7 @@ typedef struct		s_skrr
 	unsigned char 	map[MEM_SIZE];
 	t_chmp			*chmp;
 	t_proc			*process;
+	t_vis			*vis;
 }					t_skrr;
 
 
