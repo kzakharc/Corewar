@@ -30,6 +30,7 @@ int 	add_instr(t_skrr *skrr, t_proc *process)
 		reg = reg_param(skrr, process, 2);
 		process->registry[reg] = (unsigned int) address;
 		address == 0 ? process->carry = 1 : 0;
+		process->pc += skrr->chmp->offset + 2;
 	}
 	return (1);
 }

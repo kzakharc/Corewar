@@ -6,7 +6,7 @@
 #    By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/16 12:41:59 by vpoltave          #+#    #+#              #
-#    Updated: 2017/09/01 10:03:06 by vpoltave         ###   ########.fr        #
+#    Updated: 2017/10/10 16:06:32 by yzakharc         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -25,6 +25,7 @@ OBJ =   ./cor/virtual_machine/vp_virtual_main.o \
         ./cor/virtual_machine/reg_dir_ind.o \
         ./cor/virtual_machine/vp_load_from_into.o \
         ./cor/virtual_machine/flag_in_arg.o \
+		./cor/virtual_machine/support_ft_instr.o \
         ./cor/instructions/vp_live.o \
         ./cor/instructions/vp_add.o \
         ./cor/instructions/vp_aff.o \

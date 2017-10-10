@@ -18,14 +18,19 @@ int 	and_instr(t_skrr *skrr, t_proc *process)
 	int 			address;
 	int 			reg;
 
-	if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
-		exit(0);
-	if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
-		return (0);
-	address = determination_of_action(q, skrr, 0, 3, process);
-	process->tmp_pc += 1;
-	reg = reg_param(skrr, process, 2);
-	process->registry[reg] = (unsigned int) address;
-	process->carry = 1;
+	if ((process->current_cycles != 0) &&
+		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
+	{
+		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
+			exit(0);
+		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
+			return (0);
+		address = determination_of_action(q, skrr, 0, 3, process);
+		process->tmp_pc += 1;
+		reg = reg_param(skrr, process, 2);
+		process->registry[reg] = (unsigned int) address;
+		address == 0 ? process->carry = 1 : 0;
+		process->pc += skrr->chmp->offset + 2;
+	}
 	return (1);
 }
