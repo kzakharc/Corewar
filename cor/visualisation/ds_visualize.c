@@ -65,6 +65,10 @@ void	menufields(WINDOW *menu)
 void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 {
 	mvwprintw(menu, 7, 10, "%d", g_cycles);
+	mvwprintw(menu, 19, 17, "%d", skrr->cycle_to_die);
+	mvwprintw(menu, 21, 16, "%d", CYCLE_DELTA);
+	mvwprintw(menu, 23, 13, "%d", skrr->nbr_live);
+	mvwprintw(menu, 25, 15, "%d", skrr->max_checks);
 }
 
 void	printmem(WINDOW *code, t_skrr *skrr)
@@ -120,4 +124,5 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	wrefresh(skrr->vis->code);
 	wrefresh(skrr->vis->menu);
 	usleep(10000);
+	wgetch(skrr->vis->menu);
 }

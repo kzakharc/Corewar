@@ -25,7 +25,7 @@
 #include "../../corewar.h"
 
 /*
-**	struct for op_tab, which have inside all information about instructions.
+**	struct vis - stores windows for visualisation
 */
 
 typedef struct 		s_vis
@@ -33,6 +33,10 @@ typedef struct 		s_vis
 	WINDOW			*code;
 	WINDOW			*menu;
 }					t_vis;
+
+/*
+**	struct for op_tab, which have inside all information about instructions.
+*/
 
 typedef struct 		s_op
 {
