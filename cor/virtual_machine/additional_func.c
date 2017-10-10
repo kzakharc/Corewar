@@ -35,11 +35,17 @@ unsigned int	two_four_bytes(unsigned char *map, int size)
 
 unsigned char	arg_types(t_skrr *skrr, t_chmp *chmp, int ctk)
 {
-	if (hex_to_bin(skrr->map[ctk], skrr->i) == REG_CODE && (chmp->offset += REG_SIZE))
+	int addit_dir;
+
+	addit_dir = (g_tab[skrr->op].dir_size == 0) ? 2 : 0;
+	if (hex_to_bin(skrr->map[ctk], skrr->i) == REG_CODE &&
+			(chmp->offset += REG_SIZE))
 		return (T_REG);
-	else if (hex_to_bin(skrr->map[ctk], skrr->i) == DIR_CODE && (chmp->offset += DIR_SIZE))
+	else if (hex_to_bin(skrr->map[ctk], skrr->i) == DIR_CODE &&
+			(chmp->offset += DIR_SIZE + addit_dir))
 		return (T_DIR);
-	else if (hex_to_bin(skrr->map[ctk], skrr->i) == IND_CODE && (chmp->offset += IND_SIZE))
+	else if (hex_to_bin(skrr->map[ctk], skrr->i) == IND_CODE &&
+			(chmp->offset += IND_SIZE))
 		return (T_IND);
 	return (0);
 }
@@ -62,10 +68,23 @@ int		same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg)
 {
 	skrr->i = 0;
 	process->tmp_pc = process->pc + 1;
-	if (&skrr->map[process->tmp_pc] == NULL)
+	if (skrr->map[process->tmp_pc] == '\0' && (process->pc += 2))
 		return (0);
 	(g_tab[skrr->op].numb_of_arg != num_arg) ? instr_err(skrr->op) : 0;
-	while (skrr->i < g_tab[skrr->op].numb_of_arg)
+	while (skrr->i < num_arg)
 		q[skrr->i++] = arg_types(skrr, skrr->chmp, process->tmp_pc);
+	if (check_my_q(q, num_arg) == -2 && (process->pc += skrr->chmp->offset))
+		return (0);
+	return (1);
+}
+
+int 	check_my_q(unsigned char *q, int num_arg)
+{
+	int i;
+
+	i = -1;
+	while (++i < num_arg)
+		if (q[i] == 0)
+			return (-2);
 	return (1);
 }

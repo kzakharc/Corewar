@@ -16,8 +16,12 @@ int 	aff_instr(t_skrr *skrr, t_proc *process)
 {
 	unsigned char print_it;
 
-	skrr->process->tmp_pc = skrr->process->pc + 2;
-	print_it = (unsigned char)reg_param(skrr, process, 1);
-	ft_printf("%c", (print_it % 256));
+	if ((process->current_cycles != 0) &&
+		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
+	{
+		skrr->process->tmp_pc = skrr->process->pc + 2;
+		print_it = (unsigned char)reg_param(skrr, process, 1);
+		ft_printf("%c", (print_it % 256));
+	}
 	return (1);
 }

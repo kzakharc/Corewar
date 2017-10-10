@@ -29,7 +29,7 @@ int 	lld_instr(t_skrr *skrr, t_proc *process)
 		if (q[0] == T_IND && (process->tmp_pc += 1))
 			address = ind_param(skrr, process, 1, 2);
 		else if (q[0] == T_DIR && (process->tmp_pc += 1) &&
-				 (skrr->chmp->offset += 2))
+				(skrr->chmp->offset += 2))
 			address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 		if (q[1] == T_REG && (process->tmp_pc += 1))
 		{

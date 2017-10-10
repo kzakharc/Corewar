@@ -23,10 +23,7 @@ int 			sti_instr(t_skrr *skrr, t_proc *process)
 		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
 			exit(0);
 		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
-		{
-			process->pc += 2;
-			return (1);
-		}
+			return (0);
 		if ((!from_reg(q, process, skrr, 0) && (g_err) && !(g_err = 0)))
 		{
 			process->pc += skrr->chmp->offset + 2;
