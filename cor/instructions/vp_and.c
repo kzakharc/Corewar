@@ -26,7 +26,7 @@ int 	and_instr(t_skrr *skrr, t_proc *process)
 		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 			return (0);
 		address = determination_of_action(q, skrr, 0, 3, process);
-		process->tmp_pc += 1;
+		process->tmp_pc +=1;
 		reg = reg_param(skrr, process, 2);
 		process->registry[reg] = (unsigned int) address;
 		address == 0 ? process->carry = 1 : 0;

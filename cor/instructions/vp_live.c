@@ -50,7 +50,7 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 			ft_printf(RED"Error: %s args changed!"RESET, g_tab[skrr->op].name);
 			exit(1);
 		}
-		process->tmp_pc += 1;
+		process->tmp_pc += 2;
 		value = dir_param(skrr, process, g_tab[1].dir_size);
 		search_chmp(skrr, value);
 		skrr->nbr_live += 1;

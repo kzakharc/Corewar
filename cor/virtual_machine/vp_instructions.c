@@ -74,6 +74,7 @@ int 	process_first_positions(t_chmp *chmp_tmp, t_proc *proc_tmp)
 
 int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc *process)
 {
+	dump_print(skrr);
 	skrr->op = -1;
 	while (++skrr->op < 16)
 		if (skrr->map[process->pc] == g_tab[skrr->op].opcode)

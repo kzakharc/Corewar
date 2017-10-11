@@ -21,7 +21,7 @@ int 	aff_instr(t_skrr *skrr, t_proc *process)
 	{
 		skrr->process->tmp_pc = skrr->process->pc + 2;
 		print_it = (unsigned char)reg_param(skrr, process, 1);
-		ft_printf("%c", (print_it % 256));
+		skrr->flag_a == 1 ? ft_printf("Aff: %c", (print_it % 256)) : 0;
 	}
 	return (1);
 }

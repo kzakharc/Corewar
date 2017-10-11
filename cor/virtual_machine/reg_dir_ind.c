@@ -42,13 +42,13 @@ int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 	{
 		(DIR_SIZE != 2) ? sizes_err("DIR_SIZE", 2) : 0;
 		address = (short)two_four_bytes(&skrr->map[process->tmp_pc + process->pc], 2);
-		process->tmp_pc += DIR_SIZE - 1;
+		process->tmp_pc += 1;
 	}
 	else if (dir_size == 0)
 	{
 		(DIR_SIZE + 2 != 4) ? sizes_err("DIR_SIZE", 2) : 0;
-		address = two_four_bytes(&skrr->map[process->tmp_pc + process->pc], 4);
-		process->tmp_pc += DIR_SIZE - 1;
+		address = two_four_bytes(&skrr->map[process->tmp_pc + skrr->chmp->player_pos], 4);
+		process->tmp_pc += 3;
 	}
 	return (address);
 }

@@ -100,6 +100,5 @@ int 	determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_p
 		result = supp_to_or(q, skrr, i, l, process);
 	else if (key == 5)
 		result = supp_to_xor(q, skrr, i, l, process);
-	(l == 0) ? result = (process->pc + (result % IDX_MOD)) : 0;
 	return (result);
 }
