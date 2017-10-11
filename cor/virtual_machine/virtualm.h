@@ -50,6 +50,7 @@ typedef struct		s_proc
 	unsigned int 	registry[REG_NUMBER];
 	int 			carry;
 	int 			alive;
+	int 			live_count;
 	long			current_cycles;
 	struct s_proc	*next;
 }					t_proc;
@@ -66,8 +67,8 @@ typedef struct		s_chmp
 	unsigned int 	reg_value;
 	int 			offset;
 	unsigned int 	player_pos;
-	int 			live;
-	long 			cycles;
+	int 			live_count;
+	long 			last_live;
 	header_t 		header;
 	struct s_chmp	*next;
 }					t_chmp;
@@ -117,7 +118,6 @@ extern int 					g_err;
 void				usage_e(void);
 void				chk_open(t_skrr *skrr, char **argv, int argc, int flag);
 void				chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp);
-//void				chck_for_usage(t_skrr *skrr, char *argv);
 
 /*
 **	init function. go -> [vp_err_u.c] for init all structure variables.
@@ -145,6 +145,8 @@ int 				entry_point(t_skrr *skrr, t_chmp *chmp);
 int					which_instr(t_skrr *skrr, t_chmp *chmp, t_proc *process);
 int 				change_process(t_skrr *skrr, t_chmp *chmp, t_proc *process);
 int 				process_first_positions(t_chmp *chmp, t_proc *process);
+int 				kill_processes(t_proc *process);
+void				winner(t_proc *process, t_chmp *chmp, t_skrr *skrr);
 
 /*
 **	Adding new champ and init his data. go -> [new_chmp.c].
@@ -207,7 +209,7 @@ static void			init_map(t_skrr *skrr);
 **	printing all players and their info.
 */
 
-void				print_info(t_skrr *skrr, int argc, t_chmp *chmp);
+void				print_info(t_skrr *skrr, t_chmp *chmp);
 
 /*
 ** function for flags

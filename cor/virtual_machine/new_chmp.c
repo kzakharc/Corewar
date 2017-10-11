@@ -34,8 +34,8 @@ void 	init_data(t_chmp *champ)
 	champ->offset = 0;
 	champ->id = tmp * (-1);
 	champ->player_pos = 0;
-	champ->live = 0;
-	champ->cycles = 0;
+	champ->live_count = 0;
+	champ->last_live = 0;
 	tmp++;
 }
 
@@ -54,6 +54,7 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	new_process->pc = 0;
 	new_process->alive = 1;
 	new_process->current_cycles = 0;
+	new_process->live_count = 0;
 	skrr->process_count++;
 	new_process->next = *process;
 	*process = new_process;

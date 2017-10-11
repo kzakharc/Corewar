@@ -40,12 +40,12 @@ int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 	address = 0;
 	if (dir_size == 1)
 	{
-		address = (short)two_four_bytes(&skrr->map[process->tmp_pc + process->pc], 2);
+		address = (short)two_four_bytes(&skrr->map[process->tmp_pc], 2);
 		process->tmp_pc += DIR_SIZE - 1;
 	}
 	else if (dir_size == 0)
 	{
-		address = two_four_bytes(&skrr->map[process->tmp_pc + process->pc], 4);
+		address = two_four_bytes(&skrr->map[process->tmp_pc], 4);
 		process->tmp_pc += 4; //TODO small problem was here, maybe += 3
 	}
 	return (address);

@@ -20,7 +20,6 @@ int 	main(int argc, char **argv)
 	(argc == 1) ? usage_e() : 0;
 	parsing_arg(&skrr, argv, argc);
 	entry_point(&skrr, skrr.chmp);
-	print_info(&skrr, argc, skrr.chmp);
 	close(skrr.fd) < 0 ? exit(0) : 0;
 	return (0);
 }

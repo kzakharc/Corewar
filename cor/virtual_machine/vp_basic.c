@@ -80,7 +80,7 @@ unsigned int 	get_magic_size(unsigned int m, int shift)
 	return (magic);
 }
 
-void		print_info(t_skrr *skrr, int argc, t_chmp *chmp)
+void		print_info(t_skrr *skrr, t_chmp *chmp)
 {
 	skrr->i = 0;
 	skrr->n = 1;
