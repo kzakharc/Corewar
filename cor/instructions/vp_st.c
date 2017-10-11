@@ -31,8 +31,8 @@ int 	st_instr(t_skrr *skrr, t_proc *process)
 		(q[1] == T_REG) ? (process->registry[address] = skrr->chmp->reg_value)
 						: 0;
 		process->pc += skrr->chmp->offset + 2;
-		ft_printf("st\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-				  process->pc);
+//		ft_printf("st\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+//				  process->pc);
 	}
 	return (1);
 }

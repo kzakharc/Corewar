@@ -39,8 +39,8 @@ int 	lld_instr(t_skrr *skrr, t_proc *process)
 		}
 		(!address) ? process->carry = 1 : 0;
 		process->pc += skrr->chmp->offset + 2;
-		ft_printf("lld\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-				  process->pc);
+//		ft_printf("lld\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+//				  process->pc);
 	}
 	return (1);
 }

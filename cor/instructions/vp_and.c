@@ -32,8 +32,8 @@ int 	and_instr(t_skrr *skrr, t_proc *process)
 		process->registry[reg] = (unsigned int) address;
 		address == 0 ? process->carry = 1 : 0;
 		process->pc += skrr->chmp->offset + 2;
-		ft_printf("and\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-				  process->pc);
+//		ft_printf("and\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+//				  process->pc);
 	}
 	return (1);
 }

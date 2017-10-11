@@ -39,6 +39,7 @@ void	menufields(WINDOW *menu)
 {
 	init_pair(2, COLOR_WHITE, COLOR_BLACK);
 	init_pair(3, COLOR_BLACK, COLOR_BLACK);
+	init_pair(4, COLOR_WHITE, COLOR_CYAN);
 	wattron(menu, COLOR_PAIR(2));
 	wattron(menu, A_BOLD);
 	mvwaddstr(menu, 2, 2, "** RUNNING **");
@@ -71,6 +72,21 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	mvwprintw(menu, 25, 15, "%d", skrr->max_checks);
 }
 
+int		findprocess(t_skrr *skrr, int pc)
+{
+	t_proc *tmp;
+
+	tmp = skrr->process;
+	while (tmp != NULL)
+	{
+		if (tmp->pc == pc)
+			return (1);
+		else
+			tmp = tmp->next;
+	}
+	return (0);
+}
+
 void	printmem(WINDOW *code, t_skrr *skrr)
 {
 	int y;
@@ -87,7 +103,15 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 	{
 		while (i < 64)
 		{
-			mvwprintw(code, y, x, "%hh.2x ", skrr->map[skrr->i++]);
+			if (findprocess(skrr, skrr->i) == 1)
+			{
+				wattron(code, COLOR_PAIR(4));
+				mvwprintw(code, y, x, "%hh.2x", skrr->map[skrr->i++]);
+				wattron(code, COLOR_PAIR(3));
+				mvwprintw(code, y, x + 2, " ");
+			}
+			else
+				mvwprintw(code, y, x, "%hh.2x ", skrr->map[skrr->i++]);
 			x = x + 4;
 			i++;
 		}
