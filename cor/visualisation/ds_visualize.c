@@ -65,6 +65,10 @@ void	menufields(WINDOW *menu)
 void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 {
 	mvwprintw(menu, 7, 10, "%d", g_cycles);
+	mvwprintw(menu, 19, 17, "%d", skrr->cycle_to_die);
+	mvwprintw(menu, 21, 16, "%d", CYCLE_DELTA);
+	mvwprintw(menu, 23, 13, "%d", skrr->nbr_live);
+	mvwprintw(menu, 25, 15, "%d", skrr->max_checks);
 }
 
 void	printmem(WINDOW *code, t_skrr *skrr)
@@ -93,10 +97,10 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 	}
 }
 
-void	visualize(t_skrr *skrr, t_chmp *chmp)
+void	visualize_init(t_skrr *skrr)
 {
-
 	initscr();
+	cbreak();
 	int	width, height;
 	getmaxyx(stdscr, height, width);
 	start_color();
@@ -108,9 +112,17 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	menufields(menu);
 	wrefresh(menu);
 	wrefresh(code);
-	printdata(menu, skrr, chmp);
-	printmem(code, skrr);
-	wrefresh(code);
-	wrefresh(menu);
-	getch();
+	skrr->vis->code = code;
+	skrr->vis->menu = menu;
+
+}
+
+void	visualize(t_skrr *skrr, t_chmp *chmp)
+{
+	printdata(skrr->vis->menu, skrr, chmp);
+	printmem(skrr->vis->code, skrr);
+	wrefresh(skrr->vis->code);
+	wrefresh(skrr->vis->menu);
+	usleep(10000);
+	wgetch(skrr->vis->menu);
 }
