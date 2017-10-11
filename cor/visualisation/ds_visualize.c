@@ -10,9 +10,9 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 
 	i = 0;
 	start_color();
-	init_pair(1, COLOR_CYAN, COLOR_BLACK);
-	wattron(code, COLOR_PAIR(1));
-	wattron(menu, COLOR_PAIR(1));
+	init_pair(5, COLOR_CYAN, COLOR_BLACK);
+	wattron(code, COLOR_PAIR(5));
+	wattron(menu, COLOR_PAIR(5));
 	while (i < height)
 	{
 		mvwaddch(code, i, 0, ' ' | A_REVERSE);
@@ -31,16 +31,16 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 		mvwaddch(menu, 0, i, ' ' | A_REVERSE);
 		mvwaddch(menu, height - 1, i++, ' ' | A_REVERSE);
 	}
-	wattroff(code, COLOR_PAIR(1));
-	wattroff(menu, COLOR_PAIR(1));
+	wattroff(code, COLOR_PAIR(5));
+	wattroff(menu, COLOR_PAIR(5));
 }
 
 void	menufields(WINDOW *menu)
 {
-	init_pair(2, COLOR_WHITE, COLOR_BLACK);
-	init_pair(3, COLOR_BLACK, COLOR_BLACK);
-	init_pair(4, COLOR_WHITE, COLOR_CYAN);
-	wattron(menu, COLOR_PAIR(2));
+	init_pair(6, COLOR_WHITE, COLOR_BLACK);
+	init_pair(7, COLOR_BLACK, COLOR_BLACK);
+	init_pair(8, COLOR_WHITE, COLOR_CYAN);
+	wattron(menu, COLOR_PAIR(6));
 	wattron(menu, A_BOLD);
 	mvwaddstr(menu, 2, 2, "** RUNNING **");
 	mvwaddstr(menu, 4, 2, "Cycles/second limit :");
@@ -50,13 +50,13 @@ void	menufields(WINDOW *menu)
 	mvwaddstr(menu, 10, 4, "Last live :");
 	mvwaddstr(menu, 11, 4, "Lives in current period :");
 	mvwaddstr(menu, 13, 2, "Live breakdown for current period :");
-	wattron(menu, COLOR_PAIR(3));
+	wattron(menu, COLOR_PAIR(7));
 	mvwaddstr(menu, 14, 2, "[--------------------------------------------------]");
-	wattron(menu, COLOR_PAIR(2));
+	wattron(menu, COLOR_PAIR(6));
 	mvwaddstr(menu, 16, 2, "Live breakdown for last period :");
-	wattron(menu, COLOR_PAIR(3));
+	wattron(menu, COLOR_PAIR(7));
 	mvwaddstr(menu, 17, 2, "[--------------------------------------------------]");
-	wattron(menu, COLOR_PAIR(2));
+	wattron(menu, COLOR_PAIR(6));
 	mvwaddstr(menu, 19, 2, "CYCLE_TO_DIE :");
 	mvwaddstr(menu, 21, 2, "CYCLE_DELTA :");
 	mvwaddstr(menu, 23, 2, "NBR_LIVE :");
@@ -97,7 +97,7 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 	y = 3;
 	skrr->i = 0;
 	i = 0;
-	wattron(code, COLOR_PAIR(3));
+	wattron(code, COLOR_PAIR(7));
 	wattron(code, A_BOLD);
 	while (skrr->i < MEM_SIZE)
 	{
@@ -105,9 +105,9 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 		{
 			if (findprocess(skrr, skrr->i) == 1)
 			{
-				wattron(code, COLOR_PAIR(4));
+				wattron(code, COLOR_PAIR(8));
 				mvwprintw(code, y, x, "%hh.2x", skrr->map[skrr->i++]);
-				wattron(code, COLOR_PAIR(3));
+				wattron(code, COLOR_PAIR(7));
 				mvwprintw(code, y, x + 2, " ");
 			}
 			else
