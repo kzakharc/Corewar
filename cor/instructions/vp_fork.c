@@ -24,11 +24,13 @@ int 	fork_instr(t_skrr *skrr, t_proc *process)
 			ft_printf(RED"Error: %s args changed!"RESET, g_tab[skrr->op].name);
 			exit (1);
 		}
-		process->tmp_pc += 2;
+		process->tmp_pc += 1;
 		address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 		address = (process->pc + (address % IDX_MOD));
 		process->pc = address % MEM_SIZE;
 		inheritance_proc(&process, process->pc);
+		ft_printf("fork\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+				  process->pc);
 	}
 	return (1);
 }

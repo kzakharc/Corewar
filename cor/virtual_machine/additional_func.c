@@ -70,10 +70,9 @@ int		same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg)
 	process->tmp_pc = process->pc + 1;
 	if (skrr->map[process->tmp_pc] == '\0' && (process->pc += 2))
 		return (0);
-	(g_tab[skrr->op].numb_of_arg != num_arg) ? instr_err(skrr->op) : 0;
 	while (skrr->i < num_arg)
 		q[skrr->i++] = arg_types(skrr, skrr->chmp, process->tmp_pc);
-	if (check_my_q(q, num_arg) == -2 && (process->pc += skrr->chmp->offset))
+	if ((check_my_q(q, num_arg) == -2) && (process->pc += skrr->chmp->offset))
 		return (0);
 	return (1);
 }

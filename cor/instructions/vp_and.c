@@ -26,11 +26,14 @@ int 	and_instr(t_skrr *skrr, t_proc *process)
 		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 			return (0);
 		address = determination_of_action(q, skrr, 0, 3, process);
-		process->tmp_pc +=1;
-		reg = reg_param(skrr, process, 2);
-		process->registry[reg] = (unsigned int) address;
+		process->tmp_pc += 1;
+		if (!(reg = reg_param(skrr, process, 2)) && (g_err) && !(g_err = 0))
+			return (0);
+		process->registry[reg] = (unsigned int)address;
 		address == 0 ? process->carry = 1 : 0;
 		process->pc += skrr->chmp->offset + 2;
+		ft_printf("and\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+				  process->pc);
 	}
 	return (1);
 }

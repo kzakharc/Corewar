@@ -28,6 +28,8 @@ int 	lfork_instr(t_skrr *skrr, t_proc *process)
 		address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 		process->pc = address % MEM_SIZE;
 		inheritance_proc(&process, process->pc);
+		ft_printf("lfork\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+				  process->pc);
 	}
 	return (1);
 }

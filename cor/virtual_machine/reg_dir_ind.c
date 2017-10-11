@@ -18,8 +18,8 @@
 
 int		reg_param(t_skrr *skrr, t_proc *process, int flag)
 {
-	(REG_SIZE != 1) ? sizes_err("REG_SIZE", 1) : 0;
-	if (((*skrr->map > 16) || (*skrr->map <= 0)) && (g_err = 1))
+	if (((skrr->map[process->tmp_pc] > 16) || (skrr->map[process->tmp_pc] <= 0))
+		&& (g_err = 1))
 		return (0);
 	if (flag == 1)
 		return (process->registry[skrr->map[process->tmp_pc] - 1]);
@@ -40,15 +40,13 @@ int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 	address = 0;
 	if (dir_size == 1)
 	{
-		(DIR_SIZE != 2) ? sizes_err("DIR_SIZE", 2) : 0;
-		address = (short)two_four_bytes(&skrr->map[process->tmp_pc + process->pc], 2);
-		process->tmp_pc += 1;
+		address = (short)two_four_bytes(&skrr->map[process->tmp_pc], 2);
+		process->tmp_pc += DIR_SIZE - 1;
 	}
 	else if (dir_size == 0)
 	{
-		(DIR_SIZE + 2 != 4) ? sizes_err("DIR_SIZE", 2) : 0;
-		address = two_four_bytes(&skrr->map[process->tmp_pc + skrr->chmp->player_pos], 4);
-		process->tmp_pc += 3;
+		address = two_four_bytes(&skrr->map[process->tmp_pc], 4);
+		process->tmp_pc += 4; //TODO small problem was here, maybe += 3
 	}
 	return (address);
 }
@@ -63,7 +61,6 @@ int		ind_param(t_skrr *skrr, t_proc *process, int l, int bytes)
 	unsigned int	ind[bytes];
 	int 			i;
 
-	(IND_SIZE != 2) ? sizes_err("IND_SIZE", 3) : 0;
 	i = -1;
 	address = 0;
 	skrr->shift = (bytes == 4) ? 24 : 8;
