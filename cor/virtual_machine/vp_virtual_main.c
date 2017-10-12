@@ -22,6 +22,7 @@ int 	main(int argc, char **argv)
 	if (skrr.flag_v == 1)
 		visualize_init(&skrr);
 	entry_point(&skrr, skrr.chmp);
+	print_info(&skrr, skrr.chmp);
 	close(skrr.fd) < 0 ? exit(0) : 0;
 	return (0);
 }

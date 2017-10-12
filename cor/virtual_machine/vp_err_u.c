@@ -24,7 +24,7 @@ void	init(t_skrr *skrr)
 	skrr->cnt_n = 0;
 	skrr->flag_v = 0;
 	skrr->flag_dump = 0;
-	skrr->nbr_player = 0;
+	skrr->flag_a = 0;
 	skrr->max_player = 0;
 	skrr->max_checks = MAX_CHECKS;
 	skrr->cycle_to_die = CYCLE_TO_DIE;
@@ -67,30 +67,15 @@ void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 
 void	usage_e(void)
 {
-	ft_printf(YEL"Usage: ./corewar [-d N -s N -v N | -b --stealth | -n "
-			  "--stealth] [-a] <champion1.cor> <...>\n"RESET
-			  "    -a        : Prints output from \"aff\" (Default is to hide"
-			  " it)\n"
-			  CYN"TEXT OUTPUT MODE\n"RESET
-			  "    -d N      : Dumps memory after N cycles then exits\n"
-			  "    -s N      : Runs N cycles, dumps memory, pauses, then "
-			  "repeats\n"
-			  "    -v N      : Verbosity levels, can be added together to "
-			  "enable several\n"
-			  "                - 0 : Show only essentials\n"
-			  "                - 1 : Show lives\n"
-			  "                - 2 : Show cycles\n"
-			  "                - 4 : Show operations (Params are NOT "
-			  "litteral ...)\n"
-			  "                - 8 : Show deaths\n"
-			  "                - 16 : Show PC movements (Except for jumps)\n"
-			  CYN"BINARY OUTPUT MODE\n"RESET
-			  "    -b        : Binary output mode for corewar.42.fr\n"
-			  "    --stealth : Hides the real contents of the memory\n"
-			  CYN"NCURSES OUTPUT MODE\n"RESET
-			  "    -n        : Ncurses output mode\n"
-			  "    --stealth : Hides the real contents of the "
-			  "memory\n");
+	ft_printf(YEL"Usage: ./corewar [-dump N -n N -v -a]\n"RESET
+			  "    -a        : Prints output from \"aff\" (Default is to hide it)\n"
+			  "    -n N      : Sets the number of the next player\n"
+			  CYN"###################### "YEL"TEXT OUTPUT MODE"RESET" "CYN"########################\n"RESET
+			  "    -dump N   : Dumps memory after N cycles then exits\n"
+			  CYN"#################### "YEL"NCURSES OUTPUT MODE"RESET" "CYN"#######################\n"RESET
+			  "    -v        : Ncurses output mode\n"
+			  CYN"################################################################"RESET);
+	exit(1);
 }
 
 void	chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp)

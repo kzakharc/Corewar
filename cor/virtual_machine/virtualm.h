@@ -85,7 +85,7 @@ typedef struct		s_chmp
 }					t_chmp;
 
 /*
-**	basic struct for additional info. / n - iterator for players
+**	basic struct for additional info. / n - iterator for players /cnt_n - counts the number of n/
 */
 
 typedef struct		s_skrr
@@ -104,7 +104,7 @@ typedef struct		s_skrr
 	int 			cnt_n;
 	int 			flag_v;
 	int 			flag_dump;
-	int 			nbr_player;
+	int 			flag_a;
 	int 			max_player;
 	int 			current_cycle;
 	unsigned char 	map[MEM_SIZE];
@@ -216,12 +216,13 @@ int					ind_param(t_skrr *skrr,	t_proc *process, int l, int bytes);
 */
 
 static void			init_map(t_skrr *skrr);
-
+void				print_map(t_skrr *skrr);
 /*
 **	printing all players and their info.
 */
 
 void				print_info(t_skrr *skrr, t_chmp *chmp);
+void				dump_print(t_skrr *skrr);
 
 /*
 ** function for flags

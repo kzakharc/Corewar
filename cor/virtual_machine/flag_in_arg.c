@@ -33,6 +33,12 @@ void			maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 		(*i)++;
 		return ;
 	}
+	else if (!ft_strcmp(av[*i], "-a"))
+	{
+		skrr->flag_a = 1;
+		(*i)++;
+		return ;
+	}
 }
 
 void 			find_player(char **av, int *i, t_skrr *skrr)
@@ -64,6 +70,11 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 	}
 	flag_n(skrr);
 	prog_commands(skrr, av, skrr->chmp);
+	if (skrr->flag_v == 1)
+	{
+		skrr->flag_a = 0;
+		skrr->flag_dump = 0;
+	}
 }
 
 unsigned int 	zero_reg(t_skrr *skrr)
