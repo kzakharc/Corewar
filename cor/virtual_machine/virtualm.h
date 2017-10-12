@@ -107,6 +107,7 @@ typedef struct		s_skrr
 	int 			max_player;
 	int 			current_cycle;
 	unsigned char 	map[MEM_SIZE];
+	unsigned char	mapid[MEM_SIZE];
 	t_chmp			*chmp;
 	t_proc			*process;
 	t_vis			*vis;

@@ -19,7 +19,9 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 	t_proc	*proc_tmp;
 
 	tmp = chmp;
+	ft_printf("test1\n");
 	proc_tmp = skrr->process;
+	ft_printf("test2\n");
 	init_map(skrr);
 	while (tmp)
 	{
@@ -43,7 +45,13 @@ void	unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
 	if (line == NULL)
 		exit (1);
 	while (skrr->i-- > 0)
+	{
+		if (chmp->id == 0)
+			skrr->mapid[pos] = 1;
+		else
+			skrr->mapid[pos] = (unsigned char) (skrr->chmp->id * -1 + 1);
 		skrr->map[pos++] = *line++;
+	}
 }
 
 static void	init_map(t_skrr *skrr)
