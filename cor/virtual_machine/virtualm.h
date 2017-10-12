@@ -100,6 +100,7 @@ typedef struct		s_skrr
 	int 			nbr_live;
 	int		 		cycle_to_die;
 	int 			process_count;
+	int 			init_id;
 	int 			*flag_n;
 	int 			cnt_n;
 	int 			flag_v;
@@ -124,15 +125,14 @@ extern int 					g_ctd;
 extern int 					g_err;
 
 /*
-**	usage and open checks functions.  go -> [vp_err_u.c]
+**	usage and open checks functions.  go -> [ft_error_output.c]
 */
 
 void				usage_e(void);
 void				chk_open(t_skrr *skrr, char **argv, int argc, int flag);
-void				chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp);
 
 /*
-**	init function. go -> [vp_err_u.c] for init all structure variables.
+**	init function. go -> [init_skrr_&_global.c] for init all structure variables.
 */
 
 void				init(t_skrr *skrr);
@@ -145,6 +145,7 @@ void				just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp);
 unsigned int 		get_magic_size(unsigned int m, int shift);
 void				get_name_comments(t_skrr *skrr, char *argv, int argc, t_chmp *chmp);
 void				prog_size(t_skrr *skrr, char *argv, int argc, t_chmp *chmp);
+void				chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp);
 
 /*
 **	commands functions. Func for global while and stuff.
@@ -165,7 +166,7 @@ void				winner(t_proc *process, t_chmp *chmp, t_skrr *skrr);
 */
 
 int 				push_chmp(t_chmp **head, t_skrr *skrr);
-void 				init_data(t_chmp *champ);
+void 				init_data(t_chmp *champ, t_skrr *skrr);
 int 				push_process(t_proc **process, t_skrr *skrr, int id);
 
 /*
