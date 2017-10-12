@@ -43,14 +43,23 @@ void		unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
 	if (line == NULL)
 		exit (1);
 	while (skrr->i-- > 0)
+	{
+		if (chmp->id == 0)
+			skrr->mapid[pos] = 1;
+		else
+			skrr->mapid[pos] = (unsigned char) ((chmp->id * -1) + 1);
 		skrr->map[pos++] = *line++;
+	}
 }
 
 static void	init_map(t_skrr *skrr)
 {
 	skrr->i = 0;
 	while (skrr->i < MEM_SIZE)
+	{
+		skrr->mapid[skrr->i] = 0;
 		skrr->map[skrr->i++] = 0;
+	}
 }
 
 unsigned int	player_position(int nbr, t_skrr *skrr, t_chmp *chmp)

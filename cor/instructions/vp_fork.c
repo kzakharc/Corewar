@@ -29,8 +29,8 @@ int 	fork_instr(t_skrr *skrr, t_proc *process)
 		address = (process->pc + (address % IDX_MOD));
 		process->pc = address % MEM_SIZE;
 		inheritance_proc(&process, process->pc);
-		ft_printf("fork\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-				  process->pc);
+//		ft_printf("fork\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+//				  process->pc);
 	}
 	return (1);
 }
