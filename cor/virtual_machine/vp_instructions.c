@@ -36,7 +36,8 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 			skrr->process->alive = 0;
 			endwin();
 			ft_printf("I killed all!\n");
-	//		endwin();
+			if (skrr->flag_v == 1)
+				endwin();
 			exit (1);
 			//Process has won! and finish program
 		}

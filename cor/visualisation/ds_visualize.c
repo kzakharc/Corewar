@@ -9,8 +9,6 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 	int i;
 
 	i = 0;
-	start_color();
-	init_pair(5, COLOR_CYAN, COLOR_BLACK);
 	wattron(code, COLOR_PAIR(5));
 	wattron(menu, COLOR_PAIR(5));
 	while (i < height)
@@ -37,9 +35,6 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 
 void	menufields(WINDOW *menu)
 {
-	init_pair(6, COLOR_WHITE, COLOR_BLACK);
-	init_pair(7, COLOR_BLACK, COLOR_BLACK);
-	init_pair(8, COLOR_WHITE, COLOR_CYAN);
 	wattron(menu, COLOR_PAIR(6));
 	wattron(menu, A_BOLD);
 	mvwaddstr(menu, 2, 2, "** RUNNING **");
@@ -50,11 +45,11 @@ void	menufields(WINDOW *menu)
 	mvwaddstr(menu, 10, 4, "Last live :");
 	mvwaddstr(menu, 11, 4, "Lives in current period :");
 	mvwaddstr(menu, 13, 2, "Live breakdown for current period :");
-	wattron(menu, COLOR_PAIR(7));
+	wattron(menu, COLOR_PAIR(0));
 	mvwaddstr(menu, 14, 2, "[--------------------------------------------------]");
 	wattron(menu, COLOR_PAIR(6));
 	mvwaddstr(menu, 16, 2, "Live breakdown for last period :");
-	wattron(menu, COLOR_PAIR(7));
+	wattron(menu, COLOR_PAIR(0));
 	mvwaddstr(menu, 17, 2, "[--------------------------------------------------]");
 	wattron(menu, COLOR_PAIR(6));
 	mvwaddstr(menu, 19, 2, "CYCLE_TO_DIE :");
@@ -97,7 +92,6 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 	y = 3;
 	skrr->i = 0;
 	i = 0;
-	wattron(code, COLOR_PAIR(7));
 	wattron(code, A_BOLD);
 	while (skrr->i < MEM_SIZE)
 	{
@@ -105,13 +99,16 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 		{
 			if (findprocess(skrr, skrr->i) == 1)
 			{
-				wattron(code, COLOR_PAIR(8));
+				wattrset(code, COLOR_PAIR(8));
 				mvwprintw(code, y, x, "%hh.2x", skrr->map[skrr->i++]);
-				wattron(code, COLOR_PAIR(7));
+				wattrset(code, COLOR_PAIR(0));
 				mvwprintw(code, y, x + 2, " ");
 			}
 			else
+			{
+				wattrset(code, COLOR_PAIR(0));
 				mvwprintw(code, y, x, "%hh.2x ", skrr->map[skrr->i++]);
+			}
 			x = x + 4;
 			i++;
 		}
@@ -121,10 +118,23 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 	}
 }
 
+void	init_colors()
+{
+	start_color();
+	init_pair(0, COLOR_BLACK, COLOR_BLACK);//grey map cells
+	init_pair(1 ,COLOR_GREEN, COLOR_BLACK);//champ 1
+	init_pair(2 ,COLOR_BLUE, COLOR_BLACK);//champ 2
+	init_pair(3, COLOR_RED, COLOR_BLACK);//champ 3
+	init_pair(4, COLOR_CYAN, COLOR_BLACK);//champ 4
+	init_pair(5, COLOR_CYAN, COLOR_BLACK);//margins color
+	init_pair(6, COLOR_WHITE, COLOR_BLACK);//text in menu
+	init_pair(8, COLOR_WHITE, COLOR_CYAN);//testing highlighting in map
+}
 void	visualize_init(t_skrr *skrr)
 {
 	initscr();
 	cbreak();
+	init_colors();
 	int	width, height;
 	getmaxyx(stdscr, height, width);
 	start_color();
