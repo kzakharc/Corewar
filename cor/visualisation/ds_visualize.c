@@ -100,7 +100,7 @@ void	printmem(WINDOW *code, t_skrr *skrr, WINDOW *menu)
 			if (findprocess(skrr, skrr->i) == 1)
 			{
 				wattrset(code, COLOR_PAIR(skrr->mapid[skrr->i]));
-				wattron(code, A_REVERSE);
+	//			wattron(code, A_REVERSE);
 				mvwprintw(code, y, x, "%hh.2x", skrr->map[skrr->i++]);
 				wattrset(code, COLOR_PAIR(0));
 				mvwprintw(code, y, x + 2, " ");
@@ -108,7 +108,10 @@ void	printmem(WINDOW *code, t_skrr *skrr, WINDOW *menu)
 			else
 			{
 				if (skrr->mapid[skrr->i] == 0)
-					wattrset(code, COLOR_PAIR(0));
+				{
+					wattrset(code, COLOR_PAIR(7));
+					wattron(code, A_BOLD);
+				}
 				else
 				{
 					wattrset(code, COLOR_PAIR(skrr->mapid[skrr->i]));
@@ -128,7 +131,7 @@ void	printmem(WINDOW *code, t_skrr *skrr, WINDOW *menu)
 void	init_colors()
 {
 	start_color();
-	init_pair(0, COLOR_BLACK, COLOR_BLACK);//grey map cells
+	init_pair(7, COLOR_BLACK, COLOR_BLACK);//grey map cells
 	init_pair(1 ,COLOR_GREEN, COLOR_BLACK);//champ 1
 	init_pair(2 ,COLOR_BLUE, COLOR_BLACK);//champ 2
 	init_pair(3, COLOR_RED, COLOR_BLACK);//champ 3

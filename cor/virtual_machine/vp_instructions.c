@@ -18,7 +18,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 	{
 		change_process(skrr, chmp, skrr->process);
 //		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process, skrr) : 0;
-//		skrr->flag_v ? visualize(skrr, chmp) : 0;
+		skrr->flag_v ? visualize(skrr, chmp) : 0;
 		if ( (g_ctd == skrr->cycle_to_die) && (skrr->nbr_live >= NBR_LIVE))
 		{
 			skrr->cycle_to_die -= CYCLE_DELTA;

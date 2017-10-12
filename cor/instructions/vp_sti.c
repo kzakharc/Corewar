@@ -33,8 +33,8 @@ int 			sti_instr(t_skrr *skrr, t_proc *process)
 		load_into(address, process, skrr, 1);
 		process->pc += skrr->chmp->offset + 2;
 		process->tmp_pc = process->pc;
-		ft_printf("sti\tcurrent_cycles: %d\npc: %d\ntmp_pc: %d\n", process->current_cycles,
-				  process->pc, process->tmp_pc);
+//		ft_printf("sti\tcurrent_cycles: %d\npc: %d\ntmp_pc: %d\n", process->current_cycles,
+//				  process->pc, process->tmp_pc);
 	}
 	return (1);
 }

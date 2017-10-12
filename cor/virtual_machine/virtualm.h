@@ -24,6 +24,12 @@
 #include <curses.h>
 #include "../../corewar.h"
 
+typedef struct 		s_vis
+{
+	WINDOW			*code;
+	WINDOW			*menu;
+}					t_vis;
+
 /*
 **	struct for op_tab, which have inside all information about instructions.
 */
@@ -106,6 +112,7 @@ typedef struct		s_skrr
 	unsigned char	mapid[MEM_SIZE];
 	t_chmp			*chmp;
 	t_proc			*process;
+	t_vis			*vis;
 }					t_skrr;
 
 
@@ -227,6 +234,5 @@ void				dump_print(t_skrr *skrr);
 void				parsing_arg(t_skrr *skrr, char **av, int ac);
 void				flag_n(t_skrr *skrr);
 unsigned int 		zero_reg(t_skrr *skrr);
-
 
 #endif

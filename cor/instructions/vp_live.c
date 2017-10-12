@@ -66,8 +66,8 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 		}
 		process->pc += skrr->chmp->offset + 1;
 		process->tmp_pc = process->pc;
-		ft_printf("live\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-				  process->pc);
+//		ft_printf("live\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
+//				  process->pc);
 	}
 	return (1);
 }

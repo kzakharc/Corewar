@@ -20,6 +20,6 @@
 # include "libft/src/libft/libft.h"
 # include "op.h"
 # include "cor/virtual_machine/virtualm.h"
-# include <curses.h>
+# include "cor/visualisation/visualize.h"
 
 #endif
