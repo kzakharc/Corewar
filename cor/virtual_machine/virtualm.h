@@ -21,7 +21,6 @@
 # define SIZE_POS		(PROG_NAME_LENGTH + 9 - ((PROG_NAME_LENGTH + 1) % 4))
 # define COMMANDS_POS	(COMMENT_POS + COMMENT_LENGTH + 4)
 
-#include <curses.h>
 #include "../../corewar.h"
 
 /*
@@ -82,6 +81,8 @@ typedef struct		s_chmp
 ** 	process_count -> for count all processes
 */
 
+typedef struct s_vis	t_vis;
+
 typedef struct		s_skrr
 {
 	int 			fd;
@@ -106,6 +107,7 @@ typedef struct		s_skrr
 	unsigned char	mapid[MEM_SIZE];
 	t_chmp			*chmp;
 	t_proc			*process;
+	t_vis			*vis;
 }					t_skrr;
 
 
