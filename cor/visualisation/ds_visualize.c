@@ -99,7 +99,8 @@ void	printmem(WINDOW *code, t_skrr *skrr, WINDOW *menu)
 		{
 			if (findprocess(skrr, skrr->i) == 1)
 			{
-				wattrset(code, COLOR_PAIR(8));
+				wattrset(code, COLOR_PAIR(skrr->mapid[skrr->i]));
+				wattron(code, A_REVERSE);
 				mvwprintw(code, y, x, "%hh.2x", skrr->map[skrr->i++]);
 				wattrset(code, COLOR_PAIR(0));
 				mvwprintw(code, y, x + 2, " ");
@@ -136,6 +137,7 @@ void	init_colors()
 	init_pair(6, COLOR_WHITE, COLOR_BLACK);//text in menu
 	init_pair(8, COLOR_WHITE, COLOR_CYAN);//testing highlighting in map
 }
+
 void	visualize_init(t_skrr *skrr)
 {
 	initscr();
@@ -164,5 +166,5 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	wrefresh(skrr->vis->code);
 	wrefresh(skrr->vis->menu);
 	usleep(10000);
-	wgetch(skrr->vis->menu);
+	//wgetch(skrr->vis->menu);
 }

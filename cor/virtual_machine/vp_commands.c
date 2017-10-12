@@ -47,7 +47,7 @@ void	unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
 		if (chmp->id == 0)
 			skrr->mapid[pos] = 1;
 		else
-			skrr->mapid[pos] = (unsigned char) ((chmp->id * -1) + 1); //TODO we should check all champs IDs
+			skrr->mapid[pos] = (unsigned char) ((chmp->id * -1) + 1);
 		skrr->map[pos++] = *line++;
 	}
 }
