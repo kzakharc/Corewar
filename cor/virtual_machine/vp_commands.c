@@ -19,9 +19,7 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 	t_proc	*proc_tmp;
 
 	tmp = chmp;
-	ft_printf("test1\n");
 	proc_tmp = skrr->process;
-	ft_printf("test2\n");
 	init_map(skrr);
 	while (tmp)
 	{
@@ -49,7 +47,7 @@ void	unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
 		if (chmp->id == 0)
 			skrr->mapid[pos] = 1;
 		else
-			skrr->mapid[pos] = (unsigned char) (skrr->chmp->id * -1 + 1);
+			skrr->mapid[pos] = (unsigned char) ((chmp->id * -1) + 1); //TODO we should check all champs IDs
 		skrr->map[pos++] = *line++;
 	}
 }
@@ -58,7 +56,10 @@ static void	init_map(t_skrr *skrr)
 {
 	skrr->i = 0;
 	while (skrr->i < MEM_SIZE)
+	{
+		skrr->mapid[skrr->i] = 0;
 		skrr->map[skrr->i++] = 0;
+	}
 }
 
 static void	player_position(int nbr, t_skrr *skrr, t_chmp *chmp)

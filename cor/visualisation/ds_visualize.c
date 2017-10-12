@@ -82,7 +82,7 @@ int		findprocess(t_skrr *skrr, int pc)
 	return (0);
 }
 
-void	printmem(WINDOW *code, t_skrr *skrr)
+void	printmem(WINDOW *code, t_skrr *skrr, WINDOW *menu)
 {
 	int y;
 	int x;
@@ -106,7 +106,13 @@ void	printmem(WINDOW *code, t_skrr *skrr)
 			}
 			else
 			{
-				wattrset(code, COLOR_PAIR(0));
+				if (skrr->mapid[skrr->i] == 0)
+					wattrset(code, COLOR_PAIR(0));
+				else
+				{
+					wattrset(code, COLOR_PAIR(skrr->mapid[skrr->i]));
+					wattroff(code, A_BOLD);
+				}
 				mvwprintw(code, y, x, "%hh.2x ", skrr->map[skrr->i++]);
 			}
 			x = x + 4;
@@ -154,7 +160,7 @@ void	visualize_init(t_skrr *skrr)
 void	visualize(t_skrr *skrr, t_chmp *chmp)
 {
 	printdata(skrr->vis->menu, skrr, chmp);
-	printmem(skrr->vis->code, skrr);
+	printmem(skrr->vis->code, skrr, skrr->vis->menu);
 	wrefresh(skrr->vis->code);
 	wrefresh(skrr->vis->menu);
 	usleep(10000);
