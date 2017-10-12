@@ -12,7 +12,7 @@
 
 #include "../../corewar.h"
 
-void		just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
+void			just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 {
 	unsigned char 	magic[4];
 	unsigned int 	m[4];
@@ -32,7 +32,7 @@ void		just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 		chk_open(skrr, &argv, argc, 2);
 }
 
-void		get_name_comments(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
+void			get_name_comments(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 {
 	(lseek(skrr->fd, 4, SEEK_SET) < 0) ? exit (0) : 0;
 	(read(skrr->fd, chmp->header.prog_name, PROG_NAME_LENGTH + 1) < 0) ? exit(0) : 0;
@@ -42,10 +42,23 @@ void		get_name_comments(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 	prog_size(skrr, argv, argc, chmp);
 	(lseek(skrr->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
 	//prog_commands(skrr, argc, argv, chmp);
-
 }
 
-void		prog_size(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
+void			chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp)
+{
+	skrr->i = 0;
+	while (read(chmp->fd, &line, 1))
+		skrr->i++;
+	if (chmp->header.prog_size != skrr->i)
+	{
+		ft_printf("Error: File"RED" %s "RESET"has a code size that differ "
+						  "from what its header says\n", argv);
+		exit (0);
+	}
+	(lseek(chmp->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
+}
+
+void			prog_size(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 {
 	unsigned char 	size[4];
 	unsigned int	s[4];
@@ -68,7 +81,7 @@ void		prog_size(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 	}
 }
 
-unsigned int 	get_magic_size(unsigned int m, int shift)
+unsigned int	get_magic_size(unsigned int m, int shift)
 {
 	unsigned int magic;
 
@@ -78,22 +91,4 @@ unsigned int 	get_magic_size(unsigned int m, int shift)
 	(shift == 8) ? (magic = m << shift & 0x0000ffff) : 0;
 	(shift == 0) ? (magic = m & 0x000000ff) : 0;
 	return (magic);
-}
-
-void		print_info(t_skrr *skrr, t_chmp *chmp)
-{
-	skrr->i = 0;
-	skrr->n = 1;
-	(skrr->i == 0) ? ft_printf("Introducing contestants...\n") : 0;
-	while (chmp)
-	{
-		ft_printf("* Player %d, ", skrr->n++);
-		ft_printf("Name:" GRN" \"%s\", "RESET, chmp->header.prog_name);
-		ft_printf("weighing" GRN" %u "RESET "bytes, ",
-				  chmp->header.prog_size);
-		ft_printf("comment:" GRN" \"%s\"\n"RESET,
-				  chmp->header.comment);
-		chmp = chmp->next;
-		skrr->i++;
-	}
 }

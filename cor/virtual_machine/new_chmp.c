@@ -18,7 +18,7 @@ int 	push_chmp(t_chmp **head, t_skrr *skrr)
 
 	if (!(new_champ = malloc(sizeof(t_chmp))))
 		exit (0);
-	init_data(new_champ);
+	init_data(new_champ, skrr);
 	new_champ->fd = skrr->fd;
 	push_process(&skrr->process, skrr, new_champ->id);
 	new_champ->next = *head;
@@ -26,17 +26,15 @@ int 	push_chmp(t_chmp **head, t_skrr *skrr)
 	return (1);
 }
 
-void 	init_data(t_chmp *champ)
+void 	init_data(t_chmp *champ, t_skrr *skrr)
 {
-	static int	tmp;
-
 	champ->reg_value = 0;
 	champ->offset = 0;
-	champ->id = tmp * (-1);
+	champ->id = skrr->init_id * (-1);
 	champ->player_pos = 0;
 	champ->live_count = 0;
 	champ->last_live = 0;
-	tmp++;
+	skrr->init_id++;
 }
 
 int 	push_process(t_proc **process, t_skrr *skrr, int id)

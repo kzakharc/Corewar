@@ -34,7 +34,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 			g_ctd = 0;
 		}
 		else if ((g_ctd == skrr->cycle_to_die) && !(skrr->nbr_live))
-			(!skrr->flag_v) ? winner(skrr->process, chmp, skrr);
+			(!skrr->flag_v) ? winner(skrr->process, chmp, skrr) : 0;
 		g_cycles++;
 		g_ctd++;
 	}
@@ -112,7 +112,6 @@ int 	kill_processes(t_proc *process)
 
 int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc *process)
 {
-	dump_print(skrr);
 	skrr->op = -1;
 	while (++skrr->op < 16)
 		if (skrr->map[process->pc] == g_tab[skrr->op].opcode)

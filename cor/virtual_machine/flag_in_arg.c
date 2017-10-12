@@ -14,7 +14,7 @@
 
 void			maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 {
-	skrr->flag_n == NULL ? skrr->flag_n = ft_intmalloc(4) : 0;
+	skrr->flag_n == NULL ? skrr->flag_n = ft_intmalloc(MAX_PLAYERS) : 0;
 	if (!ft_strcmp(av[*i], "-n"))
 	{
 		*i + 1 < ac ? skrr->flag_n[skrr->cnt_n] = ft_atoi(av[*i + 1]) : 0;
@@ -45,9 +45,6 @@ void 			find_player(char **av, int *i, t_skrr *skrr)
 {
 	chk_open(skrr, av, *i, 1);
 	push_chmp(&skrr->chmp, skrr);
-	(REG_SIZE != 1) ? sizes_err("REG_SIZE", 1) : 0;
-	(DIR_SIZE != 2) ? sizes_err("DIR_SIZE", 2) : 0;
-	(IND_SIZE != 2) ? sizes_err("IND_SIZE", 3) : 0;
 	just_read(skrr, av[*i], *i, skrr->chmp);
 	skrr->max_player++;
 	skrr->cnt_n++;
@@ -60,6 +57,9 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 	int i;
 
 	i = 1;
+	(REG_SIZE != 1) ? sizes_err("REG_SIZE", 1) : 0;
+	(DIR_SIZE != 2) ? sizes_err("DIR_SIZE", 2) : 0;
+	(IND_SIZE != 2) ? sizes_err("IND_SIZE", 3) : 0;
 	while (i < ac)
 	{
 		maybe_flag(av, &i, skrr, ac);
@@ -68,6 +68,7 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 		else
 			break ;
 	}
+	skrr->max_player > MAX_PLAYERS ? chk_open(0, 0, 0, 0) : 0;
 	flag_n(skrr);
 	prog_commands(skrr, av, skrr->chmp);
 	if (skrr->flag_v == 1)
@@ -111,15 +112,17 @@ void			flag_n(t_skrr *skrr)
 	t_proc	*tmp;
 
 	i = 0;
+	skrr->init_id = 1;
 	tmp = skrr->process;
 	skrr->cnt_n > skrr->max_player ? chk_open(skrr, 0, 0, 5) : 0;
 	while (i < skrr->max_player)
 	{
 		skrr->flag_n[i] < 0 || skrr->flag_n[i] > skrr->max_player ? chk_open(skrr, 0, 0, 4) : 0;
-		while (tmp->id != i * (-1))
+		while (tmp->id != skrr->init_id * (-1))
 			tmp = tmp->next;
 		tmp->registry[0] = zero_reg(skrr);
 		i++;
+		skrr->init_id++;
 		tmp = skrr->process;
 	}
 	i = -1;

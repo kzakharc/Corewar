@@ -6,61 +6,42 @@
 #    By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/16 12:41:59 by vpoltave          #+#    #+#              #
-#    Updated: 2017/10/10 16:06:32 by yzakharc         ###   ########.fr        #
+#    Updated: 2017/10/12 12:55:21 by yzakharc         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = corewar
-CC = gcc
+NAME	=	corewar
+CC		=	gcc
 
-LIBFT = ./libft/libft.a
-OBJ =   ./cor/virtual_machine/vp_virtual_main.o \
-        ./cor/virtual_machine/vp_err_u.o \
-        ./cor/virtual_machine/vp_basic.o \
-        ./cor/virtual_machine/vp_commands.o \
-        ./cor/virtual_machine/vp_instructions.o \
-        ./cor/virtual_machine/new_chmp.o \
-        ./cor/virtual_machine/additional_func.o \
-        ./cor/virtual_machine/vp_output_err.o \
-        ./cor/virtual_machine/reg_dir_ind.o \
-        ./cor/virtual_machine/vp_load_from_into.o \
-        ./cor/virtual_machine/flag_in_arg.o \
-		./cor/virtual_machine/support_ft_instr.o \
-        ./cor/instructions/vp_live.o \
-        ./cor/instructions/vp_add.o \
-        ./cor/instructions/vp_aff.o \
-        ./cor/instructions/vp_and.o \
-        ./cor/instructions/vp_fork.o \
-        ./cor/instructions/vp_ld.o \
-        ./cor/instructions/vp_ldi.o \
-        ./cor/instructions/vp_lfork.o \
-        ./cor/instructions/vp_lld.o \
-        ./cor/instructions/vp_lldi.o \
-        ./cor/instructions/vp_or.o \
-        ./cor/instructions/vp_st.o \
-        ./cor/instructions/vp_sti.o \
-        ./cor/instructions/vp_sub.o \
-        ./cor/instructions/vp_xor.o \
-        ./cor/instructions/vp_zjmp.o \
-        ./op.o                       \
-        ./cor/visualisation/ds_visualize.o \
+LIBFT	=	./libft/libft.a
+OBJ		:=	$(patsubst %.c,%.o,$(wildcard *.c))							\
+			$(patsubst %.c,%.o,$(wildcard ./cor/instructions/*.c))		\
+			$(patsubst %.c,%.o,$(wildcard ./cor/virtual_machine/*.c))	\
+			$(patsubst %.c,%.o,$(wildcard ./cor/visualisation/*.c))		\
 
 .PHONY: libft
 
 all: $(NAME)
 
 $(NAME): $(OBJ) libft
-	$(CC) -o $(NAME) $(OBJ) $(LIBFT) -lncurses
+	@$(CC) -o $(NAME) $(OBJ) $(LIBFT) -lncurses
+	@echo "\033[32mcorewar compiled\033[0m"
 
 libft:
-	make -C ./libft
+	@make -C ./libft
+	@echo "\033[32mlibft.a compiled\033[0m"
 
 %.o : %.c
-	$(CC) -o $@ -c $<
+	@$(CC) -o $@ -c $<
 
 clean:
-	rm -rf $(OBJ)
-	make clean -C ./libft
+	@rm -rf $(OBJ)
+	@make clean -C ./libft
+	@echo "\033[32mclean completed\033[0m"
+
 fclean: clean
-	rm -rf $(NAME)
-	make fclean -C ./libft
+	@rm -rf $(NAME)
+	@make fclean -C ./libft
+	@echo "\033[32mfclean completed\033[0m"
+
+re: fclean all

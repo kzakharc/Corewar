@@ -28,6 +28,24 @@ void	print_map(t_skrr *skrr)
 	}
 }
 
+void	print_info(t_skrr *skrr, t_chmp *chmp)
+{
+	skrr->i = 0;
+	skrr->n = 1;
+	(skrr->i == 0) ? ft_printf("Introducing contestants...\n") : 0;
+	while (chmp)
+	{
+		ft_printf("* Player %d, ", skrr->n++);
+		ft_printf("Name:" GRN" \"%s\", "RESET, chmp->header.prog_name);
+		ft_printf("weighing" GRN" %u "RESET "bytes, ",
+				  chmp->header.prog_size);
+		ft_printf("comment:" GRN" \"%s\"\n"RESET,
+				  chmp->header.comment);
+		chmp = chmp->next;
+		skrr->i++;
+	}
+}
+
 void	dump_print(t_skrr *skrr)
 {
 	print_info(skrr, skrr->chmp);
