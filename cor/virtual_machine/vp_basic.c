@@ -34,14 +34,15 @@ void			just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 
 void			get_name_comments(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 {
-	(lseek(skrr->fd, 4, SEEK_SET) < 0) ? exit (0) : 0;
-	(read(skrr->fd, chmp->header.prog_name, PROG_NAME_LENGTH + 1) < 0) ? exit(0) : 0;
-	(lseek(skrr->fd, COMMENT_POS, SEEK_SET) < 0) ? exit (0) : 0;
-	(read(skrr->fd, chmp->header.comment, COMMENT_LENGTH + 1) < 0) ? exit(0) : 0;
-	(lseek(skrr->fd, SIZE_POS, SEEK_SET) < 0) ? exit (0) : 0;
+	(lseek(skrr->fd, 4, SEEK_SET) < 0) ? exit(0) : 0;
+	(read(skrr->fd, chmp->header.prog_name, PROG_NAME_LENGTH + 1) < 0) ? exit(0)
+																	   : 0;
+	(lseek(skrr->fd, COMMENT_POS, SEEK_SET) < 0) ? exit(0) : 0;
+	(read(skrr->fd, chmp->header.comment, COMMENT_LENGTH + 1) < 0) ? exit(0)
+																   : 0;
+	(lseek(skrr->fd, SIZE_POS, SEEK_SET) < 0) ? exit(0) : 0;
 	prog_size(skrr, argv, argc, chmp);
 	(lseek(skrr->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
-	//prog_commands(skrr, argc, argv, chmp);
 }
 
 void			chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp)

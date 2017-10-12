@@ -14,10 +14,10 @@
 
 int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
-	while ((skrr->cycle_to_die > 0) || !(skrr->max_checks))
+	while (skrr->cycle_to_die > 0)
 	{
 		change_process(skrr, chmp, skrr->process);
-		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process) : 0;
+//		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process, skrr) : 0;
 //		skrr->flag_v ? visualize(skrr, chmp) : 0;
 		if ( (g_ctd == skrr->cycle_to_die) && (skrr->nbr_live >= NBR_LIVE))
 		{
@@ -29,7 +29,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		{
 			skrr->nbr_live = 0;
 			skrr->max_checks--;
-			if (!skrr->max_checks ? skrr->max_checks = 10 : 0)
+			if (!skrr->max_checks ? skrr->max_checks = MAX_CHECKS : 0)
 				skrr->cycle_to_die -= CYCLE_DELTA;
 			g_ctd = 0;
 		}
@@ -71,43 +71,22 @@ int 	process_first_positions(t_chmp *chmp_tmp, t_proc *proc_tmp)
 	return (1);
 }
 
-void	winner(t_proc *process, t_chmp *chmp, t_skrr *skrr)
+int 	kill_processes(t_proc *process, t_skrr *skrr)
 {
-	t_chmp	*chmp_tmp;
-	long 	best_cycles[chmp->ac];
-	int 	champ[chmp->ac];
-	int 	i;
-
-	i = 0;
-	chmp_tmp = chmp;
-	print_info(skrr, skrr->chmp);
-	if (chmp_tmp->ac == 1)
-		ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n", chmp_tmp->ac, chmp_tmp->header.prog_name);
-	else if (chmp_tmp->ac != 1)
-	{
-		while (chmp_tmp)
-		{
-			best_cycles[i] = chmp_tmp->last_live;
-			champ[i] = chmp_tmp->ac;
-			i++;
-			chmp_tmp = chmp_tmp->next;
-
-		}
-	}
-	exit(1);
-}
-
-int 	kill_processes(t_proc *process)
-{
-	t_proc *proc_tmp;
+	t_proc 	*proc_tmp;
+	int 	alive;
 
 	proc_tmp = process;
 	while (proc_tmp)
 	{
 		(!proc_tmp->live_count) ? proc_tmp->alive = 0 : 0;
+		alive = proc_tmp->alive;
+		if (alive == 1)
+			return (1);
 		proc_tmp = proc_tmp->next;
 	}
-	return (1);
+//	winner(skrr->process, skrr->chmp, skrr);
+	return (0);
 }
 
 int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc *process)

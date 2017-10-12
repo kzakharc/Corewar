@@ -25,16 +25,6 @@
 #include "../../corewar.h"
 
 /*
-**	struct vis - stores windows for visualisation
-*/
-
-typedef struct 		s_vis
-{
-	WINDOW			*code;
-	WINDOW			*menu;
-}					t_vis;
-
-/*
 **	struct for op_tab, which have inside all information about instructions.
 */
 
@@ -85,7 +75,11 @@ typedef struct		s_chmp
 }					t_chmp;
 
 /*
-**	basic struct for additional info. / n - iterator for players /cnt_n - counts the number of n/
+**	basic struct for additional info.
+** 	n -> iterator for players,
+**	init_id -> for init id in chmps and processes
+**	shift -> for shifts bits in some functions,
+** 	process_count -> for count all processes
 */
 
 typedef struct		s_skrr
@@ -95,23 +89,22 @@ typedef struct		s_skrr
 	int 			j;
 	int 			n;
 	int 			op;
+	int 			init_id;
 	int 			shift;
 	int 			max_checks;
 	int 			nbr_live;
 	int		 		cycle_to_die;
 	int 			process_count;
-	int 			init_id;
 	int 			*flag_n;
 	int 			cnt_n;
 	int 			flag_v;
 	int 			flag_dump;
 	int 			flag_a;
 	int 			max_player;
-	int 			current_cycle;
+//	int 			current_cycle;
 	unsigned char 	map[MEM_SIZE];
 	t_chmp			*chmp;
 	t_proc			*process;
-	t_vis			*vis;
 }					t_skrr;
 
 
@@ -152,14 +145,15 @@ void				chk_size(t_skrr *skrr, char *argv, unsigned char *line, t_chmp *chmp);
 */
 
 void				prog_commands(t_skrr *skrr, char **av, t_chmp *chmp);
-static void			player_position(int nbr, t_skrr *skrr, t_chmp *chmp);
+unsigned int		player_position(int nbr, t_skrr *skrr, t_chmp *chmp);
 void				unsafe_copy(t_skrr *skrr, unsigned char *src, t_chmp *chmp);
 int 				entry_point(t_skrr *skrr, t_chmp *chmp);
 int					which_instr(t_skrr *skrr, t_chmp *chmp, t_proc *process);
 int 				change_process(t_skrr *skrr, t_chmp *chmp, t_proc *process);
 int 				process_first_positions(t_chmp *chmp, t_proc *process);
-int 				kill_processes(t_proc *process);
+int 				kill_processes(t_proc *process, t_skrr *skrr);
 void				winner(t_proc *process, t_chmp *chmp, t_skrr *skrr);
+int 				multipl_winners(t_proc *process, t_skrr *skrr, long *best_cycles, int *champ);
 
 /*
 **	Adding new champ and init his data. go -> [new_chmp.c].

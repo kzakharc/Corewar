@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 10:55:50 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/08/08 14:53:13 by vpoltave         ###   ########.fr       */
+/*   Updated: 2017/10/12 12:04:47 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include "libft/src/libft/libft.h"
 # include "op.h"
 # include "cor/virtual_machine/virtualm.h"
-# include "cor/visualisation/visualize.h"
 # include <curses.h>
 
 #endif

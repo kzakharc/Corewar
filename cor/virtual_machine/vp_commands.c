@@ -14,23 +14,23 @@
 
 void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 {
-	unsigned char *line;
-	t_chmp	*tmp;
-	t_proc	*proc_tmp;
+	unsigned char 	*line;
+	t_chmp			*champ_tmp;
+	t_proc			*proc_tmp;
 
-	tmp = chmp;
+	champ_tmp = chmp;
 	proc_tmp = skrr->process;
 	init_map(skrr);
-	while (tmp)
+	while (champ_tmp && proc_tmp)
 	{
-		player_position(proc_tmp->registry[0],skrr, tmp);
-		line = (unsigned char*)ft_strnew(tmp->header.prog_size);
-		chk_size(skrr, av[tmp->ac], line, tmp);
+		proc_tmp->tmp_pc = player_position(proc_tmp->registry[0], skrr, champ_tmp);
+		line = (unsigned char*) ft_strnew(champ_tmp->header.prog_size);
+		chk_size(skrr, av[champ_tmp->ac], line, champ_tmp);
 		skrr->i = 0;
-		while (read(tmp->fd, &line[skrr->i], 1))
+		while (read(champ_tmp->fd, &line[skrr->i], 1))
 			skrr->i++;
-		unsafe_copy(skrr, line, tmp);
-		tmp = tmp->next;
+		unsafe_copy(skrr, line, champ_tmp);
+		champ_tmp = champ_tmp->next;
 		proc_tmp = proc_tmp->next;
 	}
 }
@@ -53,10 +53,11 @@ static void	init_map(t_skrr *skrr)
 		skrr->map[skrr->i++] = 0;
 }
 
-static void	player_position(int nbr, t_skrr *skrr, t_chmp *chmp)
+unsigned int	player_position(int nbr, t_skrr *skrr, t_chmp *chmp)
 {
 	unsigned int tmp;
 
 	tmp = (unsigned int)(MEM_SIZE / skrr->max_player);
-	chmp->player_pos = nbr == -1 ? 0 : tmp * (-1 * nbr - 1);
+	chmp->player_pos = (nbr == -1) ? 0 : tmp * (-1 * nbr - 1);
+	return (chmp->player_pos);
 }

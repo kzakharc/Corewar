@@ -50,7 +50,7 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 			ft_printf(MAG"Warning:"RESET " %s args changed!", g_tab[skrr->op].name);
 			exit(1);
 		}
-		process->tmp_pc += 2;
+		process->tmp_pc += 1;
 		value = dir_param(skrr, process, g_tab[1].dir_size);
 		search_chmp(skrr, value);
 		skrr->nbr_live += 1;
@@ -65,6 +65,7 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 			exit (1);
 		}
 		process->pc += skrr->chmp->offset + 1;
+		process->tmp_pc = process->pc;
 		ft_printf("live\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
 				  process->pc);
 	}

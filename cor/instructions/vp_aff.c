@@ -19,7 +19,7 @@ int 	aff_instr(t_skrr *skrr, t_proc *process)
 	if ((process->current_cycles != 0) &&
 		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
 	{
-		skrr->process->tmp_pc = skrr->process->pc + 2;
+		process->tmp_pc = process->pc + 1;
 		print_it = (unsigned char)reg_param(skrr, process, 1);
 		skrr->flag_a == 1 ? ft_printf("Aff: %c", (print_it % 256)) : 0;
 	}

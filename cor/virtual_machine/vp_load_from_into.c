@@ -94,13 +94,12 @@ int 	simple_address(unsigned char *q, t_skrr *skrr, t_proc *process, short i)
 	int adr;
 
 	adr = 0;
-	if (q[i] == T_IND && (process->tmp_pc += IND_SIZE - 1))
+	if (q[i] == T_IND && (process->tmp_pc += 1))
 	{
-		(IND_SIZE != 2) ? sizes_err("IND_SIZE", 3) : 0;
 		adr = (short)two_four_bytes(&skrr->map[process->tmp_pc], 2);
 		adr = (process->pc + (adr % IDX_MOD));
 	}
-	else if ((q[i] == T_REG) && (process->tmp_pc += REG_SIZE - 1))
-		adr = reg_param(skrr, process, 2);
+	else if ((q[i] == T_REG) && (process->tmp_pc += 1))
+		adr = reg_param(skrr, process, 2); // TODO need check for g_err
 	return (adr);
 }

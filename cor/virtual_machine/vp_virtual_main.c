@@ -19,8 +19,8 @@ int 	main(int argc, char **argv)
 	init(&skrr);
 	(argc == 1) ? usage_e() : 0;
 	parsing_arg(&skrr, argv, argc);
-	if (skrr.flag_v == 1)
-		visualize_init(&skrr);
+//	if (skrr.flag_v == 1)
+//		visualize_init(&skrr);
 	entry_point(&skrr, skrr.chmp);
 	print_info(&skrr, skrr.chmp);
 	close(skrr.fd) < 0 ? exit(0) : 0;
