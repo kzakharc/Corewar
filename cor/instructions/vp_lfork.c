@@ -15,6 +15,7 @@
 int 	lfork_instr(t_skrr *skrr, t_proc *process)
 {
 	int address;
+	int pc;
 
 	if ((process->current_cycles != 0) &&
 		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
@@ -26,8 +27,9 @@ int 	lfork_instr(t_skrr *skrr, t_proc *process)
 		}
 		process->tmp_pc += 1;
 		address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
-		process->pc = address % MEM_SIZE;
-		inheritance_proc(&process, process->pc);
+		process->pc += 3;
+		pc = address % MEM_SIZE;
+		inheritance_proc(&process, pc);
 		ft_printf("lfork\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
 				  process->pc);
 	}
