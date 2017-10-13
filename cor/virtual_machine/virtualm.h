@@ -214,7 +214,7 @@ void				instr_err(int op);
 void				sizes_err(char *name, int flag);
 int					same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg);
 int					determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_proc *process);
-int 				inheritance_proc(t_proc **process, int pc);
+int 				inheritance_proc(t_proc **process, int pc, t_skrr *skrr);
 int 				check_my_q(unsigned char *q, int num_arg);
 
 int					reg_param(t_skrr *skrr, t_proc *process, int flag);

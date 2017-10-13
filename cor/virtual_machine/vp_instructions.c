@@ -38,11 +38,11 @@ int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 
 	proc_tmp = *process;
 	chmp_tmp = chmp;
-	!g_cycles ? process_first_positions(chmp_tmp, proc_tmp) : 0;
+	(g_cycles == 0) ? process_first_positions(chmp_tmp, proc_tmp) : 0;
 	while (proc_tmp)
 	{
 		(proc_tmp->alive) ? which_instr(skrr, chmp_tmp, &proc_tmp) : 0;
-		proc_tmp->waiting_cycles++;
+		(proc_tmp->alive) ? proc_tmp->waiting_cycles++ : 0;
 		proc_tmp = proc_tmp->next;
 	}
 	return (1);
@@ -70,13 +70,13 @@ int 	kill_processes(t_proc *process, t_skrr *skrr)
 	alive = 0;
 	while (proc_tmp)
 	{
-		(!proc_tmp->live_count) ? proc_tmp->alive = 0 : 0;
-		alive = proc_tmp->alive;
+		(proc_tmp->live_count == 0) ? proc_tmp->alive = 0 : 0;
+		(proc_tmp->live_count > 0) ? alive = 1 : 0;
 		proc_tmp = proc_tmp->next;
 	}
 	if (alive == 1)
 		return (1);
-	winner(skrr->process, skrr->chmp, skrr);
+//	winner(skrr->process, skrr->chmp, skrr);
 	return (0);
 }
 

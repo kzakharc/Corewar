@@ -30,7 +30,7 @@ int 	lfork_instr(t_skrr *skrr, t_proc **process)
 		(*process)->pc += 3;
 		(*process)->tmp_pc = (*process)->pc;
 		(*process)->waiting_cycles = 0;
-		inheritance_proc(process, pc);
+		inheritance_proc(process, pc, skrr);
 	}
 	return (1);
 }
