@@ -66,6 +66,7 @@ unsigned int	player_position(int nbr, t_skrr *skrr, t_chmp *chmp)
 {
 	unsigned int tmp;
 
+	chmp->ac = nbr;
 	tmp = (unsigned int)(MEM_SIZE / skrr->max_player);
 	chmp->player_pos = (nbr == -1) ? 0 : tmp * (-1 * nbr - 1);
 	return (chmp->player_pos);
