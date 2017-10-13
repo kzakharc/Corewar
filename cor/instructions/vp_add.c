@@ -18,8 +18,7 @@ int 	add_instr(t_skrr *skrr, t_proc *process)
 	int 			address;
 	int 			reg;
 
-	if ((process->current_cycles != 0) &&
-		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
+	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
 		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
 			exit(0);
@@ -32,6 +31,8 @@ int 	add_instr(t_skrr *skrr, t_proc *process)
 		process->registry[reg] = (unsigned int) address;
 		address == 0 ? process->carry = 1 : 0;
 		process->pc += skrr->chmp->offset + 2;
+		process->tmp_pc = process->pc;
+		process->waiting_cycles = 0;
 //		ft_printf("add\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
 //				  process->pc);
 	}

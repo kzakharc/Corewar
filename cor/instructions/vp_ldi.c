@@ -17,8 +17,7 @@ int 	ldi_instr(t_skrr *skrr, t_proc *process)
 	unsigned char	*q;
 	int 			address;
 
-	if ((process->current_cycles != 0) &&
-		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
+	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
 		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
 			exit(0);
@@ -27,6 +26,8 @@ int 	ldi_instr(t_skrr *skrr, t_proc *process)
 		address = get_address(q, skrr, process, 0, 0);
 		load_into(address, process, skrr, 2);
 		process->pc += skrr->chmp->offset + 2;
+		process->tmp_pc = process->pc;
+		process->waiting_cycles = 0;
 //		ft_printf("ldi\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
 //				  process->pc);
 	}

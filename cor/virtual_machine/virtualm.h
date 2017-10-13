@@ -24,6 +24,17 @@
 #include <curses.h>
 #include "../../corewar.h"
 
+typedef struct 		s_vis
+{
+	WINDOW			*code;
+	WINDOW			*menu;
+	WINDOW			*test;
+	int 			sleep;
+	int 			cycles;
+	int 			c;
+	int 			space;
+}					t_vis;
+
 /*
 **	struct for op_tab, which have inside all information about instructions.
 */
@@ -52,7 +63,8 @@ typedef struct		s_proc
 	int 			carry;
 	int 			alive;
 	int 			live_count;
-	long			current_cycles;
+//	long			current_cycles;
+	int 			waiting_cycles;
 	struct s_proc	*next;
 }					t_proc;
 
@@ -106,6 +118,7 @@ typedef struct		s_skrr
 	unsigned char	mapid[MEM_SIZE];
 	t_chmp			*chmp;
 	t_proc			*process;
+	t_vis			*vis;
 }					t_skrr;
 
 
@@ -154,7 +167,8 @@ int 				change_process(t_skrr *skrr, t_chmp *chmp, t_proc *process);
 int 				process_first_positions(t_chmp *chmp, t_proc *process);
 int 				kill_processes(t_proc *process, t_skrr *skrr);
 void				winner(t_proc *process, t_chmp *chmp, t_skrr *skrr);
-int 				multipl_winners(t_proc *process, t_skrr *skrr, long *best_cycles, int *champ);
+int 				multipl_winners(t_proc *process, t_skrr *skrr, long *best_cycles, int i);
+int 				init_lives(t_proc *process, t_skrr *skrr);
 
 /*
 **	Adding new champ and init his data. go -> [new_chmp.c].
@@ -179,10 +193,10 @@ int 				xor_instr(t_skrr *skrr, t_proc *process);
 int 				zjmp_instr(t_skrr *skrr, t_proc *process);
 int 				ldi_instr(t_skrr *skrr, t_proc *process);
 int 				sti_instr(t_skrr *skrr, t_proc *process);
-int 				fork_instr(t_skrr *skrr, t_proc *process);
+int 				fork_instr(t_skrr *skrr, t_proc **process);
 int 				lld_instr(t_skrr *skrr, t_proc *process);
 int 				lldi_instr(t_skrr *skrr, t_proc *process);
-int 				lfork_instr(t_skrr *skrr, t_proc *process);
+int 				lfork_instr(t_skrr *skrr, t_proc **process);
 int 				aff_instr(t_skrr *skrr, t_proc *process);
 
 /*

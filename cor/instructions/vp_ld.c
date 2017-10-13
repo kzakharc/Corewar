@@ -18,8 +18,7 @@ int 	ld_instr(t_skrr *skrr, t_proc *process)
 	int 			address;
 	int 			reg;
 
-	if ((process->current_cycles != 0) &&
-			(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
+	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
 		address = 0;
 		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
@@ -28,8 +27,7 @@ int 	ld_instr(t_skrr *skrr, t_proc *process)
 			return (0);
 		if ((q[0] == T_IND) && (process->tmp_pc += 1))
 			address = ind_param(skrr, process, 0, 4);
-		else if ((q[0] == T_DIR) && (process->tmp_pc += 1) &&
-				(skrr->chmp->offset += 2))
+		else if ((q[0] == T_DIR) && (process->tmp_pc += 1))
 			address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 		if ((q[1] == T_REG) && (process->tmp_pc += 1))
 		{
@@ -39,6 +37,8 @@ int 	ld_instr(t_skrr *skrr, t_proc *process)
 		}
 		(!address) ? process->carry = 1 : 0;
 		process->pc += skrr->chmp->offset + 2;
+		process->tmp_pc = process->pc;
+		process->waiting_cycles = 0;
 //		ft_printf("ld\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
 //				  process->pc);
 	}
