@@ -27,7 +27,7 @@ void 	search_chmp(t_skrr *skrr, int value)
 			{
 				if (chmp_tmp->id == proc_tmp->id)
 				{
-					chmp_tmp->last_live = proc_tmp->current_cycles;
+					chmp_tmp->last_live = g_cycles;
 					chmp_tmp->live_count += 1;
 					return ;
 				}
@@ -42,8 +42,7 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 {
 	int	value;
 
-	if ((process->current_cycles != 0) &&
-		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
+	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
 		if (g_tab[skrr->op].arg[0] != T_DIR)
 		{
@@ -66,8 +65,7 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 		}
 		process->pc += skrr->chmp->offset + 1;
 		process->tmp_pc = process->pc;
-		ft_printf("live\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-				  process->pc);
+		process->waiting_cycles = 0;
 	}
 	return (1);
 }

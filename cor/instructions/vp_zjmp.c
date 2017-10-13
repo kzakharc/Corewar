@@ -16,8 +16,8 @@ int 	zjmp_instr(t_skrr *skrr, t_proc *process)
 {
 	int address;
 
-	if ((process->carry) && ((process->current_cycles != 0) &&
-		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0))
+	if ((process->carry) &&
+			(process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
 		if (g_tab[skrr->op].arg[0] != T_DIR)
 		{
@@ -29,14 +29,15 @@ int 	zjmp_instr(t_skrr *skrr, t_proc *process)
 		address = (process->pc + (address % IDX_MOD));
 		process->pc = address % MEM_SIZE;
 		process->tmp_pc = process->pc;
-		ft_printf("zjmp\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-				  process->pc);
+		process->waiting_cycles = 0;
 	}
-	else if (!(process->carry) && ((process->current_cycles != 0) &&
-			(process->current_cycles) % (g_tab[skrr->op].cycles) == 0))
+	else if (((process->carry == 0) &&
+			(process->waiting_cycles) == (g_tab[skrr->op].cycles)))
 	{
 		ft_printf("%s failed to jump!\n", g_tab[skrr->op].name);
 		process->pc += DIR_SIZE + 1;
+		process->tmp_pc = process->pc;
+		process->waiting_cycles = 0;
 	}
 	return (1);
 }

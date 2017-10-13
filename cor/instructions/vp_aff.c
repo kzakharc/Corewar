@@ -16,10 +16,10 @@ int 	aff_instr(t_skrr *skrr, t_proc *process)
 {
 	unsigned char print_it;
 
-	if ((process->current_cycles != 0) &&
-		(process->current_cycles) % (g_tab[skrr->op].cycles) == 0)
+	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
 		process->tmp_pc = process->pc + 1;
+		process->waiting_cycles = 0;
 		print_it = (unsigned char)reg_param(skrr, process, 1);
 		skrr->flag_a == 1 ? ft_printf("Aff: %c", (print_it % 256)) : 0;
 	}
