@@ -41,7 +41,7 @@ int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 	!g_cycles ? process_first_positions(chmp_tmp, proc_tmp) : 0;
 	while (proc_tmp)
 	{
-		(proc_tmp->alive) ? which_instr(skrr, chmp_tmp, &proc_tmp) : 0;
+		(proc_tmp->alive) ? which_instr(skrr, chmp_tmp, process) : 0;
 		proc_tmp->waiting_cycles++;
 		proc_tmp = proc_tmp->next;
 	}

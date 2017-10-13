@@ -11,7 +11,7 @@ file(GLOB LIBFT "libft/src/libft/*.c")
 
 file(GLOB VM "cor/virtual_machine/*.c" "cor/instructions/*.c" "cor/virtual_machine/*.h")
 
-#file(GLOB VIS "cor/visualisation/*.c" "cor/visualisation/*.h")
+file(GLOB VIS "cor/visualisation/*.c" "cor/visualisation/*.h")
 
 add_executable(corewar ${SOURCE_FILES} ${LIBFT} ${VM} ${VIS} ${COR} cor/virtual_machine/vp_get_winner.c)
 
