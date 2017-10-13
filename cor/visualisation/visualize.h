@@ -7,6 +7,12 @@
 
 # include "../../corewar.h"
 
+struct 		s_vis
+{
+	WINDOW			*code;
+	WINDOW			*menu;
+};
+
 void	visualize(t_skrr *skrr, t_chmp *chmp);
 void	visualize_init(t_skrr *skrr);
 

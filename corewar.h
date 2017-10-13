@@ -15,11 +15,13 @@
 
 # include <fcntl.h>
 # include <stdio.h>
+# include <curses.h>
 # include "libft/src/ft_printf/ft_printf.h"
 # include "libft/src/get_next_line/get_next_line.h"
 # include "libft/src/libft/libft.h"
 # include "op.h"
-# include "cor/virtual_machine/virtualm.h"
 # include <curses.h>
+# include "cor/virtual_machine/virtualm.h"
+# include "cor/visualisation/visualize.h"
 
 #endif
