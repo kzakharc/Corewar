@@ -15,27 +15,19 @@
 void 	search_chmp(t_skrr *skrr, int value)
 {
 	t_chmp *chmp_tmp;
-	t_proc *proc_tmp;
 
 	chmp_tmp = skrr->chmp;
-	proc_tmp = skrr->process;
-	while (proc_tmp)
+	while (chmp_tmp)
 	{
-		if (value == (int)proc_tmp->registry[0])
+		if (chmp_tmp->ac == value)
 		{
-			while (chmp_tmp)
-			{
-				if (chmp_tmp->id == proc_tmp->id)
-				{
-					chmp_tmp->last_live = g_cycles;
-					chmp_tmp->live_count += 1;
-					return ;
-				}
-				chmp_tmp = chmp_tmp->next;
-			}
+			chmp_tmp->last_live = g_cycles;
+			chmp_tmp->live_count += 1;
+			return ;
 		}
-		proc_tmp = proc_tmp->next;
+		chmp_tmp = chmp_tmp->next;
 	}
+
 }
 
 int 	live_instr(t_skrr *skrr, t_proc *process)

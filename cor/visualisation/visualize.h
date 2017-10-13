@@ -11,6 +11,10 @@ struct 		s_vis
 {
 	WINDOW			*code;
 	WINDOW			*menu;
+	int 			sleep;
+	int 			cycles;
+	int 			c;
+	int 			space;
 };
 
 void	visualize(t_skrr *skrr, t_chmp *chmp);
