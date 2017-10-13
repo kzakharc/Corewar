@@ -16,7 +16,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
 	while (skrr->cycle_to_die > 0)
 	{
-		change_process(skrr, chmp, skrr->process);
+		change_process(skrr, chmp, &skrr->process);
 		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process, skrr) : 0;
 //		skrr->flag_v ? visualize(skrr, chmp) : 0;
 		if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live > 0))
@@ -31,17 +31,17 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 	return (1);
 }
 
-int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc *process)
+int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 {
 	t_proc *proc_tmp;
 	t_chmp *chmp_tmp;
 
-	proc_tmp = process;
+	proc_tmp = *process;
 	chmp_tmp = chmp;
 	!g_cycles ? process_first_positions(chmp_tmp, proc_tmp) : 0;
 	while (proc_tmp)
 	{
-		(proc_tmp->alive) ? which_instr(skrr, chmp_tmp, proc_tmp) : 0;
+		(proc_tmp->alive) ? which_instr(skrr, chmp_tmp, &proc_tmp) : 0;
 		proc_tmp->waiting_cycles++;
 		proc_tmp = proc_tmp->next;
 	}
@@ -80,31 +80,31 @@ int 	kill_processes(t_proc *process, t_skrr *skrr)
 	return (0);
 }
 
-int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc *process)
+int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 {
 	skrr->op = -1;
 	while (++skrr->op < 16)
 	{
-		(skrr->map[process->pc] == 0) ? process->pc++ : 0;
-		if (skrr->map[process->pc] == g_tab[skrr->op].opcode)
+		(skrr->map[(*process)->pc] == 0) ? (*process)->pc++ : 0;
+		if (skrr->map[(*process)->pc] == g_tab[skrr->op].opcode)
 		{
 			chmp->offset = 0;
-			((skrr->op) == 0) ? live_instr(skrr, process) : 0;
-			((skrr->op) == 1) ? ld_instr(skrr, process) : 0;
-			((skrr->op) == 2) ? st_instr(skrr, process) : 0;
-			((skrr->op) == 3) ? add_instr(skrr, process) : 0;
-			((skrr->op) == 4) ? sub_instr(skrr, process) : 0;
-			((skrr->op) == 5) ? and_instr(skrr, process) : 0;
-			((skrr->op) == 6) ? or_instr(skrr, process) : 0;
-			((skrr->op) == 7) ? xor_instr(skrr, process) : 0;
-			((skrr->op) == 8) ? zjmp_instr(skrr, process) : 0;
-			((skrr->op) == 9) ? ldi_instr(skrr, process) : 0;
-			((skrr->op) == 10) ? sti_instr(skrr, process) : 0;
-			((skrr->op) == 11) ? fork_instr(skrr, &process) : 0;
-			((skrr->op) == 12) ? lld_instr(skrr, process) : 0;
-			((skrr->op) == 13) ? lldi_instr(skrr, process) : 0;
-			((skrr->op) == 14) ? lfork_instr(skrr, &process) : 0;
-			((skrr->op) == 15) ? aff_instr(skrr, process) : 0;
+			((skrr->op) == 0) ? live_instr(skrr, *process) : 0;
+			((skrr->op) == 1) ? ld_instr(skrr, *process) : 0;
+			((skrr->op) == 2) ? st_instr(skrr, *process) : 0;
+			((skrr->op) == 3) ? add_instr(skrr, *process) : 0;
+			((skrr->op) == 4) ? sub_instr(skrr, *process) : 0;
+			((skrr->op) == 5) ? and_instr(skrr, *process) : 0;
+			((skrr->op) == 6) ? or_instr(skrr, *process) : 0;
+			((skrr->op) == 7) ? xor_instr(skrr, *process) : 0;
+			((skrr->op) == 8) ? zjmp_instr(skrr, *process) : 0;
+			((skrr->op) == 9) ? ldi_instr(skrr, *process) : 0;
+			((skrr->op) == 10) ? sti_instr(skrr, *process) : 0;
+			((skrr->op) == 11) ? fork_instr(skrr, process) : 0;
+			((skrr->op) == 12) ? lld_instr(skrr, *process) : 0;
+			((skrr->op) == 13) ? lldi_instr(skrr, *process) : 0;
+			((skrr->op) == 14) ? lfork_instr(skrr, process) : 0;
+			((skrr->op) == 15) ? aff_instr(skrr, *process) : 0;
 			return (1);
 		}
 	}

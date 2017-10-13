@@ -32,8 +32,6 @@ int 	fork_instr(t_skrr *skrr, t_proc **process)
 		(*process)->tmp_pc = (*process)->pc;
 		(*process)->waiting_cycles = 0;
 		inheritance_proc(process, pc);
-//		ft_printf("fork\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-//				  process->pc);
 	}
 	return (1);
 }

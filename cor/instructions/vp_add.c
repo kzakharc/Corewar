@@ -33,8 +33,6 @@ int 	add_instr(t_skrr *skrr, t_proc *process)
 		process->pc += skrr->chmp->offset + 2;
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;
-//		ft_printf("add\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-//				  process->pc);
 	}
 	return (1);
 }
