@@ -35,7 +35,7 @@ int 	ld_instr(t_skrr *skrr, t_proc *process)
 				return (0);
 			process->registry[reg] = (unsigned int)address;
 		}
-		(address == 0) ? process->carry = 1 : 0;
+		process->carry = (address == 0) ? 1 : 0;
 		process->pc += skrr->chmp->offset + 2;
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;

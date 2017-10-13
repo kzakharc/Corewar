@@ -34,7 +34,7 @@ int 	zjmp_instr(t_skrr *skrr, t_proc *process)
 	else if (((process->carry == 0) &&
 			(process->waiting_cycles) == (g_tab[skrr->op].cycles)))
 	{
-		ft_printf("%s failed to jump!\n", g_tab[skrr->op].name);
+//		ft_printf("%s failed to jump!\n", g_tab[skrr->op].name);
 		process->pc += DIR_SIZE + 1;
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;

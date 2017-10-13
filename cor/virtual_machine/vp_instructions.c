@@ -17,12 +17,12 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 	while (skrr->cycle_to_die > 0)
 	{
 		change_process(skrr, chmp, &skrr->process);
-		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process, skrr) : 0;
-//		skrr->flag_v ? visualize(skrr, chmp) : 0;
+//		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process, skrr) : 0;
+		skrr->flag_v ? visualize(skrr, chmp) : 0;
 		if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live > 0))
 			init_lives(skrr->process, skrr);
-		else if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live == 0))
-			(!skrr->flag_v) ? winner(skrr->process, chmp, skrr) : 0;
+//		else if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live == 0))
+//			(!skrr->flag_v) ? winner(skrr->process, chmp, skrr) : 0;
 		g_cycles++;
 		g_ctd++;
 		ft_printf("Cycle: %ld\n", g_cycles);
