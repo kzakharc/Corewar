@@ -23,6 +23,17 @@
 
 #include "../../corewar.h"
 
+typedef struct 		s_vis
+{
+	WINDOW			*code;
+	WINDOW			*menu;
+	WINDOW			*test;
+	int 			sleep;
+	int 			cycles;
+	int 			c;
+	int 			space;
+}					t_vis;
+
 /*
 **	struct for op_tab, which have inside all information about instructions.
 */
@@ -231,6 +242,5 @@ void				dump_print(t_skrr *skrr);
 void				parsing_arg(t_skrr *skrr, char **av, int ac);
 void				flag_n(t_skrr *skrr);
 unsigned int 		zero_reg(t_skrr *skrr);
-
 
 #endif

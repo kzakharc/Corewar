@@ -44,10 +44,7 @@ void		unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
 		exit (1);
 	while (skrr->i-- > 0)
 	{
-		if (chmp->id == 0)
-			skrr->mapid[pos] = 1;
-		else
-			skrr->mapid[pos] = (unsigned char) ((chmp->id * -1) + 1);
+		skrr->mapid[pos] = (unsigned char) ((chmp->id * -1));
 		skrr->map[pos++] = *line++;
 	}
 }
