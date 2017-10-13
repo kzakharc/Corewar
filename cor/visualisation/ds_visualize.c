@@ -65,6 +65,7 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	mvwprintw(menu, 21, 16, "%d", CYCLE_DELTA);
 	mvwprintw(menu, 23, 13, "%d", skrr->nbr_live);
 	mvwprintw(menu, 25, 15, "%d", skrr->max_checks);
+	mvwprintw(menu, 4, 35, "%d", skrr->vis->cycles);
 }
 
 int		findprocess(t_skrr *skrr, int pc)
@@ -100,8 +101,9 @@ void	printmem(WINDOW *code, t_skrr *skrr, WINDOW *menu)
 			if (findprocess(skrr, skrr->i) == 1)
 			{
 				wattrset(code, COLOR_PAIR(skrr->mapid[skrr->i]));
-	//			wattron(code, A_REVERSE);
+				wattron(code, A_REVERSE);
 				mvwprintw(code, y, x, "%hh.2x", skrr->map[skrr->i++]);
+				wattroff(code, A_REVERSE);
 				wattrset(code, COLOR_PAIR(0));
 				mvwprintw(code, y, x + 2, " ");
 			}
@@ -143,31 +145,64 @@ void	init_colors()
 
 void	visualize_init(t_skrr *skrr)
 {
+	int	width;
+	int	height;
+
 	initscr();
+	noecho();
 	cbreak();
 	init_colors();
-	int	width, height;
 	getmaxyx(stdscr, height, width);
 	start_color();
 	WINDOW *code;
 	WINDOW *menu;
 	code = newwin(height, width - 70, 0, 0);
 	menu = newwin(height, 70, 0, width - 70);
+	keypad(code, TRUE);
+	nodelay(menu, TRUE); //no to wait for the wgetch
 	printmargins(code, menu, width, height);
 	menufields(menu);
 	wrefresh(menu);
 	wrefresh(code);
 	skrr->vis->code = code;
 	skrr->vis->menu = menu;
-
+	skrr->vis->sleep = 16000;
+	skrr->vis->cycles = 50;
+	skrr->vis->space = 1;
 }
 
 void	visualize(t_skrr *skrr, t_chmp *chmp)
 {
+	int c;
+	int sp;
+
 	printdata(skrr->vis->menu, skrr, chmp);
 	printmem(skrr->vis->code, skrr, skrr->vis->menu);
 	wrefresh(skrr->vis->code);
 	wrefresh(skrr->vis->menu);
-	usleep(10000);
-	//wgetch(skrr->vis->menu);
+	usleep((useconds_t) skrr->vis->sleep);
+//	napms(skrr->vis->sleep);
+	c = wgetch(skrr->vis->menu);
+	if (c == 113 && skrr->vis->cycles > 1)
+	{
+		skrr->vis->sleep += 16000; //increment the delay & decrease cycles per secong
+		skrr->vis->cycles -= (skrr->vis->cycles > 10) ? 10 : 1;
+	}
+	if (c == 101)
+	{
+		skrr->vis->sleep -= 3; //decrement the delay & increase cycles per second
+		skrr->vis->cycles += 1;
+	}
+	if (c == 32 && skrr->vis->space == 0)
+	{
+		wgetch(skrr->vis->code);
+		skrr->vis->space = 1;
+	}
+	if (skrr->vis->space == 1)
+	{
+		c = wgetch(skrr->vis->code);
+		skrr->vis->space = 0;
+	}
+
+	wrefresh(skrr->vis->menu);
 }

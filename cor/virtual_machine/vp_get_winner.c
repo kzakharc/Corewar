@@ -40,6 +40,8 @@ void	winner(t_proc *process, t_chmp *chmp, t_skrr *skrr)
 		}
 //	multipl_winners(process, skrr, best_cycles, champ);
 	}
+	if (skrr->flag_v == 1)
+		endwin();
 	exit(1);
 }
 

@@ -12,10 +12,20 @@
 
 #include "../../corewar.h"
 
+
+//void exitfunc(int sig)
+//{
+//	endwin();
+//	ft_printf("%d\n", g_cycles);
+//	_exit(0);
+//}
+
 int 	main(int argc, char **argv)
 {
 	t_skrr	skrr;
 
+//	signal(SIGALRM, exitfunc);
+//	alarm(10);
 	init(&skrr);
 	(argc == 1) ? usage_e() : 0;
 	parsing_arg(&skrr, argv, argc);
