@@ -65,7 +65,7 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	mvwprintw(menu, 21, 16, "%d", CYCLE_DELTA);
 	mvwprintw(menu, 23, 13, "%d", skrr->nbr_live);
 	mvwprintw(menu, 25, 15, "%d", skrr->max_checks);
-	mvwprintw(menu, 4, 35, "%d", skrr->vis->cycles);
+	mvwprintw(menu, 4, 24, "%d ", skrr->vis->cycles);
 }
 
 int		findprocess(t_skrr *skrr, int pc)
@@ -130,8 +130,12 @@ void	printmem(WINDOW *code, t_skrr *skrr, WINDOW *menu)
 	}
 }
 
-void	init_colors()
+void init_visualisation(t_skrr *skrr)
 {
+	initscr();
+	noecho();
+	cbreak();
+	curs_set(0);
 	start_color();
 	init_pair(7, COLOR_BLACK, COLOR_BLACK);//grey map cells
 	init_pair(1 ,COLOR_GREEN, COLOR_BLACK);//champ 1
@@ -141,6 +145,9 @@ void	init_colors()
 	init_pair(5, COLOR_CYAN, COLOR_BLACK);//margins color
 	init_pair(6, COLOR_WHITE, COLOR_BLACK);//text in menu
 	init_pair(8, COLOR_WHITE, COLOR_CYAN);//testing highlighting in map
+	skrr->vis->sleep = 16000;
+	skrr->vis->cycles = 50;
+	skrr->vis->space = 0;
 }
 
 void	visualize_init(t_skrr *skrr)
@@ -148,10 +155,7 @@ void	visualize_init(t_skrr *skrr)
 	int	width;
 	int	height;
 
-	initscr();
-	noecho();
-	cbreak();
-	init_colors();
+	init_visualisation(skrr);
 	getmaxyx(stdscr, height, width);
 	start_color();
 	WINDOW *code;
@@ -162,41 +166,31 @@ void	visualize_init(t_skrr *skrr)
 	nodelay(menu, TRUE); //no to wait for the wgetch
 	printmargins(code, menu, width, height);
 	menufields(menu);
-	wrefresh(menu);
-	wrefresh(code);
 	skrr->vis->code = code;
 	skrr->vis->menu = menu;
-	skrr->vis->sleep = 16000;
-	skrr->vis->cycles = 50;
-	skrr->vis->space = 0;
+	wrefresh(menu);
+	wrefresh(code);
 }
 
 void	visualize(t_skrr *skrr, t_chmp *chmp)
 {
 	int c;
-	int sp;
 
 	printdata(skrr->vis->menu, skrr, chmp);
 	printmem(skrr->vis->code, skrr, skrr->vis->menu);
 	wrefresh(skrr->vis->code);
 	wrefresh(skrr->vis->menu);
-	usleep((useconds_t) skrr->vis->sleep);
-//	napms(skrr->vis->sleep);
+	napms(1000/skrr->vis->cycles);
 	c = wgetch(skrr->vis->menu);
 	if (c == 113 && skrr->vis->cycles > 1)
-	{
-		skrr->vis->sleep += 16000; //increment the delay & decrease cycles per secong
 		skrr->vis->cycles -= (skrr->vis->cycles > 10) ? 10 : 1;
-	}
 	if (c == 101)
-	{
-		skrr->vis->sleep -= 3; //decrement the delay & increase cycles per second
 		skrr->vis->cycles += 1;
-	}
-	if (c == 32 || skrr->vis->space == 0)
+	if (c == 32 || g_cycles == 0)
 	{
-		wgetch(skrr->vis->code);
-		skrr->vis->space = 1;
+		c = wgetch(skrr->vis->code);
+		while (c != 32)
+			c = wgetch(skrr->vis->code);
 	}
 	wrefresh(skrr->vis->menu);
 }
