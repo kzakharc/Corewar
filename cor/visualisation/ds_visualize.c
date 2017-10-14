@@ -33,45 +33,51 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 	wattroff(menu, COLOR_PAIR(5));
 }
 
-void	menufields(WINDOW *menu)
+void menufields(WINDOW *menu, t_skrr *skrr)
 {
-	int x;
 	int y;
 
-	x = 0;
-	y = 0;
+	y = 5 * skrr->max_player;
+
+
 	wattron(menu, COLOR_PAIR(6));
 	wattron(menu, A_BOLD);
 	mvwaddstr(menu, 2, 2, "** RUNNING **");
 	mvwaddstr(menu, 4, 2, "Cycles/second limit :");
 	mvwaddstr(menu, 7, 2, "Cycle :");
 	mvwaddstr(menu, 9, 2, "Processes :");
-	mvwaddstr(menu, 10, 2, "Player -n :");
+	mvwaddstr(menu, 11, 2, "Player -1 :");
 	mvwaddstr(menu, 12, 4, "Last live :");
-	mvwaddstr(menu, 12, 4, "Lives in current period :");
-	mvwaddstr(menu, 14, 2, "Live breakdown for current period :");
+	mvwaddstr(menu, 13, 4, "Lives in current period :");
+	mvwaddstr(menu, 15 + y, 2, "Live breakdown for current period :");
 	wattron(menu, COLOR_PAIR(0));
-	mvwaddstr(menu, 15, 2, "[--------------------------------------------------]");
+	mvwaddstr(menu, 16 + y, 2, "[--------------------------------------------------]");
 	wattron(menu, COLOR_PAIR(6));
-	mvwaddstr(menu, 17, 2, "Live breakdown for last period :");
+	mvwaddstr(menu, 18 + y, 2, "Live breakdown for last period :");
 	wattron(menu, COLOR_PAIR(0));
-	mvwaddstr(menu, 18, 2, "[--------------------------------------------------]");
+	mvwaddstr(menu, 19 + y, 2, "[--------------------------------------------------]");
 	wattron(menu, COLOR_PAIR(6));
-	mvwaddstr(menu, 20, 2, "CYCLE_TO_DIE :");
-	mvwaddstr(menu, 22, 2, "CYCLE_DELTA :");
-	mvwaddstr(menu, 24, 2, "NBR_LIVE :");
-	mvwaddstr(menu, 26, 2, "MAX_CHECKS :");
+	mvwaddstr(menu, 21 + y, 2, "CYCLE_TO_DIE :");
+	mvwaddstr(menu, 23 + y, 2, "CYCLE_DELTA :");
+	mvwaddstr(menu, 25 + y, 2, "NBR_LIVE :");
+	mvwaddstr(menu, 27 + y, 2, "MAX_CHECKS :");
 }
 
 void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 {
-	mvwprintw(menu, 7, 10, "%d", g_cycles);
-	mvwprintw(menu, 20, 17, "%d", skrr->cycle_to_die);
-	mvwprintw(menu, 22, 16, "%d", CYCLE_DELTA);
-	mvwprintw(menu, 24, 13, "%d", NBR_LIVE);
-	mvwprintw(menu, 26, 15, "%d", skrr->max_checks);
+	int y;
+
+	y = 5 * skrr->max_player;
 	mvwprintw(menu, 4, 24, "%d ", skrr->vis->cycles);
-	mvwprintw(menu, 9, 16, "%d", skrr->process_count);
+	mvwprintw(menu, 9, 14, "%d", skrr->process_count);
+	mvwprintw(menu, 7, 10, "%d", g_cycles);
+	wattron(menu, COLOR_PAIR(1));
+	mvwprintw(menu, 11, 14, "%s", chmp->header.prog_name);
+	wattroff(menu, COLOR_PAIR(1));
+	mvwprintw(menu, 21 + y, 17, "%d", skrr->cycle_to_die);
+	mvwprintw(menu, 23 + y, 16, "%d", CYCLE_DELTA);
+	mvwprintw(menu, 25 + y, 13, "%d", NBR_LIVE);
+	mvwprintw(menu, 27 + y, 15, "%d", skrr->max_checks);
 }
 
 int		findprocess(t_skrr *skrr, int pc)
@@ -151,7 +157,7 @@ void	visualize_init(t_skrr *skrr)
 	keypad(skrr->vis->code, TRUE);
 	nodelay(skrr->vis->menu, TRUE); //no to wait for the wgetch
 	printmargins(skrr->vis->code, skrr->vis->menu, width, height);
-	menufields(skrr->vis->menu);
+	menufields(skrr->vis->menu, skrr);
 	wrefresh(skrr->vis->menu);
 	wrefresh(skrr->vis->code);
 }
