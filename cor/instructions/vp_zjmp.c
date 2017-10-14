@@ -19,11 +19,6 @@ int 	zjmp_instr(t_skrr *skrr, t_proc *process)
 	if ((process->carry) &&
 			(process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
-		if (g_tab[skrr->op].arg[0] != T_DIR)
-		{
-			ft_printf(RED"Error: %s arg changed!"RESET, g_tab[skrr->op].name);
-			exit (1);
-		}
 		process->tmp_pc += 1;
 		address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 		address = (process->pc + (address % IDX_MOD));
@@ -34,7 +29,6 @@ int 	zjmp_instr(t_skrr *skrr, t_proc *process)
 	else if (((process->carry == 0) &&
 			(process->waiting_cycles) == (g_tab[skrr->op].cycles)))
 	{
-//		ft_printf("%s failed to jump!\n", g_tab[skrr->op].name);
 		process->pc += DIR_SIZE + 1;
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;

@@ -29,7 +29,7 @@ int 	sub_instr(t_skrr *skrr, t_proc *process)
 		if (!(reg = reg_param(skrr, process, 2)) && (g_err) && !(g_err = 0))
 			return (0);
 		skrr->process->registry[reg] = (unsigned int) address;
-		process->carry = (address == 0) ?  1 : 0;
+		process->carry = (address == 0) ? 1 : 0;
 		process->pc += skrr->chmp->offset + 2;
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;

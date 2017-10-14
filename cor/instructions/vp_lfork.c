@@ -19,11 +19,6 @@ int 	lfork_instr(t_skrr *skrr, t_proc **process)
 
 	if (((*process)->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
-		if (g_tab[skrr->op].arg[0] != T_DIR)
-		{
-			ft_printf(RED"Error: %s args changed!"RESET, g_tab[skrr->op].name);
-			exit (1);
-		}
 		(*process)->tmp_pc += 1;
 		address = dir_param(skrr, *process, g_tab[skrr->op].dir_size);
 		pc = address % MEM_SIZE;

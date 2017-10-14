@@ -166,7 +166,7 @@ void	visualize_init(t_skrr *skrr)
 	wrefresh(code);
 	skrr->vis->code = code;
 	skrr->vis->menu = menu;
-	skrr->vis->sleep = 16000;
+	skrr->vis->sleep = 160;
 	skrr->vis->cycles = 50;
 	skrr->vis->space = 1;
 }

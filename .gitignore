@@ -1,5 +1,5 @@
 cmake-build-debug/
-libft
+libft/
 .idea/
 .DS_Store
 ._*

@@ -45,7 +45,7 @@ void	load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 			return ;
 		process->registry[reg] = value[0] | value[1] | value[2] | value[3];
 		if (g_tab[skrr->op].opcode == 14 || g_tab[skrr->op].opcode == 13)
-			(process->registry[reg] == 0) ? process->carry = 1 : 0;
+			process->carry = (process->registry[reg] == 0) ? 1 : 0;
 	}
 }
 
