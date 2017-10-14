@@ -28,7 +28,7 @@ void	load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 		while (++skrr->j < 4)
 		{
 			address = (address + MEM_SIZE) % MEM_SIZE;
-			skrr->mapid[address] = (unsigned char)(process->id * -1);//TODO need to understand where
+			skrr->mapid[address] = (unsigned char)(process->id * -10);//TODO
 			skrr->map[address++] = (unsigned char)(skrr->chmp->reg_value >> skrr->shift & 0x000000ff);
 			skrr->shift -= 8;
 		}

@@ -25,7 +25,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 //			(!skrr->flag_v) ? winner(skrr->process, chmp, skrr) : 0;
 		g_cycles++;
 		g_ctd++;
-		ft_printf("Cycle: %ld\n", g_cycles);
+//		ft_printf("Cycle: %ld\n", g_cycles);
 	}
 	(!skrr->flag_v) ? winner(skrr->process, chmp, skrr) : 0;
 	return (1);
