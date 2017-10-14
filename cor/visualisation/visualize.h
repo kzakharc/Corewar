@@ -7,6 +7,13 @@
 
 # include "../../corewar.h"
 
+typedef struct		s_highl
+{
+	int 			id;
+	unsigned long	cycle;
+	struct s_highl 	*next;
+}					t_highl;
+
 struct 		s_vis
 {
 	WINDOW			*code;
@@ -15,6 +22,7 @@ struct 		s_vis
 	int 			cycles;
 	int 			c;
 	int 			s;
+	t_highl			*highl;
 };
 
 void	visualize(t_skrr *skrr, t_chmp *chmp);
