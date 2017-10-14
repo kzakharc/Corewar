@@ -35,6 +35,11 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 
 void	menufields(WINDOW *menu)
 {
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
 	wattron(menu, COLOR_PAIR(6));
 	wattron(menu, A_BOLD);
 	mvwaddstr(menu, 2, 2, "** RUNNING **");
@@ -67,7 +72,6 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	mvwprintw(menu, 26, 15, "%d", skrr->max_checks);
 	mvwprintw(menu, 4, 24, "%d ", skrr->vis->cycles);
 	mvwprintw(menu, 9, 16, "%d", skrr->process_count);
-
 }
 
 int		findprocess(t_skrr *skrr, int pc)
@@ -82,70 +86,6 @@ int		findprocess(t_skrr *skrr, int pc)
 		tmp = tmp->next;
 	}
 	return (0);
-}
-
-int		del_highl(t_skrr *skrr, int id)
-{
-	t_highl *current;
-	t_highl *prev;
-
-	prev = NULL;
-	current = skrr->vis->highl;
-	if (current->id == id)
-	{
-		skrr->vis->highl = current->next;
-		free(current);
-		return (1);
-	}
-	while (current != NULL)
-	{
-		if (current->id == id)
-		{
-			prev->next = current->next;
-			free(current);
-			return (1);
-		}
-		prev = current;
-		current = current->next;
-	}
-	return (-1);
-}
-
-void	add_to_highl(t_skrr *skrr, int id)
-{
-	t_highl *newnode;
-
-	newnode = (t_highl*)malloc(sizeof(t_highl));
-	newnode->id = id;
-	newnode->cycle = g_cycles + 100;
-	newnode->next = skrr->vis->highl;
-	skrr->vis->highl = newnode;
-}
-
-int		highlight(t_skrr *skrr, int id)
-{
-	t_highl *tmp;
-
-	tmp = skrr->vis->highl;
-	while (tmp != NULL)
-	{
-		if (tmp->id == id)
-		{
-			if (tmp->cycle == g_cycles)
-			{
-				skrr->mapid[skrr->i] /= 10;
-				del_highl(skrr, id);
-			}
-			wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] / 10));
-			wattron(skrr->vis->code, A_BOLD);
-			return (0);
-		}
-		tmp = tmp->next;
-	}
-	wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] / 10));
-	wattron(skrr->vis->code, A_BOLD);
-	add_to_highl(skrr, id);
-	return (1);
 }
 
 void printmem(t_skrr *skrr)
@@ -196,26 +136,6 @@ void printmem(t_skrr *skrr)
 		x = 2;
 		i = 0;
 	}
-}
-
-void init_visualisation(t_skrr *skrr)
-{
-	initscr();
-	noecho();
-	cbreak();
-	curs_set(0);
-	start_color();
-	init_pair(7, COLOR_BLACK, COLOR_BLACK);//grey map cells
-	init_pair(1 ,COLOR_GREEN, COLOR_BLACK);//champ 1
-	init_pair(2 ,COLOR_BLUE, COLOR_BLACK);//champ 2
-	init_pair(3, COLOR_RED, COLOR_BLACK);//champ 3
-	init_pair(4, COLOR_CYAN, COLOR_BLACK);//champ 4
-	init_pair(5, COLOR_CYAN, COLOR_BLACK);//margins color
-	init_pair(6, COLOR_WHITE, COLOR_BLACK);//text in menu
-	init_pair(8, COLOR_WHITE, COLOR_CYAN);//testing highlighting in map
-	skrr->vis->sleep = 16000;
-	skrr->vis->cycles = 50;
-	skrr->vis->highl = NULL;
 }
 
 void	visualize_init(t_skrr *skrr)
