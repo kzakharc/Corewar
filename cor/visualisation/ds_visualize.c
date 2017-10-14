@@ -41,31 +41,32 @@ void	menufields(WINDOW *menu)
 	mvwaddstr(menu, 4, 2, "Cycles/second limit :");
 	mvwaddstr(menu, 7, 2, "Cycle :");
 	mvwaddstr(menu, 9, 2, "Processes :");
-	mvwaddstr(menu, 9, 2, "Player -n :");
-	mvwaddstr(menu, 10, 4, "Last live :");
-	mvwaddstr(menu, 11, 4, "Lives in current period :");
-	mvwaddstr(menu, 13, 2, "Live breakdown for current period :");
+	mvwaddstr(menu, 10, 2, "Player -n :");
+	mvwaddstr(menu, 12, 4, "Last live :");
+	mvwaddstr(menu, 12, 4, "Lives in current period :");
+	mvwaddstr(menu, 14, 2, "Live breakdown for current period :");
 	wattron(menu, COLOR_PAIR(0));
-	mvwaddstr(menu, 14, 2, "[--------------------------------------------------]");
+	mvwaddstr(menu, 15, 2, "[--------------------------------------------------]");
 	wattron(menu, COLOR_PAIR(6));
-	mvwaddstr(menu, 16, 2, "Live breakdown for last period :");
+	mvwaddstr(menu, 17, 2, "Live breakdown for last period :");
 	wattron(menu, COLOR_PAIR(0));
-	mvwaddstr(menu, 17, 2, "[--------------------------------------------------]");
+	mvwaddstr(menu, 18, 2, "[--------------------------------------------------]");
 	wattron(menu, COLOR_PAIR(6));
-	mvwaddstr(menu, 19, 2, "CYCLE_TO_DIE :");
-	mvwaddstr(menu, 21, 2, "CYCLE_DELTA :");
-	mvwaddstr(menu, 23, 2, "NBR_LIVE :");
-	mvwaddstr(menu, 25, 2, "MAX_CHECKS :");
+	mvwaddstr(menu, 20, 2, "CYCLE_TO_DIE :");
+	mvwaddstr(menu, 22, 2, "CYCLE_DELTA :");
+	mvwaddstr(menu, 24, 2, "NBR_LIVE :");
+	mvwaddstr(menu, 26, 2, "MAX_CHECKS :");
 }
 
 void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 {
 	mvwprintw(menu, 7, 10, "%d", g_cycles);
-	mvwprintw(menu, 19, 17, "%d", skrr->cycle_to_die);
-	mvwprintw(menu, 21, 16, "%d", CYCLE_DELTA);
-	mvwprintw(menu, 23, 13, "%d", skrr->nbr_live);
-	mvwprintw(menu, 25, 15, "%d", skrr->max_checks);
+	mvwprintw(menu, 20, 17, "%d", skrr->cycle_to_die);
+	mvwprintw(menu, 22, 16, "%d", CYCLE_DELTA);
+	mvwprintw(menu, 24, 13, "%d", skrr->nbr_live);
+	mvwprintw(menu, 26, 15, "%d", skrr->max_checks);
 	mvwprintw(menu, 4, 24, "%d ", skrr->vis->cycles);
+	mvwprintw(menu, 9, 16, "%d", skrr->process_count);
 }
 
 int		findprocess(t_skrr *skrr, int pc)
@@ -147,7 +148,6 @@ void init_visualisation(t_skrr *skrr)
 	init_pair(8, COLOR_WHITE, COLOR_CYAN);//testing highlighting in map
 	skrr->vis->sleep = 16000;
 	skrr->vis->cycles = 50;
-	skrr->vis->space = 0;
 }
 
 void	visualize_init(t_skrr *skrr)
@@ -186,11 +186,13 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 		skrr->vis->cycles -= (skrr->vis->cycles > 10) ? 10 : 1;
 	if (c == 101)
 		skrr->vis->cycles += 1;
-	if (c == 32 || g_cycles == 0)
+	if (c == 32 || c == 115 || g_cycles == 0 || skrr->vis->c == 1)
 	{
 		c = wgetch(skrr->vis->code);
-		while (c != 32)
+		skrr->vis->c = (c == 115) ? 1 : 0;
+		while (c != 32 && c != 115)
 			c = wgetch(skrr->vis->code);
 	}
+
 	wrefresh(skrr->vis->menu);
 }

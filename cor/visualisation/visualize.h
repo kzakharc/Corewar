@@ -14,7 +14,7 @@ struct 		s_vis
 	int 			sleep;
 	int 			cycles;
 	int 			c;
-	int 			space;
+	int 			s;
 };
 
 void	visualize(t_skrr *skrr, t_chmp *chmp);
