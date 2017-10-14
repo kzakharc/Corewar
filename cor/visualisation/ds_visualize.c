@@ -168,7 +168,7 @@ void	visualize_init(t_skrr *skrr)
 	skrr->vis->menu = menu;
 	skrr->vis->sleep = 16000;
 	skrr->vis->cycles = 50;
-	skrr->vis->space = 1;
+	skrr->vis->space = 0;
 }
 
 void	visualize(t_skrr *skrr, t_chmp *chmp)
@@ -193,16 +193,10 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 		skrr->vis->sleep -= 3; //decrement the delay & increase cycles per second
 		skrr->vis->cycles += 1;
 	}
-	if (c == 32 && skrr->vis->space == 0)
+	if (c == 32 || skrr->vis->space == 0)
 	{
 		wgetch(skrr->vis->code);
 		skrr->vis->space = 1;
 	}
-	if (skrr->vis->space == 1)
-	{
-		c = wgetch(skrr->vis->code);
-		skrr->vis->space = 0;
-	}
-
 	wrefresh(skrr->vis->menu);
 }
