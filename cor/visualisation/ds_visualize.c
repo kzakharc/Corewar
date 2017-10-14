@@ -172,6 +172,16 @@ void	visualize_init(t_skrr *skrr)
 	wrefresh(code);
 }
 
+void	cycles_limit(int c, t_skrr *skrr)
+{
+	if (c == 113 && skrr->vis->cycles > 1)
+		skrr->vis->cycles -= (skrr->vis->cycles > 10) ? 10 : 1;
+	if (c == 101)
+		skrr->vis->cycles += 1;
+	mvwprintw(skrr->vis->menu, 4, 24, "%d ", skrr->vis->cycles);
+	wrefresh(skrr->vis->menu);
+}
+
 void	visualize(t_skrr *skrr, t_chmp *chmp)
 {
 	int c;
@@ -180,19 +190,18 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	printmem(skrr->vis->code, skrr, skrr->vis->menu);
 	wrefresh(skrr->vis->code);
 	wrefresh(skrr->vis->menu);
-	napms(1000/skrr->vis->cycles);
+	napms(1000 / skrr->vis->cycles);
 	c = wgetch(skrr->vis->menu);
-	if (c == 113 && skrr->vis->cycles > 1)
-		skrr->vis->cycles -= (skrr->vis->cycles > 10) ? 10 : 1;
-	if (c == 101)
-		skrr->vis->cycles += 1;
 	if (c == 32 || c == 115 || g_cycles == 0 || skrr->vis->c == 1)
 	{
-		c = wgetch(skrr->vis->code);
 		skrr->vis->c = (c == 115) ? 1 : 0;
+		c = 0;
 		while (c != 32 && c != 115)
+		{
 			c = wgetch(skrr->vis->code);
+			cycles_limit(c, skrr);
+		}
 	}
-
+	cycles_limit(c, skrr);
 	wrefresh(skrr->vis->menu);
 }
