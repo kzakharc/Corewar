@@ -19,10 +19,10 @@ int 	lfork_instr(t_skrr *skrr, t_proc **process)
 
 	if (((*process)->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
-		(*process)->tmp_pc += 1;
+		(*process)->tmp_pc = ((*process)->tmp_pc + 1) % MEM_SIZE;
 		address = dir_param(skrr, *process, g_tab[skrr->op].dir_size);
 		pc = address % MEM_SIZE;
-		(*process)->pc += 3;
+		(*process)->pc = ((*process)->pc + 3) % MEM_SIZE;
 		(*process)->tmp_pc = (*process)->pc;
 		(*process)->waiting_cycles = 0;
 		inheritance_proc(process, pc, skrr);

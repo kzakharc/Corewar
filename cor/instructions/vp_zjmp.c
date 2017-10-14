@@ -19,7 +19,7 @@ int 	zjmp_instr(t_skrr *skrr, t_proc *process)
 	if ((process->carry) &&
 			(process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
-		process->tmp_pc += 1;
+		process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
 		address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 		address = (process->pc + (address % IDX_MOD));
 		process->pc = address % MEM_SIZE;
@@ -29,7 +29,7 @@ int 	zjmp_instr(t_skrr *skrr, t_proc *process)
 	else if (((process->carry == 0) &&
 			(process->waiting_cycles) == (g_tab[skrr->op].cycles)))
 	{
-		process->pc += DIR_SIZE + 1;
+		process->pc = (process->pc + (DIR_SIZE + 1)) % MEM_SIZE;
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;
 	}

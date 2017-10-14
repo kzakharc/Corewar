@@ -12,6 +12,8 @@
 
 #include "../../corewar.h"
 
+// TODO need to be check!
+
 int 	st_instr(t_skrr *skrr, t_proc *process)
 {
 	unsigned char	*q;
@@ -26,14 +28,13 @@ int 	st_instr(t_skrr *skrr, t_proc *process)
 		if (!from_reg(q, process, skrr, 0) && (g_err) && !(g_err = 0))
 			return (0);
 		address = simple_address(q, skrr, process, 1);
-		(q[1] == T_IND) ? load_into(address, process, skrr, 1) : 0;
-		(q[1] == T_REG) ? (process->registry[address] = skrr->chmp->reg_value)
-						: 0;
-		process->pc += skrr->chmp->offset + 2;
+		if (q[1] == T_IND)
+			load_into(address, process, skrr, 1);
+		else if (q[1] == T_REG)
+			(process->registry[address] = skrr->chmp->reg_value);
+		process->pc = ((process->pc + skrr->chmp->offset + 2) % MEM_SIZE);
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;
-//		ft_printf("st\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-//				  process->pc);
 	}
 	return (1);
 }

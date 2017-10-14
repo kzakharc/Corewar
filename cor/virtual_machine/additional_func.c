@@ -67,13 +67,19 @@ unsigned char 		hex_to_bin(unsigned char c, int i)
 int		same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg)
 {
 	skrr->i = 0;
-	process->tmp_pc = process->pc + 1;
-	if (skrr->map[process->tmp_pc] == '\0' && (process->pc += 2))
+	process->tmp_pc = (process->pc + 1) % MEM_SIZE;
+	if (skrr->map[process->tmp_pc] == '\0')
+	{
+		process->pc = (process->pc + 2) % MEM_SIZE;
 		return (0);
+	}
 	while (skrr->i < num_arg)
 		q[skrr->i++] = arg_types(skrr, skrr->chmp, process->tmp_pc);
-	if ((check_my_q(q, num_arg) == -2) && (process->pc += skrr->chmp->offset))
+	if (check_my_q(q, num_arg) == -2)
+	{
+		process->pc += (process->pc + skrr->chmp->offset) % MEM_SIZE;
 		return (0);
+	}
 	return (1);
 }
 

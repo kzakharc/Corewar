@@ -54,6 +54,7 @@ int 	process_first_positions(t_chmp *chmp_tmp, t_proc *proc_tmp)
 		return (0);
 	while (chmp_tmp || proc_tmp)
 	{
+
 		proc_tmp->pc = chmp_tmp->player_pos;
 		proc_tmp = proc_tmp->next;
 		chmp_tmp = chmp_tmp->next;
@@ -70,13 +71,17 @@ int 	kill_processes(t_proc *process, t_skrr *skrr)
 	alive = 0;
 	while (proc_tmp)
 	{
-		(proc_tmp->live_count == 0) ? proc_tmp->alive = 0 : 0;
+		if (proc_tmp->live_count == 0)
+		{
+			proc_tmp->alive = 0;
+			skrr->process_count -= 1;
+		}
 		(proc_tmp->live_count > 0) ? alive = 1 : 0;
 		proc_tmp = proc_tmp->next;
 	}
 	if (alive == 1)
 		return (1);
-//	winner(skrr->process, skrr->chmp, skrr);
+	winner(skrr->process, skrr->chmp, skrr);
 	return (0);
 }
 
@@ -85,7 +90,6 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 	skrr->op = -1;
 	while (++skrr->op < 16)
 	{
-		(skrr->map[(*process)->pc] == 0) ? (*process)->pc++ : 0;
 		if (skrr->map[(*process)->pc] == g_tab[skrr->op].opcode)
 		{
 			chmp->offset = 0;
@@ -108,5 +112,7 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 			return (1);
 		}
 	}
+	if (skrr->map[(*process)->pc] == 0)
+		(*process)->pc = ((*process)->pc + 1) % MEM_SIZE;
 	return (0);
 }

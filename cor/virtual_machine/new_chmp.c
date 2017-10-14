@@ -74,7 +74,7 @@ int 	inheritance_proc(t_proc **process, int pc, t_skrr *skrr)
 	new_process->tmp_pc = pc;
 	new_process->carry = (*process)->carry;
 	new_process->alive = (*process)->alive;
-	new_process->live_count = 0;
+	new_process->live_count = (*process)->live_count;
 	new_process->waiting_cycles = 1;
 	skrr->process_count++;
 	new_process->next = skrr->process;

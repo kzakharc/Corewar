@@ -77,14 +77,18 @@ int 	init_lives(t_proc *process, t_skrr *skrr)
 	{
 		skrr->cycle_to_die -= CYCLE_DELTA;
 		skrr->max_checks = MAX_CHECKS;
+		skrr->nbr_live = 0;
 	}
 	else
 	{
 		skrr->max_checks--;
-		if (!skrr->max_checks ? skrr->max_checks = MAX_CHECKS : 0)
+		skrr->nbr_live = 0;
+		if (skrr->max_checks == 0)
+		{
+			skrr->max_checks = MAX_CHECKS;
 			skrr->cycle_to_die -= CYCLE_DELTA;
+		}
 	}
-	skrr->nbr_live = 0;
 	g_ctd = 0;
 	return (1);
 }
