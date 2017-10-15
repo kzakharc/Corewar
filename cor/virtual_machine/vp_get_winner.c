@@ -32,7 +32,7 @@ void	winner(t_chmp *chmp, t_skrr *skrr)
 		{
 			if (best_cycle < chmp_tmp->last_live)
 				best_cycle = chmp_tmp->last_live;
-//			else if ()
+			else if ()
 			chmp_tmp = chmp_tmp->next;
 		}
 	}
@@ -50,8 +50,15 @@ int 	multipl_winners(t_skrr *skrr, long *best_cycles, int i)
 int 	init_lives(t_proc *process, t_skrr *skrr)
 {
 	t_proc *proc_tmp;
+	t_chmp	*champ_tmp;
 
+	champ_tmp = skrr->chmp;
 	proc_tmp = process;
+	while (champ_tmp)
+	{
+		champ_tmp->live_count = 0;
+		champ_tmp = champ_tmp->next;
+	}
 	while (proc_tmp)
 	{
 		(proc_tmp->live_count > 0) ? proc_tmp->live_count = 0 : 0;
@@ -61,12 +68,10 @@ int 	init_lives(t_proc *process, t_skrr *skrr)
 	{
 		skrr->cycle_to_die -= CYCLE_DELTA;
 		skrr->max_checks = MAX_CHECKS;
-		skrr->nbr_live = 0;
 	}
 	else
 	{
 		skrr->max_checks--;
-		skrr->nbr_live = 0;
 		if (skrr->max_checks == 0)
 		{
 			skrr->max_checks = MAX_CHECKS;
@@ -74,5 +79,6 @@ int 	init_lives(t_proc *process, t_skrr *skrr)
 		}
 	}
 	g_ctd = 0;
+	skrr->nbr_live = 0;
 	return (1);
 }
