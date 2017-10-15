@@ -27,5 +27,7 @@ struct 		s_vis
 
 void	visualize(t_skrr *skrr, t_chmp *chmp);
 void	visualize_init(t_skrr *skrr);
+int		highlight(t_skrr *skrr, int id);
+void	init_visualisation(t_skrr *skrr);
 
 #endif
