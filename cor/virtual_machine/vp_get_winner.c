@@ -12,34 +12,34 @@
 
 #include "../../corewar.h"
 
-void	winner(t_chmp *chmp, t_skrr *skrr)
-{
-	t_chmp	*chmp_tmp;
-	long 	best_cycle;
-	int 	best_player;
-
-	chmp_tmp = chmp;
-	best_cycle = chmp_tmp->last_live;
-	best_player = chmp_tmp->ac;
-	chmp_tmp = chmp_tmp->next;
-	print_info(skrr, skrr->chmp);
-	if (skrr->max_player == 1 && (chmp_tmp))
-		ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
-				  chmp_tmp->id * (-1), chmp_tmp->header.prog_name);
-	else if (skrr->max_player > 1)
-	{
-		while (chmp_tmp)
-		{
-			if (best_cycle < chmp_tmp->last_live)
-				best_cycle = chmp_tmp->last_live;
-			else if ()
-			chmp_tmp = chmp_tmp->next;
-		}
-	}
-	if (skrr->flag_v == 1)
-		endwin();
-	exit(1);
-}
+//void	winner(t_chmp *chmp, t_skrr *skrr)
+//{
+//	t_chmp	*chmp_tmp;
+//	long 	best_cycle;
+//	int 	best_player;
+//
+//	chmp_tmp = chmp;
+//	best_cycle = chmp_tmp->last_live;
+//	best_player = chmp_tmp->ac;
+//	chmp_tmp = chmp_tmp->next;
+//	print_info(skrr, skrr->chmp);
+//	if (skrr->max_player == 1 && (chmp_tmp))
+//		ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
+//				  chmp_tmp->id * (-1), chmp_tmp->header.prog_name);
+//	else if (skrr->max_player > 1)
+//	{
+//		while (chmp_tmp)
+//		{
+//			if (best_cycle < chmp_tmp->last_live)
+//				best_cycle = chmp_tmp->last_live;
+//			else if ()
+//			chmp_tmp = chmp_tmp->next;
+//		}
+//	}
+//	if (skrr->flag_v == 1)
+//		endwin();
+//	exit(1);
+//}
 
 int 	multipl_winners(t_skrr *skrr, long *best_cycles, int i)
 {

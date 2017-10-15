@@ -19,7 +19,6 @@ void init_visualisation(t_skrr *skrr)
 	init_pair(5, COLOR_CYAN, COLOR_BLACK);//margins color
 	init_pair(6, COLOR_WHITE, COLOR_BLACK);//text in menu
 	init_pair(8, COLOR_WHITE, COLOR_CYAN);//testing highlighting in map
-	skrr->vis->sleep = 16000;
 	skrr->vis->cycles = 50;
 	skrr->vis->highl = NULL;
 }

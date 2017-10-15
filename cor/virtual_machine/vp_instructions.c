@@ -82,7 +82,7 @@ int 	kill_processes(t_proc *process, t_skrr *skrr)
 	}
 	if (alive == 1)
 		return (1);
-	winner(skrr->chmp, skrr);
+	//winner(skrr->chmp, skrr);
 	return (0);
 }
 
