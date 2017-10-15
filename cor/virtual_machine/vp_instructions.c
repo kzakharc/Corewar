@@ -18,6 +18,8 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 	{
 		change_process(skrr, chmp, &skrr->process);
 		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process, skrr) : 0;
+		if (g_ctd == skrr->flag_dump)
+			dump_print(skrr);
 		skrr->flag_v ? visualize(skrr, chmp) : 0;
 		if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live > 0))
 			init_lives(skrr->process, skrr);
@@ -27,7 +29,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		g_ctd++;
 //		ft_printf("Cycle: %ld\n", g_cycles);
 	}
-//	(!skrr->flag_v) ? winner(skrr->process, chmp, skrr) : 0;
+//	(!skrr->flag_v) ? winner(chmp, skrr) : 0;
 	return (1);
 }
 
@@ -80,7 +82,7 @@ int 	kill_processes(t_proc *process, t_skrr *skrr)
 	}
 	if (alive == 1)
 		return (1);
-	winner(skrr->process, skrr->chmp, skrr);
+	winner(skrr->chmp, skrr);
 	return (0);
 }
 

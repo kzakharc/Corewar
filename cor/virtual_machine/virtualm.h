@@ -102,7 +102,6 @@ typedef struct		s_skrr
 	int 			flag_dump;
 	int 			flag_a;
 	int 			max_player;
-//	int 			current_cycle;
 	unsigned char 	map[MEM_SIZE];
 	unsigned char	mapid[MEM_SIZE];
 	t_chmp			*chmp;
@@ -155,10 +154,9 @@ int					which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process);
 int 				change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process);
 int 				process_first_positions(t_chmp *chmp, t_proc *process);
 int 				kill_processes(t_proc *process, t_skrr *skrr);
-void				winner(t_proc *process, t_chmp *chmp, t_skrr *skrr);
-int 				multipl_winners(t_proc *process, t_skrr *skrr, long *best_cycles, int i);
+void				winner(t_chmp *chmp, t_skrr *skrr);
+int 				multipl_winners(t_skrr *skrr, long *best_cycles, int i);
 int 				init_lives(t_proc *process, t_skrr *skrr);
-void 				eq_win(t_skrr *skrr, t_chmp *champ_tmp);
 
 /*
 **	Adding new champ and init his data. go -> [new_chmp.c].
@@ -200,7 +198,6 @@ unsigned char		arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
 int 				get_address(unsigned char *q, t_skrr *skrr, t_proc *process, int l, short i);
 int 				simple_address(unsigned char *q, t_skrr *skrr, t_proc *process, short i);
 void				load_into(int address, t_proc *process, t_skrr *skrr, int flag);
-void				instr_err(int op);
 void				sizes_err(char *name, int flag);
 int					same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg);
 int					determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_proc *process);

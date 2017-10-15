@@ -35,14 +35,14 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 
 	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
-		process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		value = dir_param(skrr, process, g_tab[1].dir_size);
 		search_chmp(skrr, value);
 		skrr->nbr_live += 1;
 		process->live_count += 1;
 		if (g_tab[skrr->op].dir_size == 0)
 			skrr->chmp->offset = DIR_SIZE + 2;
-		process->pc = ((process->pc + skrr->chmp->offset + 1) % MEM_SIZE);
+		process->pc = ((process->pc + skrr->chmp->offset + 1 + MEM_SIZE) % MEM_SIZE);
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;
 	}

@@ -32,7 +32,7 @@ int 	st_instr(t_skrr *skrr, t_proc *process)
 			load_into(address, process, skrr, 1);
 		else if (q[1] == T_REG)
 			(process->registry[address] = skrr->chmp->reg_value);
-		process->pc = ((process->pc + skrr->chmp->offset + 2) % MEM_SIZE);
+		process->pc = ((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;
 	}
