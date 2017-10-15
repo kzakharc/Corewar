@@ -23,10 +23,10 @@ void	winner(t_proc *process, t_chmp *chmp, t_skrr *skrr)
 	if (!(best_cycles = malloc(sizeof(long) * (chmp->id * (-1)))))
 		exit (0);
 	print_info(skrr, skrr->chmp);
-	if (chmp_tmp->id == -1)
+	if (skrr->max_player == 1)
 		ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
 				  chmp_tmp->id * (-1), chmp_tmp->header.prog_name);
-	else if (chmp_tmp->id != -1)
+	else if (skrr->max_player > 1)
 	{
 		while (chmp_tmp)
 		{
@@ -43,24 +43,53 @@ void	winner(t_proc *process, t_chmp *chmp, t_skrr *skrr)
 
 int 	multipl_winners(t_proc *process, t_skrr *skrr, long *best_cycles, int i)
 {
-	int j;
-	long best;
+	long 	best;
+	int 	is_eq;
+	t_chmp 	*champ_tmp;
 
-	j = 0;
+	is_eq = 1;
+	best = -1;
 	while (i != 0)
 	{
 		best = *best_cycles;
 		if (best < *best_cycles)
 		{
+			is_eq = 0;
 			best = *best_cycles;
 		}
 		i--;
 		best_cycles++;
 	}
-
-//	ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
-// chmp_tmp->ac, chmp_tmp->header.prog_name);
+	if (best == -1)
+	{
+		ft_printf("Error: can't get winner:( Sorry!");
+		exit (1);
+	}
+	champ_tmp = skrr->chmp;
+	if (is_eq)
+		eq_win(skrr, champ_tmp);
+	else
+	{
+		while (champ_tmp)
+		{
+			if (champ_tmp->last_live == best)
+				ft_printf("Contestant %d, " GRN"\"%s\", "RESET "has won !\n",
+						  champ_tmp->id * (-1), champ_tmp->header.prog_name);
+			champ_tmp = champ_tmp->next;
+		}
+	}
 	return (1);
+}
+
+void 	eq_win(t_skrr *skrr, t_chmp *champ_tmp)
+{
+	while (champ_tmp)
+	{
+		if (champ_tmp->id * (-1) == skrr->max_player)
+			ft_printf("Contestant %d, " GRN"\"%s\", "RESET "has won !\n",
+					  champ_tmp->id * (-1), champ_tmp->header.prog_name);
+		champ_tmp = champ_tmp->next;
+	}
 }
 
 int 	init_lives(t_proc *process, t_skrr *skrr)

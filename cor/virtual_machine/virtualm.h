@@ -158,6 +158,7 @@ int 				kill_processes(t_proc *process, t_skrr *skrr);
 void				winner(t_proc *process, t_chmp *chmp, t_skrr *skrr);
 int 				multipl_winners(t_proc *process, t_skrr *skrr, long *best_cycles, int i);
 int 				init_lives(t_proc *process, t_skrr *skrr);
+void 				eq_win(t_skrr *skrr, t_chmp *champ_tmp);
 
 /*
 **	Adding new champ and init his data. go -> [new_chmp.c].
