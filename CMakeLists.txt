@@ -13,6 +13,6 @@ file(GLOB VM "cor/virtual_machine/*.c" "cor/instructions/*.c" "cor/virtual_machi
 
 file(GLOB VIS "cor/visualisation/*.c" "cor/visualisation/*.h")
 
-add_executable(corewar ${SOURCE_FILES} ${LIBFT} ${VM} ${VIS} ${COR} cor/virtual_machine/vp_get_winner.c)
+add_executable(corewar ${SOURCE_FILES} ${LIBFT} ${VM} ${VIS} ${COR} cor/virtual_machine/vp_get_winner.c cor/visualisation/ds_highlighting.c cor/visualisation/ds_tools.c)
 
 target_link_libraries(corewar ${CMAKE_SOURCE_DIR}/libft/libft.a)
