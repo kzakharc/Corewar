@@ -17,7 +17,7 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	int adr;
 
 	adr = 0;
-	process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
 		adr = reg_param(skrr, process, 1);
 	else if (q[i] == T_DIR)
@@ -25,7 +25,7 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	else if (q[i] == T_IND)
 		adr = ind_param(skrr, process, l, 4);
 	i++;
-	process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
 		adr &= reg_param(skrr, process, 1);
 	else if (q[i] == T_DIR)
@@ -40,7 +40,7 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
 	int adr;
 
 	adr = 0;
-	process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
 		adr = reg_param(skrr, process, 1);
 	else if (q[i] == T_DIR)
@@ -48,7 +48,7 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
 	else if (q[i] == T_IND)
 		adr = ind_param(skrr, process, l, 4);
 	i++;
-	process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
 		adr |= reg_param(skrr, process, 1);
 	else if (q[i] == T_DIR)
@@ -63,7 +63,7 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	int adr;
 
 	adr = 0;
-	process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
 		adr = reg_param(skrr, process, 1);
 	else if (q[i] == T_DIR)
@@ -71,7 +71,7 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	else if (q[i] == T_IND)
 		adr = ind_param(skrr, process, l, 4);
 	i++;
-	process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
 		adr ^= reg_param(skrr, process, 1);
 	else if (q[i] == T_DIR)
@@ -90,16 +90,16 @@ int 	determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_p
 	i = 0;
 	if (key == 1)
 	{
-		process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		result = reg_param(skrr, process, 1);
-		process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		result += reg_param(skrr, process, 1);
 	}
 	else if (key == 2)
 	{
-		process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		result = reg_param(skrr, process, 1);
-		process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		result -= reg_param(skrr, process, 1);
 	}
 	else if (key == 3)

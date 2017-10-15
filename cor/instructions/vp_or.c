@@ -25,12 +25,12 @@ int 	or_instr(t_skrr *skrr, t_proc *process)
 		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 			return (0);
 		address = determination_of_action(q, skrr, 0, 4, process);
-		process->tmp_pc = (process->tmp_pc + 1) % MEM_SIZE;
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		if (!(reg = reg_param(skrr, process, 2)) && (g_err) && !(g_err = 0))
 			return (0);
 		process->registry[reg] = (unsigned int) address;
 		process->carry = (address == 0) ? 1 : 0;
-		process->pc = ((process->pc + skrr->chmp->offset + 2) % MEM_SIZE);
+		process->pc = ((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;
 	}

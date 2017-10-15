@@ -74,7 +74,7 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 	if (skrr->flag_v == 1)
 	{
 		skrr->flag_a = 0;
-		skrr->flag_dump = 0;
+		skrr->flag_dump = -1;
 	}
 }
 

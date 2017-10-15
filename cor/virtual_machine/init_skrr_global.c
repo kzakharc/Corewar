@@ -24,7 +24,7 @@ void	init(t_skrr *skrr)
 	skrr->flag_n = NULL;
 	skrr->cnt_n = 0;
 	skrr->flag_v = 0;
-	skrr->flag_dump = 0;
+	skrr->flag_dump = -1;
 	skrr->flag_a = 0;
 	skrr->max_player = 0;
 	skrr->max_checks = MAX_CHECKS;
