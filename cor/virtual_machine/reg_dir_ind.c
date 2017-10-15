@@ -18,7 +18,7 @@
 
 int		reg_param(t_skrr *skrr, t_proc *process, int flag)
 {
-	if (((skrr->map[process->tmp_pc] > 16) || (skrr->map[process->tmp_pc] <= 0))
+	if (((skrr->map[process->tmp_pc] > REG_NUMBER) || (skrr->map[process->tmp_pc] < 1))
 		&& (g_err = 1))
 		return (0);
 	if (flag == 1)
@@ -41,12 +41,12 @@ int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 	if (dir_size == 1)
 	{
 		address = (short)two_four_bytes(&skrr->map[process->tmp_pc], 2);
-		process->tmp_pc += 1;
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	}
 	else if (dir_size == 0)
 	{
 		address = two_four_bytes(&skrr->map[process->tmp_pc], 4);
-		process->tmp_pc += 3;
+		process->tmp_pc = (process->tmp_pc + 3 + MEM_SIZE) % MEM_SIZE;
 	}
 	return (address);
 }
@@ -74,6 +74,6 @@ int		ind_param(t_skrr *skrr, t_proc *process, int l, int bytes)
 		address++;
 	}
 	address = (bytes == 4) ? (ind[0] | ind[1] | ind[2] | ind[3]) : (ind[0] | ind[1]);
-	process->tmp_pc += 1;
+	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	return (address);
 }

@@ -45,28 +45,6 @@ void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 	(flag != 1) ? exit(flag) : 0;
 }
 
-void	instr_err(int op)
-{
-	ft_printf(MAG"Warning:"RESET " You changed number of args in");
-	(op == 0) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 1) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 2) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 3) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 4) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 5) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 6) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 7) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 8) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 9) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 10) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 11) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 12) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 13) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 14) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	(op == 15) ? ft_printf(" %s :(\n", g_tab[op].name) : 0;
-	exit(op);
-}
-
 void	sizes_err(char *name, int flag)
 {
 	(flag == 1) ? ft_printf(MAG"Warning:"RESET " %s != 1\n", name) : 0;

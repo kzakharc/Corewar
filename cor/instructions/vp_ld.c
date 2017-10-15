@@ -25,22 +25,22 @@ int 	ld_instr(t_skrr *skrr, t_proc *process)
 			exit(0);
 		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 			return (0);
-		if ((q[0] == T_IND) && (process->tmp_pc += 1))
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
+		if (q[0] == T_IND)
 			address = ind_param(skrr, process, 0, 4);
-		else if ((q[0] == T_DIR) && (process->tmp_pc += 1))
+		else if (q[0] == T_DIR)
 			address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
-		if ((q[1] == T_REG) && (process->tmp_pc += 1))
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
+		if (q[1] == T_REG)
 		{
 			if (!(reg = reg_param(skrr, process, 2)) && (g_err) && !(g_err = 0))
 				return (0);
 			process->registry[reg] = (unsigned int)address;
 		}
 		process->carry = (address == 0) ? 1 : 0;
-		process->pc += skrr->chmp->offset + 2;
+		process->pc = ((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;
-//		ft_printf("ld\tcurrent_cycles: %d\npc: %d\n", process->current_cycles,
-//				  process->pc);
 	}
 	return (1);
 }

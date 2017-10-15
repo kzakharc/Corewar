@@ -17,7 +17,9 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 	while (skrr->cycle_to_die > 0)
 	{
 		change_process(skrr, chmp, &skrr->process);
-//		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process, skrr) : 0;
+		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process, skrr) : 0;
+		if (g_ctd == skrr->flag_dump)
+			dump_print(skrr);
 		skrr->flag_v ? visualize(skrr, chmp) : 0;
 		if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live > 0))
 			init_lives(skrr->process, skrr);
@@ -27,7 +29,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		g_ctd++;
 //		ft_printf("Cycle: %ld\n", g_cycles);
 	}
-	(!skrr->flag_v) ? winner(skrr->process, chmp, skrr) : 0;
+//	(!skrr->flag_v) ? winner(chmp, skrr) : 0;
 	return (1);
 }
 
@@ -42,7 +44,6 @@ int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 	while (proc_tmp)
 	{
 		(proc_tmp->alive) ? which_instr(skrr, chmp_tmp, &proc_tmp) : 0;
-		(proc_tmp->alive) ? proc_tmp->waiting_cycles++ : 0;
 		proc_tmp = proc_tmp->next;
 	}
 	return (1);
@@ -51,9 +52,10 @@ int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 int 	process_first_positions(t_chmp *chmp_tmp, t_proc *proc_tmp)
 {
 	if (!chmp_tmp || !proc_tmp)
-		return (0);
+		exit (0);
 	while (chmp_tmp || proc_tmp)
 	{
+
 		proc_tmp->pc = chmp_tmp->player_pos;
 		proc_tmp = proc_tmp->next;
 		chmp_tmp = chmp_tmp->next;
@@ -70,13 +72,17 @@ int 	kill_processes(t_proc *process, t_skrr *skrr)
 	alive = 0;
 	while (proc_tmp)
 	{
-		(proc_tmp->live_count == 0) ? proc_tmp->alive = 0 : 0;
+		if (proc_tmp->live_count == 0)
+		{
+			proc_tmp->alive = 0;
+			skrr->process_count -= 1;
+		}
 		(proc_tmp->live_count > 0) ? alive = 1 : 0;
 		proc_tmp = proc_tmp->next;
 	}
 	if (alive == 1)
 		return (1);
-//	winner(skrr->process, skrr->chmp, skrr);
+	winner(skrr->chmp, skrr);
 	return (0);
 }
 
@@ -85,7 +91,6 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 	skrr->op = -1;
 	while (++skrr->op < 16)
 	{
-		(skrr->map[(*process)->pc] == 0) ? (*process)->pc++ : 0;
 		if (skrr->map[(*process)->pc] == g_tab[skrr->op].opcode)
 		{
 			chmp->offset = 0;
@@ -105,8 +110,11 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 			((skrr->op) == 13) ? lldi_instr(skrr, *process) : 0;
 			((skrr->op) == 14) ? lfork_instr(skrr, process) : 0;
 			((skrr->op) == 15) ? aff_instr(skrr, *process) : 0;
+			(*process)->waiting_cycles++;
 			return (1);
 		}
 	}
+	if (skrr->map[(*process)->pc] == 0)
+		(*process)->pc = ((*process)->pc + 1) % MEM_SIZE;
 	return (0);
 }
