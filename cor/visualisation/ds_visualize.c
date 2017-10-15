@@ -89,20 +89,28 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	mvwprintw(menu, 7, 10, "%d", g_cycles);
 	wattron(menu, COLOR_PAIR(1));
 	mvwprintw(menu, 11, 14, "%s", chmp->header.prog_name);
+	wattroff(menu, COLOR_PAIR(1));
+	mvwprintw(menu, 12, 36, "%ld", chmp->last_live);
 	if (skrr->max_player > 1)
 	{
 		wattron(menu, COLOR_PAIR(2));
 		mvwprintw(menu, 15, 14, "%s", chmp->next->header.prog_name);
+		wattroff(menu, COLOR_PAIR(2));
+		mvwprintw(menu, 16, 36, "%ld", chmp->next->last_live);
 	}
 	if (skrr->max_player > 2)
 	{
 		wattron(menu, COLOR_PAIR(3));
-		mvwprintw(menu, 19, 14, "%s", chmp->next->header.prog_name);
+		mvwprintw(menu, 19, 14, "%s", chmp->next->next->header.prog_name);
+		wattroff(menu, COLOR_PAIR(3));
+		mvwprintw(menu, 20, 36, "%ld", chmp->next->next->last_live);
 	}
 	if (skrr->max_player > 3)
 	{
 		wattron(menu, COLOR_PAIR(4));
-		mvwprintw(menu, 23, 14, "%s", chmp->next->header.prog_name);
+		mvwprintw(menu, 23, 14, "%s", chmp->next->next->next->header.prog_name);
+		wattroff(menu, COLOR_PAIR(4));
+		mvwprintw(menu, 24, 36, "%ld", chmp->next->next->next->last_live);
 	}
 	wattroff(menu, COLOR_PAIR(1));
 	mvwprintw(menu, 17 + y, 17, "%d", skrr->cycle_to_die);
