@@ -40,7 +40,7 @@ void menufields(WINDOW *menu, t_skrr *skrr)
 	y = (skrr->max_player * 4);
 	wattron(menu, COLOR_PAIR(6));
 	wattron(menu, A_BOLD);
-	mvwaddstr(menu, 2, 2, "** RUNNING **");
+//	mvwaddstr(menu, 2, 2, "** RUNNING **");
 	mvwaddstr(menu, 4, 2, "Cycles/second limit :");
 	mvwaddstr(menu, 7, 2, "Cycle :");
 	mvwaddstr(menu, 9, 2, "Processes :");
@@ -126,6 +126,7 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	int y;
 
 	y = (skrr->max_player * 4);
+	mvwaddstr(skrr->vis->menu, 2, 2, "** RUNNING **");
 	mvwprintw(menu, 4, 24, "%d ", skrr->vis->cycles);
 	mvwprintw(menu, 9, 14, "%d", skrr->process_count);
 	mvwprintw(menu, 7, 10, "%d", g_cycles);
@@ -271,6 +272,8 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	{
 		skrr->vis->c = (c == 115) ? 1 : 0;
 		c = 0;
+		mvwaddstr(skrr->vis->menu, 2, 2, "** PAUSED ** ");
+		wrefresh(skrr->vis->menu);
 		while (c != 32 && c != 115)
 		{
 			c = wgetch(skrr->vis->code);
