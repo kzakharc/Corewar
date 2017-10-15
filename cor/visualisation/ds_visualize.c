@@ -180,6 +180,32 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	mvwprintw(menu, 23 + y, 15, "%d", skrr->max_checks);
 }
 
+//void	breakdown_current(t_skrr *skrr)
+//{
+//	t_chmp	*tmp;
+//	int 	total;
+//	int 	x;
+//	int 	p1;
+//	int 	p2;
+//	int 	p3;
+//	int 	p4;
+//
+//	tmp = skrr->chmp;
+//	total = 0;
+//	x = 2;
+//	while (tmp != NULL)
+//	{
+//		total += tmp->live_count;
+//		tmp = tmp->next;
+//	}
+//	while (x < 53)
+//	{
+//		while (50 * total / )
+//		mvwaddch(skrr->vis->menu, 12 + skrr->max_player * 4, x++, '-' | COLOR_PAIR(0));
+//	}
+//
+//}
+
 int		findprocess(t_skrr *skrr, int pc)
 {
 	t_proc *tmp;
@@ -211,9 +237,9 @@ void printmem(t_skrr *skrr)
 			if (findprocess(skrr, skrr->i) == 1)
 			{
 				wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i]));
-				wattron(skrr->vis->code, A_REVERSE);
 				if (skrr->mapid[skrr->i] > 9)
 					highlight(skrr, skrr->i);
+				wattron(skrr->vis->code, A_REVERSE);
 				mvwprintw(skrr->vis->code, y, x, "%hh.2x", skrr->map[skrr->i++]);
 				wattroff(skrr->vis->code, A_REVERSE);
 				wattrset(skrr->vis->code, COLOR_PAIR(0));
