@@ -5,6 +5,7 @@
 #ifndef VISUALIZE_H
 # define VISUALIZE_H
 
+# include <math.h>
 # include "../../corewar.h"
 
 typedef struct		s_highl
@@ -29,5 +30,6 @@ void	visualize(t_skrr *skrr, t_chmp *chmp);
 void	visualize_init(t_skrr *skrr);
 int		highlight(t_skrr *skrr, int id);
 void	init_visualisation(t_skrr *skrr);
+void	breakdown_current(t_skrr *skrr);
 
 #endif
