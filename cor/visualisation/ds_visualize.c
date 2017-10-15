@@ -79,6 +79,48 @@ void menufields(WINDOW *menu, t_skrr *skrr)
 	mvwaddstr(menu, 23 + y, 2, "MAX_CHECKS :");
 }
 
+char	*find_progname(t_skrr *skrr, int id)
+{
+	t_chmp *tmp;
+
+	tmp = skrr->chmp;
+	while (tmp != NULL)
+	{
+		if (tmp->id == id)
+			return (tmp->header.prog_name);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+long	find_last_live(t_skrr *skrr, int id)
+{
+	t_chmp *tmp;
+
+	tmp = skrr->chmp;
+	while (tmp != NULL)
+	{
+		if (tmp->id == id)
+			return (tmp->last_live);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+int		find_live_count(t_skrr *skrr, int id)
+{
+	t_chmp *tmp;
+
+	tmp = skrr->chmp;
+	while (tmp != NULL)
+	{
+		if (tmp->id == id)
+			return (tmp->live_count);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 {
 	int y;
@@ -88,29 +130,33 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	mvwprintw(menu, 9, 14, "%d", skrr->process_count);
 	mvwprintw(menu, 7, 10, "%d", g_cycles);
 	wattron(menu, COLOR_PAIR(1));
-	mvwprintw(menu, 11, 14, "%s", chmp->header.prog_name);
+	mvwprintw(menu, 11, 14, "%s", find_progname(skrr, -1));
 	wattroff(menu, COLOR_PAIR(1));
-	mvwprintw(menu, 12, 36, "%ld", chmp->last_live);
+	mvwprintw(menu, 12, 36, "%ld", find_last_live(skrr, -1));
+	mvwprintw(menu, 13, 36, "%d", find_live_count(skrr, -1));
 	if (skrr->max_player > 1)
 	{
 		wattron(menu, COLOR_PAIR(2));
-		mvwprintw(menu, 15, 14, "%s", chmp->next->header.prog_name);
+		mvwprintw(menu, 15, 14, "%s", find_progname(skrr, -2));
 		wattroff(menu, COLOR_PAIR(2));
-		mvwprintw(menu, 16, 36, "%ld", chmp->next->last_live);
+		mvwprintw(menu, 16, 36, "%ld", find_last_live(skrr, -2));
+		mvwprintw(menu, 17, 36, "%d", find_live_count(skrr, -2));
 	}
 	if (skrr->max_player > 2)
 	{
 		wattron(menu, COLOR_PAIR(3));
-		mvwprintw(menu, 19, 14, "%s", chmp->next->next->header.prog_name);
+		mvwprintw(menu, 19, 14, "%s", find_progname(skrr, -3));
 		wattroff(menu, COLOR_PAIR(3));
-		mvwprintw(menu, 20, 36, "%ld", chmp->next->next->last_live);
+		mvwprintw(menu, 20, 36, "%ld", find_last_live(skrr, -3));
+		mvwprintw(menu, 21, 36, "%d", find_live_count(skrr, -3));
 	}
 	if (skrr->max_player > 3)
 	{
 		wattron(menu, COLOR_PAIR(4));
-		mvwprintw(menu, 23, 14, "%s", chmp->next->next->next->header.prog_name);
+		mvwprintw(menu, 23, 14, "%s", find_progname(skrr, -4));
 		wattroff(menu, COLOR_PAIR(4));
-		mvwprintw(menu, 24, 36, "%ld", chmp->next->next->next->last_live);
+		mvwprintw(menu, 24, 36, "%ld", find_last_live(skrr, -4));
+		mvwprintw(menu, 25, 36, "%d", find_live_count(skrr, -4));
 	}
 	wattroff(menu, COLOR_PAIR(1));
 	mvwprintw(menu, 17 + y, 17, "%d", skrr->cycle_to_die);
