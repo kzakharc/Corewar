@@ -12,6 +12,22 @@
 
 #include "../../corewar.h"
 
+void		correct_id(t_skrr *skrr)
+{
+	t_chmp *chmp_tmp;
+	t_proc *proc_tmp;
+
+	chmp_tmp = skrr->chmp;
+	proc_tmp = skrr->process;
+	while (proc_tmp)
+	{
+		chmp_tmp->id = proc_tmp->registry[0];
+		proc_tmp->id = proc_tmp->registry[0];
+		chmp_tmp = chmp_tmp->next;
+		proc_tmp = proc_tmp->next;
+	}
+}
+
 void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 {
 	unsigned char 	*line;
@@ -21,6 +37,7 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 	champ_tmp = chmp;
 	proc_tmp = skrr->process;
 	init_map(skrr);
+	correct_id(skrr);
 	while (champ_tmp && proc_tmp)
 	{
 		proc_tmp->tmp_pc = player_position(proc_tmp->registry[0], skrr, champ_tmp);
@@ -63,7 +80,6 @@ unsigned int	player_position(int nbr, t_skrr *skrr, t_chmp *chmp)
 {
 	unsigned int tmp;
 
-	chmp->ac = nbr;
 	tmp = (unsigned int)(MEM_SIZE / skrr->max_player);
 	chmp->player_pos = (nbr == -1) ? 0 : tmp * (-1 * nbr - 1);
 	return (chmp->player_pos);
