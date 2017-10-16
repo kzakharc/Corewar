@@ -293,11 +293,7 @@ void printmem(t_skrr *skrr)
 
 void	visualize_init(t_skrr *skrr)
 {
-	int	width;
-	int	height;
-
 	init_visualisation(skrr);
-	getmaxyx(stdscr, height, width);
 	start_color();
 	skrr->vis->code = newwin(68, 254 - 57, 0, 0);
 	skrr->vis->menu = newwin(68, 57, 0, 254 - 57);
@@ -333,7 +329,7 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	{
 		skrr->vis->c = (c == 115) ? 1 : 0;
 		c = 0;
-		mvwaddstr(skrr->vis->menu, 2, 2, "** PAUSED ** ");
+		mvwaddstr(skrr->vis->menu, 2, 3, "** PAUSED ** ");
 		wrefresh(skrr->vis->menu);
 		while (c != 32 && c != 115)
 		{
