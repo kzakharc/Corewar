@@ -49,8 +49,7 @@ typedef struct		s_proc
 	int 			tmp_pc;
 	unsigned int 	registry[REG_NUMBER];
 	int 			carry;
-	int 			alive;
-	int 			live_count;
+	int 			live_proc;
 	int 			waiting_cycles;
 	struct s_proc	*next;
 }					t_proc;
@@ -153,7 +152,7 @@ int 				entry_point(t_skrr *skrr, t_chmp *chmp);
 int					which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process);
 int 				change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process);
 int 				process_first_positions(t_chmp *chmp, t_proc *process);
-int 				kill_processes(t_proc *process, t_skrr *skrr);
+int 				kill_processes(t_proc **process, t_skrr *skrr);
 void				winner(t_chmp *chmp, t_skrr *skrr);
 void 				multipl_winners(t_skrr *skrr, long best_cycles, int best_player);
 int 				init_lives(t_proc *process, t_skrr *skrr);

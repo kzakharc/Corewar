@@ -39,7 +39,7 @@ void	print_info(t_skrr *skrr, t_chmp *chmp)
 	(skrr->i == 0) ? ft_printf("Introducing contestants...\n") : 0;
 	while (champ_tmp)
 	{
-		ft_printf("* Player %d, ", champ_tmp->ac * (-1));
+		ft_printf("* Player %d, ", champ_tmp->id * (-1));
 		ft_printf("Name:" GRN" \"%s\", "RESET, champ_tmp->header.prog_name);
 		ft_printf("weighing" GRN" %u "RESET "bytes, ",
 				  champ_tmp->header.prog_size);
