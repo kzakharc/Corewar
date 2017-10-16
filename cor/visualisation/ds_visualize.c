@@ -311,6 +311,18 @@ void	cycles_limit(int c, t_skrr *skrr)
 		skrr->vis->cycles -= (skrr->vis->cycles > 10) ? 10 : 1;
 	if (c == 101)
 		skrr->vis->cycles += 1;
+	if (c == 49)
+		skrr->vis->cycles = 50;
+	if (c == 50)
+		skrr->vis->cycles = 100;
+	if (c == 51)
+		skrr->vis->cycles = 500;
+	if (c == 52)
+		skrr->vis->cycles = 1000;
+	if (c == 52)
+		skrr->vis->cycles = 2000;
+	if (c == 53)
+		skrr->vis->cycles = 4000;
 	mvwprintw(skrr->vis->menu, 4, 25, "%d  ", skrr->vis->cycles);
 	wrefresh(skrr->vis->menu);
 }
