@@ -12,7 +12,7 @@
 
 #include "../../corewar.h"
 
-void 	search_chmp(t_skrr *skrr, int value)
+void search_chmp(t_skrr *skrr, int value, t_proc *process)
 {
 	t_chmp *chmp_tmp;
 
@@ -23,6 +23,7 @@ void 	search_chmp(t_skrr *skrr, int value)
 		{
 			chmp_tmp->last_live = g_cycles;
 			chmp_tmp->live_count += 1;
+			process->live_color = 1;
 			return ;
 		}
 		chmp_tmp = chmp_tmp->next;
@@ -37,7 +38,7 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 	{
 		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		value = dir_param(skrr, process, g_tab[1].dir_size);
-		search_chmp(skrr, value);
+		search_chmp(skrr, value, process);
 		skrr->nbr_live += 1;
 		process->live_count += 1;
 		if (g_tab[skrr->op].dir_size == 0)

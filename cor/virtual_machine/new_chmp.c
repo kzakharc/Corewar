@@ -52,6 +52,7 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	new_process->pc = 0;
 	new_process->alive = 1;
 	new_process->live_count = 0;
+	new_process->live_color = 0;
 	new_process->waiting_cycles = 0;
 	skrr->process_count++;
 	new_process->next = *process;

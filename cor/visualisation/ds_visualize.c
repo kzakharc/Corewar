@@ -228,15 +228,83 @@ void breakdown_current(t_skrr *skrr, int y)
 	}
 }
 
+void	del_live(t_skrr *skrr)
+{
+	t_live	*current;
+	t_live	*prev;
+
+	prev = NULL;
+	current = skrr->vis->live;
+	if (current->id == skrr->i)
+	{
+		skrr->vis->live = current->next;
+		free(current);
+		return ;
+	}
+	while (current != NULL)
+	{
+		if (current->id == skrr->i)
+		{
+			prev->next = current->next;
+			free(current);
+			return ;
+		}
+		prev = current;
+		current = current->next;
+	}
+}
+
+void	add_to_live(t_skrr *skrr)
+{
+	t_live *newnode;
+
+	newnode = (t_live*)malloc(sizeof(t_live));
+	newnode->id = skrr->i;
+	newnode->cycle = g_cycles + 100;
+	newnode->next = skrr->vis->live;
+	skrr->vis->live = newnode;
+}
+
+void	findlive(t_skrr *skrr, t_proc *proc)
+{
+	t_live	*livetmp;
+
+	livetmp = skrr->vis->live;
+	while (livetmp != NULL)
+	{
+		if (livetmp->id == skrr->i)
+		{
+			if (livetmp->cycle == g_cycles)
+			{
+				del_live(skrr);
+				proc->live_color = 0;
+				return ;
+			}
+			wattrset(skrr->vis->code, COLOR_PAIR((proc->id * -1) + 10));
+			return ;
+		}
+		livetmp = livetmp->next;
+	}
+	wattrset(skrr->vis->code, COLOR_PAIR((proc->id * -1) + 10));
+	add_to_live(skrr);
+}
+
 int		findprocess(t_skrr *skrr, int pc)
 {
-	t_proc *tmp;
+	t_proc	*tmp;
 
 	tmp = skrr->process;
 	while (tmp != NULL)
 	{
 		if (tmp->pc == pc)
+		{
+			if (tmp->live_color == 1)
+			{
+				findlive(skrr, tmp);
+				return (2);
+			}
 			return (1);
+		}
 		tmp = tmp->next;
 	}
 	return (0);
@@ -256,7 +324,9 @@ void printmem(t_skrr *skrr)
 	{
 		while (i < 64)
 		{
-			if (findprocess(skrr, skrr->i) == 1)
+			if (findprocess(skrr, skrr->i) == 2)
+				mvwprintw(skrr->vis->code, y, x, "%hh.2x", skrr->map[skrr->i++]);
+			else if (findprocess(skrr, skrr->i) == 1)
 			{
 				wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i]));
 				if (skrr->mapid[skrr->i] > 9)

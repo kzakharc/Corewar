@@ -4,7 +4,7 @@
 
 #include "../../corewar.h"
 
-int		del_highl(t_skrr *skrr, int id)
+void del_highl(t_skrr *skrr, int id)
 {
 	t_highl *current;
 	t_highl *prev;
@@ -15,7 +15,7 @@ int		del_highl(t_skrr *skrr, int id)
 	{
 		skrr->vis->highl = current->next;
 		free(current);
-		return (1);
+		return ;
 	}
 	while (current != NULL)
 	{
@@ -23,12 +23,11 @@ int		del_highl(t_skrr *skrr, int id)
 		{
 			prev->next = current->next;
 			free(current);
-			return (1);
+			return ;
 		}
 		prev = current;
 		current = current->next;
 	}
-	return (-1);
 }
 
 void	add_to_highl(t_skrr *skrr, int id)
