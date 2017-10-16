@@ -155,7 +155,7 @@ int 				change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process);
 int 				process_first_positions(t_chmp *chmp, t_proc *process);
 int 				kill_processes(t_proc *process, t_skrr *skrr);
 void				winner(t_chmp *chmp, t_skrr *skrr);
-int 				multipl_winners(t_skrr *skrr, long *best_cycles, int i);
+void 				multipl_winners(t_skrr *skrr, long best_cycles, int best_player);
 int 				init_lives(t_proc *process, t_skrr *skrr);
 
 /*

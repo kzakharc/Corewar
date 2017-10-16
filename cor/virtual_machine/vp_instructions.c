@@ -23,13 +23,11 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		skrr->flag_v ? visualize(skrr, chmp) : 0;
 		if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live > 0))
 			init_lives(skrr->process, skrr);
-//		else if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live == 0))
-//			(!skrr->flag_v) ? winner(skrr->process, chmp, skrr) : 0;
 		g_cycles++;
 		g_ctd++;
 //		ft_printf("Cycle: %ld\n", g_cycles);
 	}
-//	(!skrr->flag_v) ? winner(chmp, skrr) : 0;
+	(!skrr->flag_v) ? winner(chmp, skrr) : 0;
 	return (1);
 }
 
@@ -115,6 +113,6 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 		}
 	}
 	if (skrr->map[(*process)->pc] == 0)
-		(*process)->pc = ((*process)->pc + 1) % MEM_SIZE;
+		(*process)->pc = ((*process)->pc + 1 + MEM_SIZE) % MEM_SIZE;
 	return (0);
 }

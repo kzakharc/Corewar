@@ -77,7 +77,7 @@ int		same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg)
 		q[skrr->i++] = arg_types(skrr, skrr->chmp, process->tmp_pc);
 	if (check_my_q(q, num_arg) == -2)
 	{
-		process->pc += (process->pc + skrr->chmp->offset + MEM_SIZE) % MEM_SIZE;
+		process->pc = (process->pc + skrr->chmp->offset + MEM_SIZE) % MEM_SIZE;
 		return (0);
 	}
 	return (1);
