@@ -30,18 +30,22 @@ void	print_map(t_skrr *skrr)
 
 void	print_info(t_skrr *skrr, t_chmp *chmp)
 {
+	t_chmp *champ_tmp;
+
+
 	skrr->i = 0;
 	skrr->n = 1;
+	champ_tmp = chmp;
 	(skrr->i == 0) ? ft_printf("Introducing contestants...\n") : 0;
-	while (chmp)
+	while (champ_tmp)
 	{
-		ft_printf("* Player %d, ", skrr->n++);
-		ft_printf("Name:" GRN" \"%s\", "RESET, chmp->header.prog_name);
+		ft_printf("* Player %d, ", champ_tmp->ac * (-1));
+		ft_printf("Name:" GRN" \"%s\", "RESET, champ_tmp->header.prog_name);
 		ft_printf("weighing" GRN" %u "RESET "bytes, ",
-				  chmp->header.prog_size);
+				  champ_tmp->header.prog_size);
 		ft_printf("comment:" GRN" \"%s\"\n"RESET,
-				  chmp->header.comment);
-		chmp = chmp->next;
+				  champ_tmp->header.comment);
+		champ_tmp = champ_tmp->next;
 		skrr->i++;
 	}
 }

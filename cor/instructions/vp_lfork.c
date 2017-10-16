@@ -21,7 +21,7 @@ int 	lfork_instr(t_skrr *skrr, t_proc **process)
 	{
 		(*process)->tmp_pc = ((*process)->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		address = dir_param(skrr, *process, g_tab[skrr->op].dir_size);
-		pc = address % MEM_SIZE;
+		pc = (address + MEM_SIZE) % MEM_SIZE;
 		(*process)->pc = ((*process)->pc + 3 + MEM_SIZE) % MEM_SIZE;
 		(*process)->tmp_pc = (*process)->pc;
 		(*process)->waiting_cycles = 0;
