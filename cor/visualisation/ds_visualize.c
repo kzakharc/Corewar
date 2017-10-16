@@ -307,7 +307,6 @@ void	visualize_init(t_skrr *skrr)
 	menufields(skrr->vis->menu, skrr);
 	wrefresh(skrr->vis->menu);
 	wrefresh(skrr->vis->code);
-//	sleep(150);
 }
 
 void	cycles_limit(int c, t_skrr *skrr)
