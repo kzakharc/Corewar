@@ -14,20 +14,20 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 	while (i < height)
 	{
 		mvwaddch(code, i, 0, ' ' | A_REVERSE);
-		mvwaddch(code, i, width - 71, ' ' | A_REVERSE);
-		mvwaddch(menu, i++, 69, ' ' | A_REVERSE);
+		mvwaddch(menu, i, 0, ' ' | A_REVERSE);
+		mvwaddch(menu, i++, 56, ' ' | A_REVERSE);
 	}
 	i = 0;
-	while (i < width - 71)
+	while (i < width - 57)
 	{
 		mvwaddch(code, 0, i, ' ' | A_REVERSE);
 		mvwaddch(code, height - 1, i++, ' ' | A_REVERSE);
 	}
 	i = 0;
-	while (i < 71)
+	while (i < 57)
 	{
 		mvwaddch(menu, 0, i, ' ' | A_REVERSE);
-		mvwaddch(menu, height - 1, i++, ' ' | A_REVERSE);
+		mvwaddch(menu, 67, i++, ' ' | A_REVERSE);
 	}
 	wattroff(code, COLOR_PAIR(5));
 	wattroff(menu, COLOR_PAIR(5));
@@ -40,44 +40,43 @@ void menufields(WINDOW *menu, t_skrr *skrr)
 	y = (skrr->max_player * 4);
 	wattron(menu, COLOR_PAIR(6));
 	wattron(menu, A_BOLD);
-//	mvwaddstr(menu, 2, 2, "** RUNNING **");
-	mvwaddstr(menu, 4, 2, "Cycles/second limit :");
-	mvwaddstr(menu, 7, 2, "Cycle :");
-	mvwaddstr(menu, 9, 2, "Processes :");
-	mvwaddstr(menu, 11, 2, "Player -1 :");
-	mvwaddstr(menu, 12, 4, "Last live :");
-	mvwaddstr(menu, 13, 4, "Lives in current period :");
+	mvwaddstr(menu, 4, 3, "Cycles/second limit :");
+	mvwaddstr(menu, 7, 3, "Cycle :");
+	mvwaddstr(menu, 9, 3, "Processes :");
+	mvwaddstr(menu, 11, 3, "Player -1 :");
+	mvwaddstr(menu, 12, 5, "Last live :");
+	mvwaddstr(menu, 13, 5, "Lives in current period :");
 	if (skrr->max_player > 1)
 	{
-		mvwaddstr(menu, 15, 2, "Player -2 :");
-		mvwaddstr(menu, 16, 4, "Last live :");
-		mvwaddstr(menu, 17, 4, "Lives in current period :");
+		mvwaddstr(menu, 15, 3, "Player -2 :");
+		mvwaddstr(menu, 16, 5, "Last live :");
+		mvwaddstr(menu, 17, 5, "Lives in current period :");
 	}
 	if (skrr->max_player > 2)
 	{
-		mvwaddstr(menu, 19, 2, "Player -3 :");
-		mvwaddstr(menu, 20, 4, "Last live :");
-		mvwaddstr(menu, 21, 4, "Lives in current period :");
+		mvwaddstr(menu, 19, 3, "Player -3 :");
+		mvwaddstr(menu, 20, 5, "Last live :");
+		mvwaddstr(menu, 21, 5, "Lives in current period :");
 	}
 	if (skrr->max_player > 3)
 	{
-		mvwaddstr(menu, 23, 2, "Player -4 :");
-		mvwaddstr(menu, 24, 4, "Last live :");
-		mvwaddstr(menu, 25, 4, "Lives in current period :");
+		mvwaddstr(menu, 23, 3, "Player -4 :");
+		mvwaddstr(menu, 24, 5, "Last live :");
+		mvwaddstr(menu, 25, 5, "Lives in current period :");
 	}
-	mvwaddstr(menu, 11 + y, 2, "Live breakdown for current period :");
+	mvwaddstr(menu, 11 + y, 3, "Live breakdown for current period :");
 	wattron(menu, COLOR_PAIR(6));
-	mvwaddstr(menu, 14 + y, 2, "Live breakdown for last period :");
+	mvwaddstr(menu, 14 + y, 3, "Live breakdown for last period :");
 	if (g_cycles < skrr->cycle_to_die)
 	{
 		wattron(skrr->vis->menu, COLOR_PAIR(7) | A_BOLD);
-		mvwaddstr(menu, 15 + y, 2, "[--------------------------------------------------]");
+		mvwaddstr(menu, 15 + y, 3, "[--------------------------------------------------]");
 	}
 	wattron(menu, COLOR_PAIR(6));
-	mvwaddstr(menu, 17 + y, 2, "CYCLE_TO_DIE :");
-	mvwaddstr(menu, 19 + y, 2, "CYCLE_DELTA :");
-	mvwaddstr(menu, 21 + y, 2, "NBR_LIVE :");
-	mvwaddstr(menu, 23 + y, 2, "MAX_CHECKS :");
+	mvwaddstr(menu, 17 + y, 3, "CYCLE_TO_DIE :");
+	mvwaddstr(menu, 19 + y, 3, "CYCLE_DELTA :");
+	mvwaddstr(menu, 21 + y, 3, "NBR_LIVE :");
+	mvwaddstr(menu, 23 + y, 3, "MAX_CHECKS :");
 }
 
 char	*find_progname(t_skrr *skrr, int id)
@@ -141,47 +140,47 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	int y;
 
 	y = (skrr->max_player * 4);
-	mvwaddstr(skrr->vis->menu, 2, 2, "** RUNNING **");
-	mvwprintw(menu, 4, 24, "%d ", skrr->vis->cycles);
-	mvwprintw(menu, 9, 14, "%d", skrr->process_count);
-	mvwprintw(menu, 7, 10, "%d", g_cycles);
+	mvwaddstr(skrr->vis->menu, 2, 3, "** RUNNING **");
+	mvwprintw(menu, 4, 25, "%d  ", skrr->vis->cycles);
+	mvwprintw(menu, 9, 15, "%d", skrr->process_count);
+	mvwprintw(menu, 7, 11, "%d", g_cycles);
 	wattron(menu, COLOR_PAIR(champ_color(skrr, -1)));
-	mvwprintw(menu, 11, 14, "%s", find_progname(skrr, -1));
+	mvwprintw(menu, 11, 15, "%s", find_progname(skrr, -1));
 	wattron(menu, COLOR_PAIR(6));
-	mvwprintw(menu, 12, 36, "%ld", find_last_live(skrr, -1));
-	mvwprintw(menu, 13, 36, "%d      ", find_live_count(skrr, -1));
+	mvwprintw(menu, 12, 37, "%ld", find_last_live(skrr, -1));
+	mvwprintw(menu, 13, 37, "%d      ", find_live_count(skrr, -1));
 	if (skrr->max_player > 1)
 	{
 		wattron(menu, COLOR_PAIR(champ_color(skrr, -2)));
-		mvwprintw(menu, 15, 14, "%s", find_progname(skrr, -2));
+		mvwprintw(menu, 15, 15, "%s", find_progname(skrr, -2));
 		wattron(menu, COLOR_PAIR(6));
-		mvwprintw(menu, 16, 36, "%ld", find_last_live(skrr, -2));
-		mvwprintw(menu, 17, 36, "%d      ", find_live_count(skrr, -2));
+		mvwprintw(menu, 16, 37, "%ld", find_last_live(skrr, -2));
+		mvwprintw(menu, 17, 37, "%d      ", find_live_count(skrr, -2));
 	}
 	if (skrr->max_player > 2)
 	{
 		wattron(menu, COLOR_PAIR(champ_color(skrr, -3)));
-		mvwprintw(menu, 19, 14, "%s", find_progname(skrr, -3));
+		mvwprintw(menu, 19, 15, "%s", find_progname(skrr, -3));
 		wattron(menu, COLOR_PAIR(6));
-		mvwprintw(menu, 20, 36, "%ld", find_last_live(skrr, -3));
-		mvwprintw(menu, 21, 36, "%d      ", find_live_count(skrr, -3));
+		mvwprintw(menu, 20, 37, "%ld", find_last_live(skrr, -3));
+		mvwprintw(menu, 21, 37, "%d      ", find_live_count(skrr, -3));
 	}
 	if (skrr->max_player > 3)
 	{
 		wattron(menu, COLOR_PAIR(champ_color(skrr, -4)));
-		mvwprintw(menu, 23, 14, "%s", find_progname(skrr, -4));
+		mvwprintw(menu, 23, 15, "%s", find_progname(skrr, -4));
 		wattron(menu, COLOR_PAIR(6));
-		mvwprintw(menu, 24, 36, "%ld", find_last_live(skrr, -4));
-		mvwprintw(menu, 25, 36, "%d      ", find_live_count(skrr, -4));
+		mvwprintw(menu, 24, 37, "%ld", find_last_live(skrr, -4));
+		mvwprintw(menu, 25, 37, "%d      ", find_live_count(skrr, -4));
 	}
 	breakdown_current(skrr, 12);
 	if (g_ctd == skrr->cycle_to_die)
 		breakdown_current(skrr, 15);
 	wattron(menu, COLOR_PAIR(6));
-	mvwprintw(menu, 17 + y, 17, "%d ", skrr->cycle_to_die);
-	mvwprintw(menu, 19 + y, 16, "%d ", CYCLE_DELTA);
-	mvwprintw(menu, 21 + y, 13, "%d ", NBR_LIVE);
-	mvwprintw(menu, 23 + y, 15, "%d ", skrr->max_checks);
+	mvwprintw(menu, 17 + y, 18, "%d ", skrr->cycle_to_die);
+	mvwprintw(menu, 19 + y, 17, "%d ", CYCLE_DELTA);
+	mvwprintw(menu, 21 + y, 14, "%d ", NBR_LIVE);
+	mvwprintw(menu, 23 + y, 16, "%d ", skrr->max_checks);
 }
 
 void breakdown_current(t_skrr *skrr, int y)
@@ -194,7 +193,7 @@ void breakdown_current(t_skrr *skrr, int y)
 
 	tmp = skrr->chmp;
 	total = 0;
-	x = 3;
+	x = 4;
 	id = -1;
 	i = 0;
 	while (tmp != NULL)
@@ -204,12 +203,12 @@ void breakdown_current(t_skrr *skrr, int y)
 	}
 	if (total > 0)
 	{
-		mvwaddch(skrr->vis->menu, y + skrr->max_player * 4, 2, '[' | COLOR_PAIR(7) | A_BOLD);
+		mvwaddch(skrr->vis->menu, y + skrr->max_player * 4, 3, '[' | COLOR_PAIR(7) | A_BOLD);
 		while (id > -5)
 		{
 			if (find_live_count(skrr, id) > 0)
 			{
-				while (i < ((50 * (find_live_count(skrr, id) / total))) && x < 53)
+				while (i < ((50 * (find_live_count(skrr, id) / total))) && x < 54)
 				{
 					wattron(skrr->vis->menu, COLOR_PAIR(champ_color(skrr, id)));
 					mvwaddch(skrr->vis->menu, y + skrr->max_player * 4, x++, '-');
@@ -225,7 +224,7 @@ void breakdown_current(t_skrr *skrr, int y)
 	else
 	{
 		wattron(skrr->vis->menu, COLOR_PAIR(7) | A_BOLD);
-		mvwaddstr(skrr->vis->menu, 12 + + skrr->max_player * 4, 2, "[--------------------------------------------------]");
+		mvwaddstr(skrr->vis->menu, 12 + + skrr->max_player * 4, 3, "[--------------------------------------------------]");
 	}
 }
 
@@ -249,8 +248,8 @@ void printmem(t_skrr *skrr)
 	int x;
 	int i;
 
-	x = 2;
-	y = 3;
+	x = 3;
+	y = 2;
 	skrr->i = 0;
 	i = 0;
 	while (skrr->i < MEM_SIZE)
@@ -283,11 +282,11 @@ void printmem(t_skrr *skrr)
 				}
 				mvwprintw(skrr->vis->code, y, x, "%hh.2x ", skrr->map[skrr->i++]);
 			}
-			x = x + 4;
+			x = x + 3;
 			i++;
 		}
 		y++;
-		x = 2;
+		x = 3;
 		i = 0;
 	}
 }
@@ -300,14 +299,15 @@ void	visualize_init(t_skrr *skrr)
 	init_visualisation(skrr);
 	getmaxyx(stdscr, height, width);
 	start_color();
-	skrr->vis->code = newwin(height, width - 70, 0, 0);
-	skrr->vis->menu = newwin(height, 70, 0, width - 70);
+	skrr->vis->code = newwin(68, 254 - 57, 0, 0);
+	skrr->vis->menu = newwin(68, 57, 0, 254 - 57);
 	keypad(skrr->vis->code, TRUE);
 	nodelay(skrr->vis->menu, TRUE); //no to wait for the wgetch
-	printmargins(skrr->vis->code, skrr->vis->menu, width, height);
+	printmargins(skrr->vis->code, skrr->vis->menu, 254, 68);
 	menufields(skrr->vis->menu, skrr);
 	wrefresh(skrr->vis->menu);
 	wrefresh(skrr->vis->code);
+//	sleep(150);
 }
 
 void	cycles_limit(int c, t_skrr *skrr)
@@ -316,7 +316,7 @@ void	cycles_limit(int c, t_skrr *skrr)
 		skrr->vis->cycles -= (skrr->vis->cycles > 10) ? 10 : 1;
 	if (c == 101)
 		skrr->vis->cycles += 1;
-	mvwprintw(skrr->vis->menu, 4, 24, "%d ", skrr->vis->cycles);
+	mvwprintw(skrr->vis->menu, 4, 25, "%d  ", skrr->vis->cycles);
 	wrefresh(skrr->vis->menu);
 }
 
