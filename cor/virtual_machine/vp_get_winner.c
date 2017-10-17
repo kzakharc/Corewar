@@ -23,6 +23,7 @@ static char 	*name_winner(t_chmp *chmp, int id)
 			return (ft_strdup(tmp->header.prog_name));
 		tmp = tmp->next;
 	}
+	return (0);
 }
 
 void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
