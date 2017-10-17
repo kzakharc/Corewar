@@ -196,7 +196,7 @@ int					from_reg(unsigned char *q, t_proc *process, t_skrr *skrr, short i);
 unsigned char		arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
 int 				get_address(unsigned char *q, t_skrr *skrr, t_proc *process, int l, short i);
 int 				simple_address(unsigned char *q, t_skrr *skrr, t_proc *process, short i);
-void				load_into(int address, t_proc *process, t_skrr *skrr, int flag);
+int					load_into(int address, t_proc *process, t_skrr *skrr, int flag);
 void				sizes_err(char *name, int flag);
 int					same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg);
 int					determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_proc *process);

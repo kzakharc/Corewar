@@ -20,7 +20,7 @@ void	winner(t_chmp *chmp, t_skrr *skrr)
 
 	chmp_tmp = chmp;
 	best_cycle = chmp_tmp->last_live;
-	best_player = chmp_tmp->ac;
+	best_player = chmp_tmp->id;
 	print_info(skrr, skrr->chmp);
 	if (skrr->max_player == 1)
 		ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
@@ -30,10 +30,10 @@ void	winner(t_chmp *chmp, t_skrr *skrr)
 		chmp_tmp = chmp_tmp->next;
 		while (chmp_tmp)
 		{
-			if ((best_cycle <= chmp_tmp->last_live) && (best_player > chmp_tmp->ac))
+			if ((best_cycle <= chmp_tmp->last_live) && (best_player > chmp_tmp->id))
 			{
 				best_cycle = chmp_tmp->last_live;
-				best_player = chmp_tmp->ac;
+				best_player = chmp_tmp->id;
 			}
 			chmp_tmp = chmp_tmp->next;
 		}
@@ -50,7 +50,7 @@ void 	multipl_winners(t_skrr *skrr, long best_cycles, int best_player)
 	chmp_tmp = skrr->chmp;
 	while (chmp_tmp)
 	{
-		if ((best_cycles == chmp_tmp->last_live) && (best_player == chmp_tmp->ac))
+		if ((best_cycles == chmp_tmp->last_live) && (best_player == chmp_tmp->id))
 			ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
 					  chmp_tmp->id * (-1), chmp_tmp->header.prog_name);
 		chmp_tmp = chmp_tmp->next;
@@ -67,7 +67,6 @@ int 	init_lives(t_proc *process, t_skrr *skrr)
 		champ_tmp->live_count = 0;
 		champ_tmp = champ_tmp->next;
 	}
-
 	if (skrr->nbr_live >= NBR_LIVE && (skrr->max_checks = MAX_CHECKS))
 		skrr->cycle_to_die -= CYCLE_DELTA;
 	else

@@ -89,7 +89,6 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 			return (1);
 		}
 	}
-	if (skrr->map[(*process)->pc] == 0)
-		(*process)->pc = ((*process)->pc + 1 + MEM_SIZE) % MEM_SIZE;
+	(*process)->pc = ((*process)->pc + 1 + MEM_SIZE) % MEM_SIZE;
 	return (0);
 }

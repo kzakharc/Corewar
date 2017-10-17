@@ -98,9 +98,7 @@ int 	kill_processes(t_proc **process, t_skrr *skrr)
 		}
 		else
 		{
-//			if (*process == current_proc)
-//				*process = current_proc->next;
-			prev->next = current_proc->next;
+
 			free(current_proc);
 		}
 		current_proc = prev->next;

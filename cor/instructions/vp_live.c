@@ -19,7 +19,7 @@ void 	search_chmp(t_skrr *skrr, int value)
 	chmp_tmp = skrr->chmp;
 	while (chmp_tmp)
 	{
-		if (chmp_tmp->ac == value)
+		if (chmp_tmp->id == value)
 		{
 			chmp_tmp->last_live = g_cycles;
 			chmp_tmp->live_count += 1;
@@ -35,6 +35,7 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 
 	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
 	{
+		process->waiting_cycles = 0;
 		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		value = dir_param(skrr, process, g_tab[1].dir_size);
 		search_chmp(skrr, value);
@@ -44,7 +45,6 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 			skrr->chmp->offset = DIR_SIZE + 2;
 		process->pc = ((process->pc + skrr->chmp->offset + 1 + MEM_SIZE) % MEM_SIZE);
 		process->tmp_pc = process->pc;
-		process->waiting_cycles = 0;
 	}
 	return (1);
 }
