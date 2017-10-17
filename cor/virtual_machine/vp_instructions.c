@@ -57,7 +57,6 @@ int 	process_first_positions(t_chmp *chmp_tmp, t_proc *proc_tmp)
 		exit (0);
 	while (chmp_tmp || proc_tmp)
 	{
-
 		proc_tmp->pc = chmp_tmp->player_pos;
 		proc_tmp = proc_tmp->next;
 		chmp_tmp = chmp_tmp->next;
