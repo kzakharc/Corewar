@@ -51,7 +51,7 @@ int		load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 	return (1);
 }
 
-int 	from_reg(unsigned char *q, t_proc *process, t_skrr *skrr, short i)
+int		from_reg(unsigned char *q, t_proc *process, t_skrr *skrr, short i)
 {
 	skrr->chmp->reg_value = 0; 				// maybe can delete this. already init this variable in [new_chmp.c].
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
