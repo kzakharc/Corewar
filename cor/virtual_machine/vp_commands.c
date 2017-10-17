@@ -42,7 +42,7 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 	{
 		proc_tmp->tmp_pc = player_position(proc_tmp->registry[0], skrr, champ_tmp);
 		line = (unsigned char*) ft_strnew(champ_tmp->header.prog_size);
-		chk_size(skrr, av[champ_tmp->ac], line, champ_tmp);
+		chk_size(skrr, av[champ_tmp->id], line, champ_tmp);
 		skrr->i = 0;
 		while (read(champ_tmp->fd, &line[skrr->i], 1))
 			skrr->i++;

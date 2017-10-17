@@ -80,32 +80,29 @@ int 	inheritance_proc(t_proc **process, int pc, t_skrr *skrr)
 	return (1);
 }
 
-int 	kill_processes(t_proc **process, t_skrr *skrr)
+int 	kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr)
 {
 	t_proc *current_proc;
-	t_proc *prev;
 
 	current_proc = *process;
-	if (current_proc == NULL)
-		return (0);
-	prev = current_proc;
+
 	while (current_proc)
 	{
-		if (current_proc->live_proc == 1)
+		if (current_proc->live_proc == 0)
+		{
+			if (prev)
+				prev->next = current_proc->next;
+			else
+				*process = current_proc->next;
+			free(current_proc);
+			skrr->process_count--;
+		}
+		else if (current_proc->live_proc == 1)
 		{
 			current_proc->live_proc = 0;
 			prev = current_proc;
 		}
-		else
-		{
-//			if (*process == current_proc)
-//				*process = current_proc->next;
-			prev->next = current_proc->next;
-			free(current_proc);
-		}
-		current_proc = prev->next;
+		current_proc = current_proc->next;
 	}
-	if (*process == NULL)
-		winner(skrr->chmp, skrr);
 	return (1);
 }

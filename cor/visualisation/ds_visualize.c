@@ -86,7 +86,7 @@ char	*find_progname(t_skrr *skrr, int id)
 	tmp = skrr->chmp;
 	while (tmp != NULL)
 	{
-		if (tmp->ac == id)
+		if (tmp->id == id)
 			return (tmp->header.prog_name);
 		tmp = tmp->next;
 	}
@@ -100,7 +100,7 @@ long	find_last_live(t_skrr *skrr, int id)
 	tmp = skrr->chmp;
 	while (tmp != NULL)
 	{
-		if (tmp->ac == id)
+		if (tmp->id == id)
 			return (tmp->last_live);
 		tmp = tmp->next;
 	}
@@ -114,7 +114,7 @@ int		find_live_count(t_skrr *skrr, int id)
 	tmp = skrr->chmp;
 	while (tmp != NULL)
 	{
-		if (tmp->ac == id)
+		if (tmp->id == id)
 			return (tmp->live_count);
 		tmp = tmp->next;
 	}
@@ -128,7 +128,7 @@ int 	champ_color(t_skrr *skrr, int id)
 	tmp = skrr->chmp;
 	while (tmp != NULL)
 	{
-		if (tmp->ac == id)
+		if (tmp->id == id)
 			return (tmp->id * -1);
 		tmp = tmp->next;
 	}

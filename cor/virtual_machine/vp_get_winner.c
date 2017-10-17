@@ -12,49 +12,31 @@
 
 #include "../../corewar.h"
 
-void	winner(t_chmp *chmp, t_skrr *skrr)
+void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
 {
 	t_chmp	*chmp_tmp;
-	long 	best_cycle;
-	int 	best_player;
+	char	*name;
 
+	name = NULL;
 	chmp_tmp = chmp;
-	best_cycle = chmp_tmp->last_live;
-	best_player = chmp_tmp->ac;
-	print_info(skrr, skrr->chmp);
-	if (skrr->max_player == 1)
-		ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
-				  chmp_tmp->id * (-1), chmp_tmp->header.prog_name);
-	else if (skrr->max_player > 1)
-	{
-		chmp_tmp = chmp_tmp->next;
-		while (chmp_tmp)
-		{
-			if ((best_cycle <= chmp_tmp->last_live) && (best_player > chmp_tmp->ac))
-			{
-				best_cycle = chmp_tmp->last_live;
-				best_player = chmp_tmp->ac;
-			}
-			chmp_tmp = chmp_tmp->next;
-		}
-		multipl_winners(skrr, best_cycle, best_player);
-	}
-	(skrr->flag_v == 1) ? endwin() : 0;
-	exit(1);
-}
-
-void 	multipl_winners(t_skrr *skrr, long best_cycles, int best_player)
-{
-	t_chmp *chmp_tmp;
-
-	chmp_tmp = skrr->chmp;
+	chmp_tmp->next != NULL ? chmp_tmp = chmp_tmp->next : 0;
 	while (chmp_tmp)
 	{
-		if ((best_cycles == chmp_tmp->last_live) && (best_player == chmp_tmp->ac))
-			ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
-					  chmp_tmp->id * (-1), chmp_tmp->header.prog_name);
+		if (best_cycle <= chmp_tmp->last_live)
+		{
+			if (best_cycle == chmp_tmp->last_live)
+				best_player =
+				best_player < chmp_tmp->id ? chmp_tmp->id : best_player;
+			else
+				best_player = chmp_tmp->id;
+			name = ft_strdup(chmp_tmp->header.prog_name);
+		}
 		chmp_tmp = chmp_tmp->next;
 	}
+	print_info(skrr, skrr->chmp);
+	ft_printf("Contestant %ld, " GRN"\"%s\","RESET "has won !\n", best_player * (-1), name);
+	(skrr->flag_v == 1) ? endwin() : 0;
+	exit(1);
 }
 
 int 	init_lives(t_proc *process, t_skrr *skrr)
