@@ -16,7 +16,7 @@
 **	flag = 1 -> , 2 -> for load on the map from reg 4 bytes value
 */
 
-int	load_into(int address, t_proc *process, t_skrr *skrr, int flag)
+int		load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 {
 	unsigned int 	value[4];
 	int 			reg;
@@ -78,7 +78,7 @@ int 	get_address(unsigned char *q, t_skrr *skrr, t_proc *process, int l, short i
 	adr = 0;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
-		if ((adr = reg_param(skrr, process, 1)) || (g_err))
+		if ((adr = reg_param(skrr, process, 1)) && (g_err))
 			return (0);
 	if (q[i] == T_DIR)
 		adr = dir_param(skrr, process, 1);
@@ -87,8 +87,11 @@ int 	get_address(unsigned char *q, t_skrr *skrr, t_proc *process, int l, short i
 	i++;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
-		if ((adr += reg_param(skrr, process, 1)) || (g_err))
+	{
+		adr += reg_param(skrr, process, 1);
+		if (g_err)
 			return (0);
+	}
 	if (q[i] == T_DIR)
 		adr += dir_param(skrr, process, 1);
 	if (q[i] == T_IND)
