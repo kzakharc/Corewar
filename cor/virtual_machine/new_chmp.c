@@ -87,7 +87,6 @@ int 	kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr)
 	t_proc *current_proc;
 
 	current_proc = *process;
-
 	while (current_proc)
 	{
 		if (current_proc->live_proc == 0)

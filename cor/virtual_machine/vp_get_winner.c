@@ -62,7 +62,6 @@ int 	init_lives(t_proc *process, t_skrr *skrr)
 		champ_tmp->live_count = 0;
 		champ_tmp = champ_tmp->next;
 	}
-
 	if (skrr->nbr_live >= NBR_LIVE && (skrr->max_checks = MAX_CHECKS))
 		skrr->cycle_to_die -= CYCLE_DELTA;
 	else

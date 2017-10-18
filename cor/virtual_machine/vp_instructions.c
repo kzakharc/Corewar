@@ -18,7 +18,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 
 	while (skrr->cycle_to_die > 0)
 	{
-		kas = g_cycles == 1535 ? 1 : 0;
+		kas = (g_cycles == 1535) ? 1 : 0;
 		change_process(skrr, chmp, &skrr->process);
 		if (g_ctd + kas == skrr->cycle_to_die)
 		{

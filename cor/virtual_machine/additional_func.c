@@ -75,21 +75,29 @@ int		same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg)
 	}
 	while (skrr->i < num_arg)
 		q[skrr->i++] = arg_types(skrr, skrr->chmp, process->tmp_pc);
-	if (check_my_q(q, num_arg) == -2)
+	if (check_my_q(q, num_arg, skrr) == -2)
 	{
-		process->pc = (process->pc + skrr->chmp->offset + MEM_SIZE) % MEM_SIZE;
+		process->pc = (process->pc + 2 + skrr->chmp->offset + MEM_SIZE) % MEM_SIZE;
 		return (0);
 	}
 	return (1);
 }
 
-int 	check_my_q(unsigned char *q, int num_arg)
+int 	check_my_q(unsigned char *q, int num_arg, t_skrr *skrr)
 {
 	int i;
 
 	i = -1;
 	while (++i < num_arg)
+	{
 		if (q[i] == 0)
 			return (-2);
+		else if (q[i] == T_REG && !(g_tab[skrr->op].arg[i] & T_REG))
+			return (-2);
+		else if (q[i] == T_DIR && !(g_tab[skrr->op].arg[i] & T_DIR))
+			return (-2);
+		else if (q[i] == T_IND  && !(g_tab[skrr->op].arg[i] & T_IND))
+			return (-2);
+	}
 	return (1);
 }
