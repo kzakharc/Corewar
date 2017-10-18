@@ -51,6 +51,7 @@ typedef struct		s_proc
 	int 			carry;
 	int 			live_proc;
 	int 			waiting_cycles;
+	int 			sop;
 	struct s_proc	*next;
 }					t_proc;
 

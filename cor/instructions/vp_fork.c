@@ -17,10 +17,12 @@ int 	fork_instr(t_skrr *skrr, t_proc **process)
 	int address;
 	int pc;
 
-	if (((*process)->waiting_cycles) == (g_tab[skrr->op].cycles))
+	(*process)->sop = 11;
+	if ((*process)->waiting_cycles == g_tab[skrr->op].cycles)
 	{
+		(*process)->sop = -1;
 		(*process)->waiting_cycles = 0;
-		(*process)->tmp_pc = ((*process)->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
+		(*process)->tmp_pc = ((*process)->pc + 1 + MEM_SIZE) % MEM_SIZE;
 		address = dir_param(skrr, *process, g_tab[skrr->op].dir_size);
 		address = ((*process)->pc + (address % IDX_MOD));
 		pc = (address  + MEM_SIZE) % MEM_SIZE;

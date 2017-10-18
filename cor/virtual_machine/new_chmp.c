@@ -52,6 +52,7 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	new_process->pc = 0;
 	new_process->live_proc = 0;
 	new_process->waiting_cycles = 0;
+	new_process->sop = -1;
 	skrr->process_count++;
 	new_process->next = *process;
 	*process = new_process;
@@ -74,6 +75,7 @@ int 	inheritance_proc(t_proc **process, int pc, t_skrr *skrr)
 	new_process->carry = (*process)->carry;
 	new_process->live_proc = (*process)->live_proc;
 	new_process->waiting_cycles = 1;
+	new_process->sop = -1;
 	skrr->process_count++;
 	new_process->next = skrr->process;
 	skrr->process = new_process;

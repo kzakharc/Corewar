@@ -16,8 +16,10 @@ int 	aff_instr(t_skrr *skrr, t_proc *process)
 {
 	unsigned char print_it;
 
-	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
+	process->sop = 15;
+	if (process->waiting_cycles == g_tab[skrr->op].cycles)
 	{
+		process->sop = -1;
 		process->tmp_pc = (process->pc + 1 + MEM_SIZE) % MEM_SIZE;
 		process->waiting_cycles = 0;
 		if (!(print_it = (unsigned char)reg_param(skrr, process, 1)) && (g_err) && !(g_err = 0))

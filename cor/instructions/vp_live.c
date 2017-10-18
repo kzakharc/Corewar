@@ -33,8 +33,10 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 {
 	int	value;
 
-	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
+	process->sop = 0;
+	if (process->waiting_cycles == g_tab[skrr->op].cycles)
 	{
+		process->sop = -1;
 		process->waiting_cycles = 0;
 		process->tmp_pc = (process->pc + 1 + MEM_SIZE) % MEM_SIZE;
 		value = dir_param(skrr, process, g_tab[1].dir_size);

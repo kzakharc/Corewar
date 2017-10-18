@@ -18,8 +18,10 @@ int 	xor_instr(t_skrr *skrr, t_proc *process)
 	int 			address;
 	int 			reg;
 
-	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
+	process->sop = 7;
+	if (process->waiting_cycles == g_tab[skrr->op].cycles)
 	{
+		process->sop = -1;
 		process->waiting_cycles = 0;
 		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
 			exit(0);

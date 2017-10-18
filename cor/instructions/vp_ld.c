@@ -18,8 +18,10 @@ int 	ld_instr(t_skrr *skrr, t_proc *process)
 	int 			address;
 	int 			reg;
 
-	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
+	process->sop = 1;
+	if (process->waiting_cycles == g_tab[skrr->op].cycles)
 	{
+		process->sop = -1;
 		address = 0;
 		process->waiting_cycles = 0;
 		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
