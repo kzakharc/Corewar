@@ -12,68 +12,57 @@
 
 #include "../../corewar.h"
 
-void	winner(t_chmp *chmp, t_skrr *skrr)
+static char 	*name_winner(t_chmp *chmp, int id)
+{
+	t_chmp *tmp;
+
+	tmp = chmp;
+	while (tmp)
+	{
+		if (tmp->id == id)
+			return (ft_strdup(tmp->header.prog_name));
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
 {
 	t_chmp	*chmp_tmp;
-	long 	best_cycle;
-	int 	best_player;
+	char	*name;
 
 	chmp_tmp = chmp;
-	best_cycle = chmp_tmp->last_live;
-	best_player = chmp_tmp->ac;
-	print_info(skrr, skrr->chmp);
-	if (skrr->max_player == 1)
-		ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
-				  chmp_tmp->ac * (-1), chmp_tmp->header.prog_name);
-	else if (skrr->max_player > 1)
+	chmp_tmp->next != NULL ? chmp_tmp = chmp_tmp->next : 0;
+	while (chmp_tmp)
 	{
-		chmp_tmp = chmp_tmp->next;
-		while (chmp_tmp)
+		if (best_cycle <= chmp_tmp->last_live)
 		{
-			if ((best_cycle <= chmp_tmp->last_live) && (best_player > chmp_tmp->ac))
-			{
-				best_cycle = chmp_tmp->last_live;
-				best_player = chmp_tmp->ac;
-			}
-			chmp_tmp = chmp_tmp->next;
+			if (best_cycle == chmp_tmp->last_live)
+				best_player =
+				best_player < chmp_tmp->id ? chmp_tmp->id : best_player;
+			else
+				best_player = chmp_tmp->id;
 		}
-		multipl_winners(skrr, best_cycle, best_player);
+		chmp_tmp = chmp_tmp->next;
 	}
+	print_info(skrr, skrr->chmp);
+	name = name_winner(chmp, best_player);
+	ft_printf("Contestant %ld, " GRN"\"%s\","RESET "has won !\n", best_player * (-1), name);
 	(skrr->flag_v == 1) ? endwin() : 0;
 	exit(1);
 }
 
-void 	multipl_winners(t_skrr *skrr, long best_cycles, int best_player)
-{
-	t_chmp *chmp_tmp;
-
-	chmp_tmp = skrr->chmp;
-	while (chmp_tmp)
-	{
-		if ((best_cycles == chmp_tmp->last_live) && (best_player == chmp_tmp->ac))
-			ft_printf("Contestant %ld, " GRN"\"%s\", "RESET "has won !\n",
-					  chmp_tmp->ac * (-1), chmp_tmp->header.prog_name);
-		chmp_tmp = chmp_tmp->next;
-	}
-}
-
 int 	init_lives(t_proc *process, t_skrr *skrr)
 {
-	t_proc *proc_tmp;
 	t_chmp	*champ_tmp;
 
 	champ_tmp = skrr->chmp;
-	proc_tmp = process;
 	while (champ_tmp)
 	{
 		champ_tmp->live_count = 0;
 		champ_tmp = champ_tmp->next;
 	}
-	while (proc_tmp)
-	{
-		(proc_tmp->live_count > 0) ? proc_tmp->live_count = 0 : 0;
-		proc_tmp = proc_tmp->next;
-	}
+
 	if (skrr->nbr_live >= NBR_LIVE && (skrr->max_checks = MAX_CHECKS))
 		skrr->cycle_to_die -= CYCLE_DELTA;
 	else
@@ -86,3 +75,4 @@ int 	init_lives(t_proc *process, t_skrr *skrr)
 	skrr->nbr_live = 0;
 	return (1);
 }
+

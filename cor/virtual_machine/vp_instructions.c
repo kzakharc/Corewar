@@ -17,7 +17,11 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 	while (skrr->cycle_to_die > 0)
 	{
 		change_process(skrr, chmp, &skrr->process);
-		(g_ctd == skrr->cycle_to_die) ? kill_processes(skrr->process, skrr) : 0;
+		if (g_ctd == skrr->cycle_to_die)
+		{
+			kill_processes(&skrr->process, NULL, skrr);
+			skrr->process == NULL ? winner(chmp, skrr, skrr->chmp->last_live, skrr->chmp->id) : 0;
+		}
 		if (g_ctd == skrr->flag_dump)
 			dump_print(skrr);
 		skrr->flag_v ? visualize(skrr, chmp) : 0;
@@ -27,7 +31,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		g_ctd++;
 //		ft_printf("Cycle: %ld\n", g_cycles);
 	}
-	(!skrr->flag_v) ? winner(chmp, skrr) : 0;
+	(!skrr->flag_v) ? winner(chmp, skrr, skrr->chmp->last_live, skrr->chmp->id) : 0;
 	return (1);
 }
 
@@ -41,7 +45,7 @@ int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 	(g_cycles == 0) ? process_first_positions(chmp_tmp, proc_tmp) : 0;
 	while (proc_tmp)
 	{
-		(proc_tmp->alive) ? which_instr(skrr, chmp_tmp, &proc_tmp) : 0;
+		which_instr(skrr, chmp_tmp, &proc_tmp);
 		proc_tmp = proc_tmp->next;
 	}
 	return (1);
@@ -53,35 +57,11 @@ int 	process_first_positions(t_chmp *chmp_tmp, t_proc *proc_tmp)
 		exit (0);
 	while (chmp_tmp || proc_tmp)
 	{
-
 		proc_tmp->pc = chmp_tmp->player_pos;
 		proc_tmp = proc_tmp->next;
 		chmp_tmp = chmp_tmp->next;
 	}
 	return (1);
-}
-
-int 	kill_processes(t_proc *process, t_skrr *skrr)
-{
-	t_proc 	*proc_tmp;
-	int 	alive;
-
-	proc_tmp = process;
-	alive = 0;
-	while (proc_tmp)
-	{
-		if (proc_tmp->live_count == 0)
-		{
-			proc_tmp->alive = 0;
-			skrr->process_count -= 1;
-		}
-		(proc_tmp->live_count > 0) ? alive = 1 : 0;
-		proc_tmp = proc_tmp->next;
-	}
-	if (alive == 1)
-		return (1);
-	//winner(skrr->chmp, skrr);
-	return (0);
 }
 
 int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process)
@@ -112,7 +92,6 @@ int		which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 			return (1);
 		}
 	}
-	if (skrr->map[(*process)->pc] == 0)
-		(*process)->pc = ((*process)->pc + 1 + MEM_SIZE) % MEM_SIZE;
+	(*process)->pc = ((*process)->pc + 1 + MEM_SIZE) % MEM_SIZE;
 	return (0);
 }

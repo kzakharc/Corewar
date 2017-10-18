@@ -28,25 +28,35 @@ void	print_map(t_skrr *skrr)
 	}
 }
 
+static void		ft_output(t_chmp *champ_tmp)
+{
+	ft_printf("* Player %d, ", champ_tmp->id * (-1));
+	ft_printf("Name:" GRN" \"%s\", "RESET, champ_tmp->header.prog_name);
+	ft_printf("weighing" GRN" %u "RESET "bytes, ",
+			  champ_tmp->header.prog_size);
+	ft_printf("comment:" GRN" \"%s\"\n"RESET,
+			  champ_tmp->header.comment);
+}
+
 void	print_info(t_skrr *skrr, t_chmp *chmp)
 {
-	t_chmp *champ_tmp;
+	t_chmp	*champ_tmp;
+	int		cnt;
+	int		tmp;
 
-
-	skrr->i = 0;
-	skrr->n = 1;
+	cnt = -1;
 	champ_tmp = chmp;
-	(skrr->i == 0) ? ft_printf("Introducing contestants...\n") : 0;
+	ft_printf("Introducing contestants...\n");
 	while (champ_tmp)
 	{
-		ft_printf("* Player %d, ", champ_tmp->ac * (-1));
-		ft_printf("Name:" GRN" \"%s\", "RESET, champ_tmp->header.prog_name);
-		ft_printf("weighing" GRN" %u "RESET "bytes, ",
-				  champ_tmp->header.prog_size);
-		ft_printf("comment:" GRN" \"%s\"\n"RESET,
-				  champ_tmp->header.comment);
-		champ_tmp = champ_tmp->next;
-		skrr->i++;
+		tmp = cnt;
+		if (champ_tmp->id == cnt)
+		{
+			ft_output(champ_tmp);
+			cnt--;
+			champ_tmp = chmp;
+		}
+		tmp == cnt ? champ_tmp = champ_tmp->next : 0;
 	}
 }
 

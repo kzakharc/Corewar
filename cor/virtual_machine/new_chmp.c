@@ -50,9 +50,7 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	new_process->id = id;
 	new_process->carry = 0;
 	new_process->pc = 0;
-	new_process->alive = 1;
-	new_process->live_count = 0;
-	new_process->live_color = 0;
+	new_process->live_proc = 0;
 	new_process->waiting_cycles = 0;
 	skrr->process_count++;
 	new_process->next = *process;
@@ -74,11 +72,37 @@ int 	inheritance_proc(t_proc **process, int pc, t_skrr *skrr)
 	new_process->pc = pc;
 	new_process->tmp_pc = pc;
 	new_process->carry = (*process)->carry;
-	new_process->alive = (*process)->alive;
-	new_process->live_count = (*process)->live_count;
+	new_process->live_proc = (*process)->live_proc;
 	new_process->waiting_cycles = 1;
 	skrr->process_count++;
 	new_process->next = skrr->process;
 	skrr->process = new_process;
+	return (1);
+}
+
+int 	kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr)
+{
+	t_proc *current_proc;
+
+	current_proc = *process;
+
+	while (current_proc)
+	{
+		if (current_proc->live_proc == 0)
+		{
+			if (prev)
+				prev->next = current_proc->next;
+			else
+				*process = current_proc->next;
+			free(current_proc);
+			skrr->process_count--;
+		}
+		else if (current_proc->live_proc == 1)
+		{
+			current_proc->live_proc = 0;
+			prev = current_proc;
+		}
+		current_proc = current_proc->next;
+	}
 	return (1);
 }

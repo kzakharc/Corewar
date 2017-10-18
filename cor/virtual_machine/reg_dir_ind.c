@@ -20,7 +20,10 @@ int		reg_param(t_skrr *skrr, t_proc *process, int flag)
 {
 	if (((skrr->map[process->tmp_pc] > REG_NUMBER) || (skrr->map[process->tmp_pc] < 1))
 		&& (g_err = 1))
+	{
+		process->pc = ((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
 		return (0);
+	}
 	if (flag == 1)
 		return (process->registry[skrr->map[process->tmp_pc] - 1]);
 	else if (flag == 2)
@@ -52,7 +55,7 @@ int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 }
 
 /*
-**	int l, if l = 1 -> for long function, means without %IDX_MOD
+**	if l = 1 -> for long function, means without %IDX_MOD
 */
 
 int		ind_param(t_skrr *skrr, t_proc *process, int l, int bytes)
