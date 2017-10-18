@@ -50,6 +50,7 @@ typedef struct		s_proc
 	unsigned int 	registry[REG_NUMBER];
 	int 			carry;
 	int 			live_proc;
+	int 			live_color;
 	int 			waiting_cycles;
 	struct s_proc	*next;
 }					t_proc;

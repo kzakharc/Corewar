@@ -18,6 +18,7 @@ typedef struct		s_highl
 typedef struct 		s_live
 {
 	int				id;
+	int 			procid;
 	unsigned long	cycle;
 	struct s_live	*next;
 }					t_live;

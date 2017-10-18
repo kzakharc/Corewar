@@ -265,7 +265,7 @@ void	add_to_live(t_skrr *skrr)
 	skrr->vis->live = newnode;
 }
 
-void	findlive(t_skrr *skrr, t_proc *proc)
+int findlive(t_skrr *skrr, t_proc *proc, int flag)
 {
 	t_live	*livetmp;
 
@@ -278,15 +278,19 @@ void	findlive(t_skrr *skrr, t_proc *proc)
 			{
 				del_live(skrr);
 				proc->live_color = 0;
-				return ;
+				return (-1);
 			}
-			wattrset(skrr->vis->code, COLOR_PAIR((proc->id * -1) + 10));
-			return ;
+			wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
+			return (1);
 		}
 		livetmp = livetmp->next;
 	}
-	wattrset(skrr->vis->code, COLOR_PAIR((proc->id * -1) + 10));
-	add_to_live(skrr);
+	if (flag == 1)
+	{
+		wattrset(skrr->vis->code, COLOR_PAIR((proc->id * -1) + 10) | A_BOLD);
+		add_to_live(skrr);
+	}
+	return (0);
 }
 
 int		findprocess(t_skrr *skrr, int pc)
@@ -300,7 +304,7 @@ int		findprocess(t_skrr *skrr, int pc)
 		{
 			if (tmp->live_color == 1)
 			{
-				findlive(skrr, tmp);
+				findlive(skrr, tmp, 1);
 				return (2);
 			}
 			return (1);
@@ -324,7 +328,7 @@ void printmem(t_skrr *skrr)
 	{
 		while (i < 64)
 		{
-			if (findprocess(skrr, skrr->i) == 2)
+			if (findprocess(skrr, skrr->i) == 2 || findlive(skrr, skrr->process, 0 == 1))
 				mvwprintw(skrr->vis->code, y, x, "%hh.2x", skrr->map[skrr->i++]);
 			else if (findprocess(skrr, skrr->i) == 1)
 			{
