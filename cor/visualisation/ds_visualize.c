@@ -309,14 +309,7 @@ int		findprocess(t_skrr *skrr, int pc)
 	while (tmp != NULL)
 	{
 		if (tmp->pc == pc)
-		{
-			if (tmp->live_color == 1)
-//			{
-//				findlive(skrr, tmp, 1);
-//				return (2);
-//			}
 			return (1);
-		}
 		tmp = tmp->next;
 	}
 	return (0);
