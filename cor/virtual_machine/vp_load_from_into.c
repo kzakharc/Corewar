@@ -39,7 +39,8 @@ int		load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 		while (++skrr->j < 4)
 		{
 			address = (address + MEM_SIZE) % MEM_SIZE;
-			value[skrr->j] = get_magic_size(skrr->map[address++], skrr->shift);
+			value[skrr->j] = get_magic_size(skrr->map[address], skrr->shift);
+			address++;
 			skrr->shift -= 8;
 		}
 		if (!(reg = reg_param(skrr, process, 2)) && (g_err))
@@ -95,7 +96,7 @@ int 	get_address(unsigned char *q, t_skrr *skrr, t_proc *process, int l, short i
 		adr += dir_param(skrr, process, 1);
 	if (q[i] == T_IND)
 		adr += ind_param(skrr, process, l, 4);
-	(l == 0) ? adr = (process->pc + (adr % IDX_MOD)) : 0;
+	adr = (l == 0) ? (process->pc + (adr % IDX_MOD)) : (process->pc + adr);
 	return (adr);
 }
 
