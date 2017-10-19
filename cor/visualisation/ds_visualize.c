@@ -285,7 +285,7 @@ int findlive(t_skrr *skrr)
 					{
 						del_live(skrr);
 						proctmp->live_color = 0;
-						return (-1);
+						return (1);
 					}
 					wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
 					return (1);
