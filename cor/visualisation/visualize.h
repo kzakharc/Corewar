@@ -15,6 +15,14 @@ typedef struct		s_highl
 	struct s_highl 	*next;
 }					t_highl;
 
+typedef struct 		s_live
+{
+	int				id;
+	int 			procid;
+	unsigned long	cycle;
+	struct s_live	*next;
+}					t_live;
+
 struct 		s_vis
 {
 	WINDOW			*code;
@@ -23,6 +31,7 @@ struct 		s_vis
 	int 			c;
 	int 			s;
 	t_highl			*highl;
+	t_live			*live;
 };
 
 void	visualize(t_skrr *skrr, t_chmp *chmp);

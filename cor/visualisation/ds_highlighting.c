@@ -4,7 +4,7 @@
 
 #include "../../corewar.h"
 
-int		del_highl(t_skrr *skrr, int id)
+void del_highl(t_skrr *skrr, int id)
 {
 	t_highl *current;
 	t_highl *prev;
@@ -15,7 +15,7 @@ int		del_highl(t_skrr *skrr, int id)
 	{
 		skrr->vis->highl = current->next;
 		free(current);
-		return (1);
+		return ;
 	}
 	while (current != NULL)
 	{
@@ -23,12 +23,11 @@ int		del_highl(t_skrr *skrr, int id)
 		{
 			prev->next = current->next;
 			free(current);
-			return (1);
+			return ;
 		}
 		prev = current;
 		current = current->next;
 	}
-	return (-1);
 }
 
 void	add_to_highl(t_skrr *skrr, int id)
@@ -37,7 +36,7 @@ void	add_to_highl(t_skrr *skrr, int id)
 
 	newnode = (t_highl*)malloc(sizeof(t_highl));
 	newnode->id = id;
-	newnode->cycle = g_cycles + 100;
+	newnode->cycle = g_cycles + 50;
 	newnode->next = skrr->vis->highl;
 	skrr->vis->highl = newnode;
 }
@@ -55,6 +54,7 @@ int		highlight(t_skrr *skrr, int id)
 			{
 				skrr->mapid[skrr->i] /= 10;
 				del_highl(skrr, id);
+				return (0);
 			}
 			wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] / 10));
 			wattron(skrr->vis->code, A_BOLD);

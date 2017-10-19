@@ -228,9 +228,82 @@ void breakdown_current(t_skrr *skrr, int y)
 	}
 }
 
+void	del_live(t_skrr *skrr)
+{
+	t_live	*current;
+	t_live	*prev;
+
+	prev = NULL;
+	current = skrr->vis->live;
+	if (current->id == skrr->i)
+	{
+		skrr->vis->live = current->next;
+		free(current);
+		return ;
+	}
+	while (current != NULL)
+	{
+		if (current->id == skrr->i)
+		{
+			prev->next = current->next;
+			free(current);
+			return ;
+		}
+		prev = current;
+		current = current->next;
+	}
+}
+
+void	add_to_live(t_skrr *skrr)
+{
+	t_live *newnode;
+
+	newnode = (t_live*)malloc(sizeof(t_live));
+	newnode->id = skrr->i;
+	newnode->cycle = g_cycles + 50;
+	newnode->next = skrr->vis->live;
+	skrr->vis->live = newnode;
+}
+
+int findlive(t_skrr *skrr)
+{
+	t_live	*livetmp;
+	t_proc	*proctmp;
+
+	livetmp = skrr->vis->live;
+	proctmp = skrr->process;
+
+	while (proctmp != NULL)
+	{
+		if (proctmp->live_pc == skrr->i && proctmp->live_color == 1)
+		{
+			while (livetmp != NULL)
+			{
+				if (livetmp->id == skrr->i)
+				{
+					if (livetmp->cycle == g_cycles)
+					{
+						del_live(skrr);
+						proctmp->live_color = 0;
+						return (-1);
+					}
+					wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
+					return (1);
+				}
+				livetmp = livetmp->next;
+			}
+			wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
+			add_to_live(skrr);
+			return (1);
+		}
+		proctmp = proctmp->next;
+	}
+	return (0);
+}
+
 int		findprocess(t_skrr *skrr, int pc)
 {
-	t_proc *tmp;
+	t_proc	*tmp;
 
 	tmp = skrr->process;
 	while (tmp != NULL)
@@ -256,7 +329,9 @@ void printmem(t_skrr *skrr)
 	{
 		while (i < 64)
 		{
-			if (findprocess(skrr, skrr->i) == 1)
+			if (findlive(skrr) == 1)
+				mvwprintw(skrr->vis->code, y, x, "%hh.2x", skrr->map[skrr->i++]);
+			else if (findprocess(skrr, skrr->i) == 1)
 			{
 				wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i]));
 				if (skrr->mapid[skrr->i] > 9)
@@ -293,11 +368,7 @@ void printmem(t_skrr *skrr)
 
 void	visualize_init(t_skrr *skrr)
 {
-	int	width;
-	int	height;
-
 	init_visualisation(skrr);
-	getmaxyx(stdscr, height, width);
 	start_color();
 	skrr->vis->code = newwin(68, 254 - 57, 0, 0);
 	skrr->vis->menu = newwin(68, 57, 0, 254 - 57);
@@ -315,6 +386,18 @@ void	cycles_limit(int c, t_skrr *skrr)
 		skrr->vis->cycles -= (skrr->vis->cycles > 10) ? 10 : 1;
 	if (c == 101)
 		skrr->vis->cycles += 1;
+	if (c == 49)
+		skrr->vis->cycles = 50;
+	if (c == 50)
+		skrr->vis->cycles = 100;
+	if (c == 51)
+		skrr->vis->cycles = 500;
+	if (c == 52)
+		skrr->vis->cycles = 1000;
+	if (c == 52)
+		skrr->vis->cycles = 2000;
+	if (c == 53)
+		skrr->vis->cycles = 4000;
 	mvwprintw(skrr->vis->menu, 4, 25, "%d  ", skrr->vis->cycles);
 	wrefresh(skrr->vis->menu);
 }
@@ -333,7 +416,7 @@ void	visualize(t_skrr *skrr, t_chmp *chmp)
 	{
 		skrr->vis->c = (c == 115) ? 1 : 0;
 		c = 0;
-		mvwaddstr(skrr->vis->menu, 2, 2, "** PAUSED ** ");
+		mvwaddstr(skrr->vis->menu, 2, 3, "** PAUSED ** ");
 		wrefresh(skrr->vis->menu);
 		while (c != 32 && c != 115)
 		{

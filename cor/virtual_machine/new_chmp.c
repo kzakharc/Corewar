@@ -51,6 +51,8 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	new_process->carry = 0;
 	new_process->pc = 0;
 	new_process->live_proc = 0;
+	new_process->live_color = 0;
+	new_process->live_pc = -1;
 	new_process->waiting_cycles = 0;
 	new_process->sop = -1;
 	skrr->process_count++;
