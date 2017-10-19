@@ -44,6 +44,7 @@ int 	live_instr(t_skrr *skrr, t_proc *process)
 		process->live_proc = 1;
 		if (g_tab[skrr->op].dir_size == 0)
 			skrr->chmp->offset = DIR_SIZE + 2;
+		process->live_pc = process->pc;
 		process->pc = ((process->pc + skrr->chmp->offset + 1 + MEM_SIZE) % MEM_SIZE);
 		process->tmp_pc = process->pc;
 	}

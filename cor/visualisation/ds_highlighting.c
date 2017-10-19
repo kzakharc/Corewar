@@ -36,7 +36,7 @@ void	add_to_highl(t_skrr *skrr, int id)
 
 	newnode = (t_highl*)malloc(sizeof(t_highl));
 	newnode->id = id;
-	newnode->cycle = g_cycles + 100;
+	newnode->cycle = g_cycles + 50;
 	newnode->next = skrr->vis->highl;
 	skrr->vis->highl = newnode;
 }
