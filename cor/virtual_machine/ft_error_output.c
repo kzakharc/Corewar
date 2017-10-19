@@ -45,27 +45,42 @@ void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 	(flag != 1) ? exit(flag) : 0;
 }
 
-void	sizes_err(char *name, int flag)
+void	header_errors(void)
 {
-	(flag == 1) ? ft_printf(MAG"Warning:"RESET " %s != 1\n", name) : 0;
-	(flag == 2) ? ft_printf(MAG"Warning:"RESET " %s != 2 or 4\n", name) : 0;
-	(flag == 3) ? ft_printf(MAG"Warning:"RESET " %s != 2\n", name) : 0;
-	exit(flag);
+	if ((REG_SIZE != 1) || (DIR_SIZE != 2) || ((IND_SIZE != 2)))
+	{
+		(REG_SIZE != 1) ? ft_printf(MAG"Warning:"RESET " REG_SIZE != 1\n") : 0;
+		(DIR_SIZE != 2) ? ft_printf(MAG"Warning:"RESET " DIR_SIZE != 2\n") : 0;
+		(IND_SIZE != 2) ? ft_printf(MAG"Warning:"RESET " IND_SIZE != 2\n") : 0;
+		exit (1);
+	}
+	else if ((REG_CODE != 1) || (DIR_CODE != 2) || (IND_CODE != 3))
+	{
+		(REG_CODE != 1) ? ft_printf(MAG"Warning:"RESET " REG_CODE != 1\n") : 0;
+		(DIR_CODE != 2) ? ft_printf(MAG"Warning:"RESET " DIR_CODE != 2\n") : 0;
+		(IND_CODE != 3) ? ft_printf(MAG"Warning:"RESET " IND_CODE != 3\n") : 0;
+		exit (2);
+	}
+	else if ((MEM_SIZE != 4096) || (T_REG != 1) || (T_DIR != 2) || (T_IND != 4))
+	{
+		(MEM_SIZE != 4096) ? ft_printf(MAG"Warning:"RESET " MEM_SIZE != 4096\n") : 0;
+		(T_REG != 1) ? ft_printf(MAG"Warning:"RESET " T_REG != 1\n") : 0;
+		(T_DIR != 2) ? ft_printf(MAG"Warning:"RESET " T_DIR != 2\n") : 0;
+		(T_IND != 4) ? ft_printf(MAG"Warning:"RESET " T_IND != 4\n") : 0;
+		exit (3);
+	}
 }
 
 void	usage_e(void)
 {
-	ft_printf(YEL"Usage: ./corewar [-dump N -n N -v -a]\n"RESET
-	"    -a        : Prints output from \"aff\" "
+	ft_printf(YEL"Usage: ./corewar     [-dump nbr_cycles] [-n number] [-v] "
+					  "[-a] <champion1.cor> <...>\n"RESET
+	"    -a               : Prints output from \"aff\" "
 	"(Default is to hide it)\n"
-	"    -n N      : Sets the number of the next player\n"
-	CYN"###################### "YEL"TEXT OUTPUT MODE"RESET" "
-	""CYN"########################\n"RESET
-	"    -dump N   : Dumps memory after N cycles then exits\n"
-	CYN"#################### "YEL"NCURSES OUTPUT MODE"RESET" "
-	""CYN"#######################\n"RESET
-	"    -v        : Ncurses output mode\n"
-	CYN"#####################################################"
-	"###########\n"RESET);
+	"    -n number        : Sets the number of the next player\n"
+	"###################### MAP OUTPUT MODE ########################\n"
+	"    -dump nbr_cycles : Dumps memory after nbr_cycles then exits\n"
+	"#################### NCURSES OUTPUT MODE #######################\n"
+	"    -v               : Ncurses output mode\n");
 	exit(1);
 }

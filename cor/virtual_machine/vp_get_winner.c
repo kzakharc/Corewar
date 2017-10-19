@@ -39,7 +39,7 @@ void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
 		{
 			if (best_cycle == chmp_tmp->last_live)
 				best_player =
-				best_player < chmp_tmp->id ? chmp_tmp->id : best_player;
+						(best_player < chmp_tmp->id) ? chmp_tmp->id : best_player;
 			else
 				best_player = chmp_tmp->id;
 		}
@@ -47,7 +47,7 @@ void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
 	}
 	print_info(skrr, skrr->chmp);
 	name = name_winner(chmp, best_player);
-	ft_printf("Contestant %ld, " GRN"\"%s\","RESET "has won !\n", best_player * (-1), name);
+	ft_printf("Contestant %ld, " GRN"\"%s\","RESET " has won !\n", best_player * (-1), name);
 	(skrr->flag_v == 1) ? endwin() : 0;
 	exit(1);
 }

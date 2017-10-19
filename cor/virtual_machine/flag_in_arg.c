@@ -57,9 +57,7 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 	int i;
 
 	i = 1;
-	(REG_SIZE != 1) ? sizes_err("REG_SIZE", 1) : 0;
-	(DIR_SIZE != 2) ? sizes_err("DIR_SIZE", 2) : 0;
-	(IND_SIZE != 2) ? sizes_err("IND_SIZE", 3) : 0;
+	header_errors();
 	while (i < ac)
 	{
 		maybe_flag(av, &i, skrr, ac);

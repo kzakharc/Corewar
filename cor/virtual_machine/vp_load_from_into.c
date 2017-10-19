@@ -64,7 +64,6 @@ int		from_reg(unsigned char *q, t_proc *process, t_skrr *skrr, short i)
 	if (g_err == 1)
 		return (0);
 	return (1);
-
 }
 
 /*
