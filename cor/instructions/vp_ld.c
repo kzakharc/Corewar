@@ -30,7 +30,7 @@ int 	ld_instr(t_skrr *skrr, t_proc *process)
 			return (0);
 		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 		if (q[0] == T_IND)
-			address = ind_param(skrr, process, 0, 4);
+			address = ind_param(skrr, process, 4);
 		else if (q[0] == T_DIR)
 			address = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;

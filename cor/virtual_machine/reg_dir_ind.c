@@ -58,7 +58,7 @@ int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 **	if l = 1 -> for long function, means without %IDX_MOD
 */
 
-int		ind_param(t_skrr *skrr, t_proc *process, int l, int bytes)
+int		ind_param(t_skrr *skrr, t_proc *process, int bytes)
 {
 	int 			address;
 	unsigned int	ind[bytes];

@@ -40,8 +40,8 @@ int		load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 		{
 			address = (address + MEM_SIZE) % MEM_SIZE;
 			value[skrr->j] = get_magic_size(skrr->map[address], skrr->shift);
-			address++;
 			skrr->shift -= 8;
+			address++;
 		}
 		if (!(reg = reg_param(skrr, process, 2)) && (g_err))
 			return (0);
@@ -61,7 +61,7 @@ int		from_reg(unsigned char *q, t_proc *process, t_skrr *skrr, short i)
 	else if (q[i] == T_DIR)
 		skrr->chmp->reg_value = (unsigned int)dir_param(skrr, process, 1);
 	else if (q[i] == T_IND)
-		skrr->chmp->reg_value =  (unsigned int)ind_param(skrr, process, 0, 4);
+		skrr->chmp->reg_value =  (unsigned int)ind_param(skrr, process, 4);
 	if (g_err == 1)
 		return (0);
 	return (1);
@@ -83,7 +83,7 @@ int 	get_address(unsigned char *q, t_skrr *skrr, t_proc *process, int l, short i
 	if (q[i] == T_DIR)
 		adr = dir_param(skrr, process, 1);
 	if (q[i] == T_IND)
-		adr = ind_param(skrr, process, l, 4);
+		adr = ind_param(skrr, process, 4);
 	i++;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
@@ -95,7 +95,7 @@ int 	get_address(unsigned char *q, t_skrr *skrr, t_proc *process, int l, short i
 	if (q[i] == T_DIR)
 		adr += dir_param(skrr, process, 1);
 	if (q[i] == T_IND)
-		adr += ind_param(skrr, process, l, 4);
+		adr += ind_param(skrr, process, 4);
 	adr = (l == 0) ? (process->pc + (adr % IDX_MOD)) : (process->pc + adr);
 	return (adr);
 }
