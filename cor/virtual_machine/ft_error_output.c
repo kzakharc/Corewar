@@ -16,6 +16,29 @@
 ** TODO can move 'exit (0)' to botton of the func and delete '{}'
 */
 
+void	argv_error(t_skrr *skrr, char **argv, int i, int flag)
+{
+	if (flag == 2)
+		ft_printf("Error: File"RED" %s "RESET"has an invalid header\n", *argv);
+	else if (flag == 3)
+		ft_printf("Error:"RED" %s "RESET"is a directory\n", *argv);
+	else if (flag == 4)
+		ft_printf(""RED"Error:"RESET" Please enter a player number from 1 to"
+						  " %i\n", skrr->max_player);
+	else if (flag == 5)
+		ft_printf(""RED"Error:"RESET" You typed too many flags "GRN"\"-n\""
+						  ""RESET"\n");
+	else if (flag == 6)
+		ft_printf(""RED"Error:"RESET" You typed wrong player number\n");
+	else if (flag == 7)
+		ft_printf(""RED"Error:"RESET" Please enter the number of cycles\n");
+	else if (flag == 8)
+		ft_printf(""RED"Error:"RESET" Enter a positive number player\n");
+	else if (flag == 9)
+		ft_printf(""RED"Error:"RESET" Enter a positive cycle number\n");
+	(flag != 1) ? exit(flag) : 0;
+}
+
 void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 {
 	if (flag == 0)
@@ -25,24 +48,11 @@ void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 		skrr->fd = open(argv[i], O_RDONLY);
 		if (skrr->fd < 0)
 		{
-			ft_printf("Can't read source file"RED" %s "RESET"\n", argv[i]);
+			ft_printf("Can't read source file"RED" %s"RESET"\n", argv[i]);
 			close(skrr->fd) < 0 ? exit(0) : 0;
 			exit(flag);
 		}
 	}
-	else if (flag == 2)
-		ft_printf("Error: File"RED" %s "RESET"has an invalid header\n", *argv);
-	else if (flag == 3)
-		ft_printf("Error:"RED" %s "RESET"is a directory\n", *argv);
-	else if (flag == 4)
-		ft_printf(""RED"Error:"RESET" Please enter a player number from 1 to"
-	" %i\n", skrr->max_player);
-	else if (flag == 5)
-		ft_printf(""RED"Error:"RESET" You typed too many flags "GRN"\"-n\""
-	""RESET"\n");
-	else if (flag == 6)
-		ft_printf(""RED"Error:"RESET" You typed wrong player number\n");
-	(flag != 1) ? exit(flag) : 0;
 }
 
 void	header_errors(void)
@@ -78,7 +88,7 @@ void	usage_e(void)
 	"    -a               : Prints output from \"aff\" "
 	"(Default is to hide it)\n"
 	"    -n number        : Sets the number of the next player\n"
-	"###################### MAP OUTPUT MODE ########################\n"
+	"###################### MAP OUTPUT MODE #########################\n"
 	"    -dump nbr_cycles : Dumps memory after nbr_cycles then exits\n"
 	"#################### NCURSES OUTPUT MODE #######################\n"
 	"    -v               : Ncurses output mode\n");

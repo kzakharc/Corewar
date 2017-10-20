@@ -39,12 +39,12 @@ int		load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 		while (++skrr->j < 4)
 		{
 			address = (address + MEM_SIZE) % MEM_SIZE;
-			value[skrr->j] = get_magic_size(skrr->map[address++], skrr->shift);
+			value[skrr->j] = get_magic_size(address, skrr->shift);
 			skrr->shift -= 8;
 		}
 		if (!(reg = reg_param(skrr, process, 2)) && (g_err))
 			return (0);
-		process->registry[reg] = value[0] | value[1] | value[2] | value[3];
+		process->registry[reg] = (unsigned int) address;
 		if (g_tab[skrr->op].opcode == 14 || g_tab[skrr->op].opcode == 13)
 			process->carry = (process->registry[reg] == 0) ? 1 : 0;
 	}

@@ -128,6 +128,7 @@ extern int 				g_err;
 void				usage_e(void);
 void				chk_open(t_skrr *skrr, char **argv, int argc, int flag);
 void				header_errors(void);
+void				argv_error(t_skrr *skrr, char **argv, int i, int flag);
 
 /*
 **	init function. go -> [init_skrr_&_global.c] for init all structure variables.
@@ -225,6 +226,8 @@ void				dump_print(t_skrr *skrr);
 ** function for flags
 */
 
+int 				ft_intc(const int *mass, int c, int length);
+int					*ft_intmalloc(size_t size);
 void				parsing_arg(t_skrr *skrr, char **av, int ac);
 void				flag_n(t_skrr *skrr);
 unsigned int 		zero_reg(t_skrr *skrr);

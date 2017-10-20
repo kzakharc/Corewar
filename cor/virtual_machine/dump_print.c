@@ -64,4 +64,5 @@ void	dump_print(t_skrr *skrr)
 {
 	print_info(skrr, skrr->chmp);
 	print_map(skrr);
+	exit(0);
 }
