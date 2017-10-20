@@ -267,32 +267,36 @@ void	add_to_live(t_skrr *skrr)
 
 int findlive(t_skrr *skrr)
 {
-	t_live	*livetmp;
-	t_proc	*proctmp;
+	t_live *livetmp;
+	t_proc *proctmp;
 
 	livetmp = skrr->vis->live;
 	proctmp = skrr->process;
 
+	while (livetmp != NULL)
+	{
+		if (livetmp->id == skrr->i)
+		{
+			if (livetmp->cycle == g_cycles)
+			{
+				del_live(skrr);
+				wattrset(skrr->vis->code,
+						 COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
+				proctmp->live_color = 0;
+				return (1);
+			}
+			wattrset(skrr->vis->code,
+					COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
+			return (1);
+		}
+		livetmp = livetmp->next;
+	}
 	while (proctmp != NULL)
 	{
-		if (proctmp->live_pc == skrr->i && proctmp->live_color == 1)
+		if (proctmp->live_pc == skrr->i)
 		{
-			while (livetmp != NULL)
-			{
-				if (livetmp->id == skrr->i)
-				{
-					if (livetmp->cycle == g_cycles)
-					{
-						del_live(skrr);
-						proctmp->live_color = 0;
-						return (1);
-					}
-					wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
-					return (1);
-				}
-				livetmp = livetmp->next;
-			}
-			wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
+		wattrset(skrr->vis->code,
+				COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
 			add_to_live(skrr);
 			return (1);
 		}
@@ -300,6 +304,34 @@ int findlive(t_skrr *skrr)
 	}
 	return (0);
 }
+//	while (proctmp != NULL)
+//	{
+//		if (proctmp->live_pc == skrr->i && proctmp->live_color == 1)
+//		{
+//			while (livetmp != NULL)
+//			{
+//				if (livetmp->id == skrr->i)
+//				{
+//					if (livetmp->cycle == g_cycles)
+//					{
+//						del_live(skrr);
+//						wattrset(skrr->vis->code, COLOR_PAIR(proctmp->id * -1 + 10) | A_BOLD);
+//						proctmp->live_color = 0;
+//						return (1);
+//					}
+//					wattrset(skrr->vis->code, COLOR_PAIR(proctmp->id * -1 + 10) | A_BOLD);
+//					return (1);
+//				}
+//				livetmp = livetmp->next;
+//			}
+//			wattrset(skrr->vis->code, COLOR_PAIR(proctmp->id * -1 + 10) | A_BOLD);
+//			add_to_live(skrr);
+//			return (1);
+//		}
+//		proctmp = proctmp->next;
+//	}
+//	return (0);
+//}
 
 int		findprocess(t_skrr *skrr, int pc)
 {
