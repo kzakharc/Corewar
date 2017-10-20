@@ -14,11 +14,11 @@
 
 int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
-	int	kastil;
+	int 	kastil;
 
 	while (skrr->cycle_to_die > 0)
 	{
-		kastil = g_cycles == 1535 ? 1 : 0;
+		kastil = (g_ctd == CYCLE_TO_DIE - 1) ? 1 : 0;
 		change_process(skrr, chmp, &skrr->process);
 		if (g_ctd + kastil == skrr->cycle_to_die)
 		{
@@ -29,10 +29,10 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 			dump_print(skrr);
 		skrr->flag_v ? visualize(skrr, chmp) : 0;
 		if ((g_ctd + kastil == skrr->cycle_to_die) && (skrr->nbr_live > 0))
-			init_lives(skrr->process, skrr);
+			init_lives(skrr);
 		g_cycles++;
 		g_ctd++;
-//		ft_printf("Cycle: %ld\n", g_cycles);
+		ft_printf("Cycle: %ld\n", g_cycles);
 
 	}
 	(!skrr->flag_v) ? winner(chmp, skrr, skrr->chmp->last_live, skrr->chmp->id) : 0;

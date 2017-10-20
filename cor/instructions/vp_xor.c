@@ -27,7 +27,7 @@ int 	xor_instr(t_skrr *skrr, t_proc *process)
 			exit(0);
 		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 			return (0);
-		if (!(address = determination_of_action(q, skrr, 0, 5, process)) &&
+		if (!(address = determination_of_action(q, skrr, 5, process)) &&
 				(g_err) && !(g_err = 0))
 			return (0);
 		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;

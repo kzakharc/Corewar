@@ -12,10 +12,6 @@
 
 #include "../../corewar.h"
 
-/*
-** TODO can move 'exit (0)' to botton of the func and delete '{}'
-*/
-
 void	argv_error(t_skrr *skrr, char **argv, int i, int flag)
 {
 	if (flag == 2)
@@ -80,6 +76,17 @@ void	header_errors(void)
 		(T_REG != 1) ? ft_printf(MAG"Warning:"RESET " T_REG != 1\n") : 0;
 		(T_DIR != 2) ? ft_printf(MAG"Warning:"RESET " T_DIR != 2\n") : 0;
 		(T_IND != 4) ? ft_printf(MAG"Warning:"RESET " T_IND != 4\n") : 0;
+		exit (3);
+	}
+	header_errors_2();
+}
+
+void	header_errors_2(void)
+{
+	if ((PROG_NAME_LENGTH != 128) || (COMMENT_LENGTH != 2048))
+	{
+		(PROG_NAME_LENGTH != 128) ? ft_printf(MAG"Warning:"RESET " PROG_NAME_LENGTH != 128\n") : 0;
+		(COMMENT_LENGTH != 2048) ? ft_printf(MAG"Warning:"RESET " COMMENT_LENGTH != 2048\n") : 0;
 		exit (3);
 	}
 }

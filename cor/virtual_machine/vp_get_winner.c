@@ -52,7 +52,7 @@ void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
 	exit(1);
 }
 
-int 	init_lives(t_proc *process, t_skrr *skrr)
+int 	init_lives(t_skrr *skrr)
 {
 	t_chmp	*champ_tmp;
 
@@ -70,8 +70,8 @@ int 	init_lives(t_proc *process, t_skrr *skrr)
 		if (skrr->max_checks == 0 && (skrr->max_checks = MAX_CHECKS))
 			skrr->cycle_to_die -= CYCLE_DELTA;
 	}
-	g_ctd = 0;
 	skrr->nbr_live = 0;
+	g_ctd = 0;
 	return (1);
 }
 

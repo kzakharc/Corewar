@@ -12,7 +12,7 @@
 
 #include "../../corewar.h"
 
-int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
+int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 {
 	int adr;
 
@@ -43,7 +43,7 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	return (adr);
 }
 
-int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
+int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 {
 	int adr;
 
@@ -74,7 +74,7 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
 	return (adr);
 }
 
-int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
+int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 {
 	int adr;
 
@@ -105,7 +105,7 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	return (adr);
 }
 
-int 	determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_proc *process)
+int 	determination_of_action(unsigned char *q, t_skrr *skrr, int key, t_proc *process)
 {
 	int		result;
 	short	i;
@@ -133,13 +133,13 @@ int 	determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_p
 			return (0);
 	}
 	else if (key == 3)
-		if (!(result = supp_to_and(q, skrr, i, l, process)) && (g_err))
+		if (!(result = supp_to_and(q, skrr, i, process)) && (g_err))
 			return (0);
 	if (key == 4)
-		if (!(result = supp_to_or(q, skrr, i, l, process)) && (g_err))
+		if (!(result = supp_to_or(q, skrr, i, process)) && (g_err))
 			return (0);
 	if (key == 5)
-		if (!(result = supp_to_xor(q, skrr, i, l, process)) && (g_err))
+		if (!(result = supp_to_xor(q, skrr, i, process)) && (g_err))
 			return (0);
 	return (result);
 }

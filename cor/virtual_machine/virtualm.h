@@ -128,6 +128,7 @@ extern int 				g_err;
 void				usage_e(void);
 void				chk_open(t_skrr *skrr, char **argv, int argc, int flag);
 void				header_errors(void);
+void				header_errors_2(void);
 void				argv_error(t_skrr *skrr, char **argv, int i, int flag);
 
 /*
@@ -159,7 +160,7 @@ int 				change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process);
 int 				process_first_positions(t_chmp *chmp, t_proc *process);
 int 				kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr);
 void				winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player);
-int 				init_lives(t_proc *process, t_skrr *skrr);
+int 				init_lives( t_skrr *skrr);
 
 /*
 **	Adding new champ and init his data. go -> [new_chmp.c].
@@ -202,7 +203,7 @@ int 				get_address(unsigned char *q, t_skrr *skrr, t_proc *process, int l, shor
 int 				simple_address(unsigned char *q, t_skrr *skrr, t_proc *process, short i);
 int					load_into(int address, t_proc *process, t_skrr *skrr, int flag);
 int					same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg);
-int					determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_proc *process);
+int					determination_of_action(unsigned char *q, t_skrr *skrr, int key, t_proc *process);
 int 				inheritance_proc(t_proc **process, int pc, t_skrr *skrr);
 int 				check_my_q(unsigned char *q, int num_arg, t_skrr *skrr);
 
