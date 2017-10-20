@@ -54,6 +54,7 @@ int		highlight(t_skrr *skrr, int id)
 			{
 				skrr->mapid[skrr->i] /= 10;
 				del_highl(skrr, id);
+				wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i]));
 				return (0);
 			}
 			wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] / 10));
