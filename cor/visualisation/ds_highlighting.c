@@ -50,7 +50,7 @@ int		highlight(t_skrr *skrr, int id)
 	{
 		if (tmp->id == id)
 		{
-			if (tmp->cycle == g_cycles)
+			if (tmp->cycle <= g_cycles)
 			{
 				skrr->mapid[skrr->i] /= 10;
 				del_highl(skrr, id);

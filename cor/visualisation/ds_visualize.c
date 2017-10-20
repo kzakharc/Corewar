@@ -280,7 +280,6 @@ int findlive(t_skrr *skrr)
 		{
 			if (livetmp->cycle <= g_cycles || skrr->map[skrr->i] != 01)
 			{
-				mvwprintw(skrr->vis->menu, 35, 2, "livetmp cycle = %d ", livetmp->cycle);
 				del_live(skrr);
 				wattrset(skrr->vis->code,
 						 COLOR_PAIR(livetmp->colorid) | A_BOLD);
@@ -296,9 +295,9 @@ int findlive(t_skrr *skrr)
 	{
 		if (proctmp->live_pc == skrr->i && proctmp->live_color == 1 && skrr->map[skrr->i] == 01)
 		{
-			wattrset(skrr->vis->code,
-				COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
 			add_to_live(skrr, skrr->mapid[skrr->i]);
+			wattrset(skrr->vis->code,
+					 COLOR_PAIR(skrr->vis->live->colorid) | A_BOLD);
 			proctmp->live_color = 0;
 			return (1);
 		}
