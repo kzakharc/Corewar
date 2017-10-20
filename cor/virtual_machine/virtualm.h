@@ -205,9 +205,11 @@ int					same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg)
 int					determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_proc *process);
 int 				inheritance_proc(t_proc **process, int pc, t_skrr *skrr);
 int 				check_my_q(unsigned char *q, int num_arg, t_skrr *skrr);
+
+
 int					reg_param(t_skrr *skrr, t_proc *process, int flag);
 int					dir_param(t_skrr *skrr, t_proc *process, short dir_size);
-int					ind_param(t_skrr *skrr,	t_proc *process, int l, int bytes);
+int					ind_param(t_skrr *skrr,	t_proc *process, int bytes);
 
 /*
 **	init map and print map

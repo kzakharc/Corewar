@@ -27,7 +27,7 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	if (q[i] == T_DIR)
 		adr = dir_param(skrr, process, g_tab[6].dir_size);
 	if (q[i] == T_IND)
-		adr = ind_param(skrr, process, l, 4);
+		adr = ind_param(skrr, process, 4);
 	i++;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
@@ -39,7 +39,7 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	if (q[i] == T_DIR)
 		adr &= dir_param(skrr, process, g_tab[6].dir_size);
 	if (q[i] == T_IND)
-		adr &= ind_param(skrr, process, l, 4);
+		adr &= ind_param(skrr, process, 4);
 	return (adr);
 }
 
@@ -58,7 +58,7 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
 	if (q[i] == T_DIR)
 		adr = dir_param(skrr, process, g_tab[6].dir_size);
 	if (q[i] == T_IND)
-		adr = ind_param(skrr, process, l, 4);
+		adr = ind_param(skrr, process, 4);
 	i++;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
@@ -70,7 +70,7 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
 	if (q[i] == T_DIR)
 		adr |= dir_param(skrr, process, g_tab[6].dir_size);
 	if (q[i] == T_IND)
-		adr |= ind_param(skrr, process, l, 4);
+		adr |= ind_param(skrr, process, 4);
 	return (adr);
 }
 
@@ -89,7 +89,7 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	if (q[i] == T_DIR)
 		adr = dir_param(skrr, process, g_tab[6].dir_size);
 	if (q[i] == T_IND)
-		adr = ind_param(skrr, process, l, 4);
+		adr = ind_param(skrr, process, 4);
 	i++;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
@@ -101,7 +101,7 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 	if (q[i] == T_DIR)
 		adr ^= dir_param(skrr, process, g_tab[6].dir_size);
 	if (q[i] == T_IND)
-		adr ^= ind_param(skrr, process, l, 4);
+		adr ^= ind_param(skrr, process, 4);
 	return (adr);
 }
 

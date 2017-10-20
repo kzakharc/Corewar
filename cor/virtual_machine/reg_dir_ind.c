@@ -58,17 +58,15 @@ int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 **	if l = 1 -> for long function, means without %IDX_MOD
 */
 
-int		ind_param(t_skrr *skrr, t_proc *process, int l, int bytes)
+int		ind_param(t_skrr *skrr, t_proc *process, int bytes)
 {
 	int 			address;
 	unsigned int	ind[bytes];
 	int 			i;
 
 	i = -1;
-	address = 0;
 	skrr->shift = (bytes == 4) ? 24 : 8;
-	(l == 0) ? address = process->pc + (short)two_four_bytes(&skrr->map[process->tmp_pc], 2) % IDX_MOD : 0;
-	(l == 1) ? address = process->pc + (short)two_four_bytes(&skrr->map[process->tmp_pc], 2) : 0;
+	address = (process->pc + ((short)two_four_bytes(&skrr->map[process->tmp_pc], 2) % IDX_MOD));
 	while (++i < bytes)
 	{
 		address = (address + MEM_SIZE) % MEM_SIZE;
