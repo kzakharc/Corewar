@@ -261,7 +261,7 @@ void add_to_live(t_skrr *skrr, int proctmp)
 	newnode = (t_live*)malloc(sizeof(t_live));
 	newnode->id = skrr->i;
 	newnode->cycle = g_cycles + 50;
-	newnode->colorid = (proctmp > 9) ? proctmp / 10 : proctmp;
+	newnode->colorid = (proctmp > 9) ? proctmp / 10 + 10 : proctmp + 10;
 	newnode->next = skrr->vis->live;
 	skrr->vis->live = newnode;
 }
@@ -278,27 +278,28 @@ int findlive(t_skrr *skrr)
 	{
 		if (livetmp->id == skrr->i)
 		{
-			if (livetmp->cycle == g_cycles)
+			if (livetmp->cycle <= g_cycles || skrr->map[skrr->i] != 01)
 			{
+				mvwprintw(skrr->vis->menu, 35, 2, "livetmp cycle = %d ", livetmp->cycle);
 				del_live(skrr);
 				wattrset(skrr->vis->code,
-						 COLOR_PAIR(livetmp->colorid + 10) | A_BOLD);
-				proctmp->live_color = 0;
+						 COLOR_PAIR(livetmp->colorid) | A_BOLD);
 				return (1);
 			}
 			wattrset(skrr->vis->code,
-					COLOR_PAIR(livetmp->colorid + 10) | A_BOLD);
+					COLOR_PAIR(livetmp->colorid) | A_BOLD);
 			return (1);
 		}
 		livetmp = livetmp->next;
 	}
 	while (proctmp != NULL)
 	{
-		if (proctmp->live_pc == skrr->i)
+		if (proctmp->live_pc == skrr->i && proctmp->live_color == 1 && skrr->map[skrr->i] == 01)
 		{
-		wattrset(skrr->vis->code,
-				COLOR_PAIR(proctmp->id * -1 + 10) | A_BOLD);
+			wattrset(skrr->vis->code,
+				COLOR_PAIR(skrr->mapid[skrr->i] + 10) | A_BOLD);
 			add_to_live(skrr, skrr->mapid[skrr->i]);
+			proctmp->live_color = 0;
 			return (1);
 		}
 		proctmp = proctmp->next;
