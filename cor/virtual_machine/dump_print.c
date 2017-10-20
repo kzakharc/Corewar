@@ -26,6 +26,7 @@ void	print_map(t_skrr *skrr)
 			ft_printf("\n%06#x : ", line += 64);
 		skrr->i++;
 	}
+	write(1, "\n", 1);
 }
 
 static void		ft_output(t_chmp *champ_tmp)

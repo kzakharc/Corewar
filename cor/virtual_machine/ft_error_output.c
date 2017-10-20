@@ -33,7 +33,7 @@ void	argv_error(t_skrr *skrr, char **argv, int i, int flag)
 	else if (flag == 7)
 		ft_printf(""RED"Error:"RESET" Please enter the number of cycles\n");
 	else if (flag == 8)
-		ft_printf(""RED"Error:"RESET" Enter a positive number player\n");
+		ft_printf(""RED"Error:"RESET" Wrong player number\n");
 	else if (flag == 9)
 		ft_printf(""RED"Error:"RESET" Enter a positive cycle number\n");
 	(flag != 1) ? exit(flag) : 0;
@@ -42,7 +42,10 @@ void	argv_error(t_skrr *skrr, char **argv, int i, int flag)
 void	chk_open(t_skrr *skrr, char **argv, int i, int flag)
 {
 	if (flag == 0)
+	{
 		ft_printf("Too many champions! (Max %d)\n", MAX_PLAYERS);
+		exit(0);
+	}
 	else if (flag == 1)
 	{
 		skrr->fd = open(argv[i], O_RDONLY);

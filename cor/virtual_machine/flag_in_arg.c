@@ -8,7 +8,7 @@
 /*   Created: 2017/09/14 11:11:09 by yzakharc          #+#    #+#             */
 /*   Updated: 2017/09/14 11:11:10 by yzakharc         ###   ########.fr       */
 /*                                                                            */
-/* **************************************************************************  */
+/* ************************************************************************** */
 
 #include "../../corewar.h"
 
@@ -18,8 +18,8 @@ int			maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 	if (!ft_strcmp(av[*i], "-n"))
 	{
 		*i + 1 < ac ? skrr->flag_n[skrr->cnt_n] = (int)ft_atoi(av[*i + 1]) : 0;
-		skrr->flag_n < 0 ? argv_error(0, 0, 0, 8) : 0;
-		skrr->flag_n[skrr->cnt_n] != 0 ? (*i) += 2 : (*i)++;
+		skrr->flag_n[skrr->cnt_n] < 0 || !av[*i + 1] ? argv_error(0, 0, 0, 8) : 0;
+		skrr->flag_n[skrr->cnt_n] != 0 ? (*i) += 2 : argv_error(0, 0, 0, 8);
 		return (1);
 	}
 	else if (!ft_strcmp(av[*i], "-v"))
@@ -38,7 +38,7 @@ int			maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 	}
 	else if (!ft_strcmp(av[*i], "-a"))
 	{
-		!av[*i + 1] || ft_isdigit(av[*i + 1][0]) ? usage_e() : 0;
+		av[*i + 1] && ft_isdigit(av[*i + 1][0]) ? usage_e() : 0;
 		skrr->flag_a = 1;
 		(*i)++;
 		return (1);
@@ -67,12 +67,16 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 	{
 		while (maybe_flag(av, &i, skrr, ac))
 			if (i == ac)
-				break ;
+			{
+				!ft_strcmp(av[(i - 1)], "-v") || !ft_strcmp(av[(i - 1)], "-a") || !ft_strcmp(av[(i - 2)], "-dump") ? 0 : usage_e();
+				break;
+			}
 		if (i != ac)
 			find_player(av, &i, skrr);
 		else
 			break ;
 	}
+	i == ac && skrr->max_player == 0 ? usage_e() : 0;
 	skrr->max_player > MAX_PLAYERS ? chk_open(0, 0, 0, 0) : 0;
 	flag_n(skrr);
 	prog_commands(skrr, av, skrr->chmp);
@@ -122,7 +126,7 @@ void			flag_n(t_skrr *skrr)
 	skrr->cnt_n > skrr->max_player ? argv_error(skrr, 0, 0, 5) : 0;
 	while (i < skrr->max_player)
 	{
-		skrr->flag_n[i] < 0 || skrr->flag_n[i] > skrr->max_player ? argv_error(skrr, 0, 0, 4) : 0;
+		skrr->flag_n[i] > skrr->max_player ? argv_error(skrr, 0, 0, 4) : 0;
 		while (tmp->id != skrr->init_id * (-1))
 			tmp = tmp->next;
 		tmp->registry[0] = zero_reg(skrr);
