@@ -23,6 +23,7 @@ void init_visualisation(t_skrr *skrr)
 	init_pair(12, COLOR_WHITE, COLOR_BLUE);//live proc champ 2;
 	init_pair(13, COLOR_WHITE, COLOR_RED);//live proc champ 3;
 	init_pair(14, COLOR_WHITE, COLOR_CYAN);//live proc champ 4
+	init_pair(9, COLOR_BLACK, COLOR_WHITE);//grey carret
 	skrr->vis->cycles = 50;
 	skrr->vis->highl = NULL;
 	skrr->vis->live = NULL;

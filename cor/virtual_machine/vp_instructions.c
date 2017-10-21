@@ -31,7 +31,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		g_ctd++;
 //		ft_printf("Cycle: %ld\n", g_cycles);
 	}
-	(!skrr->flag_v) ? winner(chmp, skrr, skrr->chmp->last_live, skrr->chmp->id) : 0;
+	winner(chmp, skrr, skrr->chmp->last_live, skrr->chmp->id);
 	return (1);
 }
 

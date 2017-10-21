@@ -29,7 +29,6 @@ static char 	*name_winner(t_chmp *chmp, int id)
 void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
 {
 	t_chmp	*chmp_tmp;
-	char	*name;
 
 	chmp_tmp = chmp;
 	chmp_tmp->next != NULL ? chmp_tmp = chmp_tmp->next : 0;
@@ -45,10 +44,14 @@ void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
 		}
 		chmp_tmp = chmp_tmp->next;
 	}
-	print_info(skrr, skrr->chmp);
-	name = name_winner(chmp, best_player);
-	ft_printf("Contestant %ld, " GRN"\"%s\","RESET "has won !\n", best_player * (-1), name);
-	(skrr->flag_v == 1) ? endwin() : 0;
+	if (skrr->flag_v == 1)
+		printwinner(skrr, name_winner(chmp, best_player), best_player);
+	else
+	{
+		print_info(skrr, skrr->chmp);
+		ft_printf("Contestant %ld, " GRN"\"%s\","RESET "has won !\n",
+				  best_player * (-1), name_winner(chmp, best_player));
+	}
 	exit(1);
 }
 

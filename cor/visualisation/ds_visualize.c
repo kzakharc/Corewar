@@ -407,6 +407,30 @@ void	cycles_limit(int c, t_skrr *skrr)
 	wrefresh(skrr->vis->menu);
 }
 
+void 	printwinner(t_skrr *skrr, char *name, int id)
+{
+	int c;
+
+	c = -1;
+	wattrset(skrr->vis->menu, COLOR_PAIR(6) | A_BOLD);
+	mvwprintw(skrr->vis->menu, 25 + (skrr->max_player * 4) , 3, "The winner is : ");
+	wattron(skrr->vis->menu, COLOR_PAIR(champ_color(skrr, id)));
+	mvwprintw(skrr->vis->menu, 25 + (skrr->max_player * 4) , 19, "%s", name);
+	wrefresh(skrr->vis->menu);
+	while (c == -1)
+	{
+		mvwprintw(skrr->vis->menu, 27 + (skrr->max_player * 4) , 3, "                     ");
+		wrefresh(skrr->vis->menu);
+		napms(500);
+		wattrset(skrr->vis->menu, COLOR_PAIR(6) | A_BOLD);
+		mvwprintw(skrr->vis->menu, 27 + (skrr->max_player * 4) , 3, "Press any key to exit");
+		wrefresh(skrr->vis->menu);
+		napms(500);
+		c = wgetch(skrr->vis->menu);
+	}
+	endwin();
+}
+
 void	visualize(t_skrr *skrr, t_chmp *chmp)
 {
 	int c;

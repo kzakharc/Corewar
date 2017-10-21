@@ -27,7 +27,8 @@ struct 		s_vis
 {
 	WINDOW			*code;
 	WINDOW			*menu;
-	int 			cycles;
+	int 			cycles;//real cycles
+	int 			cycles_print;
 	int 			c;
 	int 			s;
 	t_highl			*highl;
@@ -38,6 +39,7 @@ void	visualize(t_skrr *skrr, t_chmp *chmp);
 void	visualize_init(t_skrr *skrr);
 int		highlight(t_skrr *skrr, int id);
 void	init_visualisation(t_skrr *skrr);
-void breakdown_current(t_skrr *skrr, int y);
+void 	breakdown_current(t_skrr *skrr, int y);
+void 	printwinner(t_skrr *skrr, char *name, int id);
 
 #endif
