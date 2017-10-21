@@ -29,7 +29,6 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 			init_lives(skrr->process, skrr);
 		g_cycles++;
 		g_ctd++;
-//		ft_printf("Cycle: %ld\n", g_cycles);
 	}
 	winner(chmp, skrr, skrr->chmp->last_live, skrr->chmp->id);
 	return (1);

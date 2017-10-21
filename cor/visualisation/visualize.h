@@ -41,5 +41,15 @@ int		highlight(t_skrr *skrr, int id);
 void	init_visualisation(t_skrr *skrr);
 void 	breakdown_current(t_skrr *skrr, int y);
 void 	printwinner(t_skrr *skrr, char *name, int id);
+void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp);
+int		find_live_count(t_skrr *skrr, int id);
+int 	champ_color(t_skrr *skrr, int id);
+long	find_last_live(t_skrr *skrr, int id);
+char	*find_progname(t_skrr *skrr, int id);
+void	printmargins(WINDOW *code, WINDOW *menu, int width, int height);
+void	menufields(WINDOW *menu, t_skrr *skrr);
+void	printmem(t_skrr *skrr);
+int		findprocess(t_skrr *skrr, int pc);
+int		findlive(t_skrr *skrr);
 
 #endif
