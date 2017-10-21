@@ -1,10 +1,18 @@
-//
-// Created by Dmytrii Spyrydonov on 10/14/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ds_highlighting.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dspyrydo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/21 20:56:32 by dspyrydo          #+#    #+#             */
+/*   Updated: 2017/10/21 20:56:57 by dspyrydo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../corewar.h"
 
-void del_highl(t_skrr *skrr, int id)
+void	del_highl(t_skrr *skrr, int id)
 {
 	t_highl *current;
 	t_highl *prev;

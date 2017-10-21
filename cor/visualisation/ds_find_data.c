@@ -1,10 +1,18 @@
-//
-// Created by Dmytrii Spyrydonov on 10/21/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ds_find_data.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dspyrydo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/21 20:56:01 by dspyrydo          #+#    #+#             */
+/*   Updated: 2017/10/21 20:56:19 by dspyrydo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../corewar.h"
 
-int 	champ_color(t_skrr *skrr, int id)
+int		champ_color(t_skrr *skrr, int id)
 {
 	t_chmp *tmp;
 

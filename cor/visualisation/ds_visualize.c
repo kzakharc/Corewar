@@ -1,130 +1,66 @@
-//
-// Created by Dmytrii Spyrydonov on 9/24/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ds_visualize.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dspyrydo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/21 21:12:09 by dspyrydo          #+#    #+#             */
+/*   Updated: 2017/10/21 21:27:45 by dspyrydo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../corewar.h"
 
-void breakdown_current(t_skrr *skrr, int y)
+void	breakdown_calculations(t_skrr *skrr, int y, double total)
+{
+	int id;
+	int i;
+	int x;
+
+	id = -1;
+	i = 0;
+	x = 4;
+	mvwaddch(skrr->vis->menu, y + skrr->max_player * 4, 3, '[' |\
+			COLOR_PAIR(27) | A_BOLD);
+	while (id > -5)
+	{
+		if (find_live_count(skrr, id) > 0)
+		{
+			while (i < ((50 * (find_live_count(skrr, id) / total))) && x < 54)
+			{
+				wattron(skrr->vis->menu, COLOR_PAIR(champ_color(skrr, id)));
+				mvwaddch(skrr->vis->menu, y + skrr->max_player * 4, x++, '-');
+				i++;
+			}
+		}
+		id--;
+		i = 0;
+	}
+	wattron(skrr->vis->menu, COLOR_PAIR(27) | A_BOLD);
+	mvwaddch(skrr->vis->menu, y + skrr->max_player * 4, x, ']');
+}
+
+void	breakdown_current(t_skrr *skrr, int y)
 {
 	t_chmp	*tmp;
 	double	total;
-	int 	x;
-	int 	id;
-	int		i;
 
 	tmp = skrr->chmp;
 	total = 0;
-	x = 4;
-	id = -1;
-	i = 0;
 	while (tmp != NULL)
 	{
 		total += tmp->live_count;
 		tmp = tmp->next;
 	}
 	if (total > 0)
-	{
-		mvwaddch(skrr->vis->menu, y + skrr->max_player * 4, 3, '[' | COLOR_PAIR(27) | A_BOLD);
-		while (id > -5)
-		{
-			if (find_live_count(skrr, id) > 0)
-			{
-				while (i < ((50 * (find_live_count(skrr, id) / total))) && x < 54)
-				{
-					wattron(skrr->vis->menu, COLOR_PAIR(champ_color(skrr, id)));
-					mvwaddch(skrr->vis->menu, y + skrr->max_player * 4, x++, '-');
-					i++;
-				}
-			}
-			id--;
-			i = 0;
-		}
-		wattron(skrr->vis->menu, COLOR_PAIR(27) | A_BOLD);
-		mvwaddch(skrr->vis->menu, y + skrr->max_player * 4, x, ']');
-	}
+		breakdown_calculations(skrr, y, total);
 	else
 	{
 		wattron(skrr->vis->menu, COLOR_PAIR(27) | A_BOLD);
-		mvwaddstr(skrr->vis->menu, 12 + + skrr->max_player * 4, 3, "[--------------------------------------------------]");
+		mvwaddstr(skrr->vis->menu, 12 + skrr->max_player * 4, 3, "[--------"\
+				"------------------------------------------]");
 	}
-}
-
-void	del_live(t_skrr *skrr)
-{
-	t_live	*current;
-	t_live	*prev;
-
-	prev = NULL;
-	current = skrr->vis->live;
-	if (current->id == skrr->i)
-	{
-		skrr->vis->live = current->next;
-		free(current);
-		return ;
-	}
-	while (current != NULL)
-	{
-		if (current->id == skrr->i)
-		{
-			prev->next = current->next;
-			free(current);
-			return ;
-		}
-		prev = current;
-		current = current->next;
-	}
-}
-
-void add_to_live(t_skrr *skrr, int proctmp)
-{
-	t_live *newnode;
-
-	newnode = (t_live*)malloc(sizeof(t_live));
-	newnode->id = skrr->i;
-	newnode->cycle = g_cycles + 50;
-	newnode->colorid = (proctmp > 9) ? proctmp / 10 + 10 : proctmp + 10;
-	newnode->next = skrr->vis->live;
-	skrr->vis->live = newnode;
-}
-
-int findlive(t_skrr *skrr)
-{
-	t_live *livetmp;
-	t_proc *proctmp;
-
-	livetmp = skrr->vis->live;
-	proctmp = skrr->process;
-
-	while (livetmp != NULL)
-	{
-		if (livetmp->id == skrr->i)
-		{
-			if (livetmp->cycle <= g_cycles || skrr->map[skrr->i] != 01)
-			{
-				del_live(skrr);
-				wattrset(skrr->vis->code,
-						 COLOR_PAIR(livetmp->colorid) | A_BOLD);
-				return (1);
-			}
-			wattrset(skrr->vis->code,
-					COLOR_PAIR(livetmp->colorid) | A_BOLD);
-			return (1);
-		}
-		livetmp = livetmp->next;
-	}
-	while (proctmp != NULL)
-	{
-		if (proctmp->live_pc == skrr->i && proctmp->live_color == 1 && skrr->map[skrr->i] == 01)
-		{
-			add_to_live(skrr, skrr->mapid[skrr->i]);
-			wattrset(skrr->vis->code,
-					 COLOR_PAIR(skrr->vis->live->colorid) | A_BOLD);
-			proctmp->live_color = 0;
-			return (1);
-		}
-		proctmp = proctmp->next;
-	}
-	return (0);
 }
 
 void	cycles_limit(int c, t_skrr *skrr)
@@ -149,12 +85,11 @@ void	cycles_limit(int c, t_skrr *skrr)
 	wrefresh(skrr->vis->menu);
 }
 
-
-void	visualize(t_skrr *skrr, t_chmp *chmp)
+void	visualize(t_skrr *skrr)
 {
 	int c;
 
-	printdata(skrr->vis->menu, skrr, chmp);
+	printdata(skrr->vis->menu, skrr);
 	printmem(skrr);
 	wrefresh(skrr->vis->code);
 	wrefresh(skrr->vis->menu);

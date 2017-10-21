@@ -1,6 +1,15 @@
-//
-// Created by Dmytrii Spyrydonov on 10/21/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ds_printdata.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dspyrydo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/21 21:01:40 by dspyrydo          #+#    #+#             */
+/*   Updated: 2017/10/21 21:01:43 by dspyrydo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../corewar.h"
 
 int		print_champs_data(t_skrr *skrr)
@@ -90,15 +99,13 @@ void	print_add_champs(t_skrr *skrr, int y, int id)
 	mvwprintw(skrr->vis->menu, y, 15, "%s", find_progname(skrr, id));
 	wattron(skrr->vis->menu, COLOR_PAIR(26));
 	mvwprintw(skrr->vis->menu, y + 1, 37, "%ld", find_last_live(skrr, id));
-	mvwprintw(skrr->vis->menu, y + 2, 37, "%d      ", find_live_count(skrr, id));
+	mvwprintw(skrr->vis->menu, y + 2, 37, "%d      ", \
+	find_live_count(skrr, id));
 }
 
-void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
+void	printdata(WINDOW *menu, t_skrr *skrr)
 {
-	int y;
-
-	y = (skrr->max_player * 4);
-	mvwaddstr(skrr->vis->menu, 2, 3, "** RUNNING **");
+	mvwaddstr(menu, 2, 3, "** RUNNING **");
 	mvwprintw(menu, 4, 25, "%d  ", skrr->vis->cycles);
 	mvwprintw(menu, 9, 15, "%d", skrr->process_count);
 	mvwprintw(menu, 7, 11, "%d", g_cycles);
@@ -117,8 +124,8 @@ void	printdata(WINDOW *menu, t_skrr *skrr, t_chmp *chmp)
 	if (g_ctd == skrr->cycle_to_die)
 		breakdown_current(skrr, 15);
 	wattron(menu, COLOR_PAIR(26));
-	mvwprintw(menu, 17 + y, 18, "%d ", skrr->cycle_to_die);
-	mvwprintw(menu, 19 + y, 17, "%d ", CYCLE_DELTA);
-	mvwprintw(menu, 21 + y, 14, "%d ", NBR_LIVE);
-	mvwprintw(menu, 23 + y, 16, "%d ", skrr->max_checks);
+	mvwprintw(menu, 17 + skrr->max_player * 4, 18, "%d ", skrr->cycle_to_die);
+	mvwprintw(menu, 19 + skrr->max_player * 4, 17, "%d ", CYCLE_DELTA);
+	mvwprintw(menu, 21 + skrr->max_player * 4, 14, "%d ", NBR_LIVE);
+	mvwprintw(menu, 23 + skrr->max_player * 4, 16, "%d ", skrr->max_checks);
 }

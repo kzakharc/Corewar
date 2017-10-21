@@ -24,7 +24,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		}
 		if (g_ctd == skrr->flag_dump)
 			dump_print(skrr);
-		skrr->flag_v ? visualize(skrr, chmp) : 0;
+		skrr->flag_v ? visualize(skrr) : 0;
 		if ((g_ctd == skrr->cycle_to_die) && (skrr->nbr_live > 0))
 			init_lives(skrr->process, skrr);
 		g_cycles++;

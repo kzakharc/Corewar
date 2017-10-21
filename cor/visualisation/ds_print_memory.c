@@ -1,6 +1,14 @@
-//
-// Created by Dmytrii Spyrydonov on 10/21/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ds_print_memory.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dspyrydo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/21 20:58:46 by dspyrydo          #+#    #+#             */
+/*   Updated: 2017/10/21 20:59:58 by dspyrydo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../corewar.h"
 
@@ -58,16 +66,16 @@ void	printmem(t_skrr *skrr)
 	i = 0;
 	while (skrr->i < MEM_SIZE)
 	{
-		while (i < 64)
+		while (i++ < 64)
 		{
-			if (findlive(skrr) == 1)
-				mvwprintw(skrr->vis->code, y, x, "%hh.2x", skrr->map[skrr->i++]);
+			if (i_am_alive(skrr) == 1)
+				mvwprintw(skrr->vis->code, y, x, "%hh.2x", \
+						skrr->map[skrr->i++]);
 			else if (findprocess(skrr, skrr->i) == 1)
 				print_carriage(skrr, y, x);
 			else
 				print_regular_cells(skrr, y, x);
 			x = x + 3;
-			i++;
 		}
 		y++;
 		x = 3;
