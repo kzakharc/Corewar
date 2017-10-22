@@ -59,5 +59,6 @@ void				menufields(WINDOW *menu, t_skrr *skrr);
 void				printmem(t_skrr *skrr);
 int					findprocess(t_skrr *skrr, int pc);
 int					i_am_alive(t_skrr *skrr);
+void				hints(t_skrr *skrr);
 
 #endif

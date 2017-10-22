@@ -43,6 +43,7 @@ void	menufields(WINDOW *menu, t_skrr *skrr)
 	int y;
 
 	y = (skrr->max_player * 4);
+    hints(skrr);
 	wattron(menu, COLOR_PAIR(26) | A_BOLD);
 	mvwaddstr(menu, 4, 3, "Cycles/second limit :");
 	mvwaddstr(menu, 7, 3, "Cycle :");
@@ -55,7 +56,7 @@ void	menufields(WINDOW *menu, t_skrr *skrr)
 	{
 		wattron(skrr->vis->menu, COLOR_PAIR(27) | A_BOLD);
 		mvwaddstr(menu, 15 + y, 3, "[-----------------------------------------"\
-		"--------]");
+		"---------]");
 	}
 	wattron(menu, COLOR_PAIR(26));
 	mvwaddstr(menu, 17 + y, 3, "CYCLE_TO_DIE :");

@@ -12,6 +12,20 @@
 
 #include "../../corewar.h"
 
+void	hints(t_skrr *skrr)
+{
+	mvwaddstr(skrr->vis->menu, 55, 3, "Keymap:");
+	mvwaddstr(skrr->vis->menu, 57, 3, "[space] - pause/continue");
+	mvwaddstr(skrr->vis->menu, 58, 3, "[s] - next cycle");
+	mvwaddstr(skrr->vis->menu, 59, 3, "[q] - decrease Cycles/second limit by 10");
+	mvwaddstr(skrr->vis->menu, 60, 3, "[e] - increase Cycles/second limit by 1");
+	mvwaddstr(skrr->vis->menu, 61, 3, "[1] - set cycles/second to 50");
+	mvwaddstr(skrr->vis->menu, 62, 3, "[2] - set cycles/second to 100");
+	mvwaddstr(skrr->vis->menu, 63, 3, "[3] - set cycles/second to 500");
+	mvwaddstr(skrr->vis->menu, 64, 3, "[4] - set cycles/second to 2000");
+	mvwaddstr(skrr->vis->menu, 65, 3, "[5] - set cycles/second to 4000");
+}
+
 void	printwinner(t_skrr *skrr, char *name, int id)
 {
 	int c;
