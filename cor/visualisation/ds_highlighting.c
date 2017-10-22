@@ -1,10 +1,18 @@
-//
-// Created by Dmytrii Spyrydonov on 10/14/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ds_highlighting.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dspyrydo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/21 20:56:32 by dspyrydo          #+#    #+#             */
+/*   Updated: 2017/10/21 20:56:57 by dspyrydo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../corewar.h"
 
-void del_highl(t_skrr *skrr, int id)
+void	del_highl(t_skrr *skrr, int id)
 {
 	t_highl *current;
 	t_highl *prev;
@@ -50,10 +58,11 @@ int		highlight(t_skrr *skrr, int id)
 	{
 		if (tmp->id == id)
 		{
-			if (tmp->cycle == g_cycles)
+			if (tmp->cycle <= g_cycles)
 			{
 				skrr->mapid[skrr->i] /= 10;
 				del_highl(skrr, id);
+				wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i]));
 				return (0);
 			}
 			wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i] / 10));

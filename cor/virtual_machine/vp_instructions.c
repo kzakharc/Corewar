@@ -27,15 +27,13 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 		}
 		if (g_cycles == skrr->flag_dump)
 			dump_print(skrr);
-		skrr->flag_v ? visualize(skrr, chmp) : 0;
+		skrr->flag_v ? visualize(skrr) : 0;
 		if ((g_ctd + kastil == skrr->cycle_to_die) && (skrr->nbr_live > 0))
 			init_lives(skrr);
 		g_cycles++;
 		g_ctd++;
-		ft_printf("Cycle: %ld\n", g_cycles);
-
 	}
-	(!skrr->flag_v) ? winner(chmp, skrr, skrr->chmp->last_live, skrr->chmp->id) : 0;
+	winner(chmp, skrr, skrr->chmp->last_live, skrr->chmp->id);
 	return (1);
 }
 
