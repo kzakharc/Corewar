@@ -63,25 +63,52 @@ void	breakdown_current(t_skrr *skrr, int y)
 	}
 }
 
+void	print_speed(t_skrr *skrr, int color, int id)
+{
+	wattrset(skrr->vis->menu, COLOR_PAIR(0));
+	mvwaddstr(skrr->vis->menu, 4, 12, "Slow  Normal  Fast  Superfast   Extrem"\
+			"e");
+	wattrset(skrr->vis->menu, COLOR_PAIR(color) | A_BOLD);
+	if (id == 0)
+		mvwprintw(skrr->vis->menu, 4, 12, "Slow");
+	else if (id == 1)
+		mvwprintw(skrr->vis->menu, 4, 18, "Normal");
+	else if (id == 2)
+		mvwprintw(skrr->vis->menu, 4, 26, "Fast");
+	else if (id == 3)
+		mvwprintw(skrr->vis->menu, 4, 32, "Superfast");
+	else
+		mvwprintw(skrr->vis->menu, 4, 44, "Extreme");
+	wattrset(skrr->vis->menu, COLOR_PAIR(26) | A_BOLD);
+}
+
 void	cycles_limit(int c, t_skrr *skrr)
 {
-	if (c == 113 && skrr->vis->cycles > 1)
-		skrr->vis->cycles -= (skrr->vis->cycles > 10) ? 10 : 1;
-	if (c == 101)
-		skrr->vis->cycles += 1;
 	if (c == 49)
+	{
 		skrr->vis->cycles = 50;
+		print_speed(skrr, 31, 0);
+	}
 	if (c == 50)
+	{
 		skrr->vis->cycles = 100;
+		print_speed(skrr, 32, 1);
+	}
 	if (c == 51)
+	{
 		skrr->vis->cycles = 500;
+		print_speed(skrr, 33, 2);
+	}
 	if (c == 52)
+	{
 		skrr->vis->cycles = 1000;
-	if (c == 52)
-		skrr->vis->cycles = 2000;
+		print_speed(skrr, 34, 3);
+	}
 	if (c == 53)
-		skrr->vis->cycles = 4000;
-	mvwprintw(skrr->vis->menu, 4, 25, "%d  ", skrr->vis->cycles);
+	{
+		skrr->vis->cycles = 2000;
+		print_speed(skrr, 35, 4);
+	}
 	wrefresh(skrr->vis->menu);
 }
 

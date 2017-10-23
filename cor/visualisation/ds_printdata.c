@@ -44,8 +44,11 @@ void	menufields(WINDOW *menu, t_skrr *skrr)
 
 	y = (skrr->max_player * 4);
     hints(skrr);
+	mvwaddstr(skrr->vis->menu, 4, 12, "Slow  Normal  Fast  Superfast   Extreme");
+	wattrset(skrr->vis->menu, COLOR_PAIR(31) | A_BOLD);
+	mvwprintw(skrr->vis->menu, 4, 12, "Slow");
 	wattron(menu, COLOR_PAIR(26) | A_BOLD);
-	mvwaddstr(menu, 4, 3, "Cycles/second limit :");
+	mvwaddstr(menu, 4, 3, "Speed :");
 	mvwaddstr(menu, 7, 3, "Cycle :");
 	mvwaddstr(menu, 9, 3, "Processes :");
 	print_champs_data(skrr);
@@ -107,7 +110,6 @@ void	print_add_champs(t_skrr *skrr, int y, int id)
 void	printdata(WINDOW *menu, t_skrr *skrr)
 {
 	mvwaddstr(menu, 2, 3, "** RUNNING **");
-	mvwprintw(menu, 4, 25, "%d  ", skrr->vis->cycles);
 	mvwprintw(menu, 9, 15, "%d", skrr->process_count);
 	mvwprintw(menu, 7, 11, "%d", g_cycles);
 	wattron(menu, COLOR_PAIR(champ_color(skrr, -1)));

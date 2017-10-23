@@ -19,11 +19,11 @@ void	hints(t_skrr *skrr)
 	mvwaddstr(skrr->vis->menu, 58, 3, "[s] - next cycle");
 	mvwaddstr(skrr->vis->menu, 59, 3, "[q] - decrease Cycles/second limit by 10");
 	mvwaddstr(skrr->vis->menu, 60, 3, "[e] - increase Cycles/second limit by 1");
-	mvwaddstr(skrr->vis->menu, 61, 3, "[1] - set cycles/second to 50");
-	mvwaddstr(skrr->vis->menu, 62, 3, "[2] - set cycles/second to 100");
-	mvwaddstr(skrr->vis->menu, 63, 3, "[3] - set cycles/second to 500");
-	mvwaddstr(skrr->vis->menu, 64, 3, "[4] - set cycles/second to 2000");
-	mvwaddstr(skrr->vis->menu, 65, 3, "[5] - set cycles/second to 4000");
+	mvwaddstr(skrr->vis->menu, 61, 3, "[1] - set speed to slow");
+	mvwaddstr(skrr->vis->menu, 62, 3, "[2] - set speed to normal");
+	mvwaddstr(skrr->vis->menu, 63, 3, "[3] - set speed to fast");
+	mvwaddstr(skrr->vis->menu, 64, 3, "[4] - set speed to superfast");
+	mvwaddstr(skrr->vis->menu, 65, 3, "[5] - set speed to extreme");
 }
 
 void	printwinner(t_skrr *skrr, char *name, int id)
@@ -103,6 +103,7 @@ void	init_add_players_colors(void)
 ** 12 - live proc champ 2
 ** 13 - live proc champ 3
 ** 14 - live proc champ 4
+** 29 - grey carriage
 */
 
 void	init_visualisation(t_skrr *skrr)
@@ -121,6 +122,11 @@ void	init_visualisation(t_skrr *skrr)
 	init_pair(26, COLOR_WHITE, COLOR_BLACK);
 	init_pair(28, COLOR_WHITE, COLOR_CYAN);
 	init_pair(29, 8, COLOR_BLACK);
+	init_pair(31, COLOR_WHITE, COLOR_YELLOW);
+	init_pair(32, COLOR_WHITE, COLOR_CYAN);
+	init_pair(33, COLOR_WHITE, COLOR_BLUE);
+	init_pair(34, COLOR_WHITE, COLOR_GREEN);
+	init_pair(35, COLOR_WHITE, COLOR_RED);
 	init_pair(11, COLOR_WHITE, COLOR_GREEN);
 	init_pair(12, COLOR_WHITE, COLOR_BLUE);
 	init_pair(13, COLOR_WHITE, COLOR_RED);
