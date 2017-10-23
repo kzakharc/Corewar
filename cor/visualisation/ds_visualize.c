@@ -95,7 +95,7 @@ void	visualize(t_skrr *skrr)
 	wrefresh(skrr->vis->menu);
 	napms(1000 / skrr->vis->cycles);
 	c = wgetch(skrr->vis->menu);
-	if (c == 32 || c == 115 || g_cycles == 1 || skrr->vis->c == 1)
+	if (c == 32 || c == 115 || g_cycles == 0 || skrr->vis->c == 1)
 	{
 		skrr->vis->c = (c == 115) ? 1 : 0;
 		c = 0;
