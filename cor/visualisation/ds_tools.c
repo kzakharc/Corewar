@@ -120,6 +120,7 @@ void	init_visualisation(t_skrr *skrr)
 	init_pair(25, COLOR_CYAN, COLOR_BLACK);
 	init_pair(26, COLOR_WHITE, COLOR_BLACK);
 	init_pair(28, COLOR_WHITE, COLOR_CYAN);
+	init_pair(29, 8, COLOR_BLACK);
 	init_pair(11, COLOR_WHITE, COLOR_GREEN);
 	init_pair(12, COLOR_WHITE, COLOR_BLUE);
 	init_pair(13, COLOR_WHITE, COLOR_RED);

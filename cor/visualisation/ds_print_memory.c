@@ -28,7 +28,10 @@ int		findprocess(t_skrr *skrr, int pc)
 
 void	print_carriage(t_skrr *skrr, int y, int x)
 {
-	wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i]));
+	if (skrr->mapid[skrr->i] == 0)
+		wattrset(skrr->vis->code, COLOR_PAIR(29) | A_NORMAL);
+	else
+		wattrset(skrr->vis->code, COLOR_PAIR(skrr->mapid[skrr->i]));
 	if (skrr->mapid[skrr->i] > 9)
 		highlight(skrr, skrr->i);
 	wattron(skrr->vis->code, A_REVERSE);
