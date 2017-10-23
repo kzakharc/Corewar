@@ -100,7 +100,12 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 
 void	print_add_champs(t_skrr *skrr, int y, int id)
 {
-
+	wattron(skrr->vis->menu, COLOR_PAIR(champ_color(skrr, id)));
+	mvwprintw(skrr->vis->menu, y, 15, "%s", find_progname(skrr, id));
+	wattron(skrr->vis->menu, COLOR_PAIR(26));
+	mvwprintw(skrr->vis->menu, y + 1, 37, "%ld", find_last_live(skrr, id));
+	mvwprintw(skrr->vis->menu, y + 2, 37, "%d      ", \
+	find_live_count(skrr, id));
 }
 
 void	printdata(WINDOW *menu, t_skrr *skrr)
