@@ -12,7 +12,7 @@
 
 #include "../../corewar.h"
 
-int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
+int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 {
 	int adr;
 
@@ -25,9 +25,9 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr = dir_param(skrr, process, g_tab[6].dir_size);
+		adr = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
-		adr = ind_param(skrr, process, l, 4);
+		adr = ind_param(skrr, process, 4);
 	i++;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
@@ -37,13 +37,13 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr &= dir_param(skrr, process, g_tab[6].dir_size);
+		adr &= dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
-		adr &= ind_param(skrr, process, l, 4);
+		adr &= ind_param(skrr, process, 4);
 	return (adr);
 }
 
-int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
+int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 {
 	int adr;
 
@@ -56,9 +56,9 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr = dir_param(skrr, process, g_tab[6].dir_size);
+		adr = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
-		adr = ind_param(skrr, process, l, 4);
+		adr = ind_param(skrr, process, 4);
 	i++;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
@@ -68,13 +68,13 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr |= dir_param(skrr, process, g_tab[6].dir_size);
+		adr |= dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
-		adr |= ind_param(skrr, process, l, 4);
+		adr |= ind_param(skrr, process, 4);
 	return (adr);
 }
 
-int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process)
+int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 {
 	int adr;
 
@@ -87,9 +87,9 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr = dir_param(skrr, process, g_tab[6].dir_size);
+		adr = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
-		adr = ind_param(skrr, process, l, 4);
+		adr = ind_param(skrr, process, 4);
 	i++;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
@@ -99,13 +99,13 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, int l, t_proc *process
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr ^= dir_param(skrr, process, g_tab[6].dir_size);
+		adr ^= dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
-		adr ^= ind_param(skrr, process, l, 4);
+		adr ^= ind_param(skrr, process, 4);
 	return (adr);
 }
 
-int 	determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_proc *process)
+int 	determination_of_action(unsigned char *q, t_skrr *skrr, int key, t_proc *process)
 {
 	int		result;
 	short	i;
@@ -133,13 +133,13 @@ int 	determination_of_action(unsigned char *q, t_skrr *skrr, int l, int key, t_p
 			return (0);
 	}
 	else if (key == 3)
-		if (!(result = supp_to_and(q, skrr, i, l, process)) && (g_err))
+		if (!(result = supp_to_and(q, skrr, i, process)) && (g_err))
 			return (0);
 	if (key == 4)
-		if (!(result = supp_to_or(q, skrr, i, l, process)) && (g_err))
+		if (!(result = supp_to_or(q, skrr, i, process)) && (g_err))
 			return (0);
 	if (key == 5)
-		if (!(result = supp_to_xor(q, skrr, i, l, process)) && (g_err))
+		if (!(result = supp_to_xor(q, skrr, i, process)) && (g_err))
 			return (0);
 	return (result);
 }

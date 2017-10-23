@@ -17,8 +17,10 @@ int 			sti_instr(t_skrr *skrr, t_proc *process)
 	unsigned char	*q;
 	int 			address;
 
-	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
+	process->sop = 10;
+	if (process->waiting_cycles == g_tab[skrr->op].cycles)
 	{
+		process->sop = -1;
 		process->waiting_cycles = 0;
 		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
 			exit(0);

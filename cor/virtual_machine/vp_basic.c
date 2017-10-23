@@ -17,7 +17,7 @@ void			just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 	unsigned char 	magic[4];
 	unsigned int 	m[4];
 
-	(read(skrr->fd, magic, 4) < 0) ? chk_open(skrr, &argv, argc, 3) : 0;
+	(read(skrr->fd, magic, 4) < 0) ? argv_error(skrr, &argv, argc, 3) : 0;
 	skrr->i = 0;
 	skrr->shift = 24;
 	while (skrr->i < 4)
@@ -29,7 +29,7 @@ void			just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 	if (chmp->header.magic == COREWAR_EXEC_MAGIC)
 		get_name_comments(skrr, argv, argc, chmp);
 	else
-		chk_open(skrr, &argv, argc, 2);
+		argv_error(skrr, &argv, argc, 2);
 }
 
 void			get_name_comments(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
@@ -64,7 +64,7 @@ void			prog_size(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 	unsigned char 	size[4];
 	unsigned int	s[4];
 
-	(read(skrr->fd, size, 4) < 0) ? chk_open(skrr, &argv, argc, 3) : 0;
+	(read(skrr->fd, size, 4) < 0) ? argv_error(skrr, &argv, argc, 3) : 0;
 	skrr->i = 0;
 	skrr->shift = 24;
 	while (skrr->i < 4)

@@ -18,14 +18,16 @@ int 	sub_instr(t_skrr *skrr, t_proc *process)
 	int 			address;
 	int 			reg;
 
-	if ((process->waiting_cycles) == (g_tab[skrr->op].cycles))
+	process->sop = 4;
+	if (process->waiting_cycles == g_tab[skrr->op].cycles)
 	{
+		process->sop = -1;
 		process->waiting_cycles = 0;
 		if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
 			exit(0);
 		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 			return (0);
-		if (!(address = determination_of_action(q, skrr, 0, 2, process)) &&
+		if (!(address = determination_of_action(q, skrr, 2, process)) &&
 				(g_err) && !(g_err = 0))
 			return (0);
 		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
