@@ -43,10 +43,6 @@ void	menufields(WINDOW *menu, t_skrr *skrr)
 	int y;
 
 	y = (skrr->max_player * 4);
-    hints(skrr);
-	mvwaddstr(skrr->vis->menu, 4, 12, "Slow  Normal  Fast  Superfast   Extreme");
-	wattrset(skrr->vis->menu, COLOR_PAIR(31) | A_BOLD);
-	mvwprintw(skrr->vis->menu, 4, 12, "Slow");
 	wattron(menu, COLOR_PAIR(26) | A_BOLD);
 	mvwaddstr(menu, 4, 3, "Speed :");
 	mvwaddstr(menu, 7, 3, "Cycle :");
@@ -94,8 +90,6 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 		mvwaddch(menu, 67, i, ' ' | A_REVERSE);
 		mvwaddch(menu, 55, i++, ' ' | A_REVERSE);
 	}
-	wattroff(code, COLOR_PAIR(25));
-	wattroff(menu, COLOR_PAIR(25));
 }
 
 void	print_add_champs(t_skrr *skrr, int y, int id)

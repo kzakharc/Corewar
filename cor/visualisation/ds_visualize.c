@@ -109,7 +109,6 @@ void	cycles_limit(int c, t_skrr *skrr)
 		skrr->vis->cycles = 2000;
 		print_speed(skrr, 35, 4);
 	}
-	wrefresh(skrr->vis->menu);
 }
 
 void	visualize(t_skrr *skrr)
@@ -132,6 +131,7 @@ void	visualize(t_skrr *skrr)
 		{
 			c = wgetch(skrr->vis->code);
 			cycles_limit(c, skrr);
+			wrefresh(skrr->vis->menu);
 			if (c == 115)
 				skrr->vis->c = 1;
 		}

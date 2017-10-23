@@ -6,7 +6,7 @@
 /*   By: dspyrydo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 21:19:04 by dspyrydo          #+#    #+#             */
-/*   Updated: 2017/10/21 21:28:22 by dspyrydo         ###   ########.fr       */
+/*   Updated: 2017/10/23 23:22:53 by dspyrydo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void				printmem(t_skrr *skrr);
 int					findprocess(t_skrr *skrr, int pc);
 int					i_am_alive(t_skrr *skrr);
 void				hints(t_skrr *skrr);
+void				intro(t_skrr *skrr);
 
 #endif
