@@ -14,11 +14,9 @@
 
 void	hints(t_skrr *skrr)
 {
-	mvwaddstr(skrr->vis->menu, 55, 3, "Keymap:");
-	mvwaddstr(skrr->vis->menu, 57, 3, "[space] - pause/continue");
-	mvwaddstr(skrr->vis->menu, 58, 3, "[s] - next cycle");
-	mvwaddstr(skrr->vis->menu, 59, 3, "[q] - decrease Cycles/second limit by 10");
-	mvwaddstr(skrr->vis->menu, 60, 3, "[e] - increase Cycles/second limit by 1");
+	mvwaddstr(skrr->vis->menu, 57, 3, "Keymap:");
+	mvwaddstr(skrr->vis->menu, 59, 3, "[space] - pause/continue");
+	mvwaddstr(skrr->vis->menu, 60, 3, "[s] - next cycle/pause");
 	mvwaddstr(skrr->vis->menu, 61, 3, "[1] - set speed to slow");
 	mvwaddstr(skrr->vis->menu, 62, 3, "[2] - set speed to normal");
 	mvwaddstr(skrr->vis->menu, 63, 3, "[3] - set speed to fast");
