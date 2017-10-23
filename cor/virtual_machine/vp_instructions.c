@@ -14,19 +14,14 @@
 
 int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
-	int o;
-
 	while (skrr->cycle_to_die > 0)
 	{
+		skrr->flag_v ? visualize(skrr) : 0;
 		g_cycles++;
 		g_ctd++;
-		o = (g_cycles == CYCLE_TO_DIE - 1 ? 1 : 0);
 		change_process(skrr, chmp, &skrr->process);
-		if (g_ctd + o == skrr->cycle_to_die)
-			kill_processes(&skrr->process, NULL, skrr);
 		(g_cycles == skrr->flag_dump) ? dump_print(skrr) : 0;
-		skrr->flag_v ? visualize(skrr) : 0;
-		if (g_ctd + o == skrr->cycle_to_die)
+		if (g_ctd == skrr->cycle_to_die)
 			init_lives(skrr);
 	}
 	winner(chmp, skrr, skrr->chmp->last_live, skrr->chmp->id);
@@ -106,6 +101,7 @@ int 	init_lives(t_skrr *skrr)
 		champ_tmp->live_count = 0;
 		champ_tmp = champ_tmp->next;
 	}
+	kill_processes(&skrr->process, NULL, skrr);
 	if (skrr->nbr_live >= NBR_LIVE && (skrr->max_checks = MAX_CHECKS))
 		skrr->cycle_to_die -= CYCLE_DELTA;
 	else

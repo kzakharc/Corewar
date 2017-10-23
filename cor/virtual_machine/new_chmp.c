@@ -101,6 +101,7 @@ int 	kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr)
 				*process = current_proc->next;
 			free(current_proc);
 			skrr->process_count--;
+			skrr->flag_v ? beep() : 0;
 		}
 		else if (current_proc->live_proc == 1)
 		{
