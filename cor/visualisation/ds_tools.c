@@ -57,8 +57,8 @@ void	visualize_init(t_skrr *skrr)
 {
 	init_visualisation(skrr);
 	start_color();
-	skrr->vis->code = newwin(68, 254 - 57, 0, 0);
-	skrr->vis->menu = newwin(68, 57, 0, 254 - 57);
+	skrr->vis->code = newwin(68, 254 - 58, 0, 0);
+	skrr->vis->menu = newwin(68, 58, 0, 254 - 58);
 	keypad(skrr->vis->code, TRUE);
 	nodelay(skrr->vis->menu, TRUE);
 	printmargins(skrr->vis->code, skrr->vis->menu, 254, 68);

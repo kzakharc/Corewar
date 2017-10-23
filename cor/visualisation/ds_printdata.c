@@ -76,7 +76,7 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 	{
 		mvwaddch(code, i, 0, ' ' | A_REVERSE);
 		mvwaddch(menu, i, 0, ' ' | A_REVERSE);
-		mvwaddch(menu, i++, 56, ' ' | A_REVERSE);
+		mvwaddch(menu, i++, 57, ' ' | A_REVERSE);
 	}
 	i = 0;
 	while (i < width - 57)
