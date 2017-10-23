@@ -25,7 +25,7 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr = dir_param(skrr, process, g_tab[6].dir_size);
+		adr = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
 		adr = ind_param(skrr, process, 4);
 	i++;
@@ -37,7 +37,7 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr &= dir_param(skrr, process, g_tab[6].dir_size);
+		adr &= dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
 		adr &= ind_param(skrr, process, 4);
 	return (adr);
@@ -56,7 +56,7 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr = dir_param(skrr, process, g_tab[6].dir_size);
+		adr = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
 		adr = ind_param(skrr, process, 4);
 	i++;
@@ -68,7 +68,7 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr |= dir_param(skrr, process, g_tab[6].dir_size);
+		adr |= dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
 		adr |= ind_param(skrr, process, 4);
 	return (adr);
@@ -87,7 +87,7 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr = dir_param(skrr, process, g_tab[6].dir_size);
+		adr = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
 		adr = ind_param(skrr, process, 4);
 	i++;
@@ -99,7 +99,7 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr ^= dir_param(skrr, process, g_tab[6].dir_size);
+		adr ^= dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
 		adr ^= ind_param(skrr, process, 4);
 	return (adr);

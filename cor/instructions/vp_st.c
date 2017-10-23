@@ -12,8 +12,6 @@
 
 #include "../../corewar.h"
 
-// TODO need to be check!
-
 int 	st_instr(t_skrr *skrr, t_proc *process)
 {
 	unsigned char	*q;

@@ -32,7 +32,7 @@ int 	zjmp_instr(t_skrr *skrr, t_proc *process)
 			(process->waiting_cycles == g_tab[skrr->op].cycles))
 	{
 		process->sop = -1;
-		process->pc = (process->pc + (DIR_SIZE + 1) + MEM_SIZE) % MEM_SIZE;
+		process->pc = (process->pc + DIR_SIZE + 1 + MEM_SIZE) % MEM_SIZE;
 		process->tmp_pc = process->pc;
 		process->waiting_cycles = 0;
 	}

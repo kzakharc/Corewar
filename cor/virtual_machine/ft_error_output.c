@@ -87,7 +87,13 @@ void	header_errors_2(void)
 	{
 		(PROG_NAME_LENGTH != 128) ? ft_printf(MAG"Warning:"RESET " PROG_NAME_LENGTH != 128\n") : 0;
 		(COMMENT_LENGTH != 2048) ? ft_printf(MAG"Warning:"RESET " COMMENT_LENGTH != 2048\n") : 0;
-		exit (3);
+		exit (4);
+	}
+	else if ((MAX_PLAYERS != 4) || (MAX_ARGS_NUMBER != 4))
+	{
+		(MAX_PLAYERS != 4) ? ft_printf(MAG"Warning:"RESET " MAX_PLAYERS != 4\n") : 0;
+		(MAX_ARGS_NUMBER != 4) ? ft_printf(MAG"Warning:"RESET " MAX_ARGS_NUMBER != 4\n") : 0;
+		exit (5);
 	}
 }
 

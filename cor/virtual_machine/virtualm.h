@@ -49,6 +49,7 @@ typedef struct		s_proc
 	int 			tmp_pc;
 	unsigned int 	registry[REG_NUMBER];
 	int 			carry;
+//	int 			alive;
 	int 			live_proc;
 	int 			live_color;
 	int 			live_pc;
@@ -136,6 +137,8 @@ void				argv_error(t_skrr *skrr, char **argv, int i, int flag);
 */
 
 void				init(t_skrr *skrr);
+int 				alive(t_proc *process, t_skrr *skrr);
+int 				check_is_live(t_proc **procs, t_skrr *skrr);
 
 /*
 **	main functions, for get info about "name", "weighing", "comments" .. go -> [vp_basic.c].
