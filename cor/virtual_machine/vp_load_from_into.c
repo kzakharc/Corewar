@@ -53,9 +53,7 @@ int		load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 		}
 	}
 	else if (flag == 2)
-	{
 		four_bytes(address, process, skrr);
-	}
 	return (1);
 }
 
