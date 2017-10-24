@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:31:42 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/09/10 17:31:43 by vpoltave         ###   ########.fr       */
+/*   Updated: 2017/10/24 21:30:30 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 	return (1);
 }
 
-int 	process_first_pos(t_chmp *chmp, t_proc *proc)
+int		process_first_pos(t_chmp *chmp, t_proc *proc)
 {
 	t_proc *proc_tmp;
 	t_chmp *chmp_tmp;
@@ -103,6 +103,8 @@ int		init_lives(t_skrr *skrr)
 		champ_tmp = champ_tmp->next;
 	}
 	kill_processes(&skrr->process, skrr);
+	if (skrr->process == NULL)
+		winner(skrr->chmp, skrr, skrr->chmp->last_live, skrr->chmp->id);
 	if (skrr->nbr_live >= NBR_LIVE && (skrr->max_checks = MAX_CHECKS))
 		skrr->cycle_to_die -= CYCLE_DELTA;
 	else

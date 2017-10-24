@@ -119,7 +119,7 @@ void	printdata(WINDOW *menu, t_skrr *skrr)
 	if (skrr->max_player > 3)
 		print_add_champs(skrr, 23, -4);
 	breakdown_current(skrr, 12);
-	if (g_ctd == skrr->cycle_to_die)
+	if (g_ctd + 1 == skrr->cycle_to_die)
 		breakdown_current(skrr, 15);
 	wattron(menu, COLOR_PAIR(26));
 	mvwprintw(menu, 17 + skrr->max_player * 4, 18, "%d ", skrr->cycle_to_die);

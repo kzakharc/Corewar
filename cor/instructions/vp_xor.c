@@ -6,7 +6,7 @@
 /*   By: yzakharc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/02 18:41:18 by yzakharc          #+#    #+#             */
-/*   Updated: 2017/10/24 12:55:17 by vpoltave         ###   ########.fr       */
+/*   Updated: 2017/10/24 21:19:31 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		xor_instr(t_skrr *skrr, t_proc *process)
 	int				reg;
 
 	if (!fuck_norm(skrr, process, 7))
+		return (0);
 	if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
 		exit(0);
 	if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))

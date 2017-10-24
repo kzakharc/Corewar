@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:15:29 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 12:12:38 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/10/24 21:29:42 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ void					which_instr(t_skrr *skrr, t_proc **pr);
 int						change_process(t_skrr *skrr, t_chmp *chmp,
 								t_proc **process);
 int						process_first_pos(t_chmp *chmp, t_proc *process);
-int						kill_processes(t_proc **process, t_skrr *skrr);
+void					kill_processes(t_proc **process, t_skrr *skrr);
 void					winner(t_chmp *chmp, t_skrr *skrr, long best_cycle,
 								int best_player);
 int						init_lives(t_skrr *skrr);
@@ -228,7 +228,7 @@ int						inheritance_proc(t_proc **process, int pc,
 int						check_my_q(unsigned char *q, int num_arg, t_skrr *skrr);
 
 int						reg_param(t_skrr *skrr,
-									 t_proc *process, int flag);
+								t_proc *process, int flag);
 int						dir_param(t_skrr *skrr, t_proc *process,
 								short dir_size);
 int						ind_param(t_skrr *skrr, t_proc *process, int bytes);

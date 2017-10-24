@@ -6,7 +6,7 @@
 /*   By: yzakharc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 14:48:46 by yzakharc          #+#    #+#             */
-/*   Updated: 2017/10/24 11:23:32 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/10/24 21:25:42 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_flag(t_skrr *skrr)
 	}
 }
 
-int     fuck_norm(t_skrr *skrr, t_proc *process, int sop)
+int		fuck_norm(t_skrr *skrr, t_proc *process, int sop)
 {
 	process->sop = sop;
 	if (process->waiting_cycles != g_tab[skrr->op].cycles)

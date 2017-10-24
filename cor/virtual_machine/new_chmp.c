@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:30:50 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 11:24:09 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/10/24 21:29:02 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		inheritance_proc(t_proc **process, int pc, t_skrr *skrr)
 	return (1);
 }
 
-int		kill_processes(t_proc **process, t_skrr *skrr)
+void	kill_processes(t_proc **process, t_skrr *skrr)
 {
 	t_proc	*proc_tmp;
 	t_proc	*prev;
@@ -111,7 +111,4 @@ int		kill_processes(t_proc **process, t_skrr *skrr)
 		}
 		proc_tmp = address;
 	}
-	if (*process == NULL)
-		winner(skrr->chmp, skrr, skrr->chmp->last_live, skrr->chmp->id);
-	return (1);
 }

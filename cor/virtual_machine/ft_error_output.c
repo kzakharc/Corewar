@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:31:58 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 12:49:51 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/10/24 21:30:57 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	header_errors_2(void)
 			(MAX_CHECKS) < 0 || (CYCLE_DELTA < 0))
 	{
 		ft_printf(MAG"Warning:"RESET " No negative instructions please.\n");
-		exit (6);
+		exit(6);
 	}
 }
 
