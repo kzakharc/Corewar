@@ -46,3 +46,21 @@ void	init_flag(t_skrr *skrr)
 		skrr->flag_dump = -1;
 	}
 }
+
+int     fuck_norm(t_skrr *skrr, t_proc *process, int sop)
+{
+	process->sop = sop;
+	if (process->waiting_cycles != g_tab[skrr->op].cycles)
+		return (0);
+	process->sop = -1;
+	process->waiting_cycles = 0;
+	return (1);
+}
+
+void	fuck_norm_2(t_skrr *skrr, t_proc *process, int reg, int address)
+{
+	process->registry[reg] = (unsigned int)address;
+	process->carry = (address == 0) ? 1 : 0;
+	process->pc = (process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE;
+	process->tmp_pc = process->pc;
+}

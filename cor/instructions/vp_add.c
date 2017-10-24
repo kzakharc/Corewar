@@ -18,11 +18,8 @@ int		add_instr(t_skrr *skrr, t_proc *process)
 	int				address;
 	int				reg;
 
-	process->sop = 3;
-	if (process->waiting_cycles != g_tab[skrr->op].cycles)
+	if (!fuck_norm(skrr, process, 3))
 		return (0);
-	process->sop = -1;
-	process->waiting_cycles = 0;
 	if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))
 		exit(0);
 	if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
@@ -38,10 +35,7 @@ int		add_instr(t_skrr *skrr, t_proc *process)
 		free(q);
 		return (g_err = 0);
 	}
-	process->registry[reg] = (unsigned int)address;
-	process->carry = (address == 0) ? 1 : 0;
-	process->pc = (process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE;
-	process->tmp_pc = process->pc;
+	fuck_norm_2(skrr, process, reg, address);
 	free(q);
 	return (1);
 }

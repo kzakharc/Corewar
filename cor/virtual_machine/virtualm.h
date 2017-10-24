@@ -137,6 +137,9 @@ void					argv_error(t_skrr *skrr, char **argv, int i, int flag);
 
 void					init(t_skrr *skrr);
 void					init_flag(t_skrr *skrr);
+int						fuck_norm(t_skrr *skrr, t_proc *process, int sop);
+void					fuck_norm_2(t_skrr *skrr, t_proc *process, int reg,
+								int address);
 
 /*
 **	main functions, for get info about "name", "weighing",

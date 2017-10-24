@@ -29,11 +29,14 @@ char	*name_winner(t_chmp *chmp, int id)
 
 void	pt_winner(t_skrr *skrr, t_chmp *chmp, int best_player)
 {
+	char *name;
+
 	if (skrr->flag_v == 1)
-		printwinner(skrr, name_winner(chmp, best_player), best_player);
+		printwinner(skrr, name = name_winner(chmp, best_player), best_player);
 	else
 		ft_printf("Contestant %ld, " GRN"\"%s\","RESET "has won !\n",
-				best_player * (-1), name_winner(chmp, best_player));
+				best_player * (-1), name= name_winner(chmp, best_player));
+	free(name);
 }
 
 void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
