@@ -18,6 +18,7 @@ int				maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 	if (!ft_strcmp(av[*i], "-n"))
 	{
 		n(av, i, skrr, ac);
+		skrr->cnt_n++;
 		return (1);
 	}
 	else if (!ft_strcmp(av[*i], "-v"))
@@ -45,7 +46,6 @@ void			find_player(char **av, int *i, t_skrr *skrr)
 	push_chmp(&skrr->chmp, skrr);
 	just_read(skrr, av[*i], *i, skrr->chmp);
 	skrr->max_player++;
-	skrr->cnt_n++;
 	skrr->chmp->ac = *i;
 	(*i)++;
 }

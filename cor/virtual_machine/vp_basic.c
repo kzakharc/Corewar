@@ -57,6 +57,11 @@ void			chk_size(t_skrr *skrr, char *argv, unsigned char *line,
 				"from what its header says\n", argv);
 		exit(0);
 	}
+	if (chmp->header.prog_size == 0)
+	{
+		ft_printf("Error: File"RED" %s "RESET"has a code size 0.\n", argv);
+		exit(1);
+	}
 	(lseek(chmp->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
 }
 
