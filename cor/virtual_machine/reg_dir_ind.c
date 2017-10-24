@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:30:59 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 12:44:41 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/09/10 17:31:00 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 int		reg_param(t_skrr *skrr, t_proc *process, int flag)
 {
 	if (((skrr->map[process->tmp_pc] > REG_NUMBER) ||
-				(skrr->map[process->tmp_pc] < 1))
-			&& (g_err = 1))
+			(skrr->map[process->tmp_pc] < 1)) && (g_err = 1))
 	{
 		process->pc =
-			((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
+				((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
 		return (0);
 	}
 	if (flag == 1)
@@ -40,7 +39,7 @@ int		reg_param(t_skrr *skrr, t_proc *process, int flag)
 
 int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 {
-	int	address;
+	int address;
 
 	address = 0;
 	if (dir_size == 1)
@@ -78,7 +77,7 @@ int		ind_param(t_skrr *skrr, t_proc *process, int bytes)
 		address++;
 	}
 	address = (bytes == 4) ?
-		(ind[0] | ind[1] | ind[2] | ind[3]) : (ind[0] | ind[1]);
+			(ind[0] | ind[1] | ind[2] | ind[3]) : (ind[0] | ind[1]);
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	return (address);
 }

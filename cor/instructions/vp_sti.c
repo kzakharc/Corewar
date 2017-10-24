@@ -30,6 +30,7 @@ int		sti_instr(t_skrr *skrr, t_proc *process)
 		return (g_err = 0);
 	if (!(address = get_address(q, skrr, 0, 1)) && (g_err))
 		return (g_err = 0);
+	address = (process->pc + (address % IDX_MOD));
 	load_into(address, process, skrr, 1);
 	process->pc = (process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE;
 	process->tmp_pc = process->pc;

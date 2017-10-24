@@ -28,6 +28,7 @@ int		lldi_instr(t_skrr *skrr, t_proc *process)
 		return (0);
 	if (!(address = get_address(q, skrr, 1, 0)) && (g_err))
 		return (g_err = 0);
+	address = (process->pc + address);
 	if (!(load_into(address, process, skrr, 2)) && (g_err))
 		return (g_err = 0);
 	process->pc = (process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE;

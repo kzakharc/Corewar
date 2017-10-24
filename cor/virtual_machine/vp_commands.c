@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:31:21 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 12:19:33 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/09/10 17:31:23 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 	while (champ_tmp && proc_tmp)
 	{
 		proc_tmp->tmp_pc =
-			player_position(proc_tmp->registry[0], skrr, champ_tmp);
+				player_position(proc_tmp->registry[0], skrr, champ_tmp);
 		line = (unsigned char*)ft_strnew(champ_tmp->header.prog_size);
 		chk_size(skrr, av[champ_tmp->ac], line, champ_tmp);
 		skrr->i = 0;
@@ -50,7 +50,6 @@ void			prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 		unsafe_copy(skrr, line, champ_tmp);
 		champ_tmp = champ_tmp->next;
 		proc_tmp = proc_tmp->next;
-		free(line);
 	}
 }
 

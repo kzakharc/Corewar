@@ -162,11 +162,10 @@ unsigned int			player_position(int nbr, t_skrr *skrr, t_chmp *chmp);
 void					unsafe_copy(t_skrr *skrr, unsigned char *src,
 								t_chmp *chmp);
 int						entry_point(t_skrr *skrr, t_chmp *chmp);
-void					which_instr(t_skrr *skrr, t_chmp *chmp,
-								t_proc **pr);
+void					which_instr(t_skrr *skrr, t_proc **pr);
 int						change_process(t_skrr *skrr, t_chmp *chmp,
 								t_proc **process);
-int						process_first_positions(t_chmp *chmp, t_proc *process);
+int						process_first_pos(t_chmp *chmp, t_proc *process);
 int						kill_processes(t_proc **process, t_proc *prev,
 								t_skrr *skrr);
 void					winner(t_chmp *chmp, t_skrr *skrr, long best_cycle,
@@ -212,8 +211,8 @@ unsigned int			two_four_bytes(unsigned char *map, int dir_size);
 int						from_reg(unsigned char *q, t_proc *process,
 								t_skrr *skrr, short i);
 unsigned char			arg_types(t_skrr *skrr, t_chmp *chmp, int ctk);
-int						get_address(unsigned char *q, t_skrr *skrr, int l,
-								short i);
+int						get_address(unsigned char *q, t_skrr *skrr,
+								t_proc *process, short i);
 int						simple_address(unsigned char *q, t_skrr *skrr,
 								t_proc *process, short i);
 int						load_into(int address, t_proc *process, t_skrr *skrr,

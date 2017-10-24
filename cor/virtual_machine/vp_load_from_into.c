@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:31:50 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 12:42:05 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/09/10 17:31:51 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,14 @@ int		load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 			address = (address + MEM_SIZE) % MEM_SIZE;
 			skrr->mapid[address] = (unsigned char)(process->id * -10);
 			skrr->map[address++] = (unsigned char)
-				(skrr->chmp->reg_value >> skrr->shift & 0x000000ff);
+					(skrr->chmp->reg_value >> skrr->shift & 0x000000ff);
 			skrr->shift -= 8;
 		}
 	}
 	else if (flag == 2)
+	{
 		four_bytes(address, process, skrr);
+	}
 	return (1);
 }
 
@@ -76,32 +78,31 @@ int		from_reg(unsigned char *q, t_proc *process, t_skrr *skrr, short i)
 **	l = 1 -> long instr, 0 for regular with IDX_MOD
 */
 
-int		get_address(unsigned char *q, t_skrr *skrr, int l, short i)
+int		get_address(unsigned char *q, t_skrr *skrr, t_proc *process, short i)
 {
 	int adr;
 
-	skrr->process->tmp_pc = (skrr->process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
+	adr = 0;
+	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
-		if ((adr = reg_param(skrr, skrr->process, 1)) && (g_err))
+		if ((adr = reg_param(skrr, process, 1)) && (g_err))
 			return (0);
 	if (q[i] == T_DIR)
-		adr = dir_param(skrr, skrr->process, 1);
+		adr = dir_param(skrr, process, 1);
 	if (q[i] == T_IND)
-		adr = ind_param(skrr, skrr->process, 4);
+		adr = ind_param(skrr, process, 4);
 	i++;
-	skrr->process->tmp_pc = (skrr->process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
-	if (q[++i] == T_REG)
+	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
+	if (q[i] == T_REG)
 	{
-		adr += reg_param(skrr, skrr->process, 1);
+		adr += reg_param(skrr, process, 1);
 		if (g_err)
 			return (0);
 	}
 	if (q[i] == T_DIR)
-		adr += dir_param(skrr, skrr->process, 1);
+		adr += dir_param(skrr, process, 1);
 	if (q[i] == T_IND)
-		adr += ind_param(skrr, skrr->process, 4);
-	adr = (l == 0) ?
-		(skrr->process->pc + (adr % IDX_MOD)) : (skrr->process->pc + adr);
+		adr += ind_param(skrr, process, 4);
 	return (adr);
 }
 
