@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:31:58 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/09/10 17:31:59 by vpoltave         ###   ########.fr       */
+/*   Updated: 2017/10/24 12:49:51 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	argv_error(t_skrr *skrr, char **argv, int i, int flag)
 		ft_printf("Error:"RED" %s "RESET"is a directory\n", *argv);
 	else if (flag == 4)
 		ft_printf(""RED"Error:"RESET" Please enter a player number from 1 to"
-						  " %i\n", skrr->max_player);
+				" %i\n", skrr->max_player);
 	else if (flag == 5)
 		ft_printf(""RED"Error:"RESET" You typed too many flags "GRN"\"-n\""
-						  ""RESET"\n");
+				""RESET"\n");
 	else if (flag == 6)
 		ft_printf(""RED"Error:"RESET" You typed wrong player number\n");
 	else if (flag == 7)
@@ -61,22 +61,23 @@ void	header_errors(void)
 		(REG_SIZE != 1) ? ft_printf(MAG"Warning:"RESET " REG_SIZE != 1\n") : 0;
 		(DIR_SIZE != 2) ? ft_printf(MAG"Warning:"RESET " DIR_SIZE != 2\n") : 0;
 		(IND_SIZE != 2) ? ft_printf(MAG"Warning:"RESET " IND_SIZE != 2\n") : 0;
-		exit (1);
+		exit(1);
 	}
 	else if ((REG_CODE != 1) || (DIR_CODE != 2) || (IND_CODE != 3))
 	{
 		(REG_CODE != 1) ? ft_printf(MAG"Warning:"RESET " REG_CODE != 1\n") : 0;
 		(DIR_CODE != 2) ? ft_printf(MAG"Warning:"RESET " DIR_CODE != 2\n") : 0;
 		(IND_CODE != 3) ? ft_printf(MAG"Warning:"RESET " IND_CODE != 3\n") : 0;
-		exit (2);
+		exit(2);
 	}
 	else if ((MEM_SIZE != 4096) || (T_REG != 1) || (T_DIR != 2) || (T_IND != 4))
 	{
-		(MEM_SIZE != 4096) ? ft_printf(MAG"Warning:"RESET " MEM_SIZE != 4096\n") : 0;
+		(MEM_SIZE != 4096) ?
+			ft_printf(MAG"Warning:"RESET " MEM_SIZE != 4096\n") : 0;
 		(T_REG != 1) ? ft_printf(MAG"Warning:"RESET " T_REG != 1\n") : 0;
 		(T_DIR != 2) ? ft_printf(MAG"Warning:"RESET " T_DIR != 2\n") : 0;
 		(T_IND != 4) ? ft_printf(MAG"Warning:"RESET " T_IND != 4\n") : 0;
-		exit (3);
+		exit(3);
 	}
 	header_errors_2();
 }
@@ -85,28 +86,32 @@ void	header_errors_2(void)
 {
 	if ((PROG_NAME_LENGTH != 128) || (COMMENT_LENGTH != 2048))
 	{
-		(PROG_NAME_LENGTH != 128) ? ft_printf(MAG"Warning:"RESET " PROG_NAME_LENGTH != 128\n") : 0;
-		(COMMENT_LENGTH != 2048) ? ft_printf(MAG"Warning:"RESET " COMMENT_LENGTH != 2048\n") : 0;
-		exit (4);
+		(PROG_NAME_LENGTH != 128) ?
+			ft_printf(MAG"Warning:"RESET " PROG_NAME_LENGTH != 128\n") : 0;
+		(COMMENT_LENGTH != 2048) ?
+			ft_printf(MAG"Warning:"RESET " COMMENT_LENGTH != 2048\n") : 0;
+		exit(4);
 	}
 	else if ((MAX_PLAYERS != 4) || (MAX_ARGS_NUMBER != 4))
 	{
-		(MAX_PLAYERS != 4) ? ft_printf(MAG"Warning:"RESET " MAX_PLAYERS != 4\n") : 0;
-		(MAX_ARGS_NUMBER != 4) ? ft_printf(MAG"Warning:"RESET " MAX_ARGS_NUMBER != 4\n") : 0;
-		exit (5);
+		(MAX_PLAYERS != 4) ?
+			ft_printf(MAG"Warning:"RESET " MAX_PLAYERS != 4\n") : 0;
+		(MAX_ARGS_NUMBER != 4) ?
+			ft_printf(MAG"Warning:"RESET " MAX_ARGS_NUMBER != 4\n") : 0;
+		exit(5);
 	}
 }
 
 void	usage_e(void)
 {
 	ft_printf(YEL"Usage: ./corewar     [-dump nbr_cycles] [-n number] [-v] "
-					  "[-a] <champion1.cor> <...>\n"RESET
-	"    -a               : Prints output from \"aff\" "
-	"(Default is to hide it)\n"
-	"    -n number        : Sets the number of the next player\n"
-	"###################### MAP OUTPUT MODE #########################\n"
-	"    -dump nbr_cycles : Dumps memory after nbr_cycles then exits\n"
-	"#################### NCURSES OUTPUT MODE #######################\n"
-	"    -v               : Ncurses output mode\n");
+			"[-a] <champion1.cor> <...>\n"RESET
+			"    -a               : Prints output from \"aff\" "
+			"(Default is to hide it)\n"
+			"    -n number        : Sets the number of the next player\n"
+			"###################### MAP OUTPUT MODE #########################\n"
+			"    -dump nbr_cycles : Dumps memory after nbr_cycles then exits\n"
+			"#################### NCURSES OUTPUT MODE #######################\n"
+			"    -v               : Ncurses output mode\n");
 	exit(1);
 }

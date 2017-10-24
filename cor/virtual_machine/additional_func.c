@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:30:37 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/09/10 17:30:38 by vpoltave         ###   ########.fr       */
+/*   Updated: 2017/10/24 12:45:58 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ unsigned int	two_four_bytes(unsigned char *map, int size)
 
 unsigned char	arg_types(t_skrr *skrr, t_chmp *chmp, int ctk)
 {
-	int addit_dir;
+	int	addit_dir;
 
 	addit_dir = (g_tab[skrr->op].dir_size == 0) ? 2 : 0;
 	if (hex_to_bin(skrr->map[ctk], skrr->i) == REG_CODE &&
@@ -50,9 +50,9 @@ unsigned char	arg_types(t_skrr *skrr, t_chmp *chmp, int ctk)
 	return (0);
 }
 
-unsigned char 		hex_to_bin(unsigned char c, int i)
+unsigned char	hex_to_bin(unsigned char c, int i)
 {
-	unsigned char dst;
+	unsigned char	dst;
 
 	dst = c;
 	if ((i == 0) && (dst = (dst >> 6)))
@@ -64,7 +64,8 @@ unsigned char 		hex_to_bin(unsigned char c, int i)
 	return (0);
 }
 
-int		same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg)
+int				same_start(unsigned char *q, t_skrr *skrr, t_proc *process,
+							int num_arg)
 {
 	skrr->i = 0;
 	process->tmp_pc = (process->pc + 1 + MEM_SIZE) % MEM_SIZE;
@@ -77,15 +78,16 @@ int		same_start(unsigned char *q, t_skrr *skrr, t_proc *process, int num_arg)
 		q[skrr->i++] = arg_types(skrr, skrr->chmp, process->tmp_pc);
 	if (check_my_q(q, num_arg, skrr) == -2)
 	{
-		process->pc = (process->pc + 2 + skrr->chmp->offset + MEM_SIZE) % MEM_SIZE;
+		process->pc =
+			(process->pc + 2 + skrr->chmp->offset + MEM_SIZE) % MEM_SIZE;
 		return (0);
 	}
 	return (1);
 }
 
-int 	check_my_q(unsigned char *q, int num_arg, t_skrr *skrr)
+int				check_my_q(unsigned char *q, int num_arg, t_skrr *skrr)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < num_arg)
@@ -96,7 +98,7 @@ int 	check_my_q(unsigned char *q, int num_arg, t_skrr *skrr)
 			return (-2);
 		else if (q[i] == T_DIR && !(g_tab[skrr->op].arg[i] & T_DIR))
 			return (-2);
-		else if (q[i] == T_IND  && !(g_tab[skrr->op].arg[i] & T_IND))
+		else if (q[i] == T_IND && !(g_tab[skrr->op].arg[i] & T_IND))
 			return (-2);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: yzakharc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 18:34:54 by yzakharc          #+#    #+#             */
-/*   Updated: 2017/10/05 18:34:55 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/10/24 12:54:19 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 	adr = 0;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
-	{
-		adr = reg_param(skrr, process, 1);
-		if (g_err)
+		if (!(adr = reg_param(skrr, process, 1)) && (g_err))
 			return (0);
-	}
 	if (q[i] == T_DIR)
 		adr = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
@@ -43,18 +40,15 @@ int		supp_to_and(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 	return (adr);
 }
 
-int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
+int		supp_to_or(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 {
 	int adr;
 
 	adr = 0;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
-	{
-		adr = reg_param(skrr, process, 1);
-		if (g_err)
+		if (!(adr = reg_param(skrr, process, 1)) && (g_err))
 			return (0);
-	}
 	if (q[i] == T_DIR)
 		adr = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
@@ -74,18 +68,15 @@ int 	supp_to_or(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 	return (adr);
 }
 
-int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
+int		supp_to_xor(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 {
-	int adr;
+	int	adr;
 
 	adr = 0;
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (q[i] == T_REG)
-	{
-		adr = reg_param(skrr, process, 1);
-		if (g_err)
+		if (!(adr = reg_param(skrr, process, 1)) && (g_err))
 			return (0);
-	}
 	if (q[i] == T_DIR)
 		adr = dir_param(skrr, process, g_tab[skrr->op].dir_size);
 	if (q[i] == T_IND)
@@ -105,7 +96,35 @@ int 	supp_to_xor(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 	return (adr);
 }
 
-int 	determination_of_action(unsigned char *q, t_skrr *skrr, int key, t_proc *process)
+int		supp_add_sub(unsigned char *q, t_skrr *skrr, int key, t_proc *process)
+{
+	int adr;
+
+	adr = 0;
+	if (key == 1)
+	{
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
+		if (!(adr = reg_param(skrr, process, 1)) && (g_err))
+			return (0);
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
+		adr += reg_param(skrr, process, 1);
+		if (g_err)
+			return (0);
+	}
+	if (key == 2)
+	{
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
+		if (!(adr = reg_param(skrr, process, 1)) && (g_err))
+			return (0);
+		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
+		adr -= reg_param(skrr, process, 1);
+		if (g_err)
+			return (0);
+	}
+	return (adr);
+}
+
+int		det_of_action(unsigned char *q, t_skrr *skrr, int key, t_proc *process)
 {
 	int		result;
 	short	i;
@@ -113,26 +132,12 @@ int 	determination_of_action(unsigned char *q, t_skrr *skrr, int key, t_proc *pr
 	result = 0;
 	i = 0;
 	if (key == 1)
-	{
-		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
-		if (!(result = reg_param(skrr, process, 1)) && (g_err))
+		if (!(result = supp_add_sub(q, skrr, key, process)) && (g_err))
 			return (0);
-		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
-		result += reg_param(skrr, process, 1);
-		if (g_err)
+	if (key == 2)
+		if (!(result = supp_add_sub(q, skrr, key, process)) && (g_err))
 			return (0);
-	}
-	else if (key == 2)
-	{
-		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
-		if (!(result = reg_param(skrr, process, 1)) && (g_err))
-			return (0);
-		process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
-		result -= reg_param(skrr, process, 1);
-		if (g_err)
-			return (0);
-	}
-	else if (key == 3)
+	if (key == 3)
 		if (!(result = supp_to_and(q, skrr, i, process)) && (g_err))
 			return (0);
 	if (key == 4)

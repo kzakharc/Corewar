@@ -6,20 +6,18 @@
 /*   By: yzakharc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/14 11:11:09 by yzakharc          #+#    #+#             */
-/*   Updated: 2017/09/14 11:11:10 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/10/24 12:48:46 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../corewar.h"
 
-int			maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
+int				maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 {
 	skrr->flag_n == NULL ? skrr->flag_n = ft_intmalloc(MAX_PLAYERS) : 0;
 	if (!ft_strcmp(av[*i], "-n"))
 	{
-		*i + 1 < ac ? skrr->flag_n[skrr->cnt_n] = (int)ft_atoi(av[*i + 1]) : 0;
-		skrr->flag_n[skrr->cnt_n] < 0 || !av[*i + 1] ? argv_error(0, 0, 0, 8) : 0;
-		skrr->flag_n[skrr->cnt_n] != 0 ? (*i) += 2 : argv_error(0, 0, 0, 8);
+		n(av, i, skrr, ac);
 		return (1);
 	}
 	else if (!ft_strcmp(av[*i], "-v"))
@@ -30,23 +28,18 @@ int			maybe_flag(char **av, int *i, t_skrr *skrr, int ac)
 	}
 	else if (!ft_strcmp(av[*i], "-dump"))
 	{
-		!av[*i + 1] ? argv_error(skrr, av, *i + 1, 7) : 0;
-		skrr->flag_dump = (int)ft_atoi(av[*i + 1]);
-		skrr->flag_dump < 0 ? argv_error(0, 0, 0, 9) : 0;
-		(*i) += 2;
+		dump(av, i, skrr);
 		return (1);
 	}
 	else if (!ft_strcmp(av[*i], "-a"))
 	{
-		av[*i + 1] && ft_isdigit(av[*i + 1][0]) ? usage_e() : 0;
-		skrr->flag_a = 1;
-		(*i)++;
+		a(av, i, skrr);
 		return (1);
 	}
 	return (0);
 }
 
-void 			find_player(char **av, int *i, t_skrr *skrr)
+void			find_player(char **av, int *i, t_skrr *skrr)
 {
 	chk_open(skrr, av, *i, 1);
 	push_chmp(&skrr->chmp, skrr);
@@ -68,8 +61,9 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 		while (maybe_flag(av, &i, skrr, ac))
 			if (i == ac)
 			{
-				!ft_strcmp(av[(i - 1)], "-v") || !ft_strcmp(av[(i - 1)], "-a") || !ft_strcmp(av[(i - 2)], "-dump") ? 0 : usage_e();
-				break;
+				!ft_strcmp(av[(i - 1)], "-v") || !ft_strcmp(av[(i - 1)], "-a")
+					|| !ft_strcmp(av[(i - 2)], "-dump") ? 0 : usage_e();
+				break ;
 			}
 		if (i != ac)
 			find_player(av, &i, skrr);
@@ -80,14 +74,10 @@ void			parsing_arg(t_skrr *skrr, char **av, int ac)
 	skrr->max_player > MAX_PLAYERS ? chk_open(0, 0, 0, 0) : 0;
 	flag_n(skrr);
 	prog_commands(skrr, av, skrr->chmp);
-	if (skrr->flag_v == 1)
-	{
-		skrr->flag_a = 0;
-		skrr->flag_dump = -1;
-	}
+	init_flag(skrr);
 }
 
-unsigned int 	zero_reg(t_skrr *skrr)
+unsigned int	zero_reg(t_skrr *skrr)
 {
 	static int	nbr;
 	static int	tmp;
@@ -111,7 +101,7 @@ unsigned int 	zero_reg(t_skrr *skrr)
 	{
 		c = nbr;
 		nbr++;
-		return (unsigned int) (skrr->flag_n[c] * -1);
+		return ((unsigned int)(skrr->flag_n[c] * -1));
 	}
 }
 
@@ -136,5 +126,7 @@ void			flag_n(t_skrr *skrr)
 	}
 	i = -1;
 	while (++i < skrr->max_player)
-		ft_intc(skrr->flag_n, skrr->flag_n[i], skrr->max_player) > 1 ? argv_error(skrr, 0, 0, 6) : 0;
+		ft_intc(skrr->flag_n, skrr->flag_n[i], skrr->max_player) > 1 ?
+			argv_error(skrr, 0, 0, 6) : 0;
+	free(skrr->flag_n);
 }

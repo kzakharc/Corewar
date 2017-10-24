@@ -37,6 +37,7 @@ int 	st_instr(t_skrr *skrr, t_proc *process)
 			(process->registry[address] = skrr->chmp->reg_value);
 		process->pc = ((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
 		process->tmp_pc = process->pc;
+		free(q);
 	}
 	return (1);
 }

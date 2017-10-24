@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:30:59 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/09/10 17:31:00 by vpoltave         ###   ########.fr       */
+/*   Updated: 2017/10/24 12:44:41 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 
 int		reg_param(t_skrr *skrr, t_proc *process, int flag)
 {
-	if (((skrr->map[process->tmp_pc] > REG_NUMBER) || (skrr->map[process->tmp_pc] < 1))
-		&& (g_err = 1))
+	if (((skrr->map[process->tmp_pc] > REG_NUMBER) ||
+				(skrr->map[process->tmp_pc] < 1))
+			&& (g_err = 1))
 	{
-		process->pc = ((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
+		process->pc =
+			((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
 		return (0);
 	}
 	if (flag == 1)
@@ -31,14 +33,14 @@ int		reg_param(t_skrr *skrr, t_proc *process, int flag)
 	return (0);
 }
 
-
 /*
-**	dir_size, if dir_size = 1 -> means DIR_SIZE = 2 bytes, 0 -> DIR_SIZE = 4 bytes
+**	dir_size, if dir_size = 1 -> means DIR_SIZE = 2 bytes,
+**  0 -> DIR_SIZE = 4 bytes
 */
 
 int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 {
-	int address;
+	int	address;
 
 	address = 0;
 	if (dir_size == 1)
@@ -60,13 +62,14 @@ int		dir_param(t_skrr *skrr, t_proc *process, short dir_size)
 
 int		ind_param(t_skrr *skrr, t_proc *process, int bytes)
 {
-	int 			address;
+	int				address;
 	unsigned int	ind[bytes];
-	int 			i;
+	int				i;
 
 	i = -1;
 	skrr->shift = (bytes == 4) ? 24 : 8;
-	address = (process->pc + ((short)two_four_bytes(&skrr->map[process->tmp_pc], 2) % IDX_MOD));
+	address = (process->pc +
+			((short)two_four_bytes(&skrr->map[process->tmp_pc], 2) % IDX_MOD));
 	while (++i < bytes)
 	{
 		address = (address + MEM_SIZE) % MEM_SIZE;
@@ -74,7 +77,8 @@ int		ind_param(t_skrr *skrr, t_proc *process, int bytes)
 		skrr->shift -= 8;
 		address++;
 	}
-	address = (bytes == 4) ? (ind[0] | ind[1] | ind[2] | ind[3]) : (ind[0] | ind[1]);
+	address = (bytes == 4) ?
+		(ind[0] | ind[1] | ind[2] | ind[3]) : (ind[0] | ind[1]);
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	return (address);
 }

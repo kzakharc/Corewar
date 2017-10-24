@@ -26,12 +26,13 @@ int 	ldi_instr(t_skrr *skrr, t_proc *process)
 			exit(0);
 		if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 			return (0);
-		if (!(address = get_address(q, skrr, process, 0, 0)) && (g_err) && !(g_err = 0))
+		if (!(address = get_address(q, skrr, 0, 0)) && (g_err) && !(g_err = 0))
 			return (0);
 		if (!(load_into(address, process, skrr, 2)) && (g_err) && !(g_err = 0))
 			return (0);
 		process->pc = ((process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE);
 		process->tmp_pc = process->pc;
+		free(q);
 	}
 	return (1);
 }

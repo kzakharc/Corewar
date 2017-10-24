@@ -6,13 +6,13 @@
 /*   By: yzakharc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 13:47:04 by yzakharc          #+#    #+#             */
-/*   Updated: 2017/10/19 13:47:05 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/10/24 11:57:31 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../corewar.h"
 
-int 	ft_intc(const int *mass, int c, int length)
+int		ft_intc(const int *mass, int c, int length)
 {
 	int	tmp;
 	int	cnt;
@@ -25,10 +25,10 @@ int 	ft_intc(const int *mass, int c, int length)
 	return (cnt);
 }
 
-int 	*ft_intmalloc(size_t size)
+int		*ft_intmalloc(size_t size)
 {
-	int n;
-	int *tmp;
+	int	n;
+	int	*tmp;
 
 	n = -1;
 	if (!(tmp = malloc(size * sizeof(tmp))))

@@ -6,13 +6,13 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:31:21 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/09/10 17:31:23 by vpoltave         ###   ########.fr       */
+/*   Updated: 2017/10/24 12:19:33 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../corewar.h"
 
-void		correct_id(t_skrr *skrr)
+void			correct_id(t_skrr *skrr)
 {
 	t_chmp *chmp_tmp;
 	t_proc *proc_tmp;
@@ -28,9 +28,9 @@ void		correct_id(t_skrr *skrr)
 	}
 }
 
-void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
+void			prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 {
-	unsigned char 	*line;
+	unsigned char	*line;
 	t_chmp			*champ_tmp;
 	t_proc			*proc_tmp;
 
@@ -40,8 +40,9 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 	correct_id(skrr);
 	while (champ_tmp && proc_tmp)
 	{
-		proc_tmp->tmp_pc = player_position(proc_tmp->registry[0], skrr, champ_tmp);
-		line = (unsigned char*) ft_strnew(champ_tmp->header.prog_size);
+		proc_tmp->tmp_pc =
+			player_position(proc_tmp->registry[0], skrr, champ_tmp);
+		line = (unsigned char*)ft_strnew(champ_tmp->header.prog_size);
 		chk_size(skrr, av[champ_tmp->ac], line, champ_tmp);
 		skrr->i = 0;
 		while (read(champ_tmp->fd, &line[skrr->i], 1))
@@ -49,24 +50,25 @@ void		prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 		unsafe_copy(skrr, line, champ_tmp);
 		champ_tmp = champ_tmp->next;
 		proc_tmp = proc_tmp->next;
+		free(line);
 	}
 }
 
-void		unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
+void			unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
 {
 	int pos;
 
 	pos = chmp->player_pos;
 	if (line == NULL)
-		exit (1);
+		exit(1);
 	while (skrr->i-- > 0)
 	{
-		skrr->mapid[pos] = (unsigned char) ((chmp->id * -1));
+		skrr->mapid[pos] = (unsigned char)((chmp->id * -1));
 		skrr->map[pos++] = *line++;
 	}
 }
 
-static void	init_map(t_skrr *skrr)
+static void		init_map(t_skrr *skrr)
 {
 	skrr->i = 0;
 	while (skrr->i < MEM_SIZE)
