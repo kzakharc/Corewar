@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:30:37 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 12:45:58 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/09/10 17:30:38 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ unsigned int	two_four_bytes(unsigned char *map, int size)
 
 unsigned char	arg_types(t_skrr *skrr, t_chmp *chmp, int ctk)
 {
-	int	addit_dir;
+	int addit_dir;
 
 	addit_dir = (g_tab[skrr->op].dir_size == 0) ? 2 : 0;
 	if (hex_to_bin(skrr->map[ctk], skrr->i) == REG_CODE &&
@@ -52,7 +52,7 @@ unsigned char	arg_types(t_skrr *skrr, t_chmp *chmp, int ctk)
 
 unsigned char	hex_to_bin(unsigned char c, int i)
 {
-	unsigned char	dst;
+	unsigned char dst;
 
 	dst = c;
 	if ((i == 0) && (dst = (dst >> 6)))
@@ -79,7 +79,7 @@ int				same_start(unsigned char *q, t_skrr *skrr, t_proc *process,
 	if (check_my_q(q, num_arg, skrr) == -2)
 	{
 		process->pc =
-			(process->pc + 2 + skrr->chmp->offset + MEM_SIZE) % MEM_SIZE;
+				(process->pc + 2 + skrr->chmp->offset + MEM_SIZE) % MEM_SIZE;
 		return (0);
 	}
 	return (1);
@@ -87,7 +87,7 @@ int				same_start(unsigned char *q, t_skrr *skrr, t_proc *process,
 
 int				check_my_q(unsigned char *q, int num_arg, t_skrr *skrr)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	while (++i < num_arg)

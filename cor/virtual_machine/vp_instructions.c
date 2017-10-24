@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:31:42 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 12:34:38 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/09/10 17:31:43 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		entry_point(t_skrr *skrr, t_chmp *chmp)
 {
 	while (skrr->cycle_to_die > 0)
 	{
+		(g_cycles == 0) ? process_first_pos(skrr->chmp, skrr->process) : 0;
 		skrr->flag_v ? visualize(skrr) : 0;
 		g_cycles++;
 		g_ctd++;
@@ -35,18 +36,23 @@ int		change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 
 	proc_tmp = *process;
 	chmp_tmp = chmp;
-	(g_cycles == 1) ? process_first_positions(chmp_tmp, proc_tmp) : 0;
 	while (proc_tmp)
 	{
 		skrr->op = -1;
-		which_instr(skrr, chmp_tmp, &proc_tmp);
+		chmp->offset = 0;
+		which_instr(skrr, &proc_tmp);
 		proc_tmp = proc_tmp->next;
 	}
 	return (1);
 }
 
-int		process_first_positions(t_chmp *chmp_tmp, t_proc *proc_tmp)
+int		process_first_pos(t_chmp *chmp, t_proc *proc)
 {
+	t_proc *proc_tmp;
+	t_chmp *chmp_tmp;
+
+	proc_tmp = proc;
+	chmp_tmp = chmp;
 	if (!chmp_tmp || !proc_tmp)
 		exit(0);
 	while (chmp_tmp && proc_tmp)
@@ -58,33 +64,33 @@ int		process_first_positions(t_chmp *chmp_tmp, t_proc *proc_tmp)
 	return (1);
 }
 
-void	which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **pr)
+void	which_instr(t_skrr *skrr, t_proc **process)
 {
 	while (++skrr->op < 16)
-		if (skrr->map[(*pr)->pc] == g_tab[skrr->op].opcode || (*pr)->sop != -1)
+		if (skrr->map[(*process)->pc] == g_tab[skrr->op].opcode ||
+				(*process)->sop != -1)
 		{
-			chmp->offset = 0;
-			(*pr)->waiting_cycles++;
-			((*pr)->sop != -1) ? skrr->op = (*pr)->sop : 0;
-			(skrr->op == 0) ? live_instr(skrr, *pr) : 0;
-			(skrr->op == 1) ? ld_instr(skrr, *pr) : 0;
-			(skrr->op == 2) ? st_instr(skrr, *pr) : 0;
-			(skrr->op == 3) ? add_instr(skrr, *pr) : 0;
-			(skrr->op == 4) ? sub_instr(skrr, *pr) : 0;
-			(skrr->op == 5) ? and_instr(skrr, *pr) : 0;
-			(skrr->op == 6) ? or_instr(skrr, *pr) : 0;
-			(skrr->op == 7) ? xor_instr(skrr, *pr) : 0;
-			(skrr->op == 8) ? zjmp_instr(skrr, *pr) : 0;
-			(skrr->op == 9) ? ldi_instr(skrr, *pr) : 0;
-			(skrr->op == 10) ? sti_instr(skrr, *pr) : 0;
-			(skrr->op == 11) ? fork_instr(skrr, pr) : 0;
-			(skrr->op == 12) ? lld_instr(skrr, *pr) : 0;
-			(skrr->op == 13) ? lldi_instr(skrr, *pr) : 0;
-			(skrr->op == 14) ? lfork_instr(skrr, pr) : 0;
-			(skrr->op == 15) ? aff_instr(skrr, *pr) : 0;
-			break ;
+			(*process)->waiting_cycles++;
+			((*process)->sop != -1) ? skrr->op = (*process)->sop : 0;
+			(skrr->op == 0) ? live_instr(skrr, *process) : 0;
+			(skrr->op == 1) ? ld_instr(skrr, *process) : 0;
+			(skrr->op == 2) ? st_instr(skrr, *process) : 0;
+			(skrr->op == 3) ? add_instr(skrr, *process) : 0;
+			(skrr->op == 4) ? sub_instr(skrr, *process) : 0;
+			(skrr->op == 5) ? and_instr(skrr, *process) : 0;
+			(skrr->op == 6) ? or_instr(skrr, *process) : 0;
+			(skrr->op == 7) ? xor_instr(skrr, *process) : 0;
+			(skrr->op == 8) ? zjmp_instr(skrr, *process) : 0;
+			(skrr->op == 9) ? ldi_instr(skrr, *process) : 0;
+			(skrr->op == 10) ? sti_instr(skrr, *process) : 0;
+			(skrr->op == 11) ? fork_instr(skrr, process) : 0;
+			(skrr->op == 12) ? lld_instr(skrr, *process) : 0;
+			(skrr->op == 13) ? lldi_instr(skrr, *process) : 0;
+			(skrr->op == 14) ? lfork_instr(skrr, process) : 0;
+			(skrr->op == 15) ? aff_instr(skrr, *process) : 0;
+			return ;
 		}
-	(*pr)->pc = ((*pr)->pc + 1 + MEM_SIZE) % MEM_SIZE;
+	(*process)->pc = ((*process)->pc + 1 + MEM_SIZE) % MEM_SIZE;
 }
 
 int		init_lives(t_skrr *skrr)
