@@ -44,7 +44,7 @@ void	menufields(WINDOW *menu, t_skrr *skrr)
 
 	y = (skrr->max_player * 4);
 	wattron(menu, COLOR_PAIR(26) | A_BOLD);
-	mvwaddstr(menu, 4, 3, "Cycles/second limit :");
+	mvwaddstr(menu, 4, 3, "Speed :");
 	mvwaddstr(menu, 7, 3, "Cycle :");
 	mvwaddstr(menu, 9, 3, "Processes :");
 	print_champs_data(skrr);
@@ -55,7 +55,7 @@ void	menufields(WINDOW *menu, t_skrr *skrr)
 	{
 		wattron(skrr->vis->menu, COLOR_PAIR(27) | A_BOLD);
 		mvwaddstr(menu, 15 + y, 3, "[-----------------------------------------"\
-		"--------]");
+		"---------]");
 	}
 	wattron(menu, COLOR_PAIR(26));
 	mvwaddstr(menu, 17 + y, 3, "CYCLE_TO_DIE :");
@@ -75,7 +75,7 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 	{
 		mvwaddch(code, i, 0, ' ' | A_REVERSE);
 		mvwaddch(menu, i, 0, ' ' | A_REVERSE);
-		mvwaddch(menu, i++, 56, ' ' | A_REVERSE);
+		mvwaddch(menu, i++, 57, ' ' | A_REVERSE);
 	}
 	i = 0;
 	while (i < width - 57)
@@ -87,10 +87,9 @@ void	printmargins(WINDOW *code, WINDOW *menu, int width, int height)
 	while (i < 57)
 	{
 		mvwaddch(menu, 0, i, ' ' | A_REVERSE);
-		mvwaddch(menu, 67, i++, ' ' | A_REVERSE);
+		mvwaddch(menu, 67, i, ' ' | A_REVERSE);
+		mvwaddch(menu, 55, i++, ' ' | A_REVERSE);
 	}
-	wattroff(code, COLOR_PAIR(25));
-	wattroff(menu, COLOR_PAIR(25));
 }
 
 void	print_add_champs(t_skrr *skrr, int y, int id)
@@ -106,7 +105,6 @@ void	print_add_champs(t_skrr *skrr, int y, int id)
 void	printdata(WINDOW *menu, t_skrr *skrr)
 {
 	mvwaddstr(menu, 2, 3, "** RUNNING **");
-	mvwprintw(menu, 4, 25, "%d  ", skrr->vis->cycles);
 	mvwprintw(menu, 9, 15, "%d", skrr->process_count);
 	mvwprintw(menu, 7, 11, "%d", g_cycles);
 	wattron(menu, COLOR_PAIR(champ_color(skrr, -1)));
