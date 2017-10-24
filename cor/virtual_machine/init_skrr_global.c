@@ -6,7 +6,7 @@
 /*   By: yzakharc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 14:48:46 by yzakharc          #+#    #+#             */
-/*   Updated: 2017/10/12 14:48:47 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/10/24 11:23:32 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,13 @@ void	init(t_skrr *skrr)
 	g_err = 0;
 	skrr->chmp = NULL;
 	skrr->process = NULL;
+}
+
+void	init_flag(t_skrr *skrr)
+{
+	if (skrr->flag_v == 1)
+	{
+		skrr->flag_a = 0;
+		skrr->flag_dump = -1;
+	}
 }

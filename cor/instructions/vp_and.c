@@ -27,7 +27,7 @@ int		and_instr(t_skrr *skrr, t_proc *process)
 		exit(0);
 	if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 		return (0);
-	if (!(address = determination_of_action(q, skrr, 3, process)) && (g_err))
+	if (!(address = det_of_action(q, skrr, 3, process)) && (g_err))
 		return (g_err = 0);
 	process->tmp_pc = (process->tmp_pc + 1 + MEM_SIZE) % MEM_SIZE;
 	if (!(reg = reg_param(skrr, process, 2)) && (g_err))

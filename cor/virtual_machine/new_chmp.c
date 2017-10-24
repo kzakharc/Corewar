@@ -6,18 +6,18 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:30:50 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/09/10 17:30:51 by vpoltave         ###   ########.fr       */
+/*   Updated: 2017/10/24 11:24:09 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../corewar.h"
 
-int 	push_chmp(t_chmp **head, t_skrr *skrr)
+int		push_chmp(t_chmp **head, t_skrr *skrr)
 {
 	t_chmp *new_champ;
 
 	if (!(new_champ = malloc(sizeof(t_chmp))))
-		exit (0);
+		exit(0);
 	init_data(new_champ, skrr);
 	new_champ->fd = skrr->fd;
 	push_process(&skrr->process, skrr, new_champ->id);
@@ -26,7 +26,7 @@ int 	push_chmp(t_chmp **head, t_skrr *skrr)
 	return (1);
 }
 
-void 	init_data(t_chmp *champ, t_skrr *skrr)
+void	init_data(t_chmp *champ, t_skrr *skrr)
 {
 	champ->reg_value = 0;
 	champ->offset = 0;
@@ -37,13 +37,13 @@ void 	init_data(t_chmp *champ, t_skrr *skrr)
 	skrr->init_id++;
 }
 
-int 	push_process(t_proc **process, t_skrr *skrr, int id)
+int		push_process(t_proc **process, t_skrr *skrr, int id)
 {
-	t_proc 	*new_process;
-	int 	i;
+	t_proc	*new_process;
+	int		i;
 
 	if (!(new_process = malloc(sizeof(t_proc))))
-		exit (0);
+		exit(0);
 	i = -1;
 	while (++i < REG_NUMBER)
 		new_process->registry[i] = 0;
@@ -61,13 +61,13 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	return (1);
 }
 
-int 	inheritance_proc(t_proc **process, int pc, t_skrr *skrr)
+int		inheritance_proc(t_proc **process, int pc, t_skrr *skrr)
 {
-	t_proc 	*new_process;
-	int 	i;
+	t_proc	*new_process;
+	int		i;
 
 	if (!(new_process = malloc(sizeof(t_proc))))
-		exit (0);
+		exit(0);
 	i = -1;
 	while (++i < REG_NUMBER)
 		new_process->registry[i] = (*process)->registry[i];
@@ -84,7 +84,7 @@ int 	inheritance_proc(t_proc **process, int pc, t_skrr *skrr)
 	return (1);
 }
 
-int 	kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr)
+int		kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr)
 {
 	t_proc *current_proc;
 

@@ -28,7 +28,7 @@ int		sti_instr(t_skrr *skrr, t_proc *process)
 		return (0);
 	if (!from_reg(q, process, skrr, 0) && (g_err))
 		return (g_err = 0);
-	if (!(address = get_address(q, skrr, process, 0, 1)) && (g_err))
+	if (!(address = get_address(q, skrr, 0, 1)) && (g_err))
 		return (g_err = 0);
 	load_into(address, process, skrr, 1);
 	process->pc = (process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE;

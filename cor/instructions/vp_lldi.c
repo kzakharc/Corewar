@@ -26,7 +26,7 @@ int		lldi_instr(t_skrr *skrr, t_proc *process)
 		exit(0);
 	if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 		return (0);
-	if (!(address = get_address(q, skrr, process, 1, 0)) && (g_err))
+	if (!(address = get_address(q, skrr, 1, 0)) && (g_err))
 		return (g_err = 0);
 	if (!(load_into(address, process, skrr, 2)) && (g_err))
 		return (g_err = 0);
