@@ -95,6 +95,12 @@ void	header_errors_2(void)
 		(MAX_ARGS_NUMBER != 4) ? ft_printf(MAG"Warning:"RESET " MAX_ARGS_NUMBER != 4\n") : 0;
 		exit (5);
 	}
+	else if ((REG_NUMBER < 0) || (CYCLE_TO_DIE < 0) || (NBR_LIVE < 0) ||
+			(MAX_CHECKS) < 0 || (CYCLE_DELTA < 0))
+	{
+		ft_printf(MAG"Warning:"RESET " No negative please.\n");
+		exit (6);
+	}
 }
 
 void	usage_e(void)

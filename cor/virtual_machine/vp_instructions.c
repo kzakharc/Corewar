@@ -16,6 +16,7 @@ int 	entry_point(t_skrr *skrr, t_chmp *chmp)
 {
 	while (skrr->cycle_to_die > 0)
 	{
+		(g_cycles == 0) ? process_first_pos(skrr->chmp, skrr->process) : 0;
 		skrr->flag_v ? visualize(skrr) : 0;
 		g_cycles++;
 		g_ctd++;
@@ -35,7 +36,6 @@ int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 
 	proc_tmp = *process;
 	chmp_tmp = chmp;
-	(g_cycles == 1) ? process_first_positions(chmp_tmp, proc_tmp) : 0;
 	while (proc_tmp)
 	{
 		which_instr(skrr, chmp_tmp, &proc_tmp);
@@ -44,8 +44,13 @@ int 	change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 	return (1);
 }
 
-int 	process_first_positions(t_chmp *chmp_tmp, t_proc *proc_tmp)
+int 	process_first_pos(t_chmp *chmp, t_proc *proc)
 {
+	t_proc *proc_tmp;
+	t_chmp *chmp_tmp;
+
+	proc_tmp = proc;
+	chmp_tmp = chmp;
 	if (!chmp_tmp || !proc_tmp)
 		exit (0);
 	while (chmp_tmp && proc_tmp)

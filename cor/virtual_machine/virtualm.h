@@ -49,7 +49,6 @@ typedef struct		s_proc
 	int 			tmp_pc;
 	unsigned int 	registry[REG_NUMBER];
 	int 			carry;
-//	int 			alive;
 	int 			live_proc;
 	int 			live_color;
 	int 			live_pc;
@@ -137,8 +136,6 @@ void				argv_error(t_skrr *skrr, char **argv, int i, int flag);
 */
 
 void				init(t_skrr *skrr);
-int 				alive(t_proc *process, t_skrr *skrr);
-int 				check_is_live(t_proc **procs, t_skrr *skrr);
 
 /*
 **	main functions, for get info about "name", "weighing", "comments" .. go -> [vp_basic.c].
@@ -160,7 +157,7 @@ void				unsafe_copy(t_skrr *skrr, unsigned char *src, t_chmp *chmp);
 int 				entry_point(t_skrr *skrr, t_chmp *chmp);
 int					which_instr(t_skrr *skrr, t_chmp *chmp, t_proc **process);
 int 				change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process);
-int 				process_first_positions(t_chmp *chmp, t_proc *process);
+int 				process_first_pos(t_chmp *chmp, t_proc *process);
 int 				kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr);
 void				winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player);
 int 				init_lives( t_skrr *skrr);

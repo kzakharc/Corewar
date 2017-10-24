@@ -41,7 +41,10 @@ void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)
 				best_player =
 				best_player < chmp_tmp->id ? chmp_tmp->id : best_player;
 			else
+			{
 				best_player = chmp_tmp->id;
+				best_cycle = chmp_tmp->last_live;
+			}
 		}
 		chmp_tmp = chmp_tmp->next;
 	}

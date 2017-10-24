@@ -51,7 +51,6 @@ int 	push_process(t_proc **process, t_skrr *skrr, int id)
 	new_process->carry = 0;
 	new_process->pc = 0;
 	new_process->live_proc = 0;
-//	new_process->alive = 1;
 	new_process->live_color = 0;
 	new_process->live_pc = -1;
 	new_process->waiting_cycles = 0;
@@ -75,7 +74,6 @@ int 	inheritance_proc(t_proc **process, int pc, t_skrr *skrr)
 	new_process->id = (*process)->id;
 	new_process->pc = pc;
 	new_process->tmp_pc = pc;
-//	new_process->alive = 1;
 	new_process->carry = (*process)->carry;
 	new_process->live_proc = (*process)->live_proc;
 	new_process->waiting_cycles = 0;
@@ -101,7 +99,6 @@ int 	kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr)
 				*process = current_proc->next;
 			free(current_proc);
 			skrr->process_count--;
-			skrr->flag_v ? beep() : 0;
 		}
 		else if (current_proc->live_proc == 1)
 		{
@@ -114,59 +111,3 @@ int 	kill_processes(t_proc **process, t_proc *prev, t_skrr *skrr)
 		winner(skrr->chmp, skrr, skrr->chmp->last_live, skrr->chmp->id);
 	return (1);
 }
-
-//int check_is_live(t_proc **procs, t_skrr *skrr)
-//{
-//	t_proc *tmp;
-//	t_proc *prev;
-//	t_proc *address;
-//
-//	tmp = *procs;
-//	prev = tmp;
-//	while (tmp) {
-//		if (tmp->live_proc) {
-//			tmp->live_proc = 0;
-//			prev = tmp;
-//			address = tmp->next;
-//		} else
-//		{
-//			if (*procs == tmp)
-//				*procs = tmp->next;
-//			prev->next = tmp->next;
-//			address = tmp->next;
-//			free(tmp);
-//			skrr->process_count--;
-//		}
-//		tmp = address;
-//	}
-//	if (*procs == NULL)
-//		return (0);
-//	return (1);
-//}
-
-//int 	alive(t_proc *process, t_skrr *skrr)
-//{
-//	t_proc 	*proc_tmp;
-//	int 	alive;
-//
-//	proc_tmp = process;
-//	alive = 0;
-//	while (proc_tmp)
-//	{
-//		if (proc_tmp->live_proc == 0 && (proc_tmp->alive == 1))
-//		{
-//			proc_tmp->alive = 0;
-//			skrr->process_count -= 1;
-//		}
-//		else if (proc_tmp->live_proc == 1)
-//		{
-//			proc_tmp->live_proc = 0;
-//			alive = 1;
-//		}
-//		proc_tmp = proc_tmp->next;
-//	}
-//	if (alive == 1)
-//		return (1);
-//	winner(skrr->chmp, skrr, skrr->chmp->last_live, skrr->chmp->id);
-//	return (0);
-//}
