@@ -32,11 +32,8 @@ void	pt_winner(t_skrr *skrr, t_chmp *chmp, int best_player)
 	if (skrr->flag_v == 1)
 		printwinner(skrr, name_winner(chmp, best_player), best_player);
 	else
-	{
-		print_info(skrr->chmp);
 		ft_printf("Contestant %ld, " GRN"\"%s\","RESET "has won !\n",
 				best_player * (-1), name_winner(chmp, best_player));
-	}
 }
 
 void	winner(t_chmp *chmp, t_skrr *skrr, long best_cycle, int best_player)

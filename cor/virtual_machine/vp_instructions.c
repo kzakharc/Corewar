@@ -14,6 +14,7 @@
 
 int		entry_point(t_skrr *skrr, t_chmp *chmp)
 {
+	(skrr->flag_v == 0) ? print_info(skrr->chmp) : 0;
 	while (skrr->cycle_to_die > 0)
 	{
 		(g_cycles == 0) ? process_first_pos(skrr->chmp, skrr->process) : 0;
@@ -21,7 +22,7 @@ int		entry_point(t_skrr *skrr, t_chmp *chmp)
 		g_cycles++;
 		g_ctd++;
 		change_process(skrr, chmp, &skrr->process);
-		(g_cycles == skrr->flag_dump) ? dump_print(skrr) : 0;
+		(g_cycles - 1 == skrr->flag_dump) ? dump_print(skrr) : 0;
 		if (g_ctd == skrr->cycle_to_die)
 			init_lives(skrr);
 	}
@@ -32,10 +33,8 @@ int		entry_point(t_skrr *skrr, t_chmp *chmp)
 int		change_process(t_skrr *skrr, t_chmp *chmp, t_proc **process)
 {
 	t_proc *proc_tmp;
-	t_chmp *chmp_tmp;
 
 	proc_tmp = *process;
-	chmp_tmp = chmp;
 	while (proc_tmp)
 	{
 		skrr->op = -1;
@@ -103,7 +102,7 @@ int		init_lives(t_skrr *skrr)
 		champ_tmp->live_count = 0;
 		champ_tmp = champ_tmp->next;
 	}
-	kill_processes(&skrr->process, NULL, skrr);
+	kill_processes(&skrr->process, skrr);
 	if (skrr->nbr_live >= NBR_LIVE && (skrr->max_checks = MAX_CHECKS))
 		skrr->cycle_to_die -= CYCLE_DELTA;
 	else

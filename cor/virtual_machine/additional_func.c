@@ -72,6 +72,7 @@ int				same_start(unsigned char *q, t_skrr *skrr, t_proc *process,
 	if (skrr->map[process->tmp_pc] == '\0')
 	{
 		process->pc = (process->pc + 2 + MEM_SIZE) % MEM_SIZE;
+		free(q);
 		return (0);
 	}
 	while (skrr->i < num_arg)
@@ -80,6 +81,7 @@ int				same_start(unsigned char *q, t_skrr *skrr, t_proc *process,
 	{
 		process->pc =
 				(process->pc + 2 + skrr->chmp->offset + MEM_SIZE) % MEM_SIZE;
+		free(q);
 		return (0);
 	}
 	return (1);

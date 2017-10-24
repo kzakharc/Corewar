@@ -27,11 +27,18 @@ int		ldi_instr(t_skrr *skrr, t_proc *process)
 	if (!(same_start(q, skrr, process, g_tab[skrr->op].numb_of_arg)))
 		return (0);
 	if (!(address = get_address(q, skrr, process, 0)) && (g_err))
+	{
+		free(q);
 		return (g_err = 0);
+	}
 	address = (process->pc + (address % IDX_MOD));
 	if (!(load_into(address, process, skrr, 2)) && (g_err))
+	{
+		free(q);
 		return (g_err = 0);
+	}
 	process->pc = (process->pc + skrr->chmp->offset + 2 + MEM_SIZE) % MEM_SIZE;
 	process->tmp_pc = process->pc;
+	free(q);
 	return (1);
 }

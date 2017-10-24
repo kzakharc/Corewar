@@ -53,7 +53,8 @@ int		load_into(int address, t_proc *process, t_skrr *skrr, int flag)
 		}
 	}
 	else if (flag == 2)
-		four_bytes(address, process, skrr);
+		if (!(four_bytes(address, process, skrr)) && (g_err))
+			return (0);
 	return (1);
 }
 
@@ -68,7 +69,10 @@ int		from_reg(unsigned char *q, t_proc *process, t_skrr *skrr, short i)
 	else if (q[i] == T_IND)
 		skrr->chmp->reg_value = (unsigned int)ind_param(skrr, process, 4);
 	if (g_err == 1)
+	{
+		free(q);
 		return (0);
+	}
 	return (1);
 }
 

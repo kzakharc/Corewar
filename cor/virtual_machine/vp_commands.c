@@ -50,6 +50,7 @@ void			prog_commands(t_skrr *skrr, char **av, t_chmp *chmp)
 		unsafe_copy(skrr, line, champ_tmp);
 		champ_tmp = champ_tmp->next;
 		proc_tmp = proc_tmp->next;
+		free(line);
 	}
 }
 
