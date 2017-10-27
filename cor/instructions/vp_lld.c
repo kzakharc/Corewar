@@ -6,7 +6,7 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/02 18:38:18 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 13:02:32 by vpoltave         ###   ########.fr       */
+/*   Updated: 2017/10/25 11:17:13 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		lld_instr(t_skrr *skrr, t_proc *process)
 	int				address;
 	int				reg;
 
+	reg = 0;
 	if (!fuck_norm(skrr, process, 12))
 		return (0);
 	if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))

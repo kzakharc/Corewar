@@ -37,3 +37,17 @@ int		*ft_intmalloc(size_t size)
 		tmp[n] = 0;
 	return (tmp);
 }
+
+int		len_value(int value)
+{
+	int i;
+
+	i = 0;
+	value < 0 ? i++ : 0;
+	while (value != 0)
+	{
+		value /= 10;
+		i++;
+	}
+	return (i);
+}

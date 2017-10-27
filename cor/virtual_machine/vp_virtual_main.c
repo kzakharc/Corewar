@@ -12,7 +12,11 @@
 
 #include "../../corewar.h"
 
-int		main(int argc, char **argv)
+unsigned long	g_cycles;
+int				g_ctd;
+int				g_err;
+
+int				main(int argc, char **argv)
 {
 	t_skrr	skrr;
 

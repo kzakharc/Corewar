@@ -44,7 +44,7 @@ void			find_player(char **av, int *i, t_skrr *skrr)
 {
 	chk_open(skrr, av, *i, 1);
 	push_chmp(&skrr->chmp, skrr);
-	just_read(skrr, av[*i], *i, skrr->chmp);
+	just_read(skrr, av[*i], skrr->chmp);
 	skrr->max_player++;
 	skrr->chmp->ac = *i;
 	(*i)++;
@@ -113,10 +113,10 @@ void			flag_n(t_skrr *skrr)
 	i = 0;
 	skrr->init_id = 1;
 	tmp = skrr->process;
-	skrr->cnt_n > skrr->max_player ? argv_error(skrr, 0, 0, 5) : 0;
+	skrr->cnt_n > skrr->max_player ? argv_error(skrr, 0, 5) : 0;
 	while (i < skrr->max_player)
 	{
-		skrr->flag_n[i] > skrr->max_player ? argv_error(skrr, 0, 0, 4) : 0;
+		skrr->flag_n[i] > skrr->max_player ? argv_error(skrr, 0, 4) : 0;
 		while (tmp->id != skrr->init_id * (-1))
 			tmp = tmp->next;
 		tmp->registry[0] = zero_reg(skrr);
@@ -127,6 +127,6 @@ void			flag_n(t_skrr *skrr)
 	i = -1;
 	while (++i < skrr->max_player)
 		ft_intc(skrr->flag_n, skrr->flag_n[i], skrr->max_player) > 1 ?
-			argv_error(skrr, 0, 0, 6) : 0;
+		argv_error(skrr, 0, 6) : 0;
 	free(skrr->flag_n);
 }

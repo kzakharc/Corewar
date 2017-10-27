@@ -51,7 +51,7 @@ void	menufields(WINDOW *menu, t_skrr *skrr)
 	mvwaddstr(menu, 11 + y, 3, "Live breakdown for current period :");
 	wattron(menu, COLOR_PAIR(26));
 	mvwaddstr(menu, 14 + y, 3, "Live breakdown for last period :");
-	if (g_cycles < skrr->cycle_to_die)
+	if ((int)g_cycles < skrr->cycle_to_die)
 	{
 		wattron(skrr->vis->menu, COLOR_PAIR(27) | A_BOLD);
 		mvwaddstr(menu, 15 + y, 3, "[-----------------------------------------"\

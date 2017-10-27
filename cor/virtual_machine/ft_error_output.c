@@ -12,7 +12,7 @@
 
 #include "../../corewar.h"
 
-void	argv_error(t_skrr *skrr, char **argv, int i, int flag)
+void	argv_error(t_skrr *skrr, char **argv, int flag)
 {
 	if (flag == 2)
 		ft_printf("Error: File"RED" %s "RESET"has an invalid header\n", *argv);
@@ -27,11 +27,9 @@ void	argv_error(t_skrr *skrr, char **argv, int i, int flag)
 	else if (flag == 6)
 		ft_printf(""RED"Error:"RESET" You typed wrong player number\n");
 	else if (flag == 7)
-		ft_printf(""RED"Error:"RESET" Please enter the number of cycles\n");
+		ft_printf(""RED"Error:"RESET" Enter the correct number of the cycle\n");
 	else if (flag == 8)
 		ft_printf(""RED"Error:"RESET" Wrong player number\n");
-	else if (flag == 9)
-		ft_printf(""RED"Error:"RESET" Enter a positive cycle number\n");
 	(flag != 1) ? exit(flag) : 0;
 }
 

@@ -22,7 +22,7 @@ int		entry_point(t_skrr *skrr, t_chmp *chmp)
 		g_cycles++;
 		g_ctd++;
 		change_process(skrr, chmp, &skrr->process);
-		(g_cycles - 1 == skrr->flag_dump) ? dump_print(skrr) : 0;
+		((int)g_cycles - 1 == skrr->flag_dump) ? dump_print(skrr) : 0;
 		if (g_ctd == skrr->cycle_to_die)
 			init_lives(skrr);
 	}

@@ -71,7 +71,7 @@ typedef struct			s_chmp
 	unsigned int		player_pos;
 	int					live_count;
 	long				last_live;
-	header_t			header;
+	t_header			header;
 	struct s_chmp		*next;
 }						t_chmp;
 
@@ -129,7 +129,7 @@ void					usage_e(void);
 void					chk_open(t_skrr *skrr, char **argv, int argc, int flag);
 void					header_errors(void);
 void					header_errors_2(void);
-void					argv_error(t_skrr *skrr, char **argv, int i, int flag);
+void					argv_error(t_skrr *skrr, char **argv, int flag);
 
 /*
 ** init function. go -> [init_skrr_&_global.c] for init all structure variables.
@@ -146,13 +146,10 @@ void					fuck_norm_2(t_skrr *skrr, t_proc *process, int reg,
 **  "comments" .. go -> [vp_basic.c].
 */
 
-void					just_read(t_skrr *skrr, char *argv, int argc,
-								t_chmp *chmp);
+void					just_read(t_skrr *skrr, char *argv, t_chmp *chmp);
 unsigned int			get_magic_size(unsigned int m, int shift);
-void					get_name_comm(t_skrr *skrr, char *argv, int argc,
-								t_chmp *chmp);
-void					prog_size(t_skrr *skrr, char *argv, int argc,
-								t_chmp *chmp);
+void					get_name_comm(t_skrr *skrr, char *argv, t_chmp *chmp);
+void					vm_prog_size(t_skrr *skrr, char *argv, t_chmp *chmp);
 void					chk_size(t_skrr *skrr, char *argv, unsigned char *line,
 								t_chmp *chmp);
 
@@ -237,7 +234,7 @@ int						ind_param(t_skrr *skrr, t_proc *process, int bytes);
 **	init map and print map
 */
 
-static void				init_map(t_skrr *skrr);
+void					init_map(t_skrr *skrr);
 void					print_map(t_skrr *skrr);
 /*
 **	printing all players and their info.
@@ -252,6 +249,7 @@ void					dump_print(t_skrr *skrr);
 
 int						ft_intc(const int *mass, int c, int length);
 int						*ft_intmalloc(size_t size);
+int						len_value(int value);
 void					parsing_arg(t_skrr *skrr, char **av, int ac);
 void					flag_n(t_skrr *skrr);
 void					n(char **av, int *i, t_skrr *skrr, int ac);

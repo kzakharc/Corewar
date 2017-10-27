@@ -68,7 +68,7 @@ void			unsafe_copy(t_skrr *skrr, unsigned char *line, t_chmp *chmp)
 	}
 }
 
-static void		init_map(t_skrr *skrr)
+void			init_map(t_skrr *skrr)
 {
 	skrr->i = 0;
 	while (skrr->i < MEM_SIZE)

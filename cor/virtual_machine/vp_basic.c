@@ -6,18 +6,18 @@
 /*   By: vpoltave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:31:08 by vpoltave          #+#    #+#             */
-/*   Updated: 2017/10/24 12:17:45 by yzakharc         ###   ########.fr       */
+/*   Updated: 2017/10/25 11:18:15 by vpoltave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../corewar.h"
 
-void			just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
+void			just_read(t_skrr *skrr, char *argv, t_chmp *chmp)
 {
 	unsigned char	magic[4];
 	unsigned int	m[4];
 
-	(read(skrr->fd, magic, 4) < 0) ? argv_error(skrr, &argv, argc, 3) : 0;
+	(read(skrr->fd, magic, 4) < 0) ? argv_error(skrr, &argv, 3) : 0;
 	skrr->i = 0;
 	skrr->shift = 24;
 	while (skrr->i < 4)
@@ -27,12 +27,12 @@ void			just_read(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 	}
 	chmp->header.magic = m[0] | m[1] | m[2] | m[3];
 	if (chmp->header.magic == COREWAR_EXEC_MAGIC)
-		get_name_comm(skrr, argv, argc, chmp);
+		get_name_comm(skrr, argv, chmp);
 	else
-		argv_error(skrr, &argv, argc, 2);
+		argv_error(skrr, &argv, 2);
 }
 
-void			get_name_comm(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
+void			get_name_comm(t_skrr *skrr, char *argv, t_chmp *chmp)
 {
 	(lseek(skrr->fd, 4, SEEK_SET) < 0) ? exit(0) : 0;
 	(read(skrr->fd, chmp->header.prog_name, PROG_NAME_LENGTH + 1) < 0) ?
@@ -41,7 +41,7 @@ void			get_name_comm(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
 	(read(skrr->fd, chmp->header.comment, COMMENT_LENGTH + 1) < 0) ?
 		exit(0) : 0;
 	(lseek(skrr->fd, SIZE_POS, SEEK_SET) < 0) ? exit(0) : 0;
-	prog_size(skrr, argv, argc, chmp);
+	vm_prog_size(skrr, argv, chmp);
 	(lseek(skrr->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
 }
 
@@ -65,12 +65,12 @@ void			chk_size(t_skrr *skrr, char *argv, unsigned char *line,
 	(lseek(chmp->fd, COMMANDS_POS, SEEK_SET) < 0) ? exit(0) : 0;
 }
 
-void			prog_size(t_skrr *skrr, char *argv, int argc, t_chmp *chmp)
+void			vm_prog_size(t_skrr *skrr, char *argv, t_chmp *chmp)
 {
 	unsigned char	size[4];
 	unsigned int	s[4];
 
-	(read(skrr->fd, size, 4) < 0) ? argv_error(skrr, &argv, argc, 3) : 0;
+	(read(skrr->fd, size, 4) < 0) ? argv_error(skrr, &argv, 3) : 0;
 	skrr->i = 0;
 	skrr->shift = 24;
 	while (skrr->i < 4)

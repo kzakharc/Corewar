@@ -75,7 +75,7 @@ int				same_start(unsigned char *q, t_skrr *skrr, t_proc *process,
 		free(q);
 		return (0);
 	}
-	while (skrr->i < num_arg)
+	while ((int)skrr->i < num_arg)
 		q[skrr->i++] = arg_types(skrr, skrr->chmp, process->tmp_pc);
 	if (check_my_q(q, num_arg, skrr) == -2)
 	{

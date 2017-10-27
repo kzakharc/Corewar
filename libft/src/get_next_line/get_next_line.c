@@ -3,106 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kzakharc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yzakharc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/23 19:37:30 by kzakharc          #+#    #+#             */
-/*   Updated: 2017/07/23 18:14:12 by kzakharc         ###   ########.fr       */
+/*   Created: 2016/12/22 15:53:23 by yzakharc          #+#    #+#             */
+/*   Updated: 2017/03/21 20:20:08 by yzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static	void	ft_cat_str(char **str, int i)
+static char	**ft_check_fd(const int fd, t_line **head)
 {
-	int	n;
+	t_line *tmp;
+
+	tmp = *head;
+	while (tmp)
+	{
+		if (tmp->fd == fd)
+			return (&(tmp->str));
+		tmp = tmp->next;
+	}
+	tmp = (t_line *)malloc(sizeof(t_line));
+	tmp->fd = fd;
+	tmp->str = ft_strnew(0);
+	tmp->next = (*head);
+	(*head) = tmp;
+	return (&(tmp->str));
+}
+
+static int	ft_check(char *str, int *i)
+{
+	int j;
+
+	j = 0;
+	while (*str)
+	{
+		if (j != 1)
+			(*str != '\n') ? (*i)++ : (j = 1);
+		str++;
+	}
+	j = (*str == '\0') ? 1 : 0;
+	return (j);
+}
+
+static void	ft_cat_str(char **str, int i)
+{
+	int n;
 
 	n = -1;
 	while ((*str)[i] && **str)
-		((*str)[++n]) = ((*str)[++i]);
+		(*str)[++n] = (*str)[++i];
 }
 
-static int		if_n(char **str, char **line)
+static int	ft_write(char **str, char **line)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	*tmp;
 
 	i = 0;
-	while (**str != '\n')
+	j = 0;
+	if (ft_check(*str, &i))
 	{
-		(*str)++;
-		i++;
+		*line = ft_strsub(*str, 0, (size_t)i);
+		if (i == (int)ft_strlen(*str))
+		{
+			tmp = *str;
+			*str = ft_strnew(0);
+			free(tmp);
+		}
 	}
-	*str -= i;
-	*line = ft_strsub(*str, 0, (size_t)i);
+	if ((**str && **line) || (!**line && **str == '\n') || (**line && !**str))
+		j = 1;
 	ft_cat_str(str, i);
-	return (1);
+	return (j);
 }
 
-static char		**mult(const int fd, t_mult **current)
+int			get_next_line(const int fd, char **line)
 {
-	t_mult	*c;
-
-	c = *current;
-	while (c != NULL)
-	{
-		if ((c->fd) == fd)
-			return (&(c->str));
-		c = c->next;
-	}
-	c = (t_mult *)malloc(sizeof(t_mult));
-	c->str = ft_strnew(0);
-	c->fd = fd;
-	c->next = (*current);
-	(*current) = c;
-	return (&(c->str));
-}
-
-static int		i_know(const int fd, char **buff, char **line, char **str)
-{
-	char		*tmp;
-	ssize_t		t;
-
-	while (((t = read(fd, *buff, BUFF_SIZE)) > 0) || (**str))
-	{
-		tmp = *str;
-		*str = (*str == NULL) ? (ft_strdup(*buff)) : (ft_strjoin(*str, *buff));
-		free(tmp);
-		ft_strclr(*buff);
-		if (ft_strchr(*str, '\n'))
-		{
-			ft_strdel(buff);
-			return (if_n(&(*str), line));
-		}
-		if ((**str) && !(t))
-		{
-			ft_strdel(buff);
-			*line = ft_strsub(*str, 0, ft_strlen(*str));
-			ft_strdel(str);
-			return (1);
-		}
-	}
-	if (!(t) && (ft_strlen(*str) == 0))
-		return (0);
-	return (0);
-}
-
-int				get_next_line(const int fd, char **line)
-{
-	char			*buff;
-	static t_mult	*current;
 	char			**str;
-	int				i;
+	char			*temp;
+	ssize_t			r_res;
+	static t_line	*head;
+	char			*dump;
 
-	if ((BUFF_SIZE <= 0) || (fd == (-1)))
+	temp = ft_strnew(BUFF_SIZE);
+	if (((read(fd, temp, 0)) < 0) || fd < 0 || BUFF_SIZE <= 0)
 		return (-1);
-	buff = ft_strnew(BUFF_SIZE);
-	if ((read(fd, buff, 0)) == (-1))
-		return (-1);
-	str = mult(fd, &current);
-	if (*str == NULL)
+	str = ft_check_fd(fd, &head);
+	while ((r_res = read(fd, temp, BUFF_SIZE)) > 0)
 	{
-		ft_strdel(&buff);
-		return (0);
+		dump = *str;
+		*str = ft_strjoin(dump, temp);
+		ft_strdel(&dump);
+		if (ft_strchr(*str, '\n'))
+			break ;
+		ft_strclr(temp);
 	}
-	i = i_know(fd, &buff, line, str);
-	return (i);
+	ft_strdel(&temp);
+	if (r_res == 0 && !ft_strlen(*str))
+		return (0);
+	return (ft_write(&(*str), line));
 }

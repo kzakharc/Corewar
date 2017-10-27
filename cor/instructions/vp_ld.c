@@ -18,6 +18,7 @@ int		ld_instr(t_skrr *skrr, t_proc *process)
 	int				address;
 	int				reg;
 
+	reg = 0;
 	if (!fuck_norm(skrr, process, 1))
 		return (0);
 	if (!(q = malloc(sizeof(unsigned char) * g_tab[skrr->op].numb_of_arg)))

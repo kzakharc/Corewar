@@ -19,7 +19,7 @@ void	del_live(t_skrr *skrr)
 
 	prev = NULL;
 	current = skrr->vis->live;
-	if (current->id == skrr->i)
+	if (current->id == (int)skrr->i)
 	{
 		skrr->vis->live = current->next;
 		free(current);
@@ -27,7 +27,7 @@ void	del_live(t_skrr *skrr)
 	}
 	while (current != NULL)
 	{
-		if (current->id == skrr->i)
+		if (current->id == (int)skrr->i)
 		{
 			prev->next = current->next;
 			free(current);
@@ -57,7 +57,7 @@ int		find_live(t_skrr *skrr)
 	livetmp = skrr->vis->live;
 	while (livetmp != NULL)
 	{
-		if (livetmp->id == skrr->i)
+		if (livetmp->id == (int)skrr->i)
 		{
 			if (livetmp->cycle <= g_cycles || skrr->map[skrr->i] != 01)
 			{
@@ -84,7 +84,7 @@ int		i_am_alive(t_skrr *skrr)
 		return (1);
 	while (proctmp != NULL)
 	{
-		if (proctmp->live_pc == skrr->i && proctmp->live_color == 1 \
+		if (proctmp->live_pc == (int)skrr->i && proctmp->live_color == 1 \
 				&& skrr->map[skrr->i] == 01)
 		{
 			add_to_live(skrr, skrr->mapid[skrr->i]);

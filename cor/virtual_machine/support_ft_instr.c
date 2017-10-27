@@ -96,7 +96,7 @@ int		supp_to_xor(unsigned char *q, t_skrr *skrr, short i, t_proc *process)
 	return (adr);
 }
 
-int		supp_add_sub(unsigned char *q, t_skrr *skrr, int key, t_proc *process)
+int		supp_add_sub(t_skrr *skrr, int key, t_proc *process)
 {
 	int adr;
 
@@ -132,10 +132,10 @@ int		det_of_action(unsigned char *q, t_skrr *skrr, int key, t_proc *process)
 	result = 0;
 	i = 0;
 	if (key == 1)
-		if (!(result = supp_add_sub(q, skrr, key, process)) && (g_err))
+		if (!(result = supp_add_sub(skrr, key, process)) && (g_err))
 			return (0);
 	if (key == 2)
-		if (!(result = supp_add_sub(q, skrr, key, process)) && (g_err))
+		if (!(result = supp_add_sub(skrr, key, process)) && (g_err))
 			return (0);
 	if (key == 3)
 		if (!(result = supp_to_and(q, skrr, i, process)) && (g_err))
