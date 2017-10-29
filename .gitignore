@@ -1,8 +1,0 @@
-cmake-build-debug/
-libft/
-.idea/
-.DS_Store
-._*
-*.cor
-*.s
-libft/libft.a
