@@ -42,6 +42,9 @@ will create .cor source files to be launched by ./corewar executable
 
 Authors:
 Katerina Zakharchuk - Assembler [kzakharc](https://github.com/kzakharc)
+
 Vitalii Poltavets - Virtual machine [ChoadPet](https://github.com/ChoadPet)
+
 Yaroslav Zakharchuk - Virtual machine [ElCorte](https://github.com/yaro-zakh)
+
 Dmitry Spiridonov - Ncurses visualisation [d-spiridonov](https://github.com/d-spiridonov)
